@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo BreadcrumbView</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        
+        <link href="../css/BreadcrumbView.css" rel="stylesheet" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="../js/BreadcrumbView.js"></script>
+        <style>
+            .fake-link {
+               cursor: pointer;
+               color: blue;
+               text-decoration: underline;
+            }
+            
+
+            
+            .demo-history-text
+            {
+                position: absolute;
+                top: 50%;
+                width: 100px;
+                margin-left: -50px;
+                font-weight: bold; 
+                -moz-transform: rotate(270deg);  /* FF3.5+ */        
+                -o-transform: rotate(270deg);  /* Opera 10.5 */   
+                -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */              
+                filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3);  /* IE6,IE7 */          
+                -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE8 */ 
+            }
+            
+            /* ------------------------------------------------- */
+            /* ---------------Breadcrumb View Style------------- */
+            /* ------------------------------------------------- */
+            .sh-breadcrumbview-breadcrumb-container
+            {
+               background-color: green; 
+            }
+            
+            .sh-breadcrumbview-breadcrumb-container ui
+            {
+               background-color: yellow; 
+            }
+            
+            .sh-breadcrumbview-current
+            {
+               /* Design here */
+                background-color: red; 
+                height: 100%;
+            }
+
+            .sh-breadcrumbview-history
+            {
+                /* Design here */
+                background-color: lightgray;
+                border-width: 1px;
+                border-style: solid;
+                height: 100%;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div>
+            <a class='fake-link' style='float: left;' onclick="$.navigateBack()">Back</a>
+            <a class='fake-link' style='float: right;'  onclick="$('#breadcrumbView').addBreadcrumb()">Add</a>
+        </div>
+        <br>
+        <div id="breadcrumbView">
+        </div>
+        
+        <script>
+            /* Initialize the view */
+            function BuildTemplate(param)
+            {
+                var elementContent = param;
+                if(elementContent == undefined)
+                {
+                    elementContent = elementCounter;
+                    elementCounter++;
+                }
+                
+                // Create subitem List
+                var list = "<ul>";
+                for (var i = 0; i < Math.floor((Math.random()*20)+1); i++)
+                {
+                    list += "<li><a class='fake-link' onclick=\"$('#breadcrumbView').addBreadcrumb({ Template: BuildTemplate('Clicked->" + i + "') })\">Sub Element '" + i + "' of crumb '" + elementContent + "'</a></li>";
+                }
+                list += "</ul>";
+                
+                // Also possible to get template remote
+                var template = "<div data-CrumbTitle='Crumb " + elementContent + "' style='text-align: center'>" + 
+                                    "<span class='sh-breadcrumbview-hide-history'>current " + elementContent + "</span>" +
+                                    "<span class='sh-breadcrumbview-hide-current demo-history-text'>history " + elementContent + "</span>" +
+                                    "<div class='sh-breadcrumbview-hide-history'>" + list + "</div>" + 
+                               "</div>";
+                
+                return template;
+            }
+            
+            var elementCounter = 1;
+            $('#breadcrumbView').initBreadcrumbView({ Template: BuildTemplate, SMDisplayBreadcrumbPath: true });
+            
+        </script>
+    </body>
+</html>

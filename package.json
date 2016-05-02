@@ -1,0 +1,45 @@
+{
+  "name": "px-responsive-layouts",
+  "version": "0.0.1",
+  "description": "A px mobile web component.",
+  "keywords": [
+    "px",
+    "px-mobile"
+  ],
+  "license": "ISC",
+  "author": "Jonnie Spratley",
+  "scripts": {
+    "build": "grunt dist",
+    "postinstall": "bower install",
+    "test": "grunt test",
+    "serve": "grunt depserve",
+    "start": "grunt"
+  },
+  "devDependencies": {
+    "bower": "*",
+    "grunt": "~v0.4.5",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-concurrent": "^2.0.1",
+    "grunt-contrib-clean": "~v0.6.0",
+    "grunt-contrib-jshint": "~v0.10.0",
+    "grunt-contrib-watch": "~v0.6.1",
+    "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
+    "grunt-sass": "^v1.0.0",
+    "grunt-shell": "~v1.1.1",
+    "web-component-tester": "^4.2.2",
+    "webdriver-support": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sequence": "^0.4.5",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "node-sass-import-once": "^1.2.0",
+    "sassdoc": "^2.1.20"
+  }
+}

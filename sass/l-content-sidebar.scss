@@ -1,0 +1,17 @@
+@import "px-mobile-mixin-design";
+/// 1. Content Sidebar Pattern
+.l-content-sidebar,
+.l-cs {
+  > div:nth-child(1) {
+    @media (min-width: 600px) {
+      float: left;
+      width: 74.57627%;
+    }
+  }
+  > div:nth-child(2) {
+    @media (min-width: 600px) {
+      float: right;
+      width: 23.72881%;
+    }
+  }
+}

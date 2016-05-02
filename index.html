@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Responsive Layouts</title>
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
+  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
+  <link rel="stylesheet" href="css/px-responsive-layouts.min.css">
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  <!--
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
+-->
+
+
+
+  <style media="screen">
+  .box{
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+  }
+    .box div {
+      min-height: 150px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .c1 {
+      color: #ddd;
+      background-color: rgba(1, 1, 1, 0.7);
+    }
+
+    .c2 {
+      color: #ddd;
+      background-color: rgba(1, 1, 1, 0.4);
+    }
+
+    .c3 {
+      color: #333;
+      background-color: rgba(110, 112, 114, 0.54);
+    }
+
+    .c4 {
+      color: #333;
+      background-color: #7c7c84;
+      background-color: rgba(124, 124, 132, 0.50);
+    }
+
+    .c5 {
+      color: #333;
+      background-color: #dfe1e5;
+    }
+
+    .c6 {
+      color: #333;
+      background-color: rgba(138, 140, 142, .50);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo ">
+    <div class="box u-mb u-mt">
+      <h2>Responsive Web Design Layout Patterns</h2>
+      <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
+      <ol class="">
+        <li>Identify the layout patterns</li>
+        <li>Decide on new markup and classes</li>
+        <li>Create layout patterns in CSS</li>
+        <li>Replace old markup with new markup</li>
+      </ol>
+    </div>
+
+
+    <!-- TODO:  -->
+    <h2>Off Canvas</h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="l-offcanvas">
+              <div class="c1"></div>
+              <div class="c2"></div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <h2>Split View</h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="splitview">
+
+              <div class="splitview__sidebar splitview__sidebar--left splitview--hide-primary c4">
+                <h2>Left sidebar</h2>
+              </div>
+              <div class="splitview__col splitview__col--secondary is-active "> <h2>Secondary</h2> </div>
+              <div class="splitview__col splitview__col--primary is-passive "> <h2>Primary</h2> </div>
+              <div class="splitview__sidebar splitview__sidebar--right splitview-hide-secondary c4">
+                <h2>Right sidebar</h2>
+              </div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+
+    <h2>Content Sidebar Pattern <code>l-cs</code></h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="l-cs">
+              <div class="c1"></div>
+              <div class="c2"></div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="l-flex">
+              <div class="l-fg3">
+                <div class="c1"></div>
+                <div class="c1"></div>
+                <div class="c2"></div>
+                <div class="c2"></div>
+                <div class="c2"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+    </div>
+
+    <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
+    <div class="u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="l-g3">
+              <div class="c1"></div>
+              <div class="c1"></div>
+              <div class="c1"></div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+    </div>
+
+    <h2>Column Drop</h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="viewport">
+              <div class="column-drop">
+                <div class="container" role="main">
+                  <div class="c1"></div>
+                  <div class="c2"></div>
+                  <div class="c3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+    </div>
+
+    <!-- TODO:  -->
+    <h2> Layout Shifter</h2>
+    <div class="u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+            <div class="layout-shifter">
+              <div class="container" role="main">
+                <div class="c1"></div>
+                <div class="c4">
+                  <div class="c2"></div>
+                  <div class="c3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+    </div>
+
+
+    <!-- TODO:  -->
+    <h2>Mostly Fluid</h2>
+    <div class="u-mb">
+      <demo-snippet>
+        <template>
+          <div class="box">
+
+          </div>
+        </template>
+      </demo-snippet>
+      <div class="mostly-fluid">
+        <div class="container" role="main">
+          <div class="c1">
+          </div>
+          <div class="c2">
+          </div>
+          <div class="c3">
+          </div>
+          <div class="c4">
+          </div>
+          <div class="c5">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODO:  -->
+    <h2> Tiny Tweaks</h2>
+    <div class="box u-mb">
+      <div class="tiny-tweaks">
+        <div class="container" role="main">
+          <div class="c1"></div>
+          <div class="c4">
+            <div class="c2"></div>
+            <div class="c3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "px-responsive-layouts",
+  "description": "A responsive layout component.",
+  "main": "",
+  "authors": [
+    "Jonnie Spratley"
+  ],
+  "license": "GE",
+  "keywords": [
+    "px",
+    "px-mobile"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "px-mobile-mixin-design": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-design.git"
+  }
+}

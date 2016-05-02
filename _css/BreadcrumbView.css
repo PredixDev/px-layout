@@ -1,0 +1,67 @@
+/* 
+ *  Copyright (C) 2013 by Heiko Markgraf (SoftHai)
+ *  Licence:  MIT
+ */
+
+/* ------------------------------------------------- */
+/* ---------------Helper---------------------------- */
+/* ------------------------------------------------- */
+
+.sh-breadcrumbview-hide-history {}
+.sh-breadcrumbview-hide-current {}
+.sh-breadcrumbview-hide { display: none; }
+
+/* ------------------------------------------------- */
+/* ---------------Styles---------------------------- */
+/* ------------------------------------------------- */
+
+.sh-breadcrumbview-breadcrumb-container
+{
+   margin:  0px;
+   padding:  0px;
+   display:block;
+   width:100%;
+   list-style: none;
+}
+
+.sh-breadcrumbview-breadcrumb-container li
+{
+   display: inline-block;
+   margin-right:  5px;
+}
+
+.sh-breadcrumbview-breadcrumb-container > li + li:before {
+  padding: 0 5px;
+  content: "/\00a0";
+}
+
+.sh-breadcrumbview-current
+{
+    display: inline;
+    position: absolute;
+    right: 0px;
+    width: 0px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-breadcrumbview-history
+{
+    width: 8.333333333333332%;
+    display: inline;
+    position: absolute;
+    right: 0px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-breadcrumbview-offscreen
+{
+    position: absolute;
+    width: 0%;
+    opacity: 0;
+}

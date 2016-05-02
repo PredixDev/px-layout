@@ -1,0 +1,27 @@
+.l-fg3 {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .l-fg3 > div {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    margin: -10px; }
+    @media (min-width: 600px) {
+      .l-fg3 > div {
+        margin: 10px;
+        -webkit-flex-basis: calc(33.333% - 20px);
+        -ms-flex-preferred-size: calc(33.333% - 20px);
+        flex-basis: calc(33.333% - 20px); } }
+  @media (min-width: 600px) {
+    .l-fg3 > div:nth-child(1),
+    .l-fg3 > div:nth-child(2) {
+      -webkit-flex-basis: calc(50% - 20px);
+      -ms-flex-preferred-size: calc(50% - 20px);
+      flex-basis: calc(50% - 20px); } }
+
+.l-flex {
+  overflow-x: hidden; }

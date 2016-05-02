@@ -1,0 +1,11 @@
+@media (min-width: 600px) {
+  .l-content-sidebar > div:nth-child(1),
+  .l-cs > div:nth-child(1) {
+    float: left;
+    width: 74.57627%; } }
+
+@media (min-width: 600px) {
+  .l-content-sidebar > div:nth-child(2),
+  .l-cs > div:nth-child(2) {
+    float: right;
+    width: 23.72881%; } }

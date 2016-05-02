@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Full - splitview Layout bem</title>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+  <script src="../../../webcomponentsjs/webcomponents.min.js"></script>
+
+
+
+  <!-- TODO: pxm components -->
+  <link rel="import" href="../../../px-design-system/px-design-system-theme.html">
+  <link rel="import" href="../../../px-table-view/px-table-view.html">
+  <link rel="import" href="../../../px-action-sheet/px-action-sheet.html" />
+  <link rel="import" href="../../../px-card/px-deck.html" />
+  <link rel="import" href="../../../px-card/px-card.html" />
+  <link rel="import" href="../../../px-page/px-pages.html" />
+  <link rel="import" href="../../../px-page/px-page.html" />
+  <link rel="import" href="../../../px-button/px-button.html" />
+  <link rel="import" href="../../../px-drawer/px-drawer.html" />
+  <link rel="import" href="../../../px-navbar/px-navbar.html" />
+  <link rel="import" href="../../../iron-ajax/iron-ajax.html" />
+  <link rel="import" href="../../../iron-list/iron-list.html" />
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  <!--
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
+-->
+  <script src='../../../fastclick/lib/fastclick.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+
+  <script src="js/index.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+
+  <div class="app demo">
+
+
+    <header class="navbar navbar--default">
+      <div class="navbar__center">
+        <span class="navbar__center__title">
+          <a href="#" class="brand">
+              App Name
+              <i class="fa fa-angle-down"></i>
+            </a>
+
+        </span>
+      </div>
+      <div class="navbar__content">
+        <div>
+          <button class="navbar__button navbar__button--back">
+            <i class="fa fa-angle-left"></i>
+            <span>Back</span>
+          </button>
+          <a class="btn  btn--icon splitview-hide-fullScreen splitview-hideprimary" href="#" onclick="$.toggleSidebar('left')">
+            <i class="fa fa-lg fa-bars"></i>
+          </a>
+        </div>
+
+
+        <div>
+          <a class="btn btn--icon splitview-hide-fullScreen splitview-hide-split splitview-hide-secondary" href="#" onclick="$.toggleSidebar('right')">
+            <i class="fa fa-ellipsis-v"></i></a>
+        </div>
+    </header>
+
+
+
+
+    </header>
+    <div id="splitView" class="splitview">
+
+
+
+      <!-- Header Breadcrumbs -->
+      <nav class="splitview__breadcrumbs splitview__breadcrumbs--is-passive">
+        <ul class="list-ui">
+          <li>Child Asset 1</li>
+          <li>Child Asset 2</li>
+          <li>Child Asset 3</li>
+        </ul>
+      </nav>
+
+
+      <!-- Left -->
+      <div id="splitviewSidebarLeft" class="splitview__sidebar splitview__sidebar--left">
+        <header class="splitview__toolbar">
+          App Name
+        </header>
+        <section>
+          <ul class="list-ui list-ui--nav">
+            <li class="">
+              <a href="#dashboard-view"><i class="fa fa-dashboard"></i> Dashboard</a>
+            </li>
+            <li>
+              <a href="#blank-view"><i class="fa fa-file"></i> Blank Page</a>
+            </li>
+            <li class="sub-nav">
+              <a href="#blank-sub-view-1"><i class="fa"></i> Sub Blank Page 1</a>
+            </li>
+            <li class="sub-nav">
+              <a href="#blank-sub-view-2"><i class="fa"></i> Sub Blank Page 2</a>
+            </li>
+            <li> <i class="fa fa-gear"></i> Settings</li>
+          </ul>
+        </section>
+      </div>
+
+
+      <!-- Container -->
+
+      <section class="splitview__container">
+
+
+        <!-- Secondary -->
+        <div id="splitviewSecondary" class="splitview__col splitview__col__secondary c2" onclick="$.toggleSidebar('close')">
+          <header class="splitview-hide-splitScreen">
+            <a class="btn" href="#" onclick="$.controlSplitView('primary')">Next</a>
+          </header>
+          <section>
+
+
+
+
+            <div class=" box--small">
+              <ul class="list-ui list-ui--flush u-mb+">
+                <li>
+                  <a onclick="$.controlSplitView('toggle')">Line item</a>
+                </li>
+              </ul>
+              <ul id="list1" class="table-view table-view--small">
+                <li class="table-row table-row--tappable">
+                  <div class="table-row__media table-row__media--icon">
+                    <i class="fa fa-lg fa-file"></i>
+                  </div>
+                  <div class="table-row__content">
+
+                    <span class="table-row__content__title"> Time Series Inlet Flow.pdf <small class="muted">534 kb</small> </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- Primary -->
+        <div id="spliteviewPrimary" class="splitview__col splitview__col__primary" onclick="$.toggleSidebar('close')">
+
+          <main role="main">
+            <article id="dashboard-view" class="splitview__view">
+              <section class="cards flex">
+                <div class="card box box--small">
+                  Card
+                </div>
+                <div class="card box box--small">
+                  Card
+                </div>
+                <div class="card box box--small">
+                  <p class="splitview--hide">This is content that is hidden on splitiew</p>
+                </div>
+                <div class="card box box--small">
+                  <p class="splitview--hide-splitScreen">This is content that is hidden on splitscreen</p>
+                </div>
+
+
+              </section>
+            </article>
+
+            <article id="blank-view" class="splitview__view">
+              <section class="cards">
+                <div class="card box box--small">
+                  <p>This view should only be visible when the hash matches the containers #ID</p>
+                </div>
+
+              </section>
+            </article>
+
+            <article id="blank-sub-view-1" class="splitview__view">
+              <h2>Blank Sub View 1</h2>
+            </article>
+            <article id="blank-sub-view-2" class="splitview__view">
+              <h2>Blank Sub View 2</h2>
+            </article>
+
+            <div id="some-view" class="splitview__view">
+              <h1>some view</h1>
+              <!-- … -->
+            </div>
+            <div id="another-view" class="splitview__view">
+              <h1>another view</h1>
+              <!-- … -->
+            </div>
+
+            <article id="default-view" class="splitview__view">
+              <h2>Default View</h2>
+              <section class="cards">
+                <div class="card box box--small">
+                  <p>This view should only be visible when the hash matches the containers #ID</p>
+                </div>
+
+              </section>
+            </article>
+          </main>
+
+
+        </div>
+
+
+        <!-- Right -->
+        <div id="splitviewSidebarRight" class="splitview__sidebar splitview__sidebar--right">
+          <section>
+            <header>Toolbar</header>
+          </section>
+        </div>
+      </section>
+
+
+    </div>
+
+
+</body>
+
+</html>

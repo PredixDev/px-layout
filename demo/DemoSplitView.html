@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Demo SplitView</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+
+	<link href="../css/SplitView.css" rel="stylesheet" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="../js/SplitView.js"></script>
+	<style>
+		/* ------------------------------------------------- */
+		/* ---------------Splitview Style------------------- */
+		/* ------------------------------------------------- */
+
+		.sh-splitview-sidebar-right {
+			/* Design here */
+			background-color: orange;
+			height: 100%;
+		}
+
+		.sh-splitview-sidebar-left {
+			/* Design here */
+			background-color: lightcoral;
+			height: 100%;
+		}
+
+		.sh-splitview-secondary {
+			/* Design here */
+			background-color: lightgreen;
+			height: 100%;
+		}
+
+		.sh-splitview-primary {
+			/* Design here */
+			background-color: lightblue;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<div class="sh-splitview-hide-splitScreen" style="text-align: center; width: 60%; position: absolute; left:20%; z-index: 0"><a href="#" onclick="$.controlSplitView('toggle')">Toggle View</a></div>
+		<a class="sh-splitview-hide-fullScreen sh-splitview-hide-primary" style="float: left; z-index: 1" href="#" onclick="$.toggleSidebar('left')">Toggle Left Sidebar</a>
+		<a class="sh-splitview-hide-fullScreen sh-splitview-hide-secondary" style="float: right; z-index: 1" href="#" onclick="$.toggleSidebar('right')">Toggle Right Sidebar</a>
+	</div>
+	<br>
+	<div>
+		<div id="LeftSidebar" class="sh-splitview-hide-primary">Sidebar left</div>
+
+		<div id="Secondary" onclick="$.toggleSidebar('close')">
+			<div class="sh-splitview-hide-splitScreen"><a style="float: right;" href="#" onclick="$.controlSplitView('primary')">Next</a></div>
+			<br>
+			<div style="text-align: center">Secondary View</div>
+		</div>
+
+		<div id="Primary" onclick="$.toggleSidebar('close')">
+			<div class="sh-splitview-hide-splitScreen"><a style="float: left;" href="#" onclick="$.controlSplitView('secondary')">Back</a></div>
+			<br>
+			<div style="text-align: center">Primary View</div>
+		</div>
+
+		<div id="RightSidebar" class="sh-splitview-hide-secondary">Sidebar right</div>
+	</div>
+
+	<script>
+		/* Initialize the view */
+		$('#LeftSidebar').initSplitView("SidebarLeft");
+		$('#RightSidebar').initSplitView("SidebarRight");
+		$('#Primary').initSplitView("Primary");
+		$('#Secondary').initSplitView("Secondary");
+	</script>
+</body>
+
+</html>

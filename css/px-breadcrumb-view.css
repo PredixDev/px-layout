@@ -1,0 +1,105 @@
+.app {
+  background-color: #242326;
+  position: relative;
+  height: 100vh;
+  overflow: hidden; }
+  .app .navbar {
+    padding: 5px 8px;
+    overflow: hidden; }
+  .app .box {
+    background: white; }
+    .app .box .list-ui {
+      border-top: none;
+      border-bottom: none; }
+      .app .box .list-ui > :last-child {
+        border-bottom: none; }
+    .app .box header {
+      display: block;
+      border-bottom: 1px solid #9999a3;
+      margin-bottom: 0.5rem; }
+      .app .box header h3,
+      .app .box header h4 {
+        margin: 0; }
+
+/* ------------------------------------------------- */
+/* ---------------BaseStyle------------------------- */
+/* ------------------------------------------------- */
+/* --Copy this area to customize the control style-- */
+/* ------------------------------------------------- */
+.demo-history-text {
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  margin-left: -50px;
+  font-weight: bold;
+  -moz-transform: rotate(270deg);
+  /* FF3.5+ */
+  -o-transform: rotate(270deg);
+  /* Opera 10.5 */
+  -webkit-transform: rotate(270deg);
+  /* Saf3.1+, Chrome */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  /* IE6,IE7 */
+  -ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  /* IE8 */ }
+
+.breadcrumbview-breadcrumb-container {
+  background-color: green; }
+
+.breadcrumbview-breadcrumb-container ui {
+  background-color: yellow; }
+
+.breadcrumbview-current {
+  /* Design here */
+  background-color: red;
+  height: 100%; }
+
+.breadcrumbview-history {
+  /* Design here */
+  background-color: lightgray;
+  border-width: 1px;
+  border-style: solid;
+  height: 100%; }
+
+/* ------------------------------------------------- */
+/* ---------------Helper---------------------------- */
+/* ------------------------------------------------- */
+.breadcrumbview-hide {
+  display: none; }
+
+/* ------------------------------------------------- */
+/* ---------------Styles---------------------------- */
+/* ------------------------------------------------- */
+.breadcrumbview-breadcrumb-container {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  list-style: none; }
+
+.breadcrumbview-breadcrumb-container li {
+  display: inline-block;
+  margin-right: 5px; }
+
+.breadcrumbview-breadcrumb-container > li + li:before {
+  padding: 0 5px;
+  content: "/\00a0"; }
+
+.breadcrumbview-current {
+  display: inline;
+  position: absolute;
+  right: 0;
+  width: 0;
+  transition: all 0.3s linear; }
+
+.breadcrumbview-history {
+  width: 8.333333333333332%;
+  display: inline;
+  position: absolute;
+  right: 0;
+  transition: all 0.3s linear; }
+
+.breadcrumbview-offscreen {
+  position: absolute;
+  width: 0;
+  opacity: 0; }

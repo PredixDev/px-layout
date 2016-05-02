@@ -1,0 +1,225 @@
+/* 
+ *  Copyright (C) 2013 by Heiko Markgraf (SoftHai)
+ *  Licence:  MIT
+ */
+/* ------------------------------------------------- */
+/* ---------------BaseStyle------------------------- */
+/* ------------------------------------------------- */
+/* --Copy this area to customize the control style-- */
+/* ------------------------------------------------- */
+.sh-splitview-sidebar-right 
+{
+   /* Design here */
+}
+
+.sh-splitview-sidebar-left 
+{
+    /* Design here */
+}
+
+.sh-splitview-secondary 
+{
+    /* Design here */
+}
+
+.sh-splitview-primary
+{
+    /* Design here */
+}
+
+
+/* ------------------------------------------------- */
+
+
+/* ------------------------------------------------- */
+/* ---------------Helper--------------------------- */
+/* ------------------------------------------------- */
+.sh-splitview-sidebar-right-present { }
+.sh-splitview-sidebar-left-present { }
+.sh-splitview-hide-splitScreen { }
+.sh-splitview-hide-fullScreen { }
+.sh-splitview-hide-primary { }
+.sh-splitview-hide-secondary { }
+.sh-splitview-hide { display:none!important; }
+/* ------------------------------------------------- */
+/* ---------------Sidebar Right--------------------- */
+/* ------------------------------------------------- */
+
+.sh-splitview-sidebar-right 
+{
+    display: inline;
+    position:absolute;
+    width: 25%; /* bootstrap size xx-3 */
+    right:0%;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-splitview-sidebar-right-closed
+{
+    opacity: 0;
+    width: 0%;
+    overflow: hidden;
+}
+
+.sh-splitview-sidebar-right-opened
+{
+    z-index: 1001;
+    opacity: 1;
+}
+
+/* ------------------------------------------------- */
+/* ---------------Sidebar Left---------------------- */
+/* ------------------------------------------------- */
+.sh-splitview-sidebar-left 
+{
+    display: inline;
+    position:absolute;
+    width: 25.0%; /* bootstrap size xx-3 */
+    left:0%;
+     -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-splitview-sidebar-left-closed
+{
+    opacity: 0;
+    width: 0%;
+    overflow: hidden;
+}
+
+.sh-splitview-sidebar-left-opened
+{
+    opacity: 1;
+    z-index: 1001;
+}
+
+/* ------------------------------------------------- */
+/* ---------------Secondary View-------------------- */
+/* ------------------------------------------------- */
+.sh-splitview-secondary 
+{
+    display: inline;
+    position:absolute;
+    left: 0%;  
+    width: 100%; /* bootstrap size xx-12 */
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-splitview-secondary-passive
+{
+    width: 0%;
+    opacity: 0;
+}
+
+.sh-splitview-secondary-active
+{
+    opacity: 1;
+}
+
+/* ------------------------------------------------- */
+/* ---------------Primary View---------------------- */
+/* ------------------------------------------------- */
+.sh-splitview-primary
+{
+    display: inline;
+    position:absolute;
+    right: 0%;
+    width: 100%; /* bootstrap size xx-12 */
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.sh-splitview-primary-passive
+{
+    width: 0%;
+    opacity: 0;
+}
+
+.sh-splitview-primary-active
+{
+    opacity: 1;
+}
+
+/* ------------------------------------------------- */
+/* ---------------Responsitive---------------------- */
+/* ------------------------------------------------- */
+
+@media (min-width:0px) /* Small Devices (Bootstrap XS - Mobile) */
+{
+    /* default */
+}
+
+@media (min-width: 768px) /* Medium Devices (Bootstrap SM - Tablet) */
+{
+    .sh-splitview-secondary-active,
+    .sh-splitview-secondary-passive
+    {
+        position:absolute;
+        left: 0%;
+        width: 40%;
+        opacity: 1;
+    } 
+
+    .sh-splitview-primary-active,
+    .sh-splitview-primary-passive
+    {
+        position:absolute;
+        right: 0%;
+        width: 58%;
+        opacity: 1;
+    }
+    
+    .sh-splitview-hide { display:inherit!important; }
+    .sh-splitview-hide-splitScreen { display: none!important; }
+}
+
+@media (min-width: 1200px) /* Large Devices (Bootstrap LG - Desktop) */
+{
+    .sh-splitview-sidebar-left-opened,
+    .sh-splitview-sidebar-left-closed
+    {
+        display: inline;
+        z-index: auto;
+        width:15%; 
+        opacity: 1;
+    }
+    
+    .sh-splitview-sidebar-right-opened,
+    .sh-splitview-sidebar-right-closed
+    {
+        display: inline;
+        z-index: auto;
+        width:15%;
+        opacity: 1;
+    }
+    
+    .sh-splitview-secondary-active.sh-splitview-sidebar-left-present,
+    .sh-splitview-secondary-passive.sh-splitview-sidebar-left-present
+    {
+        display: inline;
+        position:absolute;
+        left: 16%; 
+        width: 27%;
+    } 
+
+    .sh-splitview-primary-active.sh-splitview-sidebar-right-present,
+    .sh-splitview-primary-passive.sh-splitview-sidebar-right-present
+    {
+        display: inline;
+        position:absolute;
+        right: 16%; 
+        width: 40%;
+    }
+    
+    .sh-splitview-hide-fullScreen { display: none!important; }
+}

@@ -1,0 +1,16 @@
+{
+	"suites": ["test.html"],
+	"verbose": true,
+	"plugins": {
+		"sauce": {
+			"disabled": true
+		},
+		"local": {
+			"browsers": [
+				"chrome",
+				"firefox",
+				"safari"
+			]
+		}
+	}
+}

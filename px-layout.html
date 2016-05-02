@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer.html" />
+<script src="../px-mobile.js/dist/px-mobile.js">
+
+</script>
+<dom-module id="px-layout">
+
+  <template>
+    <link rel="stylesheet" href="css/px-responsive-layouts.css">
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div class="l-container--progressive">
+      <content id="content" select="*"></content>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'px-layout',
+      created: function() {
+        //px.utils.addMixin(new px.mobile.logger('px-layout'), this);
+        //this.logApi('created', this);
+        console.warn(this.tagName, 'created');
+        var distributed = this.getContentChildren('#content');
+        console.log(distributed.length);
+      },
+      toggle: function(name){
+
+        var el = this.$.content.queryEffectiveChildren(name);
+        console.warn('toggle', name, el);
+      }
+
+    });
+  </script>
+</dom-module>
