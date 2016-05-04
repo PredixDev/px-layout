@@ -66,7 +66,7 @@
 </head>
 
 <body>
-  <div class="demo ">
+  <div class="demo">
     <div class="box u-mb u-mt">
       <h2>Responsive Web Design Layout Patterns</h2>
       <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
@@ -79,6 +79,55 @@
     </div>
 
 
+    <!-- TODO:  -->
+    <h2>Off Canvas</h2>
+    <div class=" u-mb">
+      <demo-snippet>
+        <template>
+        <style>
+body{
+overflow: hidden;
+}
+.app{
+  position:relative;
+  overflow:hidden;
+}
+
+px-card{
+  flex: 1 0 250px;
+}
+</style>
+<link rel="import" href="../px-design-system/px-design-system-theme.html">
+<link rel="import" href="../px-drawer/px-drawer.html">
+<link rel="import" href="../px-page/px-pages.html">
+<link rel="import" href="../px-card/px-card.html">
+<link rel="import" href="../px-navbar/px-navbar.html">
+<link rel="import" href="../px-partials/px-partials.html">
+<div class="app">
+<px-header title="My App" ></px-header>
+<px-drawer id="sidebar" position="left">
+  Content
+</px-drawer>
+<px-pages id="pages">
+  <px-page title="Drawer - Mini - Left" main class="current">
+    <px-navbar view-container="pages">
+      <div class="navbar__left u-ml-">
+        <button class="navbar__button">
+          <i class="fa fa-lg fa-bars"></i>
+        </button>
+      </div>
+    </px-navbar>
+    <section class="">
+      <px-card header-text="Card" class="u-m-">
+      </px-card>
+    </section>
+  </px-page>
+</px-pages>
+</div>
+
+        </template>
+      </demo-snippet>
+    </div>
     <!-- TODO:  -->
     <h2>Off Canvas</h2>
     <div class=" u-mb">
