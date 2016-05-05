@@ -1,11 +1,12 @@
 <link rel="import" href="../polymer/polymer.html" />
-<script src="../px-mobile.js/dist/px-mobile.js">
+<script src="../px-mobile.js/dist/px-mobile.js"></script>
+<link rel="import" href="../px-theme/px-theme.html">
+<link rel="import" href="../px-theme/px-app.html">
 
-</script>
 <dom-module id="px-layout">
+  <link rel="stylesheet" href="css/px-responsive-layouts.css">
 
   <template>
-    <link rel="stylesheet" href="css/px-responsive-layouts.css">
     <style>
       :host {
         display: block;
@@ -21,6 +22,12 @@
       created: function() {
         //px.utils.addMixin(new px.mobile.logger('px-layout'), this);
         //this.logApi('created', this);
+        if (window.matchMedia("(min-width: 400px)").matches) {
+  /* the viewport is at least 400 pixels wide */
+  console.log('min-width')
+} else {
+  /* the viewport is less than 400 pixels wide */
+}
         console.warn(this.tagName, 'created');
         var distributed = this.getContentChildren('#content');
         console.log(distributed.length);

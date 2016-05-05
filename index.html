@@ -9,23 +9,30 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <script src="../webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
-  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
-  <link rel="stylesheet" href="css/px-responsive-layouts.min.css">
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+
+  <link rel="import" href="px-layout.html">
+
   <!--
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
 -->
 
 
-
   <style media="screen">
-  .box{
-    position: relative;
-    height: 600px;
-    overflow: hidden;
-  }
+    body {
+      background: #fff;
+    }
+    .app {
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+    }
+    .box {
+      position: relative;
+      overflow: hidden;
+    }
+
     .box div {
       min-height: 150px;
       text-align: center;
@@ -65,240 +72,208 @@
   </style>
 </head>
 
-<body>
-  <div class="demo">
-    <div class="box u-mb u-mt">
-      <h2>Responsive Web Design Layout Patterns</h2>
-      <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
-      <ol class="">
-        <li>Identify the layout patterns</li>
-        <li>Decide on new markup and classes</li>
-        <li>Create layout patterns in CSS</li>
-        <li>Replace old markup with new markup</li>
-      </ol>
-    </div>
+<body unresolved>
+<div class="viewport">
+  <div class="box u-mb u-mt">
+    <h2>Responsive Web Design Layout Patterns</h2>
+    <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
+    <ol class="">
+      <li>Identify the layout patterns</li>
+      <li>Decide on new markup and classes</li>
+      <li>Create layout patterns in CSS</li>
+      <li>Replace old markup with new markup</li>
+    </ol>
+  </div>
 
 
-    <!-- TODO:  -->
-    <h2>Off Canvas</h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
+  <!-- TODO:  -->
+  <h2>Off Canvas</h2>
+  <div class=" u-mb">
+    <demo-snippet>
+      <template>
         <style>
-body{
-overflow: hidden;
-}
-.app{
-  position:relative;
-  overflow:hidden;
-}
+          .app {
+            position: relative;
+            overflow: hidden;
+          }
+      
+          .app-off-canvas {
+            background: #111;
+            color: #fff;
+          }
 
-px-card{
-  flex: 1 0 250px;
-}
-</style>
-<link rel="import" href="../px-design-system/px-design-system-theme.html">
-<link rel="import" href="../px-drawer/px-drawer.html">
-<link rel="import" href="../px-page/px-pages.html">
-<link rel="import" href="../px-card/px-card.html">
-<link rel="import" href="../px-navbar/px-navbar.html">
-<link rel="import" href="../px-partials/px-partials.html">
-<div class="app">
-<px-header title="My App" ></px-header>
-<px-drawer id="sidebar" position="left">
-  Content
-</px-drawer>
-<px-pages id="pages">
-  <px-page title="Drawer - Mini - Left" main class="current">
-    <px-navbar view-container="pages">
-      <div class="navbar__left u-ml-">
-        <button class="navbar__button">
-          <i class="fa fa-lg fa-bars"></i>
-        </button>
-      </div>
-    </px-navbar>
-    <section class="">
-      <px-card header-text="Card" class="u-m-">
-      </px-card>
-    </section>
-  </px-page>
-</px-pages>
-</div>
+          .app px-card {
+            flex: 1 0 275px;
+          }
+        </style>
+        <link rel="import" href="../px-design-system/px-design-system-theme.html">
+        <link rel="import" href="../px-drawer/px-drawer.html">
+        <link rel="import" href="../px-page/px-pages.html">
+        <link rel="import" href="../px-card/px-card.html">
+        <link rel="import" href="../px-navbar/px-navbar.html">
+        <link rel="import" href="../px-partials/px-partials.html">
+        <div class="app u-bg--gray10">
+          <px-drawer id="appOffcanvas" class="app-off-canvas" position="left">
+            <p class="u-m">
+              This is the Menu
+            </p>
+          </px-drawer>
 
-        </template>
-      </demo-snippet>
-    </div>
-    <!-- TODO:  -->
-    <h2>Off Canvas</h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="l-offcanvas">
-              <div class="c1"></div>
-              <div class="c2"></div>
-            </div>
+          <div class="viewport">
+            <px-header subtitle="Off Canvas" class="a11y-portable"></px-header>
+
+            <px-pages id="pages" class="u-bg--gray8">
+              <px-page title="Page" class="current" main>
+                <px-navbar view-container="pages">
+                  <div class="navbar__left u-ml-">
+                    <button class="navbar__button" onclick="document.getElementById('appOffcanvas').toggle()">
+                      <i class="fa fa-lg fa-bars"></i>
+                    </button>
+                  </div>
+                </px-navbar>
+                <section class="flex flex--wrap u-m--">
+                  <px-card header-text="Card" class="u-m--">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </px-card>
+                  <px-card header-text="Card" class="u-m--">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </px-card>
+                  <px-card header-text="Card" class="u-m--">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </px-card>
+                  <px-card header-text="Card" class="u-m--">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </px-card>
+                  <px-card header-text="Card" class="u-m--">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                      et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                      culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                  </px-card>
+                </section>
+              </px-page>
+            </px-pages>
+            <px-footer class="a11y-portable"></px-footer>
           </div>
-        </template>
-      </demo-snippet>
-    </div>
+        </div>
 
-    <h2>Split View</h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
+      </template>
+    </demo-snippet>
+  </div>
+
+
+  <h2>Split View</h2>
+  <div class=" u-mb">
+    <demo-snippet>
+      <template>
+        <div class="app u-bg--gray10">
+          <div class="viewport">
+            <px-header subtitle="Split View" class="a11y-portable"></px-header>
             <div class="splitview">
+              <div class="splitview__col splitview__col--secondary is-active ">
+                <px-navbar title="Secondary">
+                  <div class="navbar__left u-ml-">
 
-              <div class="splitview__sidebar splitview__sidebar--left splitview--hide-primary c4">
-                <h2>Left sidebar</h2>
-              </div>
-              <div class="splitview__col splitview__col--secondary is-active "> <h2>Secondary</h2> </div>
-              <div class="splitview__col splitview__col--primary is-passive "> <h2>Primary</h2> </div>
-              <div class="splitview__sidebar splitview__sidebar--right splitview-hide-secondary c4">
-                <h2>Right sidebar</h2>
-              </div>
+                  </div>
+                </px-navbar>
+                <h2></h2></div>
+              <div class="splitview__col splitview__col--primary is-passive ">
+                <px-navbar title="Primary">
+                  <div class="navbar__left u-ml-">
+
+                  </div>
+                </px-navbar>
+                <h2>Primary</h2></div>
             </div>
           </div>
-        </template>
-      </demo-snippet>
-    </div>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
 
 
-    <h2>Content Sidebar Pattern <code>l-cs</code></h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="l-cs">
+  <h2>Content Sidebar Pattern <code>l-cs</code></h2>
+  <div class=" u-mb">
+    <demo-snippet>
+      <template>
+      <div class="app u-bg--gray10">
+        <div class="viewport">
+          <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
+          <div class="l-cs">
+            <div class="c1"></div>
+            <div class="c2"></div>
+          </div>
+        </div>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
+
+  <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
+  <div class=" u-mb">
+    <demo-snippet>
+      <template>
+        <div class="box">
+          <div class="l-flex">
+            <div class="l-fg3">
               <div class="c1"></div>
+              <div class="c1"></div>
+              <div class="c2"></div>
+              <div class="c2"></div>
               <div class="c2"></div>
             </div>
           </div>
-        </template>
-      </demo-snippet>
-    </div>
-
-    <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="l-flex">
-              <div class="l-fg3">
-                <div class="c1"></div>
-                <div class="c1"></div>
-                <div class="c2"></div>
-                <div class="c2"></div>
-                <div class="c2"></div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-
-    </div>
-
-    <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
-    <div class="u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="l-g3">
-              <div class="c1"></div>
-              <div class="c1"></div>
-              <div class="c1"></div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-
-    </div>
-
-    <h2>Column Drop</h2>
-    <div class=" u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="viewport">
-              <div class="column-drop">
-                <div class="container" role="main">
-                  <div class="c1"></div>
-                  <div class="c2"></div>
-                  <div class="c3"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-
-    </div>
-
-    <!-- TODO:  -->
-    <h2> Layout Shifter</h2>
-    <div class="u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-            <div class="layout-shifter">
-              <div class="container" role="main">
-                <div class="c1"></div>
-                <div class="c4">
-                  <div class="c2"></div>
-                  <div class="c3"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-
-    </div>
-
-
-    <!-- TODO:  -->
-    <h2>Mostly Fluid</h2>
-    <div class="u-mb">
-      <demo-snippet>
-        <template>
-          <div class="box">
-
-          </div>
-        </template>
-      </demo-snippet>
-      <div class="mostly-fluid">
-        <div class="container" role="main">
-          <div class="c1">
-          </div>
-          <div class="c2">
-          </div>
-          <div class="c3">
-          </div>
-          <div class="c4">
-          </div>
-          <div class="c5">
-          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- TODO:  -->
-    <h2> Tiny Tweaks</h2>
-    <div class="box u-mb">
-      <div class="tiny-tweaks">
-        <div class="container" role="main">
-          <div class="c1"></div>
-          <div class="c4">
-            <div class="c2"></div>
-            <div class="c3"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+      </template>
+    </demo-snippet>
 
   </div>
+
+  <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
+  <div class="u-mb">
+    <demo-snippet>
+      <template>
+        <div class="box">
+          <div class="l-g3">
+            <div class="c1"></div>
+            <div class="c1"></div>
+            <div class="c1"></div>
+          </div>
+        </div>
+      </template>
+    </demo-snippet>
+
+  </div>
+
+
+</div>
 </body>
 
 </html>
