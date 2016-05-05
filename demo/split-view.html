@@ -1,23 +1,53 @@
-<div>
-	<div class="splitview-hide-splitScreen" style="text-align: center; width: 60%; position: absolute; left:20%; z-index: 0"><a href="#" onclick="$.controlSplitView('toggle')">Toggle View</a></div>
-	<a class="splitview-hide-fullScreen splitview-hide-primary" style="float: left; z-index: 1" href="#" onclick="$.toggleSidebar('left')">Toggle Left Sidebar</a>
-	<a class="splitview-hide-fullScreen splitview-hide-secondary" style="float: right; z-index: 1" href="#" onclick="$.toggleSidebar('right')">Toggle Right Sidebar</a>
-</div>
-<br>
-<div>
-	<div id="LeftSidebar" class="splitview-hide-primary">Sidebar left</div>
 
-	<div id="Secondary" onclick="$.toggleSidebar('close')">
-		<div class="splitview-hide-splitScreen"><a style="float: right;" href="#" onclick="$.controlSplitView('primary')">Next</a></div>
-		<br>
-		<div style="text-align: center">Secondary View</div>
-	</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>split view layout demo</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-	<div id="Primary" onclick="$.toggleSidebar('close')">
-		<div class="splitview-hide-splitScreen"><a style="float: left;" href="#" onclick="$.controlSplitView('secondary')">Back</a></div>
-		<br>
-		<div style="text-align: center">Primary View</div>
-	</div>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
 
-	<div id="RightSidebar" class="splitview-hide-secondary">Sidebar right</div>
-</div>
+    <!-- TODO: Layout -->
+    <link rel="import" href="../px-layout.html">
+    <!-- TODO: Theme -->
+    <link rel="import" href="../../px-design-system/px-design-system-theme.html">
+    <link rel="import" href="../../px-design-system/px-design-system.html">
+    <!-- TODO: Components or just the px-design-system.html file
+
+    <link rel="import" href="../../px-drawer/px-drawer.html">
+    <link rel="import" href="../../px-page/px-pages.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-navbar/px-navbar.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
+    -->
+
+  </head>
+  <body unresolved>
+ 
+
+  <div class="app u-bg--gray10">
+    <div class="viewport">
+      <px-header subtitle="Split View" class="a11y-portable"></px-header>
+      <div class="splitview">
+        <div class="splitview__col splitview__col--secondary is-active ">
+          <px-navbar title="Secondary">
+            <div class="navbar__left u-ml-">
+
+            </div>
+          </px-navbar>
+          <h2></h2></div>
+        <div class="splitview__col splitview__col--primary is-passive ">
+          <px-navbar title="Primary">
+            <div class="navbar__left u-ml-">
+
+            </div>
+          </px-navbar>
+          <h2>Primary</h2></div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+</html>

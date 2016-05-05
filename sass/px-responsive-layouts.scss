@@ -6,3 +6,43 @@
 @import "l-splitview";
 @import "l-progressive";
 @import "l-content-sidebar";
+@mixin respond($media) {
+   @if $media == small{
+    @media (max-width: 320px) {
+       @content;
+    }
+  }
+  @else if $media == medium {
+     @media (min-width: 768px){
+      @content;
+    }
+  }
+  @else if $media == large {
+     @media (min-width: 1200px){
+      @content;
+    }
+  }
+  @else {
+     @warn"Unfortunately, no value could be retrieved from `#{$media}`. " + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+:root {
+  @include respond ('small') {
+    .viewport {
+      max-height: 100rem;
+    }
+  }
+
+  @include respond ('medium') {
+    .viewport {
+      max-height: 100rem;
+    }
+  }
+
+  @include respond ('large') {
+    .viewport {
+      max-height: 90rem;
+    }
+  }
+}

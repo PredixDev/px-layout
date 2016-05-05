@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "px-mobile-mixin-design": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-design.git"
+    "px-mobile-mixin-design": "https://github.build.ge.com/PredixComponents/px-mobile-mixin-design.git",
+    "px-library-design": "^0.2.0"
   }
 }
