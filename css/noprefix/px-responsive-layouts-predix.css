@@ -1,0 +1,99 @@
+/*------------------------------------*    #PX-COLORS-DESIGN
+\*------------------------------------*/
+/**
+ * Brand Colors
+ */
+/**
+     * Primary
+     */
+/**
+     * Light
+     */
+/**
+     * Dark
+     */
+/**
+ * Monochromatic (gray10 is darkest, gray1 is lightest)
+ */
+/**
+ * Define grey = gray to avoid dev typos
+ */
+/**
+ * Buttons
+ */
+/**
+ * Selection
+ */
+/**
+ * Alerts
+ */
+/**
+ * Data Visualization
+ */
+/**
+     * Basic
+     */
+/**
+     * Light
+     */
+/**
+     * Dark
+     */
+:root .hidden-xs-up {
+  display: none !important; }
+
+@media (max-width: 33.9em) {
+  :root .hidden-xs-down {
+    display: none !important; } }
+
+@media (min-width: 34em) {
+  :root .hidden-sm-up {
+    display: none !important; } }
+
+@media (max-width: 47.9em) {
+  :root .hidden-sm-down {
+    display: none !important; } }
+
+@media (min-width: 48em) {
+  :root .hidden-md-up {
+    display: none !important; } }
+
+@media (max-width: 61.9em) {
+  :root .hidden-md-down {
+    display: none !important; } }
+
+@media (min-width: 62em) {
+  :root .hidden-lg-up {
+    display: none !important; } }
+
+@media (max-width: 75em) {
+  :root .hidden-lg-down {
+    display: none !important; } }
+
+@media (min-width: 74.9em) {
+  :root .hidden-xl-up {
+    display: none !important; } }
+
+:root .hidden-xl-down {
+  display: none !important; }
+
+@media (max-width: 33.9em) {
+  :root .viewport {
+    max-width: 100rem;
+    margin: 0 !important;
+    padding: 0; } }
+
+@media (max-width: 47.9em) {
+  :root .viewport {
+    max-width: 100rem;
+    margin: 0 !important;
+    padding: 0; } }
+
+@media (max-width: 61.9em) {
+  :root .viewport {
+    max-width: 100rem;
+    margin: 0 !important; } }
+
+@media (max-width: 75em) {
+  :root .viewport {
+    max-height: 90rem; } }

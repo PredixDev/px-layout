@@ -1,0 +1,41 @@
+@import "variables";
+@import "px-mobile-mixin-design";
+
+:root {
+  @include responsiveUtils();
+
+  @include respondMax ('xsmall') {
+    .viewport {
+      max-width: 100rem;
+      margin   : 0 !important;
+      padding  : 0;
+    }
+  }
+
+  @include respondMax ('small') {
+    .viewport {
+      max-width: 100rem;
+      margin   : 0 !important;
+      padding  : 0;
+    }
+  }
+
+  @include respondMax ('medium') {
+    .viewport {
+      max-width: 100rem;
+      margin   : 0 !important;
+    }
+  }
+
+  @include respondMax ('large') {
+    .viewport {
+      max-height: 90rem;
+
+    }
+  }
+
+  @include respondMin ('large') {
+    .viewport {
+      }
+  }
+}
