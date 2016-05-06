@@ -26,9 +26,9 @@
         <content select="px-drawer"></content>
 
         <!-- TODO: Static Drawer -->
-        
+
         <!-- TODO: Views / Pages -->
-        <content id="content" select="px-pages, px-view, .content"></content>
+        <content id="content" select=".l-container, .content, px-pages, px-view"></content>
       </div>
 
 
@@ -42,16 +42,32 @@
   <script>
     Polymer({
       is: 'px-layout',
-      created: function() {
+      properties: {
+        //The layout type (progressive, splitview, offcanvas)
+        type: {
+          type: String
+        },
+        breakpoints: {
+          type: Object
+        }
+      },
+      attached: function() {
         //px.utils.addMixin(new px.mobile.logger('px-layout'), this);
-        //this.logApi('created', this);
+        this.toggleClass('l-container', true);
+        this.toggleClass('l-container--' + this.type, true);
+
+
+
+
         if (window.matchMedia("(min-width: 400px)").matches) {
           /* the viewport is at least 400 pixels wide */
           console.log('min-width')
         } else {
           /* the viewport is less than 400 pixels wide */
         }
+
         console.warn(this.tagName, 'created');
+
         var distributed = this.getContentChildren('#content');
         console.log(distributed.length);
       },
