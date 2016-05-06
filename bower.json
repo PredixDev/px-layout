@@ -27,6 +27,7 @@
     "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.2.3",
     "px-widths-design": "https://github.com/PredixDev/px-widths-design.git#^0.3.7",
+    "px-partials": "https://github.com/PredixDev/px-partials.git",
     "px-navbar": "https://github.com/PredixDev/px-navbar.git",
     "px-table-view": "https://github.com/PredixDev/px-table-view.git",
     "px-page": "https://github.com/PredixDev/px-page.git",
