@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-
+  <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css">
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
@@ -82,7 +82,7 @@
   <article class="viewport">
 
 
-    <div class="box u-mb">
+    <div class="box u-mb++">
       <h2>Predix UI Responsive Layout Patterns</h2>
       <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
@@ -100,11 +100,11 @@
 
     <!-- TODO:  -->
 
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <h2>Off Canvas <code>l-offcanvas</code></h2>
       <demo-snippet>
         <template>
-          <div class="app u-bg--gray10">
+          <div class="demo app u-bg--gray10">
             <div class="viewport">
               <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
 
@@ -116,11 +116,11 @@
 
     <!-- TODO:  -->
 
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <h2>Progressive <code>l-progressive</code></h2>
       <demo-snippet>
         <template>
-          <div class="app u-bg--gray10">
+          <div class="demo app u-bg--gray10">
             <div class="viewport">
               <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
               <div class="l-progressive">
@@ -148,42 +148,38 @@
 
 
 
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <h2>Split View <code>l-splitview</code></h2>
       <demo-snippet>
         <template>
           <div class="app u-bg--gray10">
             <div class="viewport">
               <px-header subtitle="Split View" class="a11y-portable"></px-header>
-              <div class="splitview">
-                <div class="splitview__col splitview__col--secondary is-active ">
+              <div class="l-splitview">
+                <div class="l-splitview__col l-splitview__col--secondary is-active ">
                   <px-navbar title="Secondary">
-                    <div class="navbar__left u-ml-">
-
-                    </div>
                   </px-navbar>
-                  <h2></h2></div>
-                <div class="splitview__col splitview__col--primary is-passive ">
-                  <px-navbar title="Primary">
-                    <div class="navbar__left u-ml-">
-
-                    </div>
-                  </px-navbar>
-                  <h2>Primary</h2></div>
+                  <section>Content</section>
+                </div>
+                <div class="l-splitview__col l-splitview__col--primary is-passive">
+                  <px-navbar title="Primary"></px-navbar>
+                  <section>Content</section>
+                </div>
               </div>
             </div>
           </div>
+
         </template>
       </demo-snippet>
     </section>
 
 
 
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <h2>Content Sidebar Pattern <code>l-cs</code></h2>
       <demo-snippet>
         <template>
-          <div class="app u-bg--gray10">
+          <div class="demo app u-bg--gray10">
             <div class="viewport">
               <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
               <div class="l-cs">
@@ -197,10 +193,10 @@
     </section>
 
     <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <demo-snippet>
         <template>
-          <div class="box">
+          <div class="demo">
             <div class="l-flex">
               <div class="l-fg3">
                 <div class="c1"></div>
@@ -217,11 +213,11 @@
     </section>
 
 
-    <section class="box box--tiny u-mb">
+    <section class="box  u-mb++">
       <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
       <demo-snippet>
         <template>
-          <div class="box">
+          <div class="demo">
             <div class="l-g3">
               <div class="c1"></div>
               <div class="c1"></div>

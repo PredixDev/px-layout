@@ -96,4 +96,12 @@
 
 @media (max-width: 75em) {
   :root .viewport {
-    max-height: 90rem; } }
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }
+
+@media (min-width: 74.9em) {
+  :root .viewport {
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }

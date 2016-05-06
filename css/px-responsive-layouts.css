@@ -99,76 +99,84 @@
  * Split View
  * ===========================================
  */
-.l-container--splitview {
+.l-splitview {
   position: relative;
+  display: flex;
   /* ---------------Helpers--------------------------- */ }
-  .l-container--splitview .l-container__sidebar {
+  .l-splitview__sidebar {
     background-color: #3b3b3f; }
-  .l-container--splitview .l-container__col--primary {
+  .l-splitview__col--primary {
     background-color: blue; }
-  .l-container--splitview .l-container__col--secondary {
-    background-color: crimson; }
     @media (max-width: 75em) {
-      .l-container--splitview .l-container__col--secondary {
+      .l-splitview__col--primary {
         background-color: green; } }
     @media (max-width: 61.9em) {
-      .l-container--splitview .l-container__col--secondary {
+      .l-splitview__col--primary {
+        background-color: lime; } }
+  .l-splitview__col--secondary {
+    background-color: crimson; }
+    @media (max-width: 75em) {
+      .l-splitview__col--secondary {
+        background-color: green; } }
+    @media (max-width: 61.9em) {
+      .l-splitview__col--secondary {
         background-color: lime;
         width: 100vw;
         display: flex; } }
-  .l-container--splitview .splitview-sidebar-right {
+  .l-splitview .splitview-sidebar-right {
     /* Design here */
     background-color: #3b3b3f; }
-  .l-container--splitview .splitview-sidebar-left {
+  .l-splitview .splitview-sidebar-left {
     /* Design here */
-    background-color: #3b3b3f; }
-  .l-container--splitview .splitview-secondary {
+    background-color: #3b3b3f;
+  }
+  .l-splitview .splitview-secondary {
     /* Design here */ }
-  .l-container--splitview .splitview-primary {
+  .l-splitview .splitview-primary {
     /* Design here */ }
-  .l-container--splitview .splitview-hide {
+  .l-splitview .splitview-hide {
     display: none !important; }
-  .l-container--splitview .l-container__col {
+  .l-splitview__col {
     height: 100vh;
     display: inline;
     position: absolute;
     width: 100%;
     transition: all 0.4s ease; }
-    .l-container--splitview .l-container__col--is-passive {
+    .l-splitview__col--is-passive {
       width: 0;
       opacity: 0.5; }
-    .l-container--splitview .l-container__col--is-active {
+    .l-splitview__col--is-active {
       width: auto;
       opacity: 1; }
-    .l-container--splitview .l-container__col--primary {
+    .l-splitview__col--primary {
       right: 0; }
       @media (max-width: 75em) {
-        .l-container--splitview .l-container__col--primary {
+        .l-splitview__col--primary {
           display: inline;
           position: absolute;
           right: 16%;
           width: 40%; } }
       @media (max-width: 61.9em) {
-        .l-container--splitview .l-container__col--primary {
+        .l-splitview__col--primary {
           position: absolute;
           width: 59%;
           opacity: 1; } }
-    .l-container--splitview .l-container__col--secondary {
+    .l-splitview__col--secondary {
       left: 0;
       display: flex;
       width: 100%;
       flex-direction: column; }
       @media (max-width: 75em) {
-        .l-container--splitview .l-container__col--secondary {
+        .l-splitview__col--secondary {
           position: absolute;
           left: 16%;
           width: 27%; } }
       @media (max-width: 61.9em) {
-        .l-container--splitview .l-container__col--secondary {
+        .l-splitview__col--secondary {
           position: absolute;
           width: 40%;
           opacity: 1; } }
-  .l-container--splitview .l-container__sidebar {
+  .l-splitview__sidebar {
     height: 100%;
     height: 100vh;
     display: inline;
@@ -177,29 +185,29 @@
     transition: all 0.4s ease;
     will-change: translate;
     z-index: auto; }
-    .l-container--splitview .l-container__sidebar--left {
+    .l-splitview__sidebar--left {
       left: 0; }
-    .l-container--splitview .l-container__sidebar--right {
+    .l-splitview__sidebar--right {
       right: 0; }
-    .l-container--splitview .l-container__sidebar--is-closed {
+    .l-splitview__sidebar--is-closed {
       opacity: 0;
       width: 0;
       z-index: -1; }
-    .l-container--splitview .l-container__sidebar--is-opened {
+    .l-splitview__sidebar--is-opened {
       opacity: 1;
       width: auto;
       z-index: 1001; }
     @media (max-width: 75em) {
-      .l-container--splitview .l-container__sidebar {
+      .l-splitview__sidebar {
         opacity: 1 !important;
         width: 15% !important; } }
-  .l-container--splitview .splitview-hide {
+  .l-splitview .splitview-hide {
     display: inherit; }
     @media (max-width: 75em) {
-      .l-container--splitview .splitview-hide {
+      .l-splitview .splitview-hide {
         display: none !important; } }
 
-.l-container .splitview-hide-splitScreen {
+.splitview-hide-splitScreen {
   display: none !important; }
 
 .l-progressive {
@@ -351,4 +359,12 @@
 
 @media (max-width: 75em) {
   :root .viewport {
-    max-height: 90rem; } }
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }
+
+@media (min-width: 74.9em) {
+  :root .viewport {
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }
