@@ -77,23 +77,31 @@
 :root .hidden-xl-down {
   display: none !important; }
 
-@media (max-width: 33.9em) {
+@media screen and (min-width: 320px) and (max-width: 33.9em) {
   :root .viewport {
     max-width: 100rem;
     margin: 0 !important;
     padding: 0; } }
 
-@media (max-width: 47.9em) {
+@media screen and (min-width: 374px) and (max-width: 425px) {
   :root .viewport {
     max-width: 100rem;
     margin: 0 !important;
     padding: 0; } }
 
-@media (max-width: 61.9em) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   :root .viewport {
     max-width: 100rem;
     margin: 0 !important; } }
 
-@media (max-width: 75em) {
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
   :root .viewport {
-    max-height: 90rem; } }
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }
+
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
+  :root .viewport {
+    max-width: 80rem;
+    padding: auto;
+    margin: auto; } }

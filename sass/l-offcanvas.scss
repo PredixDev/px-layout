@@ -1,5 +1,89 @@
-/**
- * ===========================================
- * Off Canvas
- * ===========================================
- */
+@import 'mixins';
+@import 'variables';
+/*================================= Off Canvas ================================*/
+.l-offcanvas {
+  min-height    : $layout-min-height;
+  display       : flex;
+  flex-direction: row;
+  flex-wrap     : nowrap;
+  //  justify-content: space-between;
+  align-content : stretch;
+  align-items   : stretch;
+  transition    : all 300ms ease-in;
+  overflow      : hidden;
+
+  @include element ('primary-content') {
+    transition: all 300ms ease-in;
+    order     : 2;
+    flex      : 1;
+    flex-grow : 5;
+  }
+
+  @include element ('secondary-content') {
+    position  : relative;
+    min-width : 200px;
+    order     : 1;
+    align-self: auto;
+    transition: all 300ms ease-in;
+
+    &.is-active {
+      display   : block;
+      visibility: visible !important;
+      transform : translateX(0) !important;
+    }
+
+    &.is-passive {
+      display  : none !important;
+      transform: translateX(-100%);
+    }
+
+    @include media-query ('xsmall') {
+      //visibility: hidden;
+      //display:none;
+      position : absolute;
+      transform: translateX(-100%);
+
+      &.is-active {
+        visibility: visible;
+        transform : translateX(0);
+      }
+    }
+
+    @include media-query ('small') {
+      //visibility: hidden;
+      position : absolute !important;
+      transform: translateX(-100%);
+
+      &.is-passive {
+        display: none !important;
+      }
+    }
+
+    @include media-query ('medium') {
+      //display:none;
+      transform: translateX(-100%);
+
+      &.is-passive {
+        display  : none !important;
+        transform: translateX(-100%);
+      }
+
+      &.is-active {
+        display  : block !important;
+        transform: translateX(0);
+      }
+    }
+
+    @include media-query ('large') {
+      flex     : 1 0 200px;
+      display  : block;
+      transform: translateX(0);
+
+      &.is-active,
+      &.is-passive {
+        visibility: visible !important;
+        transform : translateX(0) !important;
+      }
+    }
+  }
+}

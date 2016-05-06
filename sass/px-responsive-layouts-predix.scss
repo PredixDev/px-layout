@@ -1,10 +1,11 @@
 @import "variables";
+@import "mixins";
 @import "px-mobile-mixin-design";
 
 :root {
   @include responsiveUtils();
 
-  @include respondMax ('xsmall') {
+  @include media-query ('xsmall') {
     .viewport {
       max-width: 100rem;
       margin   : 0 !important;
@@ -12,7 +13,7 @@
     }
   }
 
-  @include respondMax ('small') {
+  @include media-query ('small') {
     .viewport {
       max-width: 100rem;
       margin   : 0 !important;
@@ -20,14 +21,14 @@
     }
   }
 
-  @include respondMax ('medium') {
+  @include media-query ('medium') {
     .viewport {
       max-width: 100rem;
       margin   : 0 !important;
     }
   }
 
-  @include respondMax ('large') {
+  @include media-query ('large') {
     .viewport {
       max-width: 80rem;
       padding  : auto;
@@ -35,7 +36,7 @@
     }
   }
 
-  @include respondMin ('large') {
+  @include media-query ('large') {
     .viewport {
       max-width: 80rem;
       padding  : auto;

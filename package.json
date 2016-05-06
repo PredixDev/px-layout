@@ -26,8 +26,6 @@
     "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
     "grunt-sass": "^v1.0.0",
     "grunt-shell": "~v1.1.1",
-    "web-component-tester": "^4.2.2",
-    "webdriver-support": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean": "^0.3.2",
@@ -39,7 +37,10 @@
     "gulp-sequence": "^0.4.5",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-style-modules": "^0.1.0",
     "node-sass-import-once": "^1.2.0",
-    "sassdoc": "^2.1.20"
+    "sassdoc": "^2.1.20",
+    "web-component-tester": "^4.2.2",
+    "webdriver-support": "^2.2.2"
   }
 }

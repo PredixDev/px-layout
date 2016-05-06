@@ -6,200 +6,370 @@
   <title>off canvas demo</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
 
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
   <script src="../../webcomponentsjs/webcomponents.js"></script>
 
   <!-- TODO: Layout -->
-  <link rel="import" href="../px-layout.html">
+
   <!-- TODO: Theme -->
 
   <!-- TODO: Components or just the px-design-system.html file
 
     <link rel="import" href="../../px-design-system/px-design-system.html">
+
+    <link rel="import" href="../../px-design-system/px-design-system-theme.html">
     <link rel="import" href="../../px-app/px-app.html">
     <link rel="import" href="../../px-app/px-theme.html">
     -->
-  <link rel="import" href="../../px-design-system/px-design-system-theme.html">
 
+  <link rel="import" href="../px-layout.html">
   <link rel="import" href="../../px-drawer/px-drawer.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-card/px-card.html">
   <link rel="import" href="../../px-navbar/px-navbar.html">
   <link rel="import" href="../../px-partials/px-partials.html">
-
+  <script type="text/javascript">
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+      }, false);
+    }
+  </script>
 </head>
 
 <body unresolved>
-  <style>
-    body {
-      overflow: hidden;
-    }
 
-    body:not([style-scope]):not(.style-scope) {
-      margin-bottom: 0;
-    }
+  <template id="app" is="dom-bind">
 
-    .app {
-      position: relative;
-      overflow: hidden;
-    }
 
-    .app-off-canvas {
-      background: #111;
-      color: #fff;
-    }
+    <style>
+      body {
+        overflow: hidden;
+      }
 
-    .app px-card {
-      flex: 1 0 275px;
-    }
+      .app .spacer {
+        height: 56px;
+      }
 
-    px-page.has-navbar .page-content.px-page {
-      margin-top: 65px;
-    }
+      body:not([style-scope]):not(.style-scope) {
+        margin-bottom: 0;
+      }
 
-    .selected {
-      background-color: #525156;
-    }
-  </style>
+      .app {
+        position: relative;
+        overflow: hidden;
+      }
 
-  <div class="app u-bg--gray10">
+      .app-off-canvas {
+        background: #111;
+        color: #fff;
+      }
 
-    <px-layout id="layout" type="offcanvas">
+      .app px-card {
+        flex: 1 0 275px;
+      }
 
-      <px-header subtitle="Off Canvas" id="header"></px-header>
+      px-page.has-navbar .page-content.px-page {
+        margin-top: 65px;
+      }
 
-      <px-drawer id="appOffcanvas" class="app-off-canvas" position="left">
-        <p class="u-m">
-          This is the Menu
-        </p>
-      </px-drawer>
+      .iron-selected {
+        background-color: #525156;
+      }
 
-      <section class="content flex u-bg--">
-        <px-drawer id="drawer3" side="left" type="persistent" theme="dark" class="a11y-portable">
-          <div class="table-view table-view--flush table-view--bare">
-            <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable" class="selected"></px-table-row>
-            <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
-            <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
-            <px-table-row title="Category 1" icon="fa fa-info" type="tappable">
+      .position-bottom {
+        position: absolute;
+        bottom: 0;
+      }
 
-            </px-table-row>
-            <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-          </div>
+      #primarySidebar {
+        height: 90vh;
+      }
+
+      #userTableView {
+        width: 100%;
+      }
+
+      #userTableView .table-row__media--image img {
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      #userTableView .table-row__media--body {
+        font-size: .9rem;
+      }
+
+      px-page {
+        transition: all 0.3s ease-out;
+      }
+
+      px-page.current {
+        transform: translate(0, 0);
+      }
+
+      px-page.next {
+        transform: translate(50%, 0);
+      }
+
+      px-page.previous {
+        transform: translate(-50%, 0);
+      }
+
+      px-page:nth-child(odd) {
+        background: lime;
+      }
+
+      px-page:nth-child(even) {
+        background: fuchsia;
+      }
+    </style>
+
+
+
+    <div class="app u-bg--gray10">
+
+      <px-layout id="layout" type="offcanvas">
+
+        <px-header subtitle="Off Canvas" id="header"></px-header>
+
+        <px-drawer id="appOffcanvas" class="app-off-canvas" position="left">
+          <p class="u-m">
+            This is the Menu
+          </p>
         </px-drawer>
-        <px-pages id="pages" class="u-bg--gray9">
-          <px-page title="Dashboard" class="current" main>
-            <px-navbar view-container="pages">
-              <div class="navbar__left">
-                <button class="navbar__button" onclick="document.getElementById('appOffcanvas').toggle()">
-                  <i class="fa fa-lg fa-bars"></i>
-                </button>
-              </div>
-              <div class="navbar__right">
-                <button class="navbar__button" onclick="document.getElementById('drawerBottom').toggle()">
-                  <i class="fa fa-lg fa-ellipis-v"></i>
-                </button>
-              </div>
-            </px-navbar>
-            <section id="cards" class="flex flex--wrap u-m--">
-              <px-card id="card1" header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card" class="u-m--">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-            </section>
-          </px-page>
-        </px-pages>
-      </section>
+        <section class="content flex u-bg--">
+          <px-drawer id="primarySidebar" side="left" type="persistent" theme="dark" class="a11y-portable">
 
-      <px-footer id="footer"></px-footer>
+            <div class="spacer">
 
-    </px-layout>
+            </div>
+
+
+            <px-table-view id="nav" class="table-view--flush table-view--bare" selected="{{selectedPage}}">
+              <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
+              <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
+              <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
+              <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
+
+            </px-table-view>
+
+            <px-table-view id="userTableView" class="position-bottom">
+              <px-table-row title="Jonnie Spratley" type="tappable" image="https://goo.gl/l2K4fh"></px-table-row>
+            </px-table-view>
+
+
+
+          </px-drawer>
+          <px-drawer id="drawerBottom" side="bottom" theme="dark">
+            <p class="u-m">
+              This is the drawerBottom
+            </p>
+          </px-drawer>
+          <px-drawer id="drawerRight" side="right" theme="dark">
+            <p class="u-m">
+              This is the drawerRight
+            </p>
+          </px-drawer>
+
+          <px-pages id="pages" class="u-bg--gray9" selected="{{selectedPage}}" debug="true">
+            <px-page title="Dashboard" class="current" main>
+              <px-navbar view-container="pages">
+                <div class="navbar__left">
+                  <button class="navbar__button" onclick="document.getElementById('appOffcanvas').toggle()">
+                    <i class="fa fa-lg fa-bars"></i>
+                  </button>
+                </div>
+                <div class="navbar__right flex">
+
+                  <button class="navbar__button" onclick="document.getElementById('drawerRight').toggle()">
+                    <i class="fa fa-lg fa-ellipsis-v"></i>
+                  </button>
+                </div>
+              </px-navbar>
+              <section id="cards" class="flex flex--wrap u-m--">
+                <px-card id="card1" header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+
+            <!-- TODO: Alerts -->
+            <px-page id="page2" title="Alerts">
+              <px-navbar view-container="pages">
+                <div class="navbar__right flex">
+                  <button class="navbar__button" onclick="document.getElementById('drawerBottom').toggle()">
+                    <i class="fa fa-lg fa-filter"></i>
+                  </button>
+                </div>
+              </px-navbar>
+              <section>
+                <px-card header-text="Alerts Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+            <!-- TODO: Cases -->
+            <px-page id="page3" title="Cases">
+              <px-navbar view-container="pages"></px-navbar>
+              <section>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+
+            <!-- TODO: Analysis -->
+            <px-page id="page4" title="Analysis">
+              <px-navbar view-container="pages"></px-navbar>
+              <section>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+
+          </px-pages>
+        </section>
+
+        <px-footer id="footer"></px-footer>
+
+      </px-layout>
+  </template>
   </div>
 
 </body>

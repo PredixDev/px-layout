@@ -1,2 +1,27 @@
-///
 @import "px-colors-design/_settings.colors.scss";
+@import "px-colors-design/_settings.colors.scss";
+// These can be invoked later on via the `media-query()` mixin found in
+// `_tools.responsive`.
+$layout-min-height         : 80vh;
+// If we have included this file, set a variable to tell the rest of the
+// framework that we have some responsive settings.
+$inuit-responsive-settings : true;
+$inuit-enable-margins--none: true;
+$inuit-enable-code--inline : true;
+
+// Extra small devices (portrait phones, less than 34em)
+$bp-xsmall--min            : 320px;
+$bp-xsmall--max            : 33.9em;
+
+//small
+$bp-small--min             : 374px;
+$bp-small--max             : 425px;
+
+//medium
+$bp-medium--min            : 768px;
+$bp-medium--max            : 1023px;
+
+//large
+$bp-large--min             : 1024px;
+$bp-large--max             : 1600px;
+$breakpoints               : ( "xsmall" "screen and (min-width: #{$bp-xsmall--min}) and (max-width: #{$bp-xsmall--max})", "small" "screen and (min-width: #{$bp-small--min}) and (max-width: #{$bp-small--max})", "medium" "screen and (min-width: #{$bp-medium--min}) and (max-width: #{$bp-medium--max})", "large" "screen and (min-width: #{$bp-large--min}) and (max-width: #{$bp-large--max})", "palm" "screen and (max-width: 44.9375em)", "lap" "screen and (min-width: 45em) and (max-width: 63.9375em)", "lap-and-up" "screen and (min-width: 45em)", "portable" "screen and (max-width: 63.9375em)", "desk" "screen and (min-width: 64em)", "retina" "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)" );

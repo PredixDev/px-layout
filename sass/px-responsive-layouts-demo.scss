@@ -1,0 +1,107 @@
+$bg-xsmall: goldenrod;
+$bg-small: forestgreen;
+
+$bg-medium: crimson;
+$bg-large: slategray;
+@import "variables";
+//@import "px-mobile-mixin-design";
+@import "mixins";
+
+///-----------------------------------
+///For Demo
+body.demo {
+  h2 code {
+    color: crimson;
+  }
+
+  .flex > * {
+    //  min-height : 75px;
+    padding-top: 25px;
+    text-align : center;
+  }
+
+  .debug-colors {
+    span {
+      width  : 25px;
+      height : 25px;
+      display: inline-block;
+
+      &.color-xsmall {
+        background: $bg-xsmall;
+      }
+
+      &.color-small {
+        background: $bg-small;
+      }
+
+      &.color-medium {
+        background: $bg-medium;
+      }
+
+      &.color-large {
+        background: $bg-large;
+      }
+    }
+  }
+
+  .c1,
+  .c3,
+  .c5 {
+    color           : #eee;
+    opacity         : 0.7;
+    background-color: rgba(1,1,1, 0.5);
+  }
+
+  .c2,
+  .c4,
+  .c6 {
+    color           : #eee;
+    opacity         : 0.7;
+    background-color: rgba(1,1,1, 0.6);
+  }
+
+  .demo {
+    @include media-query ('xsmall') {
+      background-color: $bg-xsmall !important;
+    }
+
+    @include media-query ('small') {
+      background-color: $bg-small !important;
+    }
+
+    @include media-query ('medium') {
+      background-color: $bg-medium !important;
+    }
+
+    @include media-query ('large') {
+      background-color: $bg-large !important;
+    }
+  }
+}
+
+.flex__item {
+  flex-grow: 1;
+}
+
+.flex__item--2 {
+  flex-grow : 2;
+  flex-basis: 20%;
+}
+
+.flex__item--3 {
+  flex-grow: 3;
+}
+
+.flex__item--4 {
+  flex-grow: 4;
+}
+
+.flex__item--5 {
+  flex-grow: 5;
+  //flex-basis: calc(100% / 2);
+}
+
+.flex__item--6 {
+  width: 100%;
+  flex : auto;
+}

@@ -1,8 +1,9 @@
-@import 'px-mobile-mixin-design';
+@import 'mixins';
+@import 'variables';
 
+/*================================= progressive ================================*/
 .l-progressive {
-
-  height         : 100vh;
+  min-height     : $layout-min-height;
   display        : flex;
   flex-direction : row;
   flex-wrap      : nowrap;
@@ -13,20 +14,18 @@
 
   div {
     position: relative;
-    border  : 1px solid #ccc;
-
   }
 
   .btn-toggle {
-    @include respond ('small') {
+    @include media-query ('small') {
       display: block;
     }
 
-    @include respond ('medium') {
+    @include media-query ('medium') {
       display: block;
     }
 
-    @include respond ('large') {
+    @include media-query ('large') {
       display: none;
     }
   }
@@ -42,41 +41,64 @@
   }
   //Sidebar
   @include element ('primary-sidebar') {
-    flex-basis: 220px;
-    order     : 0;
-    flex      : 0 1 15%;
+    order: 0;
+    flex : 0 1 220px;
 
-    @include respond ('small') {
+    @include media-query ('xsmall') {
+      display: none;
+
+      &.is-active {
+        display: block;
+      }
+    }
+
+    @include media-query ('small') {
       display: none;
     }
 
-    @include respond ('medium') {
+    @include media-query ('medium') {
       display: none;
     }
 
-    @include respond ('large') {
+    @include media-query ('large') {
       display: block;
+
+      &.is-passive {
+        display: none;
+      }
     }
   }
   //Secondary
   @include element ('secondary-content') {
     order: 1;
-    flex : 2 2 25%;
+    flex : 2 0 35%;
 
-    @include respond ('small') {
-      //display:none;
-    }
-
-    @include respond ('medium') {
+    @include media-query ('xsmall') {
       display: none;
+
+      &.is-active {
+        display: block;
+      }
     }
 
-    @include respond ('large') {
+    @include media-query ('small') {
+      display: none;
+
+      &.is-active {
+        display: block;
+      }
+    }
+
+    @include media-query ('medium') {
       display: block;
     }
 
-    &.active {
+    @include media-query ('large') {
       display: block;
+
+      &.is-passive {
+        display: block !important;
+      }
     }
   }
   //Primary
@@ -85,20 +107,40 @@
     flex      : 4 4 50%;
     align-self: auto;
 
-    @include respond ('small') {
+    @include media-query ('xsmall') {
       display: none;
+
+      &.is-active {
+        display: block;
+      }
     }
 
-    @include respond ('medium') {
+    @include media-query ('small') {
       display: none;
+
+      &.is-active {
+        display: block;
+      }
     }
 
-    @include respond ('large') {
+    @include media-query ('medium') {
       display: block;
     }
 
-    &.active {
+    @include media-query ('large') {
       display: block;
+
+      &.is-passive {
+        display: block !important;
+      }
+    }
+
+    &.is-active {
+      display: block;
+    }
+
+    &.is-passive {
+      display: none;
     }
   }
   //Right Nav
@@ -107,17 +149,20 @@
     flex      : 1 1 15%;
     align-self: auto;
 
-    @include respond ('small') {
+    @include media-query ('xsmall') {
       display: none;
     }
 
-    @include respond ('medium') {
+    @include media-query ('small') {
       display: none;
     }
 
-    @include respond ('large') {
+    @include media-query ('medium') {
+      display: none;
+    }
+
+    @include media-query ('large') {
       display: block;
     }
   }
-
 }

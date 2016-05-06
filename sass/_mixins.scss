@@ -1,0 +1,12 @@
+@import "variables";
+@import "inuit-responsive-tools/_tools.responsive.scss";
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}

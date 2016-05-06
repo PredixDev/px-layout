@@ -1,214 +1,67 @@
-@import "px-mobile-mixin-design";
+@import 'mixins';
 @import "variables";
 
-/**
- * ===========================================
- * Split View
- * ===========================================
- */
-
-/// -----------------------------------------------
-/// Vars
 $split-view-transition: all 0.4s ease;
 $split-view-sidebar-width: 25%;
 $split-view-right-width: 25%;
 
+/*================================= Split View ================================*/
 .l-splitview {
+  min-height     : $layout-min-height;
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
+  justify-content: space-between;
+  align-content  : stretch;
+  align-items    : stretch;
+  transition     : all 300ms ease-in;
+  overflow       : hidden;
 
-  position: relative;
-  display : flex;
-  @include modifier ('sidebar-right-is-present') {
-  }
+  @include element ('secondary-content') {
+    order     : 1;
+    flex      : 1 1 200px;
+    align-self: auto;
+    transition: all 300ms ease-in;
+    transform : translateX(0);
 
-  @include modifier ('sidebar-left-is-present') {
-  }
-  /// -----------------------------------------------
-  /// Style / Colors
-  @include element ('sidebar') {
-    background-color: $gray9;
-  }
+    @include media-query ('xsmall') {
+      //display: none;
 
-  @include element ('col') {
-    @include modifier ('primary') {
-      background-color: blue;
-
-      @include respond ('large') {
-        background-color: green;
-      }
-
-      @include respond ('medium') {
-        background-color:lime;
-      }
     }
 
-    @include modifier ('secondary') {
-      background-color: crimson;
+    @include media-query ('small') {
+      // display: none;
+    }
 
-      @include respond ('large') {
-        background-color: green;
+    @include media-query ('medium') {
+      // display: none;
+    }
 
-      }
-
-      @include respond ('medium') {
-        background-color: lime;
-        width: 100vw;
-        display: flex;
-      }
+    @include media-query ('large') {
+      display: block;
     }
   }
 
-  .splitview-sidebar-right {
-    /* Design here */
-    background-color: $gray9;
-  }
+  @include element ('primary-content') {
+    order     : 2;
+    flex      : 1 0 auto;
+    align-self: auto;
+    flex-grow : 2;
 
-  .splitview-sidebar-left {
-    /* Design here */
-    background-color: $gray9;
-  }
-
-  .splitview-secondary {
-    /* Design here */
-    //background-color: $white;
-  }
-
-  .splitview-primary {
-    /* Design here */
-    //background-color: $white;
-  }
-  /* ---------------Helpers--------------------------- */
-  .splitview-sidebar-right-present {
-  }
-
-  .splitview-sidebar-left-present {
-  }
-
-  .splitview-hide-splitScreen {
-  }
-
-  .splitview-hide-fullScreen {
-  }
-
-  .splitview-hide-primary {
-  }
-
-  .splitview-hide-secondary {
-  }
-
-  .splitview-hide {
-    display: none !important;
-  }
-
-  @include element ('col') {
-    height: 100vh;
-    display: inline;
-    position: absolute;
-    width: 100%;
-    transition: $split-view-transition;
-
-    @include modifier ('is-passive') {
-      width: 0;
-      opacity: 0.5;
+    @include media-query ('xsmall') {
+      //display: none;
     }
 
-    @include modifier ('is-active') {
-      width: auto;
-      opacity: 1;
+    @include media-query ('small') {
+      // display: none;
     }
 
-    ///-------------------------------------------------
-    /// Primary Column
-    @include modifier ('primary') {
-      right: 0;
-
-      @include respond ('large') {
-        display: inline;
-        position: absolute;
-        right: 16%;
-        width: 40%;
-      }
-
-      @include respond ('medium') {
-        position: absolute;
-        width: 59%;
-        opacity: 1;
-      }
+    @include media-query ('medium') {
+      // display: none;
     }
 
-    ///-------------------------------------------------
-    /// Secondary Column
-    @include modifier ('secondary') {
-      left: 0;
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      //large
-      @include respond ('large') {
-        position: absolute;
-        left: 16%;
-        width: 27%;
-      }
-
-      //medium
-      @include respond ('medium') {
-        position: absolute;
-        width: 40%;
-        opacity: 1;
-      }
-    }
-  }
-
-
-  ///-------------------------------------------------
-  /// Sidebar
-  @include element ('sidebar') {
-    height: 100%;
-    height: 100vh;
-    display: inline;
-    position: absolute;
-    width: $split-view-sidebar-width;
-    transition: $split-view-transition;
-    will-change: translate;
-    z-index: auto;
-
-    @include modifier ('left') {
-      left: 0;
-    }
-
-    @include modifier ('right') {
-      right: 0;
-    }
-
-    @include modifier ('is-closed') {
-      opacity: 0;
-      width: 0;
-      z-index: -1;
-    }
-
-    @include modifier ('is-opened') {
-      opacity: 1;
-      width: auto;
-      z-index: 1001;
-    }
-
-    @include respond ('large') {
-      opacity: 1 !important;
-      width: 15% !important;
-    }
-
-  }
-
-  .splitview-hide {
-    display: inherit;
-
-    @include respond ('large') {
-      display: none !important;
+    @include media-query ('large') {
+      display: block;
     }
   }
 }
-
-.splitview-hide-splitScreen {
-  display: none !important;
-}
-
-

@@ -7,7 +7,8 @@
 
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css">
+  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
+  <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
@@ -33,54 +34,11 @@
       position: relative;
       overflow: hidden;
     }
-
-    .demo div {
-      min-height: 150px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .c1 {
-      color: #ddd;
-      background-color: rgba(1, 1, 1, 0.7);
-    }
-
-    .c2 {
-      color: #ddd;
-      background-color: rgba(1, 1, 1, 0.4);
-    }
-
-    .c3 {
-      color: #333;
-      background-color: rgba(110, 112, 114, 0.54);
-    }
-
-    .c4 {
-      color: #333;
-      background-color: #7c7c84;
-      background-color: rgba(124, 124, 132, 0.50);
-    }
-
-    .c5 {
-      color: #333;
-      background-color: #dfe1e5;
-    }
-
-    .c6 {
-      color: #333;
-      background-color: rgba(138, 140, 142, .50);
-    }
-
-    iframe {
-      width: 100%;
-      min-height: 800px;
-    }
   </style>
 </head>
 
-<body unresolved>
-  <article class="viewport">
-
+<body class="demo" unresolved>
+  <article class="u-m">
 
     <div class="box u-mb++">
       <h2>Predix UI Responsive Layout Patterns</h2>
@@ -93,141 +51,134 @@
         <li>Select the type you perfer</li>
         <li>Replace old markup with new markup</li>
       </ol>
+
+      <h3>Media Query Colors</h3>
+      <ul class="flex list-bare flex--spaced debug-colors">
+        <li> <span class="color-xsmall"></span> xsmall</li>
+        <li> <span class="color-small"></span> small</li>
+        <li> <span class="color-medium"></span> medium</li>
+        <li> <span class="color-large"></span> large</li>
+      </ul>
     </div>
 
 
-
-
     <!-- TODO:  -->
-
-    <section class="box  u-mb++">
-      <h2>Off Canvas <code>l-offcanvas</code></h2>
-      <demo-snippet>
-        <template>
-          <div class="demo app u-bg--gray10">
-            <div class="viewport">
-              <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
-
+    <h2>Off Canvas <code>l-offcanvas</code></h2>
+    <div class="box u-mb">
+      <div class="app u-bg--gray10">
+        <div class="demo">
+          <button onclick="toggleSidebar('.l-offcanvas__secondary-content')">Toggle Sidebar</button>
+          <div class="l-offcanvas">
+            <div class="l-offcanvas__secondary-content is-active c1">
+              <section>Menu Content</section>
+            </div>
+            <div class="l-offcanvas__primary-content c2">
+              <section>Primary Content</section>
             </div>
           </div>
-        </template>
-      </demo-snippet>
-    </section>
+        </div>
+      </div>
+    </div>
 
-    <!-- TODO:  -->
 
+    <h2>Split View <code>l-splitview</code></h2>
     <section class="box  u-mb++">
-      <h2>Progressive <code>l-progressive</code></h2>
-      <demo-snippet>
-        <template>
-          <div class="demo app u-bg--gray10">
-            <div class="viewport">
-              <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
-              <div class="l-progressive">
-                <div class="l-progressive__primary-sidebar">
-                  sidebar
-                </div>
-                <div class="l-progressive__secondary-content">
-                  secondary
-                </div>
-                <div class="l-progressive__primary-content">
-                  primary
-                </div>
-                <div class="l-progressive__secondary-sidebar">
-                  sidebar
-
-                </div>
-
-              </div>
+      <div class="app u-bg--gray10">
+        <div class="demo">
+          <div class="l-splitview">
+            <div class="l-splitview__secondary-content is-active c1">
+              <section>Secondary Content</section>
+            </div>
+            <div class="l-splitview__primary-content is-passive c2">
+              <section>Primary Content</section>
             </div>
           </div>
-        </template>
-      </demo-snippet>
-
+        </div>
+      </div>
     </section>
 
 
-
+    <h2>Progressive <code>l-progressive</code></h2>
     <section class="box  u-mb++">
-      <h2>Split View <code>l-splitview</code></h2>
-      <demo-snippet>
-        <template>
-          <div class="app u-bg--gray10">
-            <div class="viewport">
-              <px-header subtitle="Split View" class="a11y-portable"></px-header>
-              <div class="l-splitview">
-                <div class="l-splitview__col l-splitview__col--secondary is-active ">
-                  <px-navbar title="Secondary">
-                  </px-navbar>
-                  <section>Content</section>
-                </div>
-                <div class="l-splitview__col l-splitview__col--primary is-passive">
-                  <px-navbar title="Primary"></px-navbar>
-                  <section>Content</section>
-                </div>
-              </div>
+      <div class="demo app u-bg--gray10">
+        <div class="">
+          <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
+          <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
+          <div class="l-progressive">
+            <div class="l-progressive__primary-sidebar is-active c1">
+              Primary Sidebar
+            </div>
+            <div class="l-progressive__secondary-content is-active c2" onclick="toggleContent('.l-progressive')">
+              Secondary Content
+            </div>
+            <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
+              Primary Content
+            </div>
+            <div class="l-progressive__secondary-sidebar c2">
+              Secondary Sidebar
             </div>
           </div>
-
-        </template>
-      </demo-snippet>
+        </div>
+      </div>
     </section>
 
+    <!--
+ 	<h2>Content Sidebar <code>l-cs</code></h2>
+ 	<div class="box u-mb++">
+ 		<div class="demo">
+ 			<div class="l-cs">
+ 				<div class="l-cs__sidebar c1">Sidebar</div>
+ 				<div class="l-cs__content c2">Content</div>
+ 			</div>
+ 		</div>
+ 	</div>
 
 
-    <section class="box  u-mb++">
-      <h2>Content Sidebar Pattern <code>l-cs</code></h2>
-      <demo-snippet>
-        <template>
-          <div class="demo app u-bg--gray10">
-            <div class="viewport">
-              <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
-              <div class="l-cs">
-                <div class="c1"></div>
-                <div class="c2"></div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-    </section>
+ 	<h2> 3-column Grid <code>flex</code></h2>
+ 	<div class="box u-mb++">
+ 		<div class="demo">
+ 			<div class="flex flex--row flex--wrap">
+ 				<div class="c1 flex__item--3">1</div>
+ 				<div class="c1 flex__item--3">2</div>
+ 				<div class="c2 flex__item--2">3</div>
+ 				<div class="c2 flex__item--2">4</div>
+ 				<div class="c2 flex__item--2">5</div>
+ 			</div>
+ 		</div>
+ 	</div>
 
-    <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
-    <section class="box  u-mb++">
-      <demo-snippet>
-        <template>
-          <div class="demo">
-            <div class="l-flex">
-              <div class="l-fg3">
-                <div class="c1"></div>
-                <div class="c1"></div>
-                <div class="c2"></div>
-                <div class="c2"></div>
-                <div class="c2"></div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
+ 	<h2> 3-column Feature Grid <code>l-g3</code></h2>
+ 	<div class="box u-mb++">
+ 		<div class="demo flex flex--wrap">
+ 			<div class="flex__item c1 flex__item--2">1</div>
+ 			<div class="flex__item c2 flex__item--2">2</div>
+ 			<div class="flex__item c1 flex__item-6">3</div>
+ 		</div>
+ 	</div>
+ -->
 
-    </section>
+    <h2>Flexbox - Grid <code>flex</code> </h2>
+    <div class="box u-mb++">
+      <p>380px Mobile - 4 Grid</p>
+      <p>800x600px Tablet - 8 Grid</p>
+      <p>1024x800px Desktop - 12 Grid</p>
 
 
-    <section class="box  u-mb++">
-      <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
-      <demo-snippet>
-        <template>
-          <div class="demo">
-            <div class="l-g3">
-              <div class="c1"></div>
-              <div class="c1"></div>
-              <div class="c1"></div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-
-    </section>
+      <div class="demo flex flex--row flex--wrap flex--stretch">
+        <div class="flex__item c1">1</div>
+        <div class="flex__item c2">2</div>
+        <div class="flex__item c1">3</div>
+        <div class="flex__item c2">4</div>
+        <div class="flex__item c1">5</div>
+        <div class="flex__item c2">6</div>
+        <div class="flex__item c1">7</div>
+        <div class="flex__item c2">8</div>
+        <div class="flex__item c1">9</div>
+        <div class="flex__item c2">10</div>
+        <div class="flex__item c1">11</div>
+        <div class="flex__item c2">12</div>
+      </div>
+    </div>
 
 
   </article>
