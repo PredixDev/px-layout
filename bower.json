@@ -1,7 +1,7 @@
 {
   "name": "px-responsive-layouts",
   "description": "A responsive layout component.",
-  "main": "",
+  "main": "px-layout.html",
   "authors": [
     "Jonnie Spratley"
   ],
@@ -26,16 +26,20 @@
     "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "px-mobile-mixin-design": "https://github.com/PredixDev/px-mobile-mixin-design.git",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.2.3",
-    "px-widths-design": "https://github.com/PredixDev/px-widths-design.git#^0.3.7"
-  },
-  "dependencies": {
-    "px-library-design": "^0.2.0",
-    "hammerjs": "^2.0.8",
-    "fastclick": "^1.0.6",
+    "px-widths-design": "https://github.com/PredixDev/px-widths-design.git#^0.3.7",
+    "px-navbar": "https://github.com/PredixDev/px-navbar.git",
+    "px-table-view": "https://github.com/PredixDev/px-table-view.git",
+    "px-page": "https://github.com/PredixDev/px-page.git",
+    "px-drawer": "https://github.com/PredixDev/px-drawer.git",
     "px-colors-design": "https://github.com/PredixDev/px-colors-design.git#^0.2.15",
     "px-widths-responsive-design": "https://github.com/PredixDev/px-widths-responsive-design.git#^0.3.7",
     "inuit-responsive-settings": "^0.1.5",
     "px-flexbox-design": "https://github.com/PredixDev/px-flexbox-design.git#^0.3.7"
+  },
+  "dependencies": {
+    "px-library-design": "^0.2.0",
+    "hammerjs": "^2.0.8",
+    "fastclick": "^1.0.6"
   },
   "resolutions": {
     "px-library-design": "master",
