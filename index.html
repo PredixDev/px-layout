@@ -20,9 +20,7 @@
 
 
   <style media="screen">
-    body {
-      background: #fff;
-    }
+    body {}
 
     .app {
       position: relative;
@@ -31,11 +29,12 @@
     }
 
     .box {
+      background: #fff;
       position: relative;
       overflow: hidden;
     }
 
-    .box div {
+    .demo div {
       min-height: 150px;
       text-align: center;
       vertical-align: middle;
@@ -80,55 +79,77 @@
 </head>
 
 <body unresolved>
-  <div>
+  <article class="viewport">
 
-    <div class="viewport">
-      <div class="box u-mb u-mt">
-        <h2>Predix UI Responsive Layout Patterns</h2>
-        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
-        <p>How to update your existing layout:</p>
-        <ol class="">
-          <li>Identify the layout pattern for your app</li>
-          <li>Use the px-layout component</li>
-          <li>Select the type you perfer</li>
-          <li>Replace old markup with new markup</li>
-        </ol>
-      </div>
+    <div class="box u-mb">
+      <h2>Predix UI Responsive Layout Patterns</h2>
+      <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
+
+      <p>How to update your existing layout:</p>
+      <ol class="">
+        <li>Identify the layout pattern for your app</li>
+        <li>Use the px-layout component</li>
+        <li>Select the type you perfer</li>
+        <li>Replace old markup with new markup</li>
+      </ol>
     </div>
+
 
 
 
     <!-- TODO:  -->
-    <h2>Off Canvas</h2>
-    <div class=" u-mb">
 
-    </div>
+    <section class="box box--tiny u-mb">
+      <h2>Off Canvas <code>l-offcanvas</code></h2>
+      <demo-snippet>
+        <template>
+          <div class="app u-bg--gray10">
+            <div class="viewport">
+              <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
+
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </section>
 
     <!-- TODO:  -->
-    <h2>Progressive</h2>
-    <div class=" u-mb">
-      <div class="l-progressive">
-        <div class="l-progressive__primary-sidebar">
-          sidebar
-        </div>
-        <div class="l-progressive__secondary-content">
-          secondary
-        </div>
-        <div class="l-progressive__primary-content">
-          primary
-        </div>
-        <div class="l-progressive__secondary-sidebar">
-          sidebar
 
-        </div>
+    <section class="box box--tiny u-mb">
+      <h2>Progressive <code>l-progressive</code></h2>
+      <demo-snippet>
+        <template>
+          <div class="app u-bg--gray10">
+            <div class="viewport">
+              <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
+              <div class="l-progressive">
+                <div class="l-progressive__primary-sidebar">
+                  sidebar
+                </div>
+                <div class="l-progressive__secondary-content">
+                  secondary
+                </div>
+                <div class="l-progressive__primary-content">
+                  primary
+                </div>
+                <div class="l-progressive__secondary-sidebar">
+                  sidebar
 
-      </div>
-    </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+    </section>
 
 
 
-    <div class=" u-mb">
+    <section class="box box--tiny u-mb">
+      <h2>Split View <code>l-splitview</code></h2>
       <demo-snippet>
         <template>
           <div class="app u-bg--gray10">
@@ -154,11 +175,12 @@
           </div>
         </template>
       </demo-snippet>
-    </div>
+    </section>
 
 
-    <h2>Content Sidebar Pattern <code>l-cs</code></h2>
-    <div class=" u-mb">
+
+    <section class="box box--tiny u-mb">
+      <h2>Content Sidebar Pattern <code>l-cs</code></h2>
       <demo-snippet>
         <template>
           <div class="app u-bg--gray10">
@@ -172,10 +194,10 @@
           </div>
         </template>
       </demo-snippet>
-    </div>
+    </section>
 
     <h2> 3-column Grid Pattern <code>l-fg3</code></h2>
-    <div class=" u-mb">
+    <section class="box box--tiny u-mb">
       <demo-snippet>
         <template>
           <div class="box">
@@ -192,10 +214,11 @@
         </template>
       </demo-snippet>
 
-    </div>
+    </section>
 
-    <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
-    <div class="u-mb">
+
+    <section class="box box--tiny u-mb">
+      <h2> 3-column Feature Grid Pattern <code>l-g3</code></h2>
       <demo-snippet>
         <template>
           <div class="box">
@@ -208,10 +231,10 @@
         </template>
       </demo-snippet>
 
-    </div>
+    </section>
 
 
-  </div>
+  </article>
 </body>
 
 </html>

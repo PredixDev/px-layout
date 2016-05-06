@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>px-responsive-layouts demo</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <script src="../../webcomponentsjs/webcomponents.js"></script>
+
+  <!-- TODO: Layout -->
+  <link rel="import" href="../px-layout.html">
+  <!-- TODO: Theme -->
+
+  <!-- TODO: Components or just the px-design-system.html file
+
+      <link rel="import" href="../../px-design-system/px-design-system.html">
+      <link rel="import" href="../../px-app/px-app.html">
+      <link rel="import" href="../../px-app/px-theme.html">
+      -->
+  <link rel="import" href="../../px-design-system/px-design-system-theme.html">
+
+  <link rel="import" href="../../px-drawer/px-drawer.html">
+  <link rel="import" href="../../px-table-view/px-table-view.html">
+  <link rel="import" href="../../px-page/px-pages.html">
+  <link rel="import" href="../../px-card/px-card.html">
+  <link rel="import" href="../../px-navbar/px-navbar.html">
+  <link rel="import" href="../../px-partials/px-partials.html">
+  <style media="screen">
+    html,
+    body {}
+
+    .box span {
+      padding: .3rem;
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    table code {
+      white-space: nowrap;
+    }
+
+    .responsive-utilities td.is-visible {
+      color: #468847;
+      background-color: #dff0d8!important;
+    }
+
+    .responsive-utilities td.is-hidden {
+      color: #ccc;
+      background-color: #f9f9f9!important;
+    }
+
+    .responsive-utilities td {
+      text-align: center;
+    }
+
+    .responsive-utilities-test .col-xs-6 {
+      margin-bottom: .5rem;
+    }
+
+    .responsive-utilities-test {
+      margin-top: .25rem;
+    }
+
+    .hidden-on .visible,
+    .visible-on .visible {
+      color: #468847;
+      background-color: #dff0d8;
+      border: 1px solid #d6e9c6;
+    }
+
+    .hidden-on .not-visible,
+    .visible-on .not-visible {
+      color: #999;
+      border: 1px solid #ddd;
+    }
+
+    .box {
+      background-color: #fff;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="viewport">
+    <px-header title="px-responsive-layouts" subtitle="demos"></px-header>
+    <div class="box u-mb">
+
+      <h3>Layouts</h3>
+      <ul class="list-ui">
+        <li><a href="off-canvas.html">Off Canvas</a></li>
+        <li><a href="split-view.html">Split View</a></li>
+        <li><a href="progressive.html">Progressive</a></li>
+      </ul>
+    </div>
+
+    <div class="box u-mb">
+      <h2>Responsive Utilities</h2>
+      <table class="table table--small table-bordered table-striped responsive-utilities">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Extra small devices
+              <small>Portrait phones (&lt;34em)</small>
+            </th>
+            <th>
+              Small devices
+              <small>Landscape phones (≥34em)</small>
+            </th>
+            <th>
+              Medium devices
+              <small>Tablets (≥48em)</small>
+            </th>
+            <th>
+              Large devices
+              <small>Desktops (≥62em)</small>
+            </th>
+            <th>
+              Extra large devices
+              <small>Desktops (≥75em)</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><code>.hidden-xs-down</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-sm-down</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-md-down</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-lg-down</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-xl-down</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-xs-up</code></th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-sm-up</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-md-up</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-lg-up</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row"><code>.hidden-xl-up</code></th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="box flex flex--col">
+
+      <h2>Tests</h2>
+      <div class="flex flex--row flex--spaced flex--stretch row responsive-utilities-test visible-on u-mb++">
+        <div class="flex__item">
+          <span class="hidden-sm-up visible">✔ Visible on extra small</span>
+          <span class="hidden-xs-down not-visible">Extra small</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-md-up visible">✔ Visible on small or narrower</span>
+          <span class="hidden-sm-down not-visible">Small or narrower</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
+          <span class="hidden-md-down not-visible">Medium or narrower</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
+          <span class="hidden-lg-down not-visible">Large or narrower</span>
+        </div>
+      </div>
+
+      <div class="flex flex--row flex--spaced flex--stretch responsive-utilities-test visible-on u-mb++">
+        <div class="flex__item">
+          <span class="hidden-xs-down visible">✔ Visible on small or wider</span>
+          <span class="hidden-sm-up not-visible">Small or wider</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
+          <span class="hidden-md-up not-visible">Medium or wider</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-md-down visible">✔ Visible on large or wider</span>
+          <span class="hidden-lg-up not-visible">Large or wider</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-lg-down visible">✔ Visible on extra large</span>
+          <span class="hidden-xl-up not-visible">Extra large</span>
+        </div>
+      </div>
+
+      <div class="flex flex--row flex--spaced flex--stretch flex--wrap responsive-utilities-test visible-on u-mb">
+        <div class="flex__item">
+          <span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
+          <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
+          <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
+          <span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
+          <span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
+        </div>
+        <div class="flex__item">
+          <span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
+          <span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
