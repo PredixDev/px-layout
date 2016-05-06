@@ -12,6 +12,7 @@
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
+  <link rel="import" href="../px-partials/px-partials.html">
   <link rel="import" href="px-layout.html">
 
   <!--
@@ -38,8 +39,8 @@
 </head>
 
 <body class="demo" unresolved>
-  <article class="u-m">
-
+  <article class="viewport">
+    <px-header title="px-responsive-layouts" subtitle="demos"></px-header>
     <div class="box u-mb++">
       <h2>Predix UI Responsive Layout Patterns</h2>
       <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
@@ -53,7 +54,7 @@
       </ol>
 
       <h3>Media Query Colors</h3>
-      <ul class="flex list-bare flex--spaced debug-colors">
+      <ul class="list-bare flex--spaced debug-colors">
         <li> <span class="color-xsmall"></span> xsmall</li>
         <li> <span class="color-small"></span> small</li>
         <li> <span class="color-medium"></span> medium</li>
@@ -61,10 +62,22 @@
       </ul>
     </div>
 
+    <div class="box u-mb">
+
+      <h3>Layouts</h3>
+      <ul class=" list-bare flex--spaced ">
+        <li><a href="demo/index.html">responsive-utilities-test</a></li>
+        <li><a href="demo/offcanvas.html">Off Canvas</a></li>
+        <li><a href="demo/splitview.html">Split View</a></li>
+        <li><a href="demo/progressive.html">Progressive</a></li>
+      </ul>
+    </div>
+
 
     <!-- TODO:  -->
-    <h2>Off Canvas <code>l-offcanvas</code></h2>
+
     <div class="box u-mb">
+      <h2>Off Canvas <code>l-offcanvas</code></h2>
       <div class="app u-bg--gray10">
         <div class="demo">
           <button onclick="toggleSidebar('.l-offcanvas__secondary-content')">Toggle Sidebar</button>
@@ -81,8 +94,9 @@
     </div>
 
 
-    <h2>Split View <code>l-splitview</code></h2>
+
     <section class="box  u-mb++">
+      <h2>Split View <code>l-splitview</code></h2>
       <div class="app u-bg--gray10">
         <div class="demo">
           <div class="l-splitview">
@@ -98,8 +112,9 @@
     </section>
 
 
-    <h2>Progressive <code>l-progressive</code></h2>
+
     <section class="box  u-mb++">
+      <h2>Progressive <code>l-progressive</code></h2>
       <div class="demo app u-bg--gray10">
         <div class="">
           <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
@@ -157,11 +172,10 @@
  	</div>
  -->
 
-    <h2>Flexbox - Grid <code>flex</code> </h2>
+
     <div class="box u-mb++">
-      <p>380px Mobile - 4 Grid</p>
-      <p>800x600px Tablet - 8 Grid</p>
-      <p>1024x800px Desktop - 12 Grid</p>
+      <h2>Flexbox - Grid <code>flex</code> </h2>
+
 
 
       <div class="demo flex flex--row flex--wrap flex--stretch">

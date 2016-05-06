@@ -1,46 +1,41 @@
 @import "variables";
 @import "mixins";
 @import "px-mobile-mixin-design";
+@include responsiveUtils();
 
-:root {
-  @include responsiveUtils();
+body,
+html {
+  overflow: hidden;
+}
 
-  @include media-query ('xsmall') {
-    .viewport {
-      max-width: 100rem;
-      margin   : 0 !important;
-      padding  : 0;
-    }
+@include media-query ('xsmall') {
+  .viewport {
+    max-width: 100rem;
+    margin   : 0 !important;
+    padding  : 0 !important;
   }
+}
 
-  @include media-query ('small') {
-    .viewport {
-      max-width: 100rem;
-      margin   : 0 !important;
-      padding  : 0;
-    }
+@include media-query ('small') {
+  .viewport {
+    max-width: 100rem;
+    margin   : 0 !important;
+    padding  : 0 !important;
   }
+}
 
-  @include media-query ('medium') {
-    .viewport {
-      max-width: 100rem;
-      margin   : 0 !important;
-    }
+@include media-query ('medium') {
+  .viewport {
+    max-width: 100rem;
+    margin   : 0 !important;
+    padding  : 0 !important;
   }
+}
 
-  @include media-query ('large') {
-    .viewport {
-      max-width: 80rem;
-      padding  : auto;
-      margin   : auto;
-    }
-  }
-
-  @include media-query ('large') {
-    .viewport {
-      max-width: 80rem;
-      padding  : auto;
-      margin   : auto;
-    }
+@include media-query ('large') {
+  .viewport {
+    max-width: 80rem;
+    padding  : auto;
+    margin   : auto;
   }
 }

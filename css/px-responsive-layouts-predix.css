@@ -81,24 +81,19 @@
   :root .viewport {
     max-width: 100rem;
     margin: 0 !important;
-    padding: 0; } }
+    padding: 0 !important; } }
 
 @media screen and (min-width: 374px) and (max-width: 425px) {
   :root .viewport {
     max-width: 100rem;
     margin: 0 !important;
-    padding: 0; } }
+    padding: 0 !important; } }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   :root .viewport {
     max-width: 100rem;
-    margin: 0 !important; } }
-
-@media screen and (min-width: 1024px) and (max-width: 1600px) {
-  :root .viewport {
-    max-width: 80rem;
-    padding: auto;
-    margin: auto; } }
+    margin: 0 !important;
+    padding: 0 !important; } }
 
 @media screen and (min-width: 1024px) and (max-width: 1600px) {
   :root .viewport {

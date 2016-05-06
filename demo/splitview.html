@@ -6,13 +6,13 @@
   <title>split view layout demo</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-
+  <link rel="import" href="https://predixdev.github.io/px-design-system/bower_components/px-design-system/px-design-system-theme.html">
   <script src="../../webcomponentsjs/webcomponents.js"></script>
 
   <!-- TODO: Layout -->
   <link rel="import" href="../px-layout.html">
   <!-- TODO: Theme -->
-  <link rel="import" href="../../px-design-system/px-design-system-theme.html">
+
 
   <!-- TODO: Components or just the px-design-system.html file
         <link rel="import" href="../../px-design-system/px-design-system.html">
@@ -29,22 +29,22 @@
 <body unresolved>
 
 
-<div class="app u-bg--gray10">
-  <div class="viewport">
-    <px-header subtitle="Split View" class="a11y-portable"></px-header>
-    <div class="l-splitview">
-      <div class="l-splitview__col l-splitview__col--secondary is-active ">
-        <px-navbar title="Secondary">
-        </px-navbar>
-        <section>Content</section>
-      </div>
-      <div class="l-splitview__col l-splitview__col--primary is-passive">
-        <px-navbar title="Primary"></px-navbar>
-        <section>Content</section>
+  <div class="app u-bg--gray10">
+    <div class="viewport">
+      <px-header subtitle="Split View" class="a11y-portable"></px-header>
+      <div class="l-splitview">
+        <div class="l-splitview__col l-splitview__col--secondary is-active ">
+          <px-navbar title="Secondary">
+          </px-navbar>
+          <section>Content</section>
+        </div>
+        <div class="l-splitview__col l-splitview__col--primary is-passive">
+          <px-navbar title="Primary"></px-navbar>
+          <section>Content</section>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 </body>
 
