@@ -78,7 +78,7 @@ gulp.task('autoprefixer:watch', function() {
 const path = require('path');
 const stylemod = require('gulp-style-modules');
 gulp.task('poly-styles', function() {
-  gulp.src(`./css/${pkg.name}-sketch.min.css`)
+  gulp.src(`./css/${pkg.name}-sketch.css`)
     .pipe(stylemod({
       // All files will be named 'styles.html'
       filename: 'styles',

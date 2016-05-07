@@ -6,11 +6,9 @@
   <title>off canvas demo</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="import" href="https://predixdev.github.io/px-design-system/bower_components/px-design-system/px-design-system-theme.html">
+  <link rel="import" href="../../px-design-system/px-design-system-theme.html">
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+
   <script src="../../webcomponentsjs/webcomponents.js"></script>
 
   <!-- TODO: Layout -->
@@ -48,9 +46,8 @@
 
 
     <style>
-      body {
-        overflow: hidden;
-      }
+      html,
+      body {}
 
       .app .spacer {
         height: 56px;
@@ -105,33 +102,30 @@
       }
 
       px-page {
+        -webkit-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
+        will-change: transform;
       }
 
       px-page.current {
+        -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
       }
 
       px-page.next {
+        -webkit-transform: translate(50%, 0);
         transform: translate(50%, 0);
       }
 
       px-page.previous {
+        -webkit-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
-      }
-
-      px-page:nth-child(odd) {
-        background: lime;
-      }
-
-      px-page:nth-child(even) {
-        background: fuchsia;
       }
     </style>
 
 
 
-    <div class="app u-bg--gray10">
+    <div class="app">
 
       <px-layout id="layout" type="offcanvas">
 
@@ -142,28 +136,21 @@
             This is the Menu
           </p>
         </px-drawer>
-        <section class="content flex u-bg--">
+        <section class="content flex">
           <px-drawer id="primarySidebar" side="left" type="persistent" theme="dark" class="a11y-portable">
-
             <div class="spacer">
-
             </div>
-
-
             <px-table-view id="nav" class="table-view--flush table-view--bare" selected="{{selectedPage}}">
               <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
               <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
               <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
               <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-
             </px-table-view>
-
+            <!--
             <px-table-view id="userTableView" class="position-bottom">
-              <px-table-row title="Jonnie Spratley" type="tappable" image="https://goo.gl/l2K4fh"></px-table-row>
+              <px-table-row title="Jonnie Spratley" type="tappable" image="images/me.jpg"></px-table-row>
             </px-table-view>
-
-
-
+          -->
           </px-drawer>
           <px-drawer id="drawerBottom" side="bottom" theme="dark">
             <p class="u-m">
@@ -176,16 +163,15 @@
             </p>
           </px-drawer>
 
-          <px-pages id="pages" class="u-bg--gray9" selected="{{selectedPage}}" debug="true">
+          <px-pages id="pages" class="u-bg--gray8" selected="{{selectedPage}}" debug="true">
             <px-page title="Dashboard" class="current" main>
               <px-navbar view-container="pages">
                 <div class="navbar__left">
-                  <button class="navbar__button" onclick="document.getElementById('appOffcanvas').toggle()">
+                  <button class="navbar__button hidden-lg-up" onclick="document.getElementById('appOffcanvas').toggle()">
                     <i class="fa fa-lg fa-bars"></i>
                   </button>
                 </div>
                 <div class="navbar__right flex">
-
                   <button class="navbar__button" onclick="document.getElementById('drawerRight').toggle()">
                     <i class="fa fa-lg fa-ellipsis-v"></i>
                   </button>
@@ -361,9 +347,8 @@
                 </px-card>
               </section>
             </px-page>
-
-
           </px-pages>
+
         </section>
 
         <px-footer id="footer"></px-footer>

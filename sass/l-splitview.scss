@@ -1,13 +1,17 @@
 @import 'mixins';
-@import "variables";
+@import 'variables';
 
-$split-view-transition: all 0.4s ease;
-$split-view-sidebar-width: 25%;
-$split-view-right-width: 25%;
+$splitview-transition: all 0.4s ease;
+$splitview-sidebar-width: 25%;
+$splitview-right-width: 25%;
+$splitview-secondary-border-color: $gray5;
+$splitview-background-color: $white;
+$splitview-min-height: 99vh;
 
 /*================================= Split View ================================*/
 .l-splitview {
-  min-height     : $layout-min-height;
+  background     : $splitview-background-color;
+  min-height     : $splitview-min-height;
   display        : flex;
   flex-direction : row;
   flex-wrap      : nowrap;
@@ -16,13 +20,16 @@ $split-view-right-width: 25%;
   align-items    : stretch;
   transition     : all 300ms ease-in;
   overflow       : hidden;
+  position       : relative;
 
   @include element ('secondary-content') {
-    order     : 1;
-    flex      : 1 1 200px;
-    align-self: auto;
-    transition: all 300ms ease-in;
-    transform : translateX(0);
+    position    : relative;
+    order       : 1;
+    flex        : 1 1 200px;
+    align-self  : auto;
+    transition  : $splitview-transition;
+    transform   : translateX(0);
+    border-right: 1px solid $splitview-secondary-border-color;
 
     @include media-query ('xsmall') {
       //display: none;
@@ -43,6 +50,7 @@ $split-view-right-width: 25%;
   }
 
   @include element ('primary-content') {
+    position  : relative;
     order     : 2;
     flex      : 1 0 auto;
     align-self: auto;
