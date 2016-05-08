@@ -13,9 +13,11 @@
   <link rel="import" href="../px-layout.html">
   <!-- TODO: Theme
   <link rel="import" href="../../px-design-system/px-design-system-theme.html">
--->
   <link rel="import" href="//predixdev.github.io/px-design-system/bower_components/px-design-system/px-design-system-theme.html">
+-->
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
   <link rel="import" href="../../px-drawer/px-drawer.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
@@ -35,49 +37,173 @@
       height: 30px;
       border-radius: 50%;
     }
+
+    .spacer {
+      height: 56px !important;
+      color: #fff;
+      padding: 0 !important;
+    }
+
+    .iron-selected {
+      background-color: #525156;
+    }
+
+    px-page {
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+      will-change: transform;
+    }
+
+    px-page.current {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+
+    px-page.next {
+      -webkit-transform: translate(50%, 0);
+      transform: translate(50%, 0);
+    }
+
+    px-page.previous {
+      -webkit-transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
+    }
   </style>
 
 </head>
 
 <body unresolved>
 
-  <div class="app">
-    <div class="viewport">
-      <px-header subtitle="Split View" class="a11y-portable"></px-header>
-      <div class="content">
-        <px-drawer id="primarySidebar" side="left" type="mini" theme="dark">
-          <div class="spacer">
-          </div>
-          <px-table-view id="nav" class="table-view--flush table-view--bare" selected="{{selectedPage}}">
-            <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
-            <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
-            <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
-            <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-          </px-table-view>
-
-        </px-drawer>
-        <div class="l-splitview">
-          <div class="l-splitview__secondary-content is-active c1">
-            <px-navbar title="Secondary">
-              <div class="navbar__left">
-                <button class="navbar__button" onclick="document.getElementById('primarySidebar').type = 'persistent'">
-                  <i class="fa fa-lg fa-bars"></i>
-                </button>
+  <template id="app" is="dom-bind">
+    <div class="app">
+      <div class="viewport">
+        <px-header subtitle="Split View" class="a11y-portable"></px-header>
+        <div class="content flex">
+          <px-drawer id="primarySidebar" side="left" type="mini" theme="dark">
+            <div class="flex flex--col flex--center">
+              <button class="navbar__button spacer" onclick="toggleSidebar('primarySidebar')">
+                <i class="fa fa-lg fa-bars"></i>
+              </button>
+            </div>
+            <px-table-view id="nav" class="table-view--flush table-view--bare" selected="{{selectedPage}}">
+              <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
+              <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
+              <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
+              <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
+            </px-table-view>
+          </px-drawer>
+          <px-pages id="pages" selected="{{selectedPage}}">
+            <!-- TODO: Alerts -->
+            <px-page id="page1" title="Dashboard">
+              <div class="l-splitview">
+                <div class="l-splitview__secondary-content is-active c1">
+                  <px-navbar title="Secondary">
+                    <div class="navbar__left">
+                    </div>
+                  </px-navbar>
+                  <section>Secondary Content</section>
+                </div>
+                <div class="l-splitview__primary-content is-passive c2">
+                  <px-navbar title="Primary"></px-navbar>
+                  <section>Primary Content</section>
+                </div>
               </div>
-            </px-navbar>
-            <section>Secondary Content</section>
-          </div>
-          <div class="l-splitview__primary-content is-passive c2">
-            <px-navbar title="Primary"></px-navbar>
-            <section>Primary Content</section>
-          </div>
+            </px-page>
+            <px-page id="page2" title="Alerts">
+              <px-navbar view-container="pages">
+                <div class="navbar__right flex">
+                  <button class="navbar__button" onclick="document.getElementById('drawerBottom').toggle()">
+                    <i class="fa fa-lg fa-filter"></i>
+                  </button>
+                </div>
+              </px-navbar>
+              <section>
+                <px-card header-text="Alerts Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+            <!-- TODO: Cases -->
+            <px-page id="page3" title="Cases">
+              <px-navbar view-container="pages"></px-navbar>
+              <section>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Cases Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+
+
+            <!-- TODO: Analysis -->
+            <px-page id="page4" title="Analysis">
+              <px-navbar view-container="pages"></px-navbar>
+              <section>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Analysis Card" class="u-m--">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
+            </px-page>
+          </px-pages>
+
         </div>
+
+        <px-footer id="footer" class="a11y-portable"></px-footer>
       </div>
-
-      <px-footer id="footer"></px-footer>
     </div>
-  </div>
 
+  </template>
+  <script type="text/javascript">
+    function toggleSidebar(el) {
+      var sidebar = document.getElementById(el);
+      var type = sidebar.type;
+      if (type === 'mini') {
+        sidebar.type = 'persistent';
+      } else if (type === 'persistent') {
+        sidebar.type = 'mini';
+      }
+      sidebar.toggle();
+    }
+  </script>
 
 </body>
 

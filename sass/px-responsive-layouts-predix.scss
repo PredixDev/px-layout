@@ -1,35 +1,34 @@
 @import "variables";
 @import "mixins";
 @import "px-mobile-mixin-design";
-@import "px-widths-tools-design/_tools.widths.scss";
 @import "inuit-responsive-settings/_settings.responsive.scss";
+@import "px-widths-tools-design/_tools.widths.scss";
 @import "inuit-responsive-tools/_tools.responsive.scss";
+//@import "px-layout-design/_objects.layout.scss";
+@import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-design/_trumps.widths.scss";
 
-/// @type List [default] - By default we will create wholes, halves, thirds, quarters, and sixths. Predefine this Map to override.
-$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12 );
-@include inuit-widths($inuit-widths-columns-responsive);
-
-// Loop over our breakpoints defined in _settings.responsive.scss
+/// Loop over our breakpoints defined in _settings.responsive.scss
 @each $breakpoint in $breakpoints {
-
-  // Get the name of the breakpoint.
   $alias: nth($breakpoint, 1);
   @include media-query($alias) {
 
-    // Loop through each of our column sizes and generate its responsive width
-    // classes.
+    /// Loop through each of our column sizes and generate its responsive width classes.
     @each $inuit-widths-column in $inuit-widths-columns-responsive {
        @include inuit-widths($inuit-widths-column, -#{$alias});
     }
-
   }
-
 }
 
 :root {
+  @include inuit-widths($inuit-widths-columns-responsive);
   @include scrollbars(.5em, $gray6);
   @include responsiveUtils();
+
+  body,
+  html {
+    margin-bottom: 0 !important;
+  }
 
   @include media-query ('xsmall') {
     .viewport {

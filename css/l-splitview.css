@@ -44,12 +44,12 @@
 "lap" "screen and (min-width: 45em) and (max-width: 63.9375em)",
 "lap-and-up" "screen and (min-width: 45em)",
 "portable" "screen and (max-width: 63.9375em)",
-"desk" "screen and (min-width: 64em)", 
+"desk" "screen and (min-width: 64em)",
 */
 /*================================= Split View ================================*/
 .l-splitview {
   background: white;
-  min-height: 99vh;
+  min-height: 100vh;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
