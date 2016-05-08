@@ -24,4 +24,11 @@ $bp-medium--max            : 1023px;
 //large
 $bp-large--min             : 1024px;
 $bp-large--max             : 1600px;
-$breakpoints               : ( "xsmall" "screen and (min-width: #{$bp-xsmall--min}) and (max-width: #{$bp-xsmall--max})", "small" "screen and (min-width: #{$bp-small--min}) and (max-width: #{$bp-small--max})", "medium" "screen and (min-width: #{$bp-medium--min}) and (max-width: #{$bp-medium--max})", "large" "screen and (min-width: #{$bp-large--min}) and (max-width: #{$bp-large--max})", "palm" "screen and (max-width: 44.9375em)", "lap" "screen and (min-width: 45em) and (max-width: 63.9375em)", "lap-and-up" "screen and (min-width: 45em)", "portable" "screen and (max-width: 63.9375em)", "desk" "screen and (min-width: 64em)", "retina" "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)" );
+/*
+"palm" "screen and (max-width: 44.9375em)",
+"lap" "screen and (min-width: 45em) and (max-width: 63.9375em)",
+"lap-and-up" "screen and (min-width: 45em)",
+"portable" "screen and (max-width: 63.9375em)",
+"desk" "screen and (min-width: 64em)", 
+*/
+$breakpoints               : ( "xsmall" "screen and (min-width: #{$bp-xsmall--min}) and (max-width: #{$bp-xsmall--max})", "small" "screen and (min-width: #{$bp-small--min}) and (max-width: #{$bp-small--max})", "medium" "screen and (min-width: #{$bp-medium--min}) and (max-width: #{$bp-medium--max})", "large" "screen and (min-width: #{$bp-large--min}) and (max-width: #{$bp-large--max})", "retina" "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)" );

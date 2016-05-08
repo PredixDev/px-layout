@@ -39,6 +39,13 @@
 /**
      * Dark
      */
+/*
+"palm" "screen and (max-width: 44.9375em)",
+"lap" "screen and (min-width: 45em) and (max-width: 63.9375em)",
+"lap-and-up" "screen and (min-width: 45em)",
+"portable" "screen and (max-width: 63.9375em)",
+"desk" "screen and (min-width: 64em)", 
+*/
 .flex__item {
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;

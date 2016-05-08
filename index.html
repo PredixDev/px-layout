@@ -7,8 +7,9 @@
 
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
+
   <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="../iron-demo-helpers/demo-snippet.html" />
 
@@ -16,7 +17,7 @@
   <link rel="import" href="px-layout.html">
 
   <!--
-
+  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
 -->
 
@@ -45,20 +46,44 @@
       color: crimson;
     }
 
-    body .debug-colors .color-xsmall {
+    body .color-xsmall {
       color: #e9c069;
     }
 
-    body .debug-colors .color-small {
+    body .color-small {
       color: #93d973;
     }
 
-    body .debug-colors .color-medium {
+    body .color-medium {
       color: #E96969;
     }
 
-    body .debug-colors .color-large {
+    body .color-large {
       color: #69d3e9;
+    }
+
+    @media (min-width: 320px) {
+      body .demo {
+        background-color: #e9c069 !important;
+      }
+    }
+
+    @media (min-width: 460px) {
+      body .demo {
+        background-color: #93d973 !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      body .demo {
+        background-color: #E96969 !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      body .demo {
+        background-color: #69d3e9 !important;
+      }
     }
 
     body .debug-colors span {
@@ -87,30 +112,6 @@
       background-color: rgba(1, 1, 1, 0.6);
       border: 1px solid rgba(1, 1, 1, 0.8);
       border-bottom: none;
-    }
-
-    @media (min-width: 320px) {
-      body .demo {
-        background-color: #e9c069 !important;
-      }
-    }
-
-    @media (min-width: 460px) {
-      body .demo {
-        background-color: #93d973 !important;
-      }
-    }
-
-    @media (min-width: 768px) {
-      body .demo {
-        background-color: #E96969 !important;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      body .demo {
-        background-color: #69d3e9 !important;
-      }
     }
   </style>
 </head>
@@ -309,14 +310,12 @@
     <div class="box u-mb++ ">
       <demo-snippet>
         <template>
-          <div class="viewport demo">
-
+          <div id="demo-unit-sizing" class="viewport demo">
 
             <div class="u-1/3 u-1/1-palm c1">u-1/3</div>
             <div class="u-1/2 c1">u-1/2</div>
             <div class="u-2/3 c1">u-2/3</div>
             <div class="u-1/1 c1">u-1/1</div>
-
 
             <div class="u-1/4 c1">u-1/4</div>
             <div class="u-2/4 c1">u-2/4</div>

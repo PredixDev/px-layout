@@ -1,0 +1,39 @@
+
+    body .color-xsmall {
+      color: #e9c069;
+    }
+
+    body .color-small {
+      color: #93d973;
+    }
+
+    body .color-medium {
+      color: #E96969;
+    }
+
+    body .color-large {
+      color: #69d3e9;
+    }
+    @media (min-width: 320px) {
+      body .demo {
+        background-color: #e9c069 !important;
+      }
+    }
+
+    @media (min-width: 460px) {
+      body .demo {
+        background-color: #93d973 !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      body .demo {
+        background-color: #E96969 !important;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      body .demo {
+        background-color: #69d3e9 !important;
+      }
+    }
