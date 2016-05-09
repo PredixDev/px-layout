@@ -102,6 +102,8 @@
       background-color: rgba(1, 1, 1, 0.5);
       border: 1px solid rgba(1, 1, 1, 0.8);
       border-bottom: none;
+      text-align: center;
+      min-height: 75px;
     }
 
     body .c2,
@@ -112,6 +114,8 @@
       background-color: rgba(1, 1, 1, 0.6);
       border: 1px solid rgba(1, 1, 1, 0.8);
       border-bottom: none;
+      text-align: center;
+      min-height: 75px;
     }
   </style>
 </head>
@@ -222,8 +226,8 @@
       </p>
       <demo-snippet>
         <template>
-          <div class="demo app u-bg--gray10">
-            <div class="">
+          <div class=" app u-bg--gray10">
+            <div class="demo">
               <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
               <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
               <div class="l-progressive">
@@ -286,7 +290,6 @@
     <div class="box u-mb++">
       <demo-snippet>
         <template>
-
           <div class="demo flex flex--row flex--wrap flex--spaced">
             <div class="flex__item c1">1</div>
             <div class="flex__item c2">2</div>
@@ -303,6 +306,98 @@
           </div>
         </template>
       </demo-snippet>
+
+      <demo-snippet>
+        <template>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Row</h2>
+            </div>
+            <div id="Flex - Row" class="flex flex--row">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Row - Reverse</h2>
+            </div>
+            <div id="Flex - Row - Reverse" class="flex flex--row flex--row--rev">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Row - Wrap</h2>
+            </div>
+            <div id="Flex - Row - Wrap" class="flex flex--row flex--wrap">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2</div>
+              <div class="flex__item c1">3</div>
+              <div class="flex__item c1">4</div>
+              <div class="flex__item c1">5</div>
+              <div class="flex__item c1">6</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Row - No Wrap</h2>
+            </div>
+            <div id="Flex - Row - No Wrap" class="flex flex--row flex--nowrap">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2</div>
+              <div class="flex__item c1">3</div>
+              <div class="flex__item c1">4</div>
+              <div class="flex__item c1">5</div>
+              <div class="flex__item c1">6</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Top Align</h2>
+            </div>
+            <div id="Flex - Top Align" class="flex flex--top">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Middle Align</h2>
+            </div>
+            <div id="Flex - Middle Align" class="flex flex--middle">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Bottom Align</h2>
+            </div>
+            <div id="Flex - Bottom Align" class="flex flex--bottom">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+          <div class="viewport">
+            <div class="page-header">
+              <h2>Flex - Stretch</h2>
+            </div>
+            <div id="Flex - Stretch" class="flex flex--stretch">
+              <div class="flex__item c1">1</div>
+              <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
+              <div class="flex__item c1">3</div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
 
     </div>
 

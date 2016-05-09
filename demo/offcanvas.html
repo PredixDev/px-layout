@@ -34,8 +34,11 @@
   <link rel="import" href="../../px-table-view/px-table-view.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-card/px-card.html">
+  <link rel="import" href="../../px-simple-line-chart/px-simple-line-chart.html">
   <link rel="import" href="../../px-navbar/px-navbar.html">
   <link rel="import" href="../../px-partials/px-partials.html">
+
+
   <script type="text/javascript">
     if ('addEventListener' in document) {
       document.addEventListener('DOMContentLoaded', function() {
@@ -89,16 +92,16 @@
         height: 90vh;
       }
 
-      #userTableView {
+      .table-view {
         width: 100%;
       }
 
-      #userTableView .table-row__media--image img {
+      .table-row__media--image img {
         height: 30px;
         border-radius: 50%;
       }
 
-      #userTableView .table-row__media--body {
+      .table-row__media--body {
         font-size: .9rem;
       }
 
@@ -150,12 +153,13 @@
               <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
               <px-table-row title="Cases" icon="fa fa-briefcase" type="tappable"></px-table-row>
               <px-table-row title="Analysis" icon="fa fa-bar-chart" type="tappable"></px-table-row>
-            </px-table-view>
-            <!--
-            <px-table-view id="userTableView" class="position-bottom">
+              <div class="spacer">
+              </div>
               <px-table-row title="Jonnie Spratley" type="tappable" image="images/me.jpg"></px-table-row>
             </px-table-view>
-          -->
+
+
+
           </px-drawer>
           <px-drawer id="drawerBottom" side="bottom" theme="dark">
             <p class="u-m">
@@ -182,7 +186,18 @@
                   </button>
                 </div>
               </px-navbar>
-              <section id="cards" class="flex flex--wrap u-m--">
+              <section id="cards" class="flex flex--wrap flex--stretch u-m--">
+                <!--
+                <px-card id="card13" header-text="px-simple-line-chart" class="u-1/1">
+                  <px-simple-line-chart min="0" max="2" line-data="[
+                        [1397102460000,1.99],[1397139660000,1.92],
+                        [1397177400000,1.97],
+                        [1397663100000,1.79],
+                        [1397700000000,1.85],
+                        [1397753040000,1.83],
+                        [1397772540000,1.93]
+                        ]" threshold="1.234567"></px-simple-line-chart>
+                </px-card>-->
                 <px-card id="card1" header-text="Card" class="u-m--">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor

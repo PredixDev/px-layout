@@ -12,13 +12,22 @@
   <!-- TODO: Layout -->
   <link rel="import" href="../px-layout.html">
   <link rel="import" href="../../px-drawer/px-drawer.html">
-
   <link rel="import" href="../../px-page/px-pages.html">
+  <link rel="import" href="../../px-page/px-page.html">
   <link rel="import" href="../../px-card/px-card.html">
   <link rel="import" href="../../px-navbar/px-navbar.html">
+  <link rel="import" href="../../px-table-view/px-table-view.html">
   <link rel="import" href="../../px-partials/px-partials.html">
   <link rel="import" href="../../px-widget-cards/px-twoup.html">
+  <style media="screen">
+    #widget-table {
+      background: crimson;
+    }
 
+    px-card {
+      width: 100%;
+    }
+  </style>
   <!-- TODO: Theme
   <link rel="import" href="../../px-design-system/px-design-system-theme.html">
   <link rel="import" href="//predixdev.github.io/px-design-system/bower_components/px-design-system/px-design-system-theme.html">
@@ -46,23 +55,51 @@
           <px-navbar title="Secondary Content"></px-navbar>
         </div>
         <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
-          <px-navbar title="Primary Content"></px-navbar>
-          <section class="flex flex--col">
-            <px-twoup>
-              <px-card header-text="Card 1">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-              <px-card header-text="Card 1">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-              </px-card>
-            </px-twoup>
-          </section>
+          <px-page>
+            <px-navbar title="Primary Content"></px-navbar>
+            <section>
+              <ul id="widget-table" class="table-view table-view--bare table-view--responsive">
+
+                <li class="table-row">
+                  <px-card header-text="Widget 2">
+                    <p>
+                      Content
+                    </p>
+                  </px-card>
+                </li>
+                <li class="table-row">
+                  <px-card header-text="Widget 3">
+                    <p>
+                      Content
+                    </p>
+                  </px-card>
+                </li>
+                <li class="table-row">
+                  <px-card header-text="Widget 4">
+                    <p>
+                      Content
+                    </p>
+                  </px-card>
+                </li>
+                <li class="table-row">
+                  <px-card header-text="Widget 5">
+                    <p>
+                      Content
+                    </p>
+                  </px-card>
+                </li>
+                <li class="table-row">
+                  <px-card header-text="Widget 6">
+                    <p>
+                      Content
+                    </p>
+                  </px-card>
+                </li>
+
+              </ul>
+
+            </section>
+          </px-page>
         </div>
         <div class="l-progressive__secondary-sidebar is-passive c2">
           <px-navbar title="Right Nav"></px-navbar>

@@ -19,6 +19,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
   <link rel="import" href="../../px-drawer/px-drawer.html">
+  <link rel="import" href="../../px-page/px-page.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
   <link rel="import" href="../../px-card/px-card.html">
@@ -80,8 +81,9 @@
         <px-header subtitle="Split View" class="a11y-portable"></px-header>
         <div class="content flex">
           <px-drawer id="primarySidebar" side="left" type="mini" theme="dark">
-            <div class="flex flex--col flex--center">
-              <button class="navbar__button spacer" onclick="toggleSidebar('primarySidebar')">
+            <div class="navbar__left">
+
+              <button class="navbar__button a11y-portable" onclick="toggleSidebar('primarySidebar')">
                 <i class="fa fa-lg fa-bars"></i>
               </button>
             </div>
@@ -99,9 +101,71 @@
                 <div class="l-splitview__secondary-content is-active c1">
                   <px-navbar title="Secondary">
                     <div class="navbar__left">
+                      <button class="navbar__button " onclick="toggleSidebar('primarySidebar')">
+                        <i class="fa fa-lg fa-bars"></i>
+                      </button>
+                    </div>
+                    <div class="navbar__right">
+                      <button type="button" class="navbar__button"><i class="fa fa-search"></i></button>
                     </div>
                   </px-navbar>
-                  <section>Secondary Content</section>
+                  <section class="content">
+                    <div class="spacer u-height--50">
+
+                    </div>
+                    <px-table-view id="alertsList">
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                      <px-table-row title="Urgent Alert 1" body="GE-2483" label1="01/21/16" icon="fa fa-exclamation-triangle"></px-table-row>
+                    </px-table-view>
+                    <!--
+
+                    <link rel="import" href="../../iron-ajax/iron-ajax.html">
+                    <link rel="import" href="../../iron-list/iron-list.html">
+                    <div class="demo" style="height: 500px; overflow:auto;">
+                      <template id="tableViewTemplate" is="dom-bind">
+                        <iron-ajax url="../../table-view/demo/data.json" last-response="{{data}}" auto></iron-ajax>
+                        <iron-list id="ironList" items="[[data]]" as="item" class="table-view  table-view--small">
+                          <template>
+                            <div class="table-row table-row--nav-right" on-click="handleSelect">
+                              <div class="table-row__media table-row__media--icon" hidden="{{!item.icon}}"><i class$="{{item.icon}}"></i>
+                              </div>
+                              <div class="table-row__media table-row__media--image" hidden="{{!item.image}}"><img src$="{{item.image}}" alt="{{item.title}}">
+                              </div>
+                              <div class="table-row__content"><span class="table-row__title">{{item.title}}</span></div>
+                            </div>
+                          </template>
+                        </iron-list>
+                      </template>
+                      <script type="text/javascript">
+                        var tmpl = document.getElementById('tableViewTemplate');
+                        tmpl.handleSelect = function(e) {
+                          console.log('handleSelect', e);
+                        };
+                        document.addEventListener('WebComponentsReady', function() {
+                          setTimeout(function() {
+                            document.querySelector('iron-list').fire('iron-resize');
+                          }, 250);
+                        });
+                      </script>
+                    </div>
+                    -->
+                  </section>
                 </div>
                 <div class="l-splitview__primary-content is-passive c2">
                   <px-navbar title="Primary"></px-navbar>
@@ -156,7 +220,7 @@
             <!-- TODO: Analysis -->
             <px-page id="page4" title="Analysis">
               <px-navbar view-container="pages"></px-navbar>
-              <section>
+              <section class="content flex flex--wrap">
                 <px-card header-text="Analysis Card" class="u-m--">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
