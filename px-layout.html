@@ -9,36 +9,32 @@
 <link rel="import" href="px-responsive-layouts-styles.html">
 <link rel="import" href="px-media-query.html">
 <dom-module id="px-layout">
-
-
   <template>
     <style>
       :host {
         display: block;
-        height: 100vh;
       }
     </style>
-    <div class="">
+    <div id="main" class="viewport--full-height">
       <!-- TODO: header -->
-      <div class="viewport a11y-portable">
+      <header id="header" class="viewport a11y-portable">
         <content select="px-header, .px-header"></content>
-      </div>
+      </header>
+
       <!-- TODO: drawer -->
-      <div class="viewport">
-        <content select="px-drawer"></content>
+      <aside id="aside">
+        <content select="px-drawer, .px-drawer"></content>
+      </aside>
 
-        <!-- TODO: Static Drawer -->
-
-        <!-- TODO: Views / Pages -->
+      <article id="article" class="viewport">
+        <!-- TODO: Any Content Views / Pages -->
         <content id="content" select=".content"></content>
-      </div>
-
-
+      </article>
 
       <!-- TODO: Footer -->
-      <div class="viewport a11y-portable">
+      <footer id="footer" class="viewport a11y-portable">
         <content select="px-footer, .px-footer"></content>
-      </div>
+      </footer>
     </div>
   </template>
   <script>
@@ -54,11 +50,9 @@
         }
       },
       attached: function() {
-        //px.utils.addMixin(new px.mobile.logger('px-layout'), this);
+
         this.toggleClass('l-container', true);
         this.toggleClass('l-container--' + this.type, true);
-
-
 
 
         if (window.matchMedia("(min-width: 400px)").matches) {
@@ -68,10 +62,10 @@
           /* the viewport is less than 400 pixels wide */
         }
 
-        console.warn(this.tagName, 'created');
+        console.log(this.tagName, 'created');
 
         var distributed = this.getContentChildren('#content');
-        console.log(distributed.length);
+        console.log(this.tagName, distributed.length);
       },
       toggle: function(name) {
 

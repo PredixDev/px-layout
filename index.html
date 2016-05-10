@@ -15,9 +15,9 @@
 
   <link rel="import" href="../px-partials/px-partials.html">
   <link rel="import" href="px-layout.html">
-
+  <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css">
   <!--
-  <link rel="stylesheet" href="https://predixdev.github.io/px-library-design/css/style.css">
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
 -->
 
@@ -42,7 +42,7 @@
       overflow: hidden;
     }
 
-    body h2 code {
+    code {
       color: crimson;
     }
 
@@ -86,6 +86,11 @@
       }
     }
 
+    body .debug-colors li {
+      display: flex;
+      flex-direction: column;
+    }
+
     body .debug-colors span {
       width: 25px;
       height: 25px;
@@ -100,10 +105,16 @@
       color: #eee;
       opacity: .7;
       background-color: rgba(1, 1, 1, 0.5);
-      border: 1px solid rgba(1, 1, 1, 0.8);
-      border-bottom: none;
       text-align: center;
-      min-height: 75px;
+      min-height: 25px;
+    }
+
+    .c1:nth-child(odd) {
+      background-color: rgba(1, 1, 1, 0.5);
+    }
+
+    .c1:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.7);
     }
 
     body .c2,
@@ -112,10 +123,8 @@
       color: #eee;
       opacity: .7;
       background-color: rgba(1, 1, 1, 0.6);
-      border: 1px solid rgba(1, 1, 1, 0.8);
-      border-bottom: none;
       text-align: center;
-      min-height: 75px;
+      min-height: 25px;
     }
   </style>
 </head>
@@ -142,18 +151,22 @@
         <li>
           <h4>XSmall</h4>
           <i class="fa fa-4x fa-mobile color-xsmall"></i>
+          <code>.-xs-*</code>
         </li>
         <li>
           <h4>Small</h4>
           <i class="fa fa-4x fa-rotate-90 fa-mobile color-small"></i>
+          <code>.-sm-*</code>
         </li>
         <li>
           <h4>Medium</h4>
           <i class="fa fa-4x fa-tablet color-medium"></i>
+          <code>.-md-*</code>
         </li>
         <li>
           <h4>Large</h4>
           <i class="fa fa-4x fa-desktop color-large"></i>
+          <code>.-lg-*</code>
       </ul>
     </div>
 
@@ -175,7 +188,7 @@
       </p>
       <demo-snippet>
         <template>
-          <div class="app u-bg--gray10">
+          <div class="viewport u-bg--gray10">
             <div class="demo">
               <button onclick="toggleSidebar('.l-offcanvas__secondary-content')">Toggle Sidebar</button>
               <div class="l-offcanvas">
@@ -202,7 +215,7 @@
 
       <demo-snippet>
         <template>
-          <div class="app u-bg--gray10">
+          <div class="viewport u-bg--gray10">
             <div class="demo">
               <div class="l-splitview">
                 <div class="l-splitview__secondary-content is-active c1">
@@ -226,7 +239,7 @@
       </p>
       <demo-snippet>
         <template>
-          <div class=" app u-bg--gray10">
+          <div class="viewport u-bg--gray10">
             <div class="demo">
               <px-header subtitle="Content Sidebar" class="a11y-portable"></px-header>
               <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
@@ -286,53 +299,47 @@
 	</div>
 -->
 
-    <h2>Flexbox - Grid <code>flex</code> </h2>
-    <div class="box u-mb++">
-      <demo-snippet>
-        <template>
-          <div class="demo flex flex--row flex--wrap flex--spaced">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c2">2</div>
-            <div class="flex__item c1">3</div>
-            <div class="flex__item c2">4</div>
-            <div class="flex__item c1">5</div>
-            <div class="flex__item c2">6</div>
-            <div class="flex__item c1">7</div>
-            <div class="flex__item c2">8</div>
-            <div class="flex__item c1">9</div>
-            <div class="flex__item c2">10</div>
-            <div class="flex__item c1">11</div>
-            <div class="flex__item c2">12</div>
-          </div>
-        </template>
-      </demo-snippet>
+    <div class="viewport">
+      <div class="page-header">
+        <h1>Flexbox <code>.flex</code></h1>
+      </div>
+      <p>
 
+      </p>
+      <div class="page-header">
+        <h2>Flex - Row</h2>
+      </div>
       <demo-snippet>
         <template>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Row</h2>
-            </div>
+          <div class="viewport demo">
             <div id="Flex - Row" class="flex flex--row">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2</div>
               <div class="flex__item c1">3</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Row - Reverse</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Row - Reverse</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Row - Reverse" class="flex flex--row flex--row--rev">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2</div>
               <div class="flex__item c1">3</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Row - Wrap</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Row - Wrap</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Row - Wrap" class="flex flex--row flex--wrap">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2</div>
@@ -342,10 +349,14 @@
               <div class="flex__item c1">6</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Row - No Wrap</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Row - No Wrap</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Row - No Wrap" class="flex flex--row flex--nowrap">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2</div>
@@ -355,40 +366,56 @@
               <div class="flex__item c1">6</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Top Align</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Top Align</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Top Align" class="flex flex--top">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
               <div class="flex__item c1">3</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Middle Align</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Middle Align</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Middle Align" class="flex flex--middle">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
               <div class="flex__item c1">3</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Bottom Align</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Bottom Align</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Bottom Align" class="flex flex--bottom">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
               <div class="flex__item c1">3</div>
             </div>
           </div>
-          <div class="viewport">
-            <div class="page-header">
-              <h2>Flex - Stretch</h2>
-            </div>
+        </template>
+      </demo-snippet>
+      <div class="page-header">
+        <h2>Flex - Stretch</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
             <div id="Flex - Stretch" class="flex flex--stretch">
               <div class="flex__item c1">1</div>
               <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?</div>
@@ -398,8 +425,43 @@
         </template>
       </demo-snippet>
 
+      <div class="page-header">
+        <h2>Flex - Spaced</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport demo">
+            <div class="flex flex--spaced">
+              <div class="flex__item c1 w-100">1</div>
+              <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus? </div>
+              <div class="flex__item--top c1">3 - flex__item--top</div>
+              <div class="flex__item--middle c1">4 - flex__item--middle</div>
+              <div class="flex__item--bottom c1">5 - flex__item--bottom</div>
+              <div class="flex__item--baseline c1">6 - flex__item--baseline</div>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <div class="page-header">
+        <h2>Flex - Row - Buttons</h2>
+      </div>
+
+      <demo-snippet>
+        <template>
+          <div class="flex flex--row">
+            <div class="btn btn--full">Button 1</div>
+            <div class="btn btn--full">Button 2</div>
+            <div class="btn btn--full">Button 3</div>
+          </div>
+        </template>
+      </demo-snippet>
 
     </div>
+
+
+
+
 
     <h2>Unit Sizing <code>u-*/*</code> </h2>
     <div class="box u-mb++ ">
