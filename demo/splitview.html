@@ -80,13 +80,7 @@
       <div class="viewport">
         <px-header subtitle="Split View" class="a11y-portable"></px-header>
         <div class="content flex">
-          <px-drawer id="primarySidebar" side="left" type="mini" theme="dark">
-            <div class="navbar__left">
-
-              <button class="navbar__button a11y-portable" onclick="toggleSidebar('primarySidebar')">
-                <i class="fa fa-lg fa-bars"></i>
-              </button>
-            </div>
+          <px-drawer id="primarySidebar" side="left" type="persistent" theme="dark">
             <px-table-view id="nav" class="table-view--flush table-view--bare" selected="{{selectedPage}}">
               <px-table-row title="Dashboard" icon="fa fa-dashboard" type="tappable"></px-table-row>
               <px-table-row title="Alerts" icon="fa fa-exclamation-triangle" type="tappable"></px-table-row>
@@ -97,7 +91,9 @@
           <px-pages id="pages" selected="{{selectedPage}}">
             <!-- TODO: Alerts -->
             <px-page id="page1" title="Dashboard">
+
               <div class="l-splitview">
+
                 <div class="l-splitview__secondary-content is-active c1">
                   <px-navbar title="Secondary">
                     <div class="navbar__left">
