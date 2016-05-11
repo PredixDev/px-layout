@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>template-detail-turbine</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+
+    <!-- TODO: Layout -->
+    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-design-system/px-design-system-theme.html">
+
+    <link rel="import" href="../../px-drawer/px-drawer.html">
+    <link rel="import" href="../../px-alert-label/px-alert-label.html">
+
+    <link rel="import" href="../../px-page/px-page.html">
+    <link rel="import" href="../../px-page/px-pages.html">
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-navbar/px-navbar.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
+    <link rel="import" href="../../px-simple-line-chart/px-simple-line-chart.html">
+    <style media="screen">
+      body,
+      html {
+        overflow: hidden !important;
+      }
+
+      .has-navbar {
+        padding-top: 56px;
+        position: relative;
+      }
+
+      #sidenav {
+        background: #fff;
+      }
+      li,
+      ul {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .box {
+        background: #fff;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 0;
+      }
+
+      .app {
+
+        height: 100%;
+        overflow: auto;
+      }
+      .u-color--white {
+        color: #fff;
+      }
+
+    </style>
+
+  </head>
+
+  <body unresolved>
+
+    <template id="app" is="dom-bind">
+
+      <px-layout class="app">
+        <px-header title="Details" subtitle="Layout Template"></px-header>
+        <px-drawer id="sidenav" side="left"></px-drawer>
+        <div class="content has-navbar u-bg--gray8">
+          <px-navbar title="Gas Turbine Detail" shadow>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <section class="viewport">
+            <!-- TODO: Header -->
+            <header class="u-m--  u-p- u-color--white">
+              <div class="flex">
+                <px-alert-label type="important" label="test"></px-alert-label>
+                <div class="epsilon flex__item--middle">Hydraulic Gas Valve Anomaly</div>
+              </div>
+
+              <ul id="table-responsive" class="table-view table-view--bare table-view--responsive">
+
+                <template is="dom-repeat" items="{{details}}">
+                  <li>
+                    <px-table-row type="">
+                      <div class="table-row__content">
+                        <span class="table-row__title muted zeta">{{item.name}}</span>
+                        <span class="table-row__body ">{{item.value}}</span>
+                      </div>
+                    </px-table-row>
+                  </li>
+                </template>
+                <!--
+                <li>
+                  <px-table-row type="">
+                    <div class="table-row__content">
+                      <span class="table-row__title muted zeta">Frame Type</span>
+                      <span class="table-row__body ">PG9371FB</span>
+                    </div>
+                  </px-table-row>
+                </li>
+
+                <li>
+                  <px-table-row type="">
+                    <div class="table-row__content">
+                      <span class="table-row__title muted zeta">Type</span>
+                      <span class="table-row__body ">Turbine</span>
+                    </div>
+                  </px-table-row>
+                </li>
+                <li>
+                  <px-table-row type="">
+                    <div class="table-row__content">
+                      <span class="table-row__title muted zeta">Shaft Type</span>
+                      <span class="table-row__body ">109 Single</span>
+                    </div>
+                  </px-table-row>
+                </li>
+                <li>
+                  <px-table-row type="">
+                    <div class="table-row__content">
+                      <span class="table-row__title muted zeta">Plant Config</span>
+                      <span class="table-row__body ">2 Gas : 1 Stream</span>
+                    </div>
+                  </px-table-row>
+                </li>
+
+                <li>
+                  <px-table-row type="">
+                    <div class="table-row__content">
+                      <span class="table-row__title muted zeta">Commercial Ops</span>
+                      <span class="table-row__body ">Generator</span>
+                    </div>
+                  </px-table-row>
+                </li>
+              -->
+
+              </ul>
+            </header>
+
+            <!-- TODO: Cards -->
+            <div class="u-m">
+              <px-card id="cad13" class="box box--small" header-text="px-simple-line-chart">
+                <px-simple-line-chart
+                  min="0"
+                  max="5"
+                  height="400"
+                  width="auto"
+                  line-data="[
+       [1397102460000,1.99],[1397139660000,1.92],
+       [1397177400000,1.97],
+       [1397663100000,1.79],
+       [1397700000000,1.85],
+       [1397753040000,1.83],
+       [1397772540000,1.93]
+       ]"
+                  threshold="1.234567"></px-simple-line-chart>
+              </px-card>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+            </div>
+          </section>
+        </div>
+        <px-footer></px-footer>
+      </px-layout>
+    </template>
+    <script type="text/javascript">
+      var app = document.getElementById('app');
+      app.details = [
+        {
+          name: 'Make',
+          value: 'GE'
+        }, {
+          name: 'Frame Type',
+          value: 'PG9317FB'
+        }, {
+          name: 'Type',
+          value: 'Gas Turbine'
+        }, {
+          name: 'Shaft Type',
+          value: '109 Single'
+        }, {
+          name: 'Plant Config',
+          value: '2 Gas : 1 Steam'
+        }, {
+          name: 'Commercial Ops',
+          value: 'Generator'
+        }, {
+          name: 'RPM Rating',
+          value: '60hz'
+        }, {
+          name: 'Ipusum',
+          value: 'Lorem'
+        }, {
+          name: 'Status',
+          value: 'Pending'
+        }
+
+      ];
+      app.asset = {
+        details: [
+          {
+            name: 'Asset Name',
+            value: 'GT123456'
+          }, {
+            name: 'Site Name',
+            value: 'Samsun'
+          }, {
+            name: 'Asset Class',
+            value: 'GT'
+          }, {
+            name: 'Parent',
+            value: 'SITE_ABC_TX'
+          }, {
+            name: 'Frame Size',
+            value: '9FB'
+          }, {
+            name: 'Monitor Flag',
+            value: 'True'
+          }, {
+            name: 'Turbine Type',
+            value: 'Gas Turbine'
+          }, {
+            name: 'Controller Type',
+            value: 'Mark Vle'
+          }, {
+            name: 'Shaft Type',
+            value: '109 Single Shaft'
+          }
+        ],
+        customer: [
+          {
+            name: 'Customer',
+            value: 'OMV Samsun Elektrik'
+          }, {
+            name: 'Contact Type',
+            value: 'CSA-HV'
+          }, {
+            name: 'Site Name',
+            value: 'Samsun'
+          }, {
+            name: 'Primary Fuel',
+            value: 'Gas'
+          }, {
+            name: 'OSM Name',
+            value: 'trszfgenx02a'
+          }
+        ]
+      };
+
+      function toggleSidebar(el) {
+        var sidebar = document.getElementById(el);
+        var type = sidebar.type;
+        if (type === 'mini') {
+          sidebar.type = 'persistent';
+        } else if (type === 'persistent') {
+          sidebar.type = 'mini';
+        }
+        sidebar.toggle();
+      }
+    </script>
+
+  </body>
+
+</html>
