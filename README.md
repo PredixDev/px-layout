@@ -12,11 +12,16 @@ The `px-layout` element provides auto-magically handling your applications layou
 
 The structure of content generally follows the following format:
 
+
 ```
+Code example
 ```
 
+The preceeding code example the following is happening:
 
-### Na
+1. ..
+2. ..
+3. ..
 
 
 
