@@ -15,40 +15,54 @@
 <dom-module id="px-layout">
   <template>
     <style>
+
       :host {
         display: block;
         position: relative;
         overflow: hidden;
+        height: 100%;
       }
+
+      :host .scrollable,
+      :host ::content .scrollable{
+        max-height: 100vh;
+        height: 100%;
+
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+
       :host .viewport{
         position: relative;
       }
+
       :host .l-primary-content,
       :host  .l-secondary-content{
         position: relative;
       }
     </style>
-    <div id="main" class="viewport">
+    <div id="main" class="">
 
 
       <!-- TODO: Left Navigation -->
       <div class="l-primary-sidebar">
-        <px-drawer id="leftDrawer" side="left" theme="dark">
-          <content id="leftContent" select=".primary-sidebar"></content>
+        <px-drawer id="primarySidebar" side="left" theme="dark">
+          <content id="primarySidebarContent" select=".primary-sidebar"></content>
         </px-drawer>
       </div>
 
 
         <!-- TODO: header -->
-        <div id="header" class="l-header hidden-md-down">
+        <div id="header" class="viewport l-header hidden-md-down">
           <content id="headerContent" select="px-header"></content>
         </div>
 
 
-        <div id="viewport" class="viewport--full-height">
+        <div id="viewport" class="viewport viewport--full-height">
 
+          <div class="layout layout--flush layout--full ">
 
-          <div class="layout">
             <!-- TODO: Secondary Content -->
             <div class="l-secondary-content layout__item">
               <content id="secondaryContent" select=".secondary-content"></content>
@@ -66,19 +80,18 @@
 
           </div>
 
-
         </div>
 
         <!-- TODO: Right Navigation -->
         <div class="l-secondary-sidebar">
-          <px-drawer id="rightDrawer" side="right" theme="dark">
-            <content id="rightContent" select=".secondary-sidebar"></content>
+          <px-drawer id="secondarySidebar" side="right" theme="dark">
+            <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
           </px-drawer>
         </div>
 
 
         <!-- TODO: Footer -->
-        <div id="footer" class="hidden-md-down">
+        <div id="footer" class="viewport hidden-md-down">
           <content id="footerContent" select="px-footer"></content>
         </div>
 
@@ -115,7 +128,7 @@
         console.log(this.tagName, distributed.length);
       },
       toggle: function(name) {
-        var el = this.$.content.queryEffectiveChildren(name);
+        var el = this.$[name];
         if(el.toggle){
           el.toggle();
         }

@@ -8,19 +8,15 @@
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
-
   <script src="../webcomponentsjs/webcomponents.js"></script>
   <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-
-  <link rel="stylesheet" href="http://predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
   <link rel="import" href="../px-partials/px-partials.html">
-
+  <link rel="import" href="../polymer/polymer.html">
   <link rel="import" href="px-layout.html">
-
   <link rel="stylesheet" href="demo/demo.css">
 
   <!--
-
+  <link rel="stylesheet" href="http://predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
 -->
 
@@ -295,11 +291,23 @@
     </ul>
   </div>
 
-  <h2>Layouts</h2>
-  <div class="u-mb++">
+  <h2>Layout Demos</h2>
+  <div class="box u-mb++">
     <ul class=" list-bare flex--spaced ">
       <li>
         <a href="demo/index.html" target="_blank">responsive-utilities-test</a>
+      </li>
+      <li>
+        <a href="demo/template-detail.html" target="_blank">Detail Template</a>
+      </li>
+      <li>
+        <a href="demo/template-detail-asset.html" target="_blank">Detail Asset Template</a>
+      </li>
+      <li>
+        <a href="demo/template-detail-turbine.html" target="_blank">Detail Turbine Template</a>
+      </li>
+      <li>
+        <a href="demo/template-splitview.html" target="_blank">Split View Template</a>
       </li>
       <li>
         <a href="demo/offcanvas.html" target="_blank">Off Canvas</a>
@@ -312,6 +320,40 @@
       </li>
     </ul>
   </div>
+
+
+
+
+  <h2>Media Query Helper</h2>
+  <div class="box u-mb++">
+    <template id="queryExample" is="dom-bind">
+      <px-media-query id="xs" query="(min-width: 320px) and (max-width: 480px)" query-matches="{{isXs}}" full="true"></px-media-query>
+      <px-media-query id="sm" query="(min-width: 460px)" query-matches="{{isSm}}" full="true"></px-media-query>
+      <px-media-query id="md" query="(min-width: 768px) and (max-width: 979px)" query-matches="{{isMd}}" full="true"></px-media-query>
+      <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}" full="true"></px-media-query>
+      <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
+      <template is="dom-if" if="{{isXs}">
+        <p>Query Matches xs</p>
+      </template>
+      <template is="dom-if" if="{{isSm}">
+        <p>Query Matches sm</p>
+      </template>
+      <template is="dom-if" if="{{isMd}">
+        <p>Query Matches md</p>
+      </template>
+      <template is="dom-if" if="{{isLg}">
+        <p>Query Matches lg</p>
+      </template>
+      <template is="dom-if" if="{{isXl}">
+        <p>Query Matches xl</p>
+      </template>
+    </template>
+
+  </div>
+
+
+
+
 
   <!-- TODO:  -->
   <h2>Off Canvas
@@ -326,15 +368,26 @@
         <px-layout id="layout1" class="responsive-demo">
           <px-header subtitle="Off Canvas Layout"></px-header>
           <div class="secondary-content c1">
-            <section>Menu Content</section>
+
             <px-navbar title="Secondary Content">
               <div class="navbar__left">
                 <button class="navbar__button " onclick="document.getElementById('layout1').$.leftDrawer.toggle()">
                   <i class="fa fa-lg fa-bars"></i>
                 </button>
               </div>
-
             </px-navbar>
+            <section>
+              <ul class="list-ui">
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+              </ul>
+
+            </section>
           </div>
           <div class="primary-content c2">
             <px-navbar title="Primary Content">
@@ -391,7 +444,7 @@
   </h2>
   <section class="box  u-mb++">
     <p>
-      <a href="demo/progressive.html" target="_blank">View Progressie demo</a>
+      <a href="demo/progressive.html" target="_blank">View progressive demo</a>
     </p>
     <demo-snippet>
       <template>
@@ -699,6 +752,6 @@
   </div>
 
 </article>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+
 </body>
 </html>

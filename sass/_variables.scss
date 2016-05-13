@@ -1,10 +1,10 @@
 @import "px-colors-design/_settings.colors.scss";
-
+@import "px-mobile-design/sass/_variables.scss";
 /// @type List [default] - By default we will create wholes, halves, thirds, quarters, and sixths. Predefine this Map to override.
-$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12 );
+$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6);
 // These can be invoked later on via the `media-query()` mixin found in
 // `_tools.responsive`.
-$layout-min-height              : 80vh;
+$layout-min-height              : 90vh;
 // If we have included this file, set a variable to tell the rest of the
 // framework that we have some responsive settings.
 $inuit-responsive-settings      : true;

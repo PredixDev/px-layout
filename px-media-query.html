@@ -11,15 +11,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-`iron-media-query` can be used to data bind to a CSS media query.
+`px-media-query` can be used to data bind to a CSS media query.
 The `query` property is a bare CSS media query.
 The `query-matches` property is a boolean representing whether the page matches that media query.
 Example:
-    <iron-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></iron-media-query>
-@group Iron Elements
+    <px-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></px-media-query>
+
 @demo demo/index.html
 @hero hero.svg
-@element iron-media-query
+@element px-media-query
 -->
 
 <script>
@@ -66,10 +66,12 @@ Example:
       }
     },
     attached: function() {
+      console.log(this.tagName, 'attached');
       this.style.display = 'none';
       this.queryChanged();
     },
     detached: function() {
+      console.log(this.tagName, 'detached');
       this._remove();
     },
     _add: function() {
@@ -92,11 +94,13 @@ Example:
       if (!this.full && query[0] !== '(') {
         query = '(' + query + ')';
       }
+      console.log('queryChanged', query);
       this._mq = window.matchMedia(query);
       this._add();
       this.queryHandler(this._mq);
     },
     queryHandler: function(mq) {
+      console.log('queryHandler', mq);
       this._setQueryMatches(mq.matches);
     }
   });

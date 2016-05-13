@@ -4,45 +4,43 @@
 //@import "inuit-responsive-settings/_settings.responsive.scss";
 @import "px-widths-tools-design/_tools.widths.scss";
 //@import "inuit-responsive-tools/_tools.responsive.scss";
+
+@import "px-flexbox-design/_base.flexbox.scss";
 //@import "px-layout-design/_objects.layout.scss";
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-design/_trumps.widths.scss";
 
 
-
-  @include responsiveUtils(){
-
-    /// Loop over our breakpoints defined in _settings.responsive.scss
-    @each $breakpoint in $breakpoints {
-      $alias: nth($breakpoint, 1);
-      @include media-breakpoint($alias) {
-
-        /// Loop through each of our column sizes and generate its responsive width classes.
-        @each $inuit-widths-column in $inuit-widths-columns-responsive {
-           @include inuit-widths($inuit-widths-column, -#{$alias});
-        }
-      }
-    }
-    @include inuit-widths($inuit-widths-columns-responsive);
-    @include scrollbars(.5em, $gray9);
-
-
-
-
-
-    @include media-breakpoint-down('md') {
-      .viewport {
-        max-width: 100rem ;
-        margin   : 0 ;
-        padding  : 0 ;
-      }
-    }
-
-    @include media-breakpoint-up('lg') {
-      .viewport {
-        max-width: 80rem ;
-        padding  : auto ;
-        margin   : auto ;
-      }
+@each $breakpoint in $breakpoints {
+  $alias: nth($breakpoint, 1);
+  @include media-breakpoint($alias) {
+    @each $inuit-widths-column in $inuit-widths-columns-responsive {
+      @include inuit-widths($inuit-widths-column, -#{$alias});
     }
   }
+}
+@include inuit-widths($inuit-widths-columns-responsive);
+@include scrollbars(.5em, $gray9);
+
+@include media-breakpoint-down('md') {
+  .viewport {
+    max-width: 100rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@include media-breakpoint-up('lg') {
+  .viewport {
+    max-width: 80rem;
+    padding: auto;
+    margin: auto;
+  }
+}
+@include responsiveUtils();
+
+:root{
+  html, body{
+    margin-bottom: 0 !important;
+  }
+}

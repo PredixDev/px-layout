@@ -1,12 +1,10 @@
-html, body {
-  background: #eee;
-}
+
 .app {
   position: relative;
   overflow: hidden;
   min-height: 480px;
 }
-.demo {}
+
 .box {
   background: #fff;
   position: relative;
@@ -25,12 +23,6 @@ table code {
   white-space: nowrap;
 }
 
-ul,
-li {
-  list-style-type: none;
-  margin: 0 !important;
-  
-}
 
 
 .responsive-utilities-test .flex__item {
