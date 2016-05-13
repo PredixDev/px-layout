@@ -1,22 +1,37 @@
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+
+@charset "utf-8";
 @import "variables";
 @import "mixins";
-@import "px-mobile-design/sass/_mixins.scss";
-//@import "inuit-responsive-settings/_settings.responsive.scss";
-@import "px-widths-tools-design/_tools.widths.scss";
-//@import "inuit-responsive-tools/_tools.responsive.scss";
-@import "px-flexbox-design/_base.flexbox.scss";
+
+
+/// Generic
+//@import "px-normalize-design/_generic.normalize.scss";
+//@import "px-box-sizing-design/_generic.box-sizing.scss";
+//@import "px-helpers-design/_generic.helpers.scss";
+//@import "px-defaults-design/_settings.defaults.scss";
+
+/// Base
+//@import "px-typography-design/_base.typography.scss";
+//@import "px-flexbox-design/_base.flexbox.scss";
+//@import "px-viewport-design/_base.viewport.scss";
 //@import "px-layout-design/_objects.layout.scss";
-@import "px-spacing-design/_trumps.spacing.scss";
-@import "px-widths-design/_trumps.widths.scss";
-@each $breakpoint in $breakpoints {
-  $alias: nth($breakpoint, 1);
-  @include media-breakpoint($alias) {
-     @each $inuit-widths-column in $inuit-widths-columns-responsive{
-      @include inuit-widths($inuit-widths-column, -#{$alias});
-    }
-  }
-}
-@include inuit-widths($inuit-widths-columns-responsive);
+
+
+/// Trumps
+
+/// Component
+//@import 'px-mobile-design/index.scss';
+
+
 //@include scrollbars(.5em, $gray9);
 @include media-breakpoint-down ('md') {
   .viewport {

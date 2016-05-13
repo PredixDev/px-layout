@@ -356,6 +356,37 @@
 
 
   <!-- TODO:  -->
+  <h2>Full Detail Layout
+    <code>l-full</code>
+  </h2>
+  <div class="u-mb++">
+    <p>
+      <a href="demo/template-detail.html" target="_blank">View full demo</a>
+    </p>
+    <demo-snippet>
+      <template>
+        <px-layout id="layout0" class="responsive-demo">
+          <px-header subtitle="Full Detail Layout"></px-header>
+          <div class="primary-content c1">
+            <px-navbar title="Primary Content">
+              <div class="navbar__right">
+                <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+                  <i class="fa fa-lg fa-ellipsis-v"></i>
+                </button>
+              </div>
+            </px-navbar>
+            <section>
+              <p>
+                This is content.
+              </p>
+            </section>
+          </div>
+          <px-footer copywrite="2016"></px-footer>
+        </px-layout>
+      </template>
+    </demo-snippet>
+  </div>
+
   <h2>Off Canvas
     <code>l-offcanvas</code>
   </h2>
@@ -368,41 +399,28 @@
         <px-layout id="layout1" class="responsive-demo">
           <px-header subtitle="Off Canvas Layout"></px-header>
           <div class="secondary-content c1">
-
             <px-navbar title="Secondary Content">
               <div class="navbar__left">
-                <button class="navbar__button " onclick="document.getElementById('layout1').$.leftDrawer.toggle()">
+                <button class="navbar__button " onclick="document.getElementById('layout1').toggle('primarySidebar')">
                   <i class="fa fa-lg fa-bars"></i>
                 </button>
               </div>
             </px-navbar>
-            <section>
-              <ul class="list-ui">
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-                <li>&nbsp;</li>
-              </ul>
-
-            </section>
+            <section></section>
           </div>
           <div class="primary-content c2">
             <px-navbar title="Primary Content">
-              <div class="navbar__right flex">
-                <button class="navbar__button" onclick="document.getElementById('layout1').$.rightDrawer.toggle()">
+              <div class="navbar__right">
+                <button class="navbar__button" onclick="document.getElementById('layout1').toggle('secondarySidebar')">
                   <i class="fa fa-lg fa-ellipsis-v"></i>
                 </button>
               </div></px-navbar>
-            <section>Primary Content</section>
+            <section></section>
           </div>
           <px-footer copywrite="2016"></px-footer>
         </px-layout>
       </template>
     </demo-snippet>
-
   </div>
 
 
@@ -420,7 +438,7 @@
     <demo-snippet>
       <template>
 
-        <div class="viewport u-bg--gray10" style="height: 400px">
+        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
           <px-header subtitle="Split View Layout" class="hidden-md-down "></px-header>
           <div class="demo">
             <div class="l-splitview">
@@ -448,7 +466,7 @@
     </p>
     <demo-snippet>
       <template>
-        <div class="viewport u-bg--gray10" style="height: 400px">
+        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
           <div class="demo">
             <px-header subtitle="Progressive Layout" class="hidden-md-down "></px-header>
             <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
@@ -520,7 +538,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Row" class="flex flex--row">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2</div>
@@ -534,7 +552,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Row - Reverse" class="flex flex--row flex--row--rev">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2</div>
@@ -548,7 +566,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Row - Wrap" class="flex flex--row flex--wrap">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2</div>
@@ -565,7 +583,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Row - No Wrap" class="flex flex--row flex--nowrap">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2</div>
@@ -582,7 +600,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Top Align" class="flex flex--top">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
@@ -598,7 +616,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Middle Align" class="flex flex--middle">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
@@ -614,7 +632,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Bottom Align" class="flex flex--bottom">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
@@ -630,7 +648,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div id="Flex - Stretch" class="flex flex--stretch">
             <div class="flex__item c1">1</div>
             <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
@@ -647,7 +665,7 @@
     </div>
     <demo-snippet>
       <template>
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div class="flex flex--spaced">
             <div class="flex__item c1 w-100">1</div>
             <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
@@ -684,7 +702,7 @@
   <div class="box u-mb++ ">
     <demo-snippet>
       <template>
-        <div id="demo-unit-sizing" class="viewport demo">
+        <div id="demo-unit-sizing" class="viewport responsive-demo">
 
           <div class="u-1/3 u-1/1-palm c1">u-1/3</div>
           <div class="u-1/2 c1">u-1/2</div>
@@ -714,7 +732,7 @@
     <demo-snippet>
       <template>
 
-        <div class="viewport demo">
+        <div class="viewport responsive-demo">
           <div class="layout ">
             <div class="layout__item  c2">u-1/2</div>
             <div class="layout__item c3">u-1/2</div>

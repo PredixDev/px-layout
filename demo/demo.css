@@ -17,13 +17,17 @@ code {
   background-color: rgba(1, 1, 1, 0.5);
 }
 .c1:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 table code {
   white-space: nowrap;
 }
 
-
+.responsive-demo .c1{
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
 
 .responsive-utilities-test .flex__item {
     padding: 1rem !important;
