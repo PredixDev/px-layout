@@ -37,7 +37,7 @@
       transform: translateX(-100%);
     }
 
-    @include media-query ('xsmall') {
+    @include media-breakpoint ('xs') {
       //visibility: hidden;
       //display:none;
       position : absolute;
@@ -49,7 +49,7 @@
       }
     }
 
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       //visibility: hidden;
       position : absolute !important;
       transform: translateX(-100%);
@@ -59,7 +59,7 @@
       }
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('sm') {
       //display:none;
       transform: translateX(-100%);
 
@@ -74,7 +74,7 @@
       }
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       flex     : 1 0 200px;
       display  : block;
       transform: translateX(0);

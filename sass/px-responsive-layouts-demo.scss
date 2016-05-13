@@ -1,8 +1,3 @@
-$bg-xsmall: goldenrod;
-$bg-small: forestgreen;
-
-$bg-medium: crimson;
-$bg-large: slategray;
 @import "variables";
 //@import "px-mobile-mixin-design";
 @import "mixins";
@@ -32,4 +27,123 @@ $bg-large: slategray;
 .flex__item--6 {
   width: 100%;
   flex : auto;
+}
+/** Debug Media Query Colors */
+$color-xs: #e9c069;
+$color-sm: #93d973;
+$color-md: #e96969;
+$color-lg: #69d3e9;
+$color-xl: purple;
+
+$color-lap: forestgreen;
+$color-retina				:blue;
+$color-lap-and-up		:plum;
+$color-portable			:red;
+$color-desk					:$color-xl;
+$color-port					:purple;
+$color-palm					:gold;
+
+
+.color-xs{
+	color: $color-xs !important;
+}
+.color-sm{
+	color: $color-sm !important;
+}
+.color-md{
+	color: $color-md !important;
+}
+.color-lg{
+	color: $color-lg !important;
+}
+.color-xl{
+	color: $color-xl !important;
+}
+.color-palm{
+	color: $color-palm !important;
+}
+.color-portable{
+	color: $color-portable !important;
+}
+.color-lap{
+	color: $color-lap !important;
+}
+.color-desk{
+	color: $color-desk !important;
+}
+.color-lap-and-up{
+	color: $color-lap-and-up !important;
+}
+.color-retina{
+	color: $color-retina !important;
+}
+
+
+
+//palm
+@include media-breakpoint(palm){
+  .responsive-demo {
+		background-color: $color-palm !important;
+	}
+}
+//lap
+@include media-breakpoint(lap){
+	.responsive-demo {
+		background-color: $color-lap !important;
+	}
+}
+//lap-and-up
+@include media-breakpoint(lap-and-up){
+	.responsive-demo {
+		background-color: $color-lap-and-up !important;
+	}
+}
+//portable
+@include media-breakpoint(portable){
+	.responsive-demo {
+		background-color: $color-portable !important;
+	}
+}
+///desk
+@include media-breakpoint(desk){
+	.responsive-demo {
+		background-color: $color-desk !important;
+	}
+}
+//retina
+@include media-breakpoint(retina){
+	.responsive-demo {
+		background-color: $color-retina !important;
+	}
+}
+
+//xs
+@include media-breakpoint(xs){
+	.responsive-demo {
+		background-color: $color-xs !important;
+	}
+}
+//sm
+@include media-breakpoint(sm){
+	.responsive-demo {
+		background-color: $color-sm !important;
+	}
+}
+//md
+@include media-breakpoint(md){
+	.responsive-demo {
+		background-color: $color-md !important;
+	}
+}
+//lg
+@include media-breakpoint(lg){
+	.responsive-demo {
+		background-color: $color-lg !important;
+	}
+}
+//xl
+@include media-breakpoint(xl){
+	.responsive-demo {
+		background-color: $color-xl !important;
+	}
 }

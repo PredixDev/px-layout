@@ -4,7 +4,10 @@
     <title>px-responsive-layouts demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="../webcomponentsjs/webcomponents.min.js"></script>
-
+    <script>
+    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+    ':35724/livereload.js?snipver=1"></' + 'script>')
+  </script>
 
     <link rel="stylesheet" href="css/px-responsive-layouts.css">
     <link rel="import" href="../px-design-system/px-design-system-theme.html">
@@ -17,7 +20,7 @@
       padding: 15px;
       background: #eee;
     }
-    
+
     .box {
       background: #fff;
     }
@@ -38,8 +41,10 @@
     <div class="box box--small u-mb++">
       <h2>Split View Layout</h2>
       <px-example>
-        <div class="splitview-container">
+        <px-layout id="layout1" type="splitview">
 
+        </px-layout>
+        <div class="splitview-container">
           <div class="container--left">
             <header>
               <px-navbar title="Sidebar"></px-navbar>
@@ -67,18 +72,15 @@
             <px-navbar title="Side nav"></px-navbar>
           </div>
           <div class="active">
-
-
             <px-pages id="secondary">
               <px-page id="secondaryPage1" title="Secondary">
                 <px-navbar></px-navbar>
-
               </px-page>
             </px-pages>
-
           </div>
           <div>
             <px-navbar title="Primary"></px-navbar>
+
           </div>
           <div>
             <px-navbar title="Right nav"></px-navbar>

@@ -20,15 +20,15 @@ $progressive-min-height: 100vh;
   }
 
   .btn-toggle {
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       display: block;
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('md') {
       display: block;
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       display: none;
     }
   }
@@ -49,7 +49,7 @@ $progressive-min-height: 100vh;
     position    : relative;
     border-right: $progressive-border;
 
-    @include media-query ('xsmall') {
+    @include media-breakpoint ('xs') {
       display: none;
 
       &.is-active {
@@ -57,15 +57,15 @@ $progressive-min-height: 100vh;
       }
     }
 
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       display: none;
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('md') {
       display: none;
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       display: block;
 
       &.is-passive {
@@ -81,7 +81,7 @@ $progressive-min-height: 100vh;
     position    : relative;
     border-right: $progressive-border;
 
-    @include media-query ('xsmall') {
+    @include media-breakpoint ('xs') {
       display: none;
 
       &.is-active {
@@ -89,7 +89,7 @@ $progressive-min-height: 100vh;
       }
     }
 
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       display: none;
 
       &.is-active {
@@ -97,11 +97,11 @@ $progressive-min-height: 100vh;
       }
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('md') {
       display: block;
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       display: block;
 
       &.is-passive {
@@ -116,7 +116,7 @@ $progressive-min-height: 100vh;
     align-self: auto;
     position  : relative;
 
-    @include media-query ('xsmall') {
+    @include media-breakpoint ('xs') {
       display: none;
 
       &.is-active {
@@ -124,7 +124,7 @@ $progressive-min-height: 100vh;
       }
     }
 
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       display: none;
 
       &.is-active {
@@ -132,11 +132,11 @@ $progressive-min-height: 100vh;
       }
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('md') {
       display: block;
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       display: block;
 
       &.is-passive {
@@ -160,19 +160,19 @@ $progressive-min-height: 100vh;
     position   : relative;
     border-left: $progressive-border;
 
-    @include media-query ('xsmall') {
+    @include media-breakpoint ('xs') {
       display: none;
     }
 
-    @include media-query ('small') {
+    @include media-breakpoint ('sm') {
       display: none;
     }
 
-    @include media-query ('medium') {
+    @include media-breakpoint ('md') {
       display: none;
     }
 
-    @include media-query ('large') {
+    @include media-breakpoint ('lg') {
       display: block;
     }
   }

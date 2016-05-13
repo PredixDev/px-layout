@@ -1,40 +1,88 @@
 <link rel="import" href="../polymer/polymer.html" />
+
+<!--
 <script src="../px-mobile.js/dist/px-mobile.js"></script>
 <link rel="import" href="../px-theme/px-theme.html">
 <link rel="import" href="../px-theme/px-app.html">
-<!--
-
--->
-<link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
 <link rel="import" href="px-responsive-layouts-styles.html">
+-->
+<link rel="import" href="../px-partials/px-partials.html">
+<link rel="import" href="../px-navbar/px-navbar.html">
+<link rel="import" href="../px-drawer/px-drawer.html">
+<link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+
 <link rel="import" href="px-media-query.html">
 <dom-module id="px-layout">
   <template>
     <style>
       :host {
         display: block;
+        position: relative;
+        overflow: hidden;
+      }
+      :host .viewport{
+        position: relative;
+      }
+      :host .l-primary-content,
+      :host  .l-secondary-content{
+        position: relative;
       }
     </style>
-    <div id="main" class="viewport--full-height">
-      <!-- TODO: header -->
-      <header id="header" class="viewport a11y-portable">
-        <content select="px-header, .px-header"></content>
-      </header>
+    <div id="main" class="viewport">
 
-      <!-- TODO: drawer -->
-      <aside id="aside">
-        <content select="px-drawer, .px-drawer"></content>
-      </aside>
 
-      <article id="article" class="viewport">
-        <!-- TODO: Any Content Views / Pages -->
-        <content id="content" select=".content"></content>
-      </article>
+      <!-- TODO: Left Navigation -->
+      <div class="l-primary-sidebar">
+        <px-drawer id="leftDrawer" side="left" theme="dark">
+          <content id="leftContent" select=".primary-sidebar"></content>
+        </px-drawer>
+      </div>
 
-      <!-- TODO: Footer -->
-      <footer id="footer" class="viewport a11y-portable">
-        <content select="px-footer, .px-footer"></content>
-      </footer>
+
+        <!-- TODO: header -->
+        <div id="header" class="l-header hidden-md-down">
+          <content id="headerContent" select="px-header"></content>
+        </div>
+
+
+        <div id="viewport" class="viewport--full-height">
+
+
+          <div class="layout">
+            <!-- TODO: Secondary Content -->
+            <div class="l-secondary-content layout__item">
+              <content id="secondaryContent" select=".secondary-content"></content>
+            </div>
+
+            <!-- TODO: Primary Content -->
+            <div class="l-primary-content layout__item">
+              <content id="primaryContent" select=".primary-content"></content>
+            </div>
+
+            <!-- TODO: Any Content Views / Pages -->
+            <div class="l-content layout__item">
+              <content id="content" select=".content"></content>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <!-- TODO: Right Navigation -->
+        <div class="l-secondary-sidebar">
+          <px-drawer id="rightDrawer" side="right" theme="dark">
+            <content id="rightContent" select=".secondary-sidebar"></content>
+          </px-drawer>
+        </div>
+
+
+        <!-- TODO: Footer -->
+        <div id="footer" class="hidden-md-down">
+          <content id="footerContent" select="px-footer"></content>
+        </div>
+
+
     </div>
   </template>
   <script>
@@ -43,17 +91,16 @@
       properties: {
         //The layout type (progressive, splitview, offcanvas)
         type: {
-          type: String
+          type: String,
+          value: 'full'
         },
         breakpoints: {
           type: Object
         }
       },
       attached: function() {
-
-        this.toggleClass('l-container', true);
-        this.toggleClass('l-container--' + this.type, true);
-
+        this.toggleClass('l-container', true, this.$.viewport);
+        this.toggleClass('l-container--' + this.type, true, this.$.viewport);
 
         if (window.matchMedia("(min-width: 400px)").matches) {
           /* the viewport is at least 400 pixels wide */
@@ -68,9 +115,16 @@
         console.log(this.tagName, distributed.length);
       },
       toggle: function(name) {
-
         var el = this.$.content.queryEffectiveChildren(name);
+        if(el.toggle){
+          el.toggle();
+        }
         console.warn('toggle', name, el);
+      },
+      toggleContent: function(name){
+        //toggle primary / secondary content is-active / is-passive
+        console.log("toggle content");
+
       }
 
     });
