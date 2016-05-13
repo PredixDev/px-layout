@@ -489,7 +489,7 @@
     width: 83.3333333333% !important;
     flex: none !important; } }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
   .u-1\/1-xs {
     width: 100% !important; }
   .u-1\/2-xs {
@@ -526,7 +526,7 @@
     width: 83.3333333333% !important;
     flex: none !important; } }
 
-@media screen and (min-width: 375px) and (max-width: 425px) {
+@media screen and (min-width: 375px) and (max-width: 736px) {
   .u-1\/1-sm {
     width: 100% !important; }
   .u-1\/2-sm {
@@ -563,7 +563,7 @@
     width: 83.3333333333% !important;
     flex: none !important; } }
 
-@media screen and (min-width: 768px) and (max-width: 979px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .u-1\/1-md {
     width: 100% !important; }
   .u-1\/2-md {
@@ -600,7 +600,7 @@
     width: 83.3333333333% !important;
     flex: none !important; } }
 
-@media screen and (min-width: 1024px) and (max-width: 1200px) {
+@media screen and (min-width: 1080px) and (max-width: 1200px) {
   .u-1\/1-lg {
     width: 100% !important; }
   .u-1\/2-lg {
@@ -721,20 +721,6 @@
   width: 83.3333333333% !important;
   flex: none !important; }
 
-::-webkit-scrollbar {
-  width: 0.5em;
-  height: 0.5em; }
-
-::-webkit-scrollbar-thumb {
-  background: #3b3b3f; }
-
-::-webkit-scrollbar-track {
-  background: #9d9d9f; }
-
-body {
-  scrollbar-face-color: #3b3b3f;
-  scrollbar-track-color: #9d9d9f; }
-
 @media (max-width: 991px) {
   .viewport {
     max-width: 100rem;
@@ -789,5 +775,6 @@ body {
 .hidden-xl-down {
   display: none !important; }
 
-:root html, :root body {
+:root body,
+:root html {
   margin-bottom: 0 !important; }

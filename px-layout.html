@@ -1,20 +1,44 @@
 <link rel="import" href="../polymer/polymer.html" />
-
-<!--
-<script src="../px-mobile.js/dist/px-mobile.js"></script>
 <link rel="import" href="../px-theme/px-theme.html">
 <link rel="import" href="../px-theme/px-app.html">
-<link rel="import" href="px-responsive-layouts-styles.html">
--->
 <link rel="import" href="../px-partials/px-partials.html">
 <link rel="import" href="../px-navbar/px-navbar.html">
 <link rel="import" href="../px-drawer/px-drawer.html">
-<link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
-
 <link rel="import" href="px-media-query.html">
+
+
+<!--
+## Overview
+The px-layout element aims to help developers create responsive layouts.
+
+The layout types are:
+
+1. offcanvas
+2. full
+3. progressive
+4. splitview
+
+
+## Usage
+
+```
+Code Here
+```
+@element px-layout
+@demo demo.html
+@homepage index.html
+-->
 <dom-module id="px-layout">
-  <template>
+  <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+  <template strip-whitespace>
     <style>
+
+      html, body{
+        margin: 0 !important;
+        width: 100%;
+        height: 100%;
+        overflow: hidden !important;
+      }
 
       :host {
         display: block;
@@ -23,8 +47,7 @@
         height: 100%;
       }
 
-      :host .scrollable,
-      :host ::content .scrollable{
+      :host .scrollable{
         max-height: 100vh;
         height: 100%;
 
@@ -41,11 +64,14 @@
       :host  .l-secondary-content{
         position: relative;
       }
+
+
+
+
     </style>
-    <div id="main" class="">
+    <div id="main" class="flex flex--col">
 
-
-      <!-- TODO: Left Navigation -->
+      <!-- primary-sidebar -->
       <div class="l-primary-sidebar">
         <px-drawer id="primarySidebar" side="left" theme="dark">
           <content id="primarySidebarContent" select=".primary-sidebar"></content>
@@ -53,7 +79,7 @@
       </div>
 
 
-        <!-- TODO: header -->
+        <!-- header -->
         <div id="header" class="viewport l-header hidden-md-down">
           <content id="headerContent" select="px-header"></content>
         </div>
@@ -61,19 +87,19 @@
 
         <div id="viewport" class="viewport viewport--full-height">
 
-          <div class="layout layout--flush layout--full ">
+          <div class="layout layout--flush layout--full scrollable">
 
-            <!-- TODO: Secondary Content -->
+            <!-- Secondary Content -->
             <div class="l-secondary-content layout__item">
               <content id="secondaryContent" select=".secondary-content"></content>
             </div>
 
-            <!-- TODO: Primary Content -->
+            <!-- Primary Content -->
             <div class="l-primary-content layout__item">
               <content id="primaryContent" select=".primary-content"></content>
             </div>
 
-            <!-- TODO: Any Content Views / Pages -->
+            <!-- Any Content Views / Pages -->
             <div class="l-content layout__item">
               <content id="content" select=".content"></content>
             </div>
@@ -82,7 +108,7 @@
 
         </div>
 
-        <!-- TODO: Right Navigation -->
+        <!-- secondary-sidebar -->
         <div class="l-secondary-sidebar">
           <px-drawer id="secondarySidebar" side="right" theme="dark">
             <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
@@ -90,42 +116,34 @@
         </div>
 
 
-        <!-- TODO: Footer -->
         <div id="footer" class="viewport hidden-md-down">
           <content id="footerContent" select="px-footer"></content>
         </div>
-
-
     </div>
   </template>
   <script>
     Polymer({
       is: 'px-layout',
       properties: {
-        //The layout type (progressive, splitview, offcanvas)
+        //The layout type (full, progressive, splitview, offcanvas)
         type: {
           type: String,
           value: 'full'
         },
         breakpoints: {
-          type: Object
+          type: Object,
+          value: {
+            xs: '(min-width: 330px)',
+            sm: '(min-width: 480px)',
+            md: '(min-width: 768px)',
+            lg: '(min-width: 992px)',
+            xl: '(min-width: 1200px)'
+          }
         }
       },
       attached: function() {
         this.toggleClass('l-container', true, this.$.viewport);
         this.toggleClass('l-container--' + this.type, true, this.$.viewport);
-
-        if (window.matchMedia("(min-width: 400px)").matches) {
-          /* the viewport is at least 400 pixels wide */
-          console.log('min-width')
-        } else {
-          /* the viewport is less than 400 pixels wide */
-        }
-
-        console.log(this.tagName, 'created');
-
-        var distributed = this.getContentChildren('#content');
-        console.log(this.tagName, distributed.length);
       },
       toggle: function(name) {
         var el = this.$[name];
