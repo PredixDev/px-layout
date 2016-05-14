@@ -1,5 +1,5 @@
 # px-responsive-layouts
-This repository is a collection of responsive layout patterns using the Predix UI Design System. 
+This repository is a collection of responsive layout patterns using the Predix UI Design System.
 
 > This project follows the *BEM Frontend Development Methodology*
 
@@ -17,11 +17,51 @@ The structure of content generally follows the following format:
 Code example
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 The preceeding code example the following is happening:
 
 1. ..
 2. ..
 3. ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -55,8 +95,42 @@ The preceeding code example the following is happening:
         - Persistent - large
 
 
+
+#### Code example
+
+```
+var layoutOptions = {
+	type: 'full',
+	primarySidebar: {
+		type: 'persistent',
+		side: 'left',
+		theme: 'dark',
+		navItems: [
+			{ label: 'Home', icon: 'fa fa-home' }
+		]
+	},
+	secondarySidebar: {
+		side: 'bottom',
+		theme: 'dark',
+		actionItems: [
+			{ label: 'Edit', icon: 'fa fa-edit' }
+		]
+	},
+	primaryContent: {
+		title: 'Detail'
+	},
+	secondaryContent: {
+		title: 'List'
+	}
+
+};
+```
+
+
+
+
 ### 3 - Primary Navigation Options
-The primary navigation of the application will use the `px-table-view` element and it is up to the developer to choose the best `px-table-row` element to use. 
+The primary navigation of the application will use the `px-table-view` element and it is up to the developer to choose the best `px-table-row` element to use.
 
 
 #### a) Nested Navigation
@@ -112,7 +186,7 @@ Class Name | Min / Max Size (rem) | Min / Max Size (px)
 The following breakpoints are the so called standard.
 
 - Mobile portrait (320x480) (20em / 30em)
-- Mobile landscape (480x320) (30em / 20em) 
+- Mobile landscape (480x320) (30em / 20em)
 - Small tablet portrait (600x800) (37.500em / 50em)
 - Small tablet landscape (800x600)
 - Tablet portrait (768x1024) (48em / 64em)
@@ -127,4 +201,3 @@ The following breakpoints are the so called standard.
 
 ## Layouts
 The following responsive layouts are/should be used for px-* applications targeting cross devices.
-

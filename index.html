@@ -1,497 +1,544 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>Responsive Layouts</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Responsive Layouts</title>
 
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <script src="../webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-  <link rel="import" href="../px-partials/px-partials.html">
-  <link rel="import" href="../polymer/polymer.html">
-  <link rel="import" href="px-layout.html">
-  <link rel="stylesheet" href="demo/demo.css">
+    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+    <link rel="import" href="../px-partials/px-partials.html">
+    <link rel="import" href="../polymer/polymer.html">
+    <link rel="import" href="px-layout.html">
+    <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+    <link rel="stylesheet" href="demo/demo.css">
 
-  <!--
+    <!--
   <link rel="stylesheet" href="http://predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
 -->
 
-  <style media="screen"></style>
-</head>
+    <style media="screen">
 
-<body class="" unresolved>
-<article class="u-m">
-  <h2>Predix UI Responsive Layout Patterns</h2>
+      body,
+      html {
+        background: #eee;
+      }
+      .box {
+        background: #fff;
+      }
 
-  <div class="box u-mb++">
+      .debug-colors li {
+        display: flex;
+        flex-direction: column;
+      }
 
-    <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
+    </style>
+  </head>
 
-    <p>How to update your existing layout:</p>
-    <ol class="">
-      <li>Identify the layout pattern for your app</li>
-      <li>Use the px-layout component</li>
-      <li>Select the type you perfer</li>
-      <li>Replace old markup with new markup</li>
-    </ol>
-  </div>
+  <body class="" unresolved>
+    <article class="u-m">
+      <h2>Predix UI Responsive Layout Patterns</h2>
 
-  <div class="viewport">
-    <h3>PX Mobile Design Breakpoints</h3>
-    <ul class="list-bare flex flex--spaced text--center debug-colors">
-      <li>
-        <h4>xs</h4>
-        <i class="fa fa-4x fa-mobile color-xs"></i>
-        <code>.-xs-*</code>
-      </li>
-      <li>
-        <h4>sm</h4>
-        <i class="fa fa-4x fa-mobile fa-rotate-90 color-sm"></i>
-        <code>.-sm-*</code>
-      </li>
-      <li>
-        <h4>md</h4>
-        <i class="fa fa-4x fa-tablet color-md"></i>
-        <code>.-md-*</code>
-      </li>
-      <li>
-        <h4>lg</h4>
-        <i class="fa fa-4x fa-desktop color-lg"></i>
-        <code>.-lg-*</code>
-      </li>
-      <li>
-        <h4>xl</h4>
-        <i class="fa fa-4x fa-desktop color-xl"></i>
-        <code>.-xl-*</code>
-      </li>
-    </ul>
-    <h3>PX Library Design Breakpoints</h3>
-    <ul class="list-bare flex flex--spaced text--center debug-colors">
-      <li>
-        <h4>palm</h4>
-        <i class="fa fa-4x fa-mobile color-palm"></i>
-      </li>
-      <li>
-        <h4>portable</h4>
-        <i class="fa fa-4x fa-tablet color-portable"></i>
-      </li>
-      <li>
-        <h4>lap</h4>
-        <i class="fa fa-4x fa-tablet color-lap fa-rotate-90"></i>
-      </li>
-      <li>
-        <h4>lap-and-up</h4>
-        <i class="fa fa-4x fa-desktop color-lap-and-up"></i>
-      </li>
-      <li>
-        <h4>desk</h4>
-        <i class="fa fa-4x fa-desktop color-desk"></i>
-      </li>
-    </ul>
-  </div>
+      <div class="box u-mb++">
 
-  <div class="box u-mb">
-    <h2>Responsive Utilities</h2>
-    <table class=" table table--small table-bordered table-striped responsive-utilities">
-      <thead>
-      <tr>
-        <th></th>
-        <th>
-          Extra small devices
-          <small>Portrait phones (&lt;34em)</small>
-        </th>
-        <th>
-          Small devices
-          <small>Landscape phones (≥34em)</small>
-        </th>
-        <th>
-          Medium devices
-          <small>Tablets (≥48em)</small>
-        </th>
-        <th>
-          Large devices
-          <small>Desktops (≥62em)</small>
-        </th>
-        <th>
-          Extra large devices
-          <small>Desktops (≥75em)</small>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">
-          <code>.hidden-xs-down</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-sm-down</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-md-down</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-lg-down</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-xl-down</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-xs-up</code>
-        </th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-sm-up</code>
-        </th>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-md-up</code>
-        </th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-lg-up</code>
-        </th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.hidden-xl-up</code>
-        </th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      </tbody>
-    </table>
+        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
-  </div>
+        <p>How to update your existing layout:</p>
+        <ol class="">
+          <li>Identify the layout pattern for your app</li>
+          <li>Use the px-layout component</li>
+          <li>Select the type you perfer</li>
+          <li>Replace old markup with new markup</li>
+        </ol>
+      </div>
 
-  <h2>Tests</h2>
-  <div class="box flex flex--col">
-    <h3>Visibility</h3>
-    <ul class="flex flex--col flex--wrap flex--stretch responsive-utilities-test visible-on">
-      <li class="flex__item ">
-        <span class="hidden-sm-up visible">✔ Visible on extra small</span>
-        <span class="hidden-xs-down not-visible">Extra small</span>
-      </li>
-      <li class="flex__item ">
-        <span class="hidden-md-up visible">✔ Visible on small or narrower</span>
-        <span class="hidden-sm-down not-visible">Small or narrower</span>
-      </li>
-      <li class="flex__item ">
-        <span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
-        <span class="hidden-md-down not-visible">Medium or narrower</span>
-      </li>
-      <li class="flex__item ">
-        <span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
-        <span class="hidden-lg-down not-visible">Large or narrower</span>
-      </li>
+      <h2>PX Mobile Design Breakpoints</h2>
+      <div class="box u-m">
+        <template id="mobileBreakpoints" is="dom-bind">
+          <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
+            <template is="dom-repeat" items="{{newBreakpoints}}">
+              <li>
+                <h4>
+                  <code>{{item.name}}</code>
+                </h4>
+                <i class$="{{item.icon}}"></i>
+                <code>{{item.value}}</code>
+              </li>
+            </template>
+          </ul>
+        </template>
+        <script type="text/javascript">
+          var newBreakpoints = [
+            {
+              name: 'xs',
+              value: '< 360px',
+              icon: 'fa fa-mobile fa-4x color-xs'
+            }, {
+              name: 'sm',
+              value: '< 736px',
+              icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
+            }, {
+              name: 'md',
+              value: '< 1023px',
+              icon: 'fa fa-tablet fa-4x color-md'
+            }, {
+              name: 'lg',
+              value: '< 1200px',
+              icon: 'fa fa-desktop fa-4x color-lg'
+            }, {
+              name: 'xl',
+              value: '< 1280px',
+              icon: 'fa fa-desktop fa-4x color-xl'
+            }
+          ];
+          document.getElementById('mobileBreakpoints').newBreakpoints = newBreakpoints;
+        </script>
 
-      <li class="flex__item ">
-        <span class="hidden-xs-down visible">✔ Visible on small or wider</span>
-        <span class="hidden-sm-up not-visible">Small or wider</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
-        <span class="hidden-md-up not-visible">Medium or wider</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-md-down visible">✔ Visible on large or wider</span>
-        <span class="hidden-lg-up not-visible">Large or wider</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-lg-down visible">✔ Visible on extra large</span>
-        <span class="hidden-xl-up not-visible">Extra large</span>
-      </li>
-    </ul>
-    <h3>Viewport</h3>
-    <ul class="flex flex--col flex--wrap responsive-utilities-test visible-on">
-      <li class="flex__item">
-        <span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
-        <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
-        <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
-        <span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
-        <span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
-      </li>
-      <li class="flex__item">
-        <span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
-        <span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
-      </li>
-    </ul>
-  </div>
+        <button type="button" class="btn btn--full btn--large">Debug</button>
+      </div>
 
-  <h2>Layout Demos</h2>
-  <div class="box u-mb++">
-    <ul class=" list-bare flex--spaced ">
-      <li>
-        <a href="demo/index.html" target="_blank">responsive-utilities-test</a>
-      </li>
-      <li>
-        <a href="demo/template-detail.html" target="_blank">Detail Template</a>
-      </li>
-      <li>
-        <a href="demo/template-detail-asset.html" target="_blank">Detail Asset Template</a>
-      </li>
-      <li>
-        <a href="demo/template-detail-turbine.html" target="_blank">Detail Turbine Template</a>
-      </li>
-      <li>
-        <a href="demo/template-splitview.html" target="_blank">Split View Template</a>
-      </li>
-      <li>
-        <a href="demo/offcanvas.html" target="_blank">Off Canvas</a>
-      </li>
-      <li>
-        <a href="demo/splitview.html" target="_blank">Split View</a>
-      </li>
-      <li>
-        <a href="demo/progressive.html" target="_blank">Progressive</a>
-      </li>
-    </ul>
-  </div>
+      <h2>PX Library Design Breakpoints</h2>
+      <div class="box u-m">
+        <template id="pxBreakpoints" is="dom-bind">
+          <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
+            <template is="dom-repeat" items="{{oldBreakpoints}}">
+              <li>
+                <h4>
+                  <code>{{item.name}}</code>
+                </h4>
+                <i class$="{{item.icon}}"></i>
+                <code>{{item.value}}</code>
+              </li>
+            </template>
+          </ul>
+        </template>
+        <script type="text/javascript">
+          var oldBreakpoints = [
+            {
+              name: 'palm',
+              value: '719px',
+              icon: 'fa fa-mobile fa-4x color-palm'
+            }, {
+              name: 'portable',
+              value: '1022px',
+              icon: 'fa fa-mobile fa-4x fa-rotate-90 color-portable'
+            }, {
+              name: 'lap',
+              value: '720px >= 1022px',
+              icon: 'fa fa-tablet fa-4x color-lap'
+            }, {
+              name: 'lap-and-up',
+              value: '720px',
+              icon: 'fa fa-desktop fa-4x color-lap-and-up'
+            }, {
+              name: 'desk',
+              value: '1024px',
+              icon: 'fa fa-desktop fa-4x color-desk'
+            }
+          ];
+          document.getElementById('pxBreakpoints').oldBreakpoints = oldBreakpoints;
+        </script>
 
+        <button type="button" class="btn btn--full btn--large">Debug</button>
+      </div>
 
+      <h2>Responsive Utilities</h2>
+      <div class="box u-mb">
+        <table class=" table table--small table-bordered table-striped responsive-utilities">
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                Extra small
+                <small>Portrait phones (&lt;34em)</small>
+              </th>
+              <th>
+                Small
+                <small>Landscape phones (≥34em)</small>
+              </th>
+              <th>
+                Medium
+                <small>Tablets (≥48em)</small>
+              </th>
+              <th>
+                Large
+                <small>Desktops (≥62em)</small>
+              </th>
+              <th>
+                Extra large
+                <small>Desktops (≥75em)</small>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <code>.hidden-xs-down</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-sm-down</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-md-down</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-lg-down</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-visible">Visible</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-xl-down</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-xs-up</code>
+              </th>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-sm-up</code>
+              </th>
+              <td class="is-visible">Visible</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-md-up</code>
+              </th>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-lg-up</code>
+              </th>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-hidden">Hidden</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <code>.hidden-xl-up</code>
+              </th>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-visible">Visible</td>
+              <td class="is-hidden">Hidden</td>
+            </tr>
+          </tbody>
+        </table>
 
+      </div>
 
-  <h2>Media Query Helper</h2>
-  <div class="box u-mb++">
-    <template id="queryExample" is="dom-bind">
-      <px-media-query id="xs" query="(min-width: 320px) and (max-width: 480px)" query-matches="{{isXs}}" full="true"></px-media-query>
-      <px-media-query id="sm" query="(min-width: 460px)" query-matches="{{isSm}}" full="true"></px-media-query>
-      <px-media-query id="md" query="(min-width: 768px) and (max-width: 979px)" query-matches="{{isMd}}" full="true"></px-media-query>
-      <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}" full="true"></px-media-query>
-      <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
-      <template is="dom-if" if="{{isXs}">
-        <p>Query Matches xs</p>
-      </template>
-      <template is="dom-if" if="{{isSm}">
-        <p>Query Matches sm</p>
-      </template>
-      <template is="dom-if" if="{{isMd}">
-        <p>Query Matches md</p>
-      </template>
-      <template is="dom-if" if="{{isLg}">
-        <p>Query Matches lg</p>
-      </template>
-      <template is="dom-if" if="{{isXl}">
-        <p>Query Matches xl</p>
-      </template>
-    </template>
+      <h2>Responsive Tests</h2>
+      <div class="box flex flex--col">
+        <h3>Visibility</h3>
+        <ul class="flex flex--col flex--wrap flex--stretch responsive-utilities-test visible-on">
+          <li class="flex__item ">
+            <span class="hidden-sm-up visible">✔ Visible on extra small</span>
+            <span class="hidden-xs-down not-visible">Extra small</span>
+          </li>
+          <li class="flex__item ">
+            <span class="hidden-md-up visible">✔ Visible on small or narrower</span>
+            <span class="hidden-sm-down not-visible">Small or narrower</span>
+          </li>
+          <li class="flex__item ">
+            <span class="hidden-lg-up visible">✔ Visible on medium or narrower</span>
+            <span class="hidden-md-down not-visible">Medium or narrower</span>
+          </li>
+          <li class="flex__item ">
+            <span class="hidden-xl-up visible">✔ Visible on large or narrower</span>
+            <span class="hidden-lg-down not-visible">Large or narrower</span>
+          </li>
 
-  </div>
+          <li class="flex__item ">
+            <span class="hidden-xs-down visible">✔ Visible on small or wider</span>
+            <span class="hidden-sm-up not-visible">Small or wider</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-sm-down visible">✔ Visible on medium or wider</span>
+            <span class="hidden-md-up not-visible">Medium or wider</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-md-down visible">✔ Visible on large or wider</span>
+            <span class="hidden-lg-up not-visible">Large or wider</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-lg-down visible">✔ Visible on extra large</span>
+            <span class="hidden-xl-up not-visible">Extra large</span>
+          </li>
+        </ul>
+        <h3>Viewport</h3>
+        <ul class="flex flex--col flex--wrap responsive-utilities-test visible-on">
+          <li class="flex__item">
+            <span class="hidden-sm-up visible">✔ Your viewport is exactly extra small</span>
+            <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</span>
+            <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</span>
+            <span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</span>
+            <span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
+          </li>
+          <li class="flex__item">
+            <span class="hidden-lg-down visible">✔ Your viewport is exactly extra large</span>
+            <span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
+          </li>
+        </ul>
+      </div>
 
+      <h2>Layout Demos</h2>
+      <div class="box u-mb++">
+        <ul class=" list-bare flex--spaced ">
+          <li>
+            <a href="demo/index.html" target="_blank">responsive-utilities-test</a>
+          </li>
+          <li>
+            <a href="demo/template-detail.html" target="_blank">Detail Template</a>
+          </li>
+          <li>
+            <a href="demo/template-detail-asset.html" target="_blank">Detail Asset Template</a>
+          </li>
+          <li>
+            <a href="demo/template-detail-turbine.html" target="_blank">Detail Turbine Template</a>
+          </li>
+          <li>
+            <a href="demo/template-splitview.html" target="_blank">Split View Template</a>
+          </li>
+          <li>
+            <a href="demo/offcanvas.html" target="_blank">Off Canvas</a>
+          </li>
+          <li>
+            <a href="demo/splitview.html" target="_blank">Split View</a>
+          </li>
+          <li>
+            <a href="demo/progressive.html" target="_blank">Progressive</a>
+          </li>
+        </ul>
+      </div>
 
+      <h2>Media Query Helper</h2>
+      <div class="box u-mb++">
 
+        <px-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></px-media-query>
+        <template is="dom-if" if="{{queryMatches}">
+          <p>Query Matches queryMatches</p>
+        </template>
+        <px-media-query id="xs" query="(min-width: 320px)" query-matches="{{isXs}}"></px-media-query>
+        <px-media-query id="sm" query="(min-width: 480px)" query-matches="{{isSm}}" full="true"></px-media-query>
+        <px-media-query id="md" query="(min-width: 768px) and (max-width: 979px)" query-matches="{{isMd}}"></px-media-query>
+        <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}" full="true"></px-media-query>
+        <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
 
+        <template is="dom-if" if="{{isXs}">
+          <p>Query Matches xs</p>
+        </template>
+        <template is="dom-if" if="{{isSm}">
+          <p>Query Matches sm</p>
+        </template>
+        <template is="dom-if" if="{{isMd}">
+          <p>Query Matches md</p>
+        </template>
+        <template is="dom-if" if="{{isLg}">
+          <p>Query Matches lg</p>
+        </template>
+        <template is="dom-if" if="{{isXl}">
+          <p>Query Matches xl</p>
+        </template>
+        <template id="queryExample" is="dom-bind"></template>
 
-  <!-- TODO:  -->
-  <h2>Full Detail Layout
-    <code>l-full</code>
-  </h2>
-  <div class="u-mb++">
-    <p>
-      <a href="demo/template-detail.html" target="_blank">View full demo</a>
-    </p>
-    <demo-snippet>
-      <template>
-        <px-layout id="layout0" class="responsive-demo">
-          <px-header subtitle="Full Detail Layout"></px-header>
-          <div class="primary-content c1">
-            <px-navbar title="Primary Content">
-              <div class="navbar__right">
-                <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-                  <i class="fa fa-lg fa-ellipsis-v"></i>
-                </button>
+      </div>
+
+      <!-- TODO:
+      <h2>Full Detail Layout
+        <code>l-full</code>
+      </h2>
+      <div class="u-mb++">
+        <p>
+          <a href="demo/template-detail.html" target="_blank">View full demo</a>
+        </p>
+        <demo-snippet>
+          <template>
+            <px-layout id="layout0" class="responsive-demo">
+              <px-header subtitle="Full Detail Layout"></px-header>
+              <div class="primary-content has-navbar">
+                <px-navbar title="Primary Content">
+                  <div class="navbar__right">
+                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+                      <i class="fa fa-lg fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </px-navbar>
+                <section>
+                  <p>
+                    This is content.
+                  </p>
+                </section>
               </div>
-            </px-navbar>
-            <section>
-              <p>
-                This is content.
-              </p>
-            </section>
-          </div>
-          <px-footer copywrite="2016"></px-footer>
-        </px-layout>
-      </template>
-    </demo-snippet>
-  </div>
+              <px-footer copywrite="2016"></px-footer>
+            </px-layout>
+          </template>
+        </demo-snippet>
+      </div>
 
-  <h2>Off Canvas
-    <code>l-offcanvas</code>
-  </h2>
-  <div class="u-mb++">
-    <p>
-      <a href="demo/offcanvas.html" target="_blank">View Off Canvas demo</a>
-    </p>
-    <demo-snippet>
-      <template>
-        <px-layout id="layout1" class="responsive-demo">
-          <px-header subtitle="Off Canvas Layout"></px-header>
-          <div class="secondary-content c1">
-            <px-navbar title="Secondary Content">
-              <div class="navbar__left">
-                <button class="navbar__button " onclick="document.getElementById('layout1').toggle('primarySidebar')">
-                  <i class="fa fa-lg fa-bars"></i>
-                </button>
+      <h2>Off Canvas
+        <code>l-offcanvas</code>
+      </h2>
+      <div class="u-mb++">
+        <p>
+          <a href="demo/offcanvas.html" target="_blank">View Off Canvas demo</a>
+        </p>
+        <demo-snippet>
+          <template>
+            <px-layout id="layout1" class="responsive-demo">
+              <px-header subtitle="Off Canvas Layout"></px-header>
+              <div class="secondary-content c1">
+                <px-navbar title="Secondary Content">
+                  <div class="navbar__left">
+                    <button class="navbar__button " onclick="document.getElementById('layout1').toggle('primarySidebar')">
+                      <i class="fa fa-lg fa-bars"></i>
+                    </button>
+                  </div>
+                </px-navbar>
+                <section></section>
               </div>
-            </px-navbar>
-            <section></section>
-          </div>
-          <div class="primary-content c2">
-            <px-navbar title="Primary Content">
-              <div class="navbar__right">
-                <button class="navbar__button" onclick="document.getElementById('layout1').toggle('secondarySidebar')">
-                  <i class="fa fa-lg fa-ellipsis-v"></i>
-                </button>
-              </div></px-navbar>
-            <section></section>
-          </div>
-          <px-footer copywrite="2016"></px-footer>
-        </px-layout>
-      </template>
-    </demo-snippet>
-  </div>
-
-
-
-
-
-  <h2>Split View
-    <code>l-splitview</code>
-  </h2>
-  <section class=" u-mb++">
-    <p>
-      <a href="demo/splitview.html" target="_blank">View Split View demo</a>
-    </p>
-
-    <demo-snippet>
-      <template>
-
-        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
-          <px-header subtitle="Split View Layout" class="hidden-md-down "></px-header>
-          <div class="demo">
-            <div class="l-splitview">
-              <div class="l-splitview__secondary-content is-active c1">
-
-                <section>Secondary Content</section>
+              <div class="primary-content c2">
+                <px-navbar title="Primary Content">
+                  <div class="navbar__right">
+                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('secondarySidebar')">
+                      <i class="fa fa-lg fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </px-navbar>
+                <section></section>
               </div>
-              <div class="l-splitview__primary-content is-passive c2">
-                <section>Primary Content</section>
+              <px-footer copywrite="2016"></px-footer>
+            </px-layout>
+          </template>
+        </demo-snippet>
+      </div>
+
+      <h2>Split View
+        <code>l-splitview</code>
+      </h2>
+      <section class=" u-mb++">
+        <p>
+          <a href="demo/splitview.html" target="_blank">View Split View demo</a>
+        </p>
+
+        <demo-snippet>
+          <template>
+
+            <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
+              <px-header subtitle="Split View Layout" class="hidden-md-down "></px-header>
+              <div class="demo">
+                <div class="l-splitview">
+                  <div class="l-splitview__secondary-content is-active c1">
+
+                    <section>Secondary Content</section>
+                  </div>
+                  <div class="l-splitview__primary-content is-passive c2">
+                    <section>Primary Content</section>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </template>
-    </demo-snippet>
+          </template>
+        </demo-snippet>
 
-  </section>
+      </section>
 
-  <h2>Progressive
-    <code>l-progressive</code>
-  </h2>
-  <section class="box  u-mb++">
-    <p>
-      <a href="demo/progressive.html" target="_blank">View progressive demo</a>
-    </p>
-    <demo-snippet>
-      <template>
-        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
-          <div class="demo">
-            <px-header subtitle="Progressive Layout" class="hidden-md-down "></px-header>
-            <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
-            <div class="l-progressive">
-              <div class="l-progressive__primary-sidebar is-active c1">
-                Primary Sidebar
-              </div>
-              <div class="l-progressive__secondary-content is-active c2" onclick="toggleContent('.l-progressive')">
-                Secondary Content
-              </div>
-              <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
-                Primary Content
-              </div>
-              <div class="l-progressive__secondary-sidebar c2">
-                Secondary Sidebar
+      <h2>Progressive
+        <code>l-progressive</code>
+      </h2>
+      <section class="box  u-mb++">
+        <p>
+          <a href="demo/progressive.html" target="_blank">View progressive demo</a>
+        </p>
+        <demo-snippet>
+          <template>
+            <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
+              <div class="demo">
+                <px-header subtitle="Progressive Layout" class="hidden-md-down "></px-header>
+                <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
+                <div class="l-progressive">
+                  <div class="l-progressive__primary-sidebar is-active c1">
+                    Primary Sidebar
+                  </div>
+                  <div class="l-progressive__secondary-content is-active c2" onclick="toggleContent('.l-progressive')">
+                    Secondary Content
+                  </div>
+                  <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
+                    Primary Content
+                  </div>
+                  <div class="l-progressive__secondary-sidebar c2">
+                    Secondary Sidebar
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </template>
-    </demo-snippet>
+          </template>
+        </demo-snippet>
 
-  </section>
-
-  <!--
+      </section>
+-->
+      <!--
 <h2>Content Sidebar <code>l-cs</code></h2>
 <div class="box u-mb++">
   <div class="demo">
@@ -526,250 +573,243 @@
 </div>
 -->
 
-  <div class="viewport">
-    <div class="page-header">
-      <h1>Flexbox
-        <code>.flex</code>
-      </h1>
-    </div>
-    <p></p>
-    <div class="page-header">
-      <h2>Flex - Row</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Row" class="flex flex--row">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2</div>
-            <div class="flex__item c1">3</div>
-          </div>
+      <div class="">
+        <div class="page-header">
+          <h1 class="beta">Flexbox
+            <code>.flex</code>
+          </h1>
         </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Row - Reverse</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Row - Reverse" class="flex flex--row flex--row--rev">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2</div>
-            <div class="flex__item c1">3</div>
-          </div>
+        <p></p>
+        <div class="page-header">
+          <h2>Flex - Row</h2>
         </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Row - Wrap</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Row - Wrap" class="flex flex--row flex--wrap">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2</div>
-            <div class="flex__item c1">3</div>
-            <div class="flex__item c1">4</div>
-            <div class="flex__item c1">5</div>
-            <div class="flex__item c1">6</div>
-          </div>
-        </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Row - No Wrap</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Row - No Wrap" class="flex flex--row flex--nowrap">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2</div>
-            <div class="flex__item c1">3</div>
-            <div class="flex__item c1">4</div>
-            <div class="flex__item c1">5</div>
-            <div class="flex__item c1">6</div>
-          </div>
-        </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Top Align</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Top Align" class="flex flex--top">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
-              Vitae dignissimos officia temporibus?
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Row" class="flex flex--row">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2</div>
+                <div class="flex__item c1">3</div>
+              </div>
             </div>
-            <div class="flex__item c1">3</div>
-          </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Row - Reverse</h2>
         </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Middle Align</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Middle Align" class="flex flex--middle">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
-              Vitae dignissimos officia temporibus?
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Row - Reverse" class="flex flex--row flex--row--rev">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2</div>
+                <div class="flex__item c1">3</div>
+              </div>
             </div>
-            <div class="flex__item c1">3</div>
-          </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Row - Wrap</h2>
         </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Bottom Align</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Bottom Align" class="flex flex--bottom">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
-              Vitae dignissimos officia temporibus?
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Row - Wrap" class="flex flex--row flex--wrap">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2</div>
+                <div class="flex__item c1">3</div>
+                <div class="flex__item c1">4</div>
+                <div class="flex__item c1">5</div>
+                <div class="flex__item c1">6</div>
+              </div>
             </div>
-            <div class="flex__item c1">3</div>
-          </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Row - No Wrap</h2>
         </div>
-      </template>
-    </demo-snippet>
-    <div class="page-header">
-      <h2>Flex - Stretch</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div id="Flex - Stretch" class="flex flex--stretch">
-            <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
-              Vitae dignissimos officia temporibus?
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Row - No Wrap" class="flex flex--row flex--nowrap">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2</div>
+                <div class="flex__item c1">3</div>
+                <div class="flex__item c1">4</div>
+                <div class="flex__item c1">5</div>
+                <div class="flex__item c1">6</div>
+              </div>
             </div>
-            <div class="flex__item c1">3</div>
-          </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Top Align</h2>
         </div>
-      </template>
-    </demo-snippet>
-
-    <div class="page-header">
-      <h2>Flex - Spaced</h2>
-    </div>
-    <demo-snippet>
-      <template>
-        <div class="viewport responsive-demo">
-          <div class="flex flex--spaced">
-            <div class="flex__item c1 w-100">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit.
-              Vitae dignissimos officia temporibus?
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Top Align" class="flex flex--top">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+                </div>
+                <div class="flex__item c1">3</div>
+              </div>
             </div>
-            <div class="flex__item--top c1">3 - flex__item--top</div>
-            <div class="flex__item--middle c1">4 - flex__item--middle</div>
-            <div class="flex__item--bottom c1">5 - flex__item--bottom</div>
-            <div class="flex__item--baseline c1">6 - flex__item--baseline</div>
-          </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Middle Align</h2>
         </div>
-      </template>
-    </demo-snippet>
-
-    <div class="page-header">
-      <h2>Flex - Row - Buttons</h2>
-    </div>
-
-    <demo-snippet>
-      <template>
-        <div class="flex flex--row">
-          <div class="btn btn--full">Button 1</div>
-          <div class="btn btn--full">Button 2</div>
-          <div class="btn btn--full">Button 3</div>
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Middle Align" class="flex flex--middle">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+                </div>
+                <div class="flex__item c1">3</div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Bottom Align</h2>
         </div>
-      </template>
-    </demo-snippet>
-
-  </div>
-
-  <h2>Unit Sizing
-    <code>u-*/*</code>
-  </h2>
-  <div class="box u-mb++ ">
-    <demo-snippet>
-      <template>
-        <div id="demo-unit-sizing" class="viewport responsive-demo">
-
-          <div class="u-1/3 u-1/1-palm c1">u-1/3</div>
-          <div class="u-1/2 c1">u-1/2</div>
-          <div class="u-2/3 c1">u-2/3</div>
-          <div class="u-1/1 c1">u-1/1</div>
-
-          <div class="u-1/4 c1">u-1/4</div>
-          <div class="u-2/4 c1">u-2/4</div>
-          <div class="u-3/4 c1">u-3/4</div>
-
-          <div class="u-1/6 c1">u-1/6</div>
-          <div class="u-2/6 c1">u-2/6</div>
-          <div class="u-3/6 c1">u-3/6</div>
-          <div class="u-4/6 c1">u-4/6</div>
-          <div class="u-5/6 c1">u-5/6</div>
-
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Bottom Align" class="flex flex--bottom">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+                </div>
+                <div class="flex__item c1">3</div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
+        <div class="page-header">
+          <h2>Flex - Stretch</h2>
         </div>
-      </template>
-    </demo-snippet>
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div id="Flex - Stretch" class="flex flex--stretch">
+                <div class="flex__item c1">1</div>
+                <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+                </div>
+                <div class="flex__item c1">3</div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
 
-  </div>
-
-  <h2>Auto Layout
-    <code>layout</code>
-  </h2>
-  <div class="box u-mb++ ">
-    <demo-snippet>
-      <template>
-
-        <div class="viewport responsive-demo">
-          <div class="layout ">
-            <div class="layout__item  c2">u-1/2</div>
-            <div class="layout__item c3">u-1/2</div>
-          </div>
-          <div class="layout">
-            <div class="layout__item u-1/1 c1">u-1/1</div>
-          </div>
-          <div class="layout">
-            <div class="layout__item u-1/2 c2">u-1/2</div>
-            <div class="layout__item u-1/2 c3">u-1/2</div>
-          </div>
-          <div class="layout">
-            <div class="layout__item u-1/3 c1">u-1/3</div>
-            <div class="layout__item u-1/3 c2">u-1/3</div>
-            <div class="layout__item u-1/3 c1">u-1/3</div>
-          </div>
-          <div class="layout">
-            <div class="layout__item u-1/4 c1">u-1/4</div>
-            <div class="layout__item u-1/4 c2">u-1/4</div>
-            <div class="layout__item u-1/4 c1">u-1/4</div>
-            <div class="layout__item u-1/4 c2">u-1/4</div>
-          </div>
-          <div class="layout">
-            <div class="layout__item u-1/6 c1">u-1/6</div>
-            <div class="layout__item u-1/6 c2">u-1/6</div>
-            <div class="layout__item u-1/6 c1">u-1/6</div>
-            <div class="layout__item u-1/6 c2">u-1/6</div>
-            <div class="layout__item u-1/6 c1">u-1/6</div>
-            <div class="layout__item u-1/6 c2">u-1/6</div>
-          </div>
+        <div class="page-header">
+          <h2>Flex - Spaced</h2>
         </div>
-      </template>
-    </demo-snippet>
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div class="flex flex--spaced">
+                <div class="flex__item c1 w-100">1</div>
+                <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+                </div>
+                <div class="flex__item--top c1">3 - flex__item--top</div>
+                <div class="flex__item--middle c1">4 - flex__item--middle</div>
+                <div class="flex__item--bottom c1">5 - flex__item--bottom</div>
+                <div class="flex__item--baseline c1">6 - flex__item--baseline</div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
 
-  </div>
+        <div class="page-header">
+          <h2>Flex - Row - Buttons</h2>
+        </div>
 
-</article>
+        <demo-snippet>
+          <template>
+            <div class="flex flex--row">
+              <div class="btn btn--full">Button 1</div>
+              <div class="btn btn--full">Button 2</div>
+              <div class="btn btn--full">Button 3</div>
+            </div>
+          </template>
+        </demo-snippet>
 
-</body>
+      </div>
+
+      <h2>Unit Sizing
+        <code>u-*/*</code>
+      </h2>
+      <div class="box u-mb++ ">
+        <demo-snippet>
+          <template>
+            <div id="demo-unit-sizing" class="viewport responsive-demo">
+
+              <div class="u-1/3 u-1/1-palm c1">u-1/3</div>
+              <div class="u-1/2 c1">u-1/2</div>
+              <div class="u-2/3 c1">u-2/3</div>
+              <div class="u-1/1 c1">u-1/1</div>
+
+              <div class="u-1/4 c1">u-1/4</div>
+              <div class="u-2/4 c1">u-2/4</div>
+              <div class="u-3/4 c1">u-3/4</div>
+
+              <div class="u-1/6 c1">u-1/6</div>
+              <div class="u-2/6 c1">u-2/6</div>
+              <div class="u-3/6 c1">u-3/6</div>
+              <div class="u-4/6 c1">u-4/6</div>
+              <div class="u-5/6 c1">u-5/6</div>
+
+            </div>
+          </template>
+        </demo-snippet>
+
+      </div>
+
+      <h2>Auto Layout
+        <code>layout</code>
+      </h2>
+      <div class="box u-mb++ ">
+        <demo-snippet>
+          <template>
+            <div class="viewport responsive-demo">
+              <div class="layout ">
+                <div class="layout__item  c2">u-1/2</div>
+                <div class="layout__item c3">u-1/2</div>
+              </div>
+              <div class="layout">
+                <div class="layout__item u-1/1 c1">u-1/1</div>
+              </div>
+              <div class="layout">
+                <div class="layout__item u-1/2 c2">u-1/2</div>
+                <div class="layout__item u-1/2 c3">u-1/2</div>
+              </div>
+              <div class="layout">
+                <div class="layout__item u-1/3 c1">u-1/3</div>
+                <div class="layout__item u-1/3 c2">u-1/3</div>
+                <div class="layout__item u-1/3 c1">u-1/3</div>
+              </div>
+              <div class="layout">
+                <div class="layout__item u-1/4 c1">u-1/4</div>
+                <div class="layout__item u-1/4 c2">u-1/4</div>
+                <div class="layout__item u-1/4 c1">u-1/4</div>
+                <div class="layout__item u-1/4 c2">u-1/4</div>
+              </div>
+              <div class="layout">
+                <div class="layout__item u-1/6 c1">u-1/6</div>
+                <div class="layout__item u-1/6 c2">u-1/6</div>
+                <div class="layout__item u-1/6 c1">u-1/6</div>
+                <div class="layout__item u-1/6 c2">u-1/6</div>
+                <div class="layout__item u-1/6 c1">u-1/6</div>
+                <div class="layout__item u-1/6 c2">u-1/6</div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
+      </div>
+
+    </article>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
 </html>

@@ -29,6 +29,8 @@ Code Here
 @homepage index.html
 -->
 <dom-module id="px-layout">
+
+  <link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
   <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
   <template strip-whitespace>
     <style>
@@ -47,7 +49,7 @@ Code Here
         height: 100%;
       }
 
-      :host .scrollable{
+      :host .scrollable, :host ::content .scrollable{
         max-height: 100vh;
         height: 100%;
 
@@ -55,9 +57,21 @@ Code Here
         -webkit-overflow-scrolling: touch;
       }
 
+      :host .is-active{
+        display: block;
+      }
+      :host .is-passive{
+        display: none;
+      }
+
 
       :host .viewport{
+          overflow: hidden;
         position: relative;
+      }
+
+      :host .l-primary-sidebar{
+        float: left;
       }
 
       :host .l-primary-content,
@@ -65,43 +79,42 @@ Code Here
         position: relative;
       }
 
-
-
-
     </style>
-    <div id="main" class="flex flex--col">
-
-      <!-- primary-sidebar -->
-      <div class="l-primary-sidebar">
-        <px-drawer id="primarySidebar" side="left" theme="dark">
-          <content id="primarySidebarContent" select=".primary-sidebar"></content>
-        </px-drawer>
-      </div>
-
+    <div id="_layoutMain" class="flex flex--col">
 
         <!-- header -->
-        <div id="header" class="viewport l-header hidden-md-down">
+        <div id="_layoutHeader" class="viewport l-header hidden-md-down">
           <content id="headerContent" select="px-header"></content>
         </div>
 
 
-        <div id="viewport" class="viewport viewport--full-height">
 
-          <div class="layout layout--flush layout--full scrollable">
+
+        <div id="_layoutViewport" class="viewport viewport--full-height">
+          <!-- primary-sidebar -->
+          <div class="l-primary-sidebar">
+            <px-drawer id="primarySidebar"
+              type$="{{options.primarySidebar.type}}"
+              side$="{{options.primarySidebar.side}}"
+              theme$="{{options.primarySidebar.theme}}">
+              <content id="primarySidebarContent" select=".primary-sidebar"></content>
+            </px-drawer>
+          </div>
+          <div class="flex flex--row">
 
             <!-- Secondary Content -->
-            <div class="l-secondary-content layout__item">
+            <div class="l-secondary-content flex__item flex--col is-passive">
               <content id="secondaryContent" select=".secondary-content"></content>
             </div>
 
             <!-- Primary Content -->
-            <div class="l-primary-content layout__item">
+            <div class="l-primary-content flex__item flex--col is-active">
               <content id="primaryContent" select=".primary-content"></content>
             </div>
 
             <!-- Any Content Views / Pages -->
-            <div class="l-content layout__item">
-              <content id="content" select=".content"></content>
+            <div class="l-content">
+              <content id="contentContent" select=".content"></content>
             </div>
 
           </div>
@@ -130,6 +143,18 @@ Code Here
           type: String,
           value: 'full'
         },
+        navItems: {
+          type: Array
+        },
+        options: {
+          type: Object,
+          observer: '_handleOptions',
+          value: {
+            primarySidebar:{
+              theme: 'dark'
+            }
+          }
+        },
         breakpoints: {
           type: Object,
           value: {
@@ -142,10 +167,15 @@ Code Here
         }
       },
       attached: function() {
-        this.toggleClass('l-container', true, this.$.viewport);
-        this.toggleClass('l-container--' + this.type, true, this.$.viewport);
+        this.toggleClass('l-container', true, this.$._layoutViewport);
+        this.toggleClass('l-container--' + this.type, true, this.$._layoutViewport);
+
+        var hasNavbar = this.$$('.navbar');
+        if(hasNavbar){
+        }
+        console.log(this.tagName, this.options);
       },
-      toggle: function(name) {
+      toggle: function(name, options) {
         var el = this.$[name];
         if(el.toggle){
           el.toggle();
@@ -156,6 +186,25 @@ Code Here
         //toggle primary / secondary content is-active / is-passive
         console.log("toggle content");
 
+      },
+      _setElementOptions: function(options){
+        var self = this;
+        var key, value, o, el;
+
+        // TODO: Beter way to set options on component;
+        if(options){
+          for(var k in options){
+            console.log("find element", k, 'set =>', options[k]);
+            el = self.$[k];
+            value = options[k];
+            //el[k] = value;
+            console.log('setting', k,  options[k], value);
+          }
+        }
+      },
+      _handleOptions: function(newVal, oldVal){
+        this._setElementOptions(this.options);
+        console.log(this.tagName, 'options', newVal);
       }
 
     });

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>template-detail-sidebar</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="stylesheet" href="demo.css">
+
+    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <style media="screen">
+    px-card.box {
+      flex: 1 0 300px;
+    }
+    </style>
+  </head>
+
+  <body unresolved class="-responsive-demo">
+    <template id="app" is="dom-bind">
+      <px-layout id="layout" type="full">
+        <px-header title="Full Layout Template" subtitle="Details with Sidebar"></px-header>
+
+
+        <aside class="primary-sidebar">
+          <div class="table-view table-view--flush table-view--bare">
+            <template is="dom-repeat" items="{{navItems}}">
+              <px-table-row
+                type="tappable"
+                icon="{{item.icon}}"
+                title="{{item.label}}"></px-table-row>
+            </template>
+          </div>
+        </aside>
+
+        <div class="primary-content has-navbar">
+          <px-navbar title="Cards" shadow>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('layout').toggle('primarySidebar');">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <section id="content" class="scrollable flex flex--wrap flex--spaced">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card class="box u-m-"
+                icon="{{item.icon}}"
+                header-text="{{item.title}}">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+
+          </section>
+        </div>
+        <px-footer></px-footer>
+      </px-layout>
+    </template>
+    <script type="text/javascript">
+    var subCategories = [{
+			label: 'Sub Category 1'
+		}, {
+			label: 'Sub Category 2'
+		}, {
+			label: 'Sub Category 3'
+		}, {
+			label: 'Sub Category 4'
+		}, {
+			label: 'Sub Category 5'
+		}];
+		var navItems = [{
+			label: 'Alerts',
+			icon: 'fa fa-exclamation-triangle',
+			path: '#alers',
+			subitems: subCategories
+		}, {
+			label: 'Cases',
+			icon: 'fa fa-briefcase',
+			path: '#cases',
+			subitems: subCategories
+		}, {
+			label: 'Analysis',
+			icon: 'fa fa-bar-chart',
+			path: '#analysis',
+			subitems: subCategories
+		}, {
+			label: 'Dashboards',
+			icon: 'fa fa-dashboard',
+			path: '#dashboards',
+			subitems: subCategories
+		}];
+    var app;
+      document.addEventListener('WebComponentsReady', function(){
+        app = document.getElementById('app');
+        app.navItems = navItems;
+
+        /* Create the unit divs for the demo */
+        var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        var content = document.getElementById('content');
+        var child;
+        var div;
+        var units = 25;
+        var i = 0;
+        var cards = [];
+        for(; i <= units; i++){
+          child = document.createElement('px-card');
+          //child.innerHTML = lorem;
+          child.className = 'box';
+          child.innerHTML = lorem;
+          //content.appendChild(child);
+          cards.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+
+          console.log('Adding card', i);
+        }
+        app.cards = cards;
+      });
+    </script>
+    <script src="https://localhost:35724/livereload.js?snipver=1">  </script>
+  </body>
+
+</html>

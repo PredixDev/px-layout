@@ -1,13 +1,3 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
@@ -18,7 +8,6 @@ Example:
     <px-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></px-media-query>
 
 @demo demo/index.html
-@hero hero.svg
 @element px-media-query
 -->
 
@@ -54,7 +43,7 @@ Example:
        * @type {function(MediaQueryList)}
        */
       _boundMQHandler: {
-        value: function() {
+        value: function () {
           return this.queryHandler.bind(this);
         }
       },
@@ -65,43 +54,45 @@ Example:
         value: null
       }
     },
-    attached: function() {
+    attached: function () {
       console.log(this.tagName, 'attached');
       this.style.display = 'none';
       this.queryChanged();
     },
-    detached: function() {
+    detached: function () {
       console.log(this.tagName, 'detached');
       this._remove();
     },
-    _add: function() {
+    _add: function () {
       if (this._mq) {
         this._mq.addListener(this._boundMQHandler);
       }
     },
-    _remove: function() {
+    _remove: function () {
       if (this._mq) {
         this._mq.removeListener(this._boundMQHandler);
       }
       this._mq = null;
     },
-    queryChanged: function() {
+    queryChanged: function () {
       this._remove();
       var query = this.query;
+      console.log('queryChanged', query);
       if (!query) {
         return;
       }
       if (!this.full && query[0] !== '(') {
         query = '(' + query + ')';
       }
-      console.log('queryChanged', query);
       this._mq = window.matchMedia(query);
       this._add();
       this.queryHandler(this._mq);
     },
-    queryHandler: function(mq) {
-      console.log('queryHandler', mq);
+    queryHandler: function (mq) {
+      console.log('queryHandler', mq.media, 'matches', mq.matches);
+      this.fire('media-query-change', mq);
       this._setQueryMatches(mq.matches);
+
     }
   });
 </script>

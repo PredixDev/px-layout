@@ -11,28 +11,16 @@
 
     <!-- TODO: Layout -->
     <link rel="import" href="../px-layout.html">
-    <link rel="import" href="../../px-design-system/px-design-system-theme.html">
 
-    <link rel="import" href="../../px-drawer/px-drawer.html">
-    <link rel="import" href="../../px-alert-label/px-alert-label.html">
+     <link rel="import" href="../../px-alert-label/px-alert-label.html">
 
     <link rel="import" href="../../px-page/px-page.html">
     <link rel="import" href="../../px-page/px-pages.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <link rel="import" href="../../px-card/px-card.html">
-    <link rel="import" href="../../px-navbar/px-navbar.html">
-    <link rel="import" href="../../px-partials/px-partials.html">
+
     <link rel="import" href="../../px-simple-line-chart/px-simple-line-chart.html">
     <style media="screen">
-      body,
-      html {
-        overflow: hidden !important;
-      }
-
-      .has-navbar {
-        padding-top: 56px;
-        position: relative;
-      }
 
       #sidenav {
         background: #fff;
@@ -49,11 +37,6 @@
         border-radius: 0;
       }
 
-      .app {
-
-        height: 100%;
-        overflow: auto;
-      }
       .u-color--white {
         color: #fff;
       }
@@ -69,7 +52,7 @@
       <px-layout class="app">
         <px-header title="Details" subtitle="Layout Template"></px-header>
         <px-drawer id="sidenav" side="left"></px-drawer>
-        <div class="content has-navbar u-bg--gray8">
+        <div class="primary-content has-navbar u-bg--gray8">
           <px-navbar title="Gas Turbine Detail" shadow>
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
@@ -77,7 +60,7 @@
               </button>
             </div>
           </px-navbar>
-          <section class="viewport">
+          <section class="">
             <!-- TODO: Header -->
             <header class="u-m--  u-p- u-color--white">
               <div class="flex">
@@ -118,22 +101,7 @@
                    ]"
                   threshold="1.234567"></px-simple-line-chart>
               </px-card>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>&nbsp;</p>
+            
             </div>
           </section>
         </div>

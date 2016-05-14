@@ -1,124 +1,113 @@
 <html>
-
   <head>
     <title>px-responsive-layouts demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="../webcomponentsjs/webcomponents.min.js"></script>
-    <script>
-    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-    ':35724/livereload.js?snipver=1"></' + 'script>')
-  </script>
+    <link rel='stylesheet prefetch' href='https://predixdev.github.io/px-library-design/css/style.css'>
 
-    <link rel="stylesheet" href="css/px-responsive-layouts.css">
+    <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+    <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
     <link rel="import" href="../px-design-system/px-design-system-theme.html">
-    <link rel="import" href="../px-navbar/px-navbar.html">
-    <link rel="import" href="../px-example/px-example.html">
+    <link rel="import" href="../px-card/px-card.html">
+    <link rel="import" href="../px-table-view/px-table-view.html">
+    <link rel="import" href="../px-action-sheet/px-action-sheet.html">
+
     <link rel="import" href="px-layout.html">
 
-    <style media="screen">
-    body {
-      padding: 15px;
-      background: #eee;
-    }
-
-    .box {
-      background: #fff;
-    }
-
-    </style>
-    <style id="jsbin-css">
-    body {
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    </style>
+    <link rel="stylesheet" href="demo/demo.css">
+    <style media="screen"></style>
   </head>
-
   <body>
-    <div class="box box--small u-mb++">
-      <h2>Split View Layout</h2>
-      <px-example>
-        <px-layout id="layout1" type="splitview">
 
+
+
+        <px-layout id="layout0">
+          <px-header title="px-layout demo"></px-header>
+          <div class="primary-sidebar">
+            <p>
+              THis is the sidebar
+            </p>
+          </div>
+          <section class="primary-content has-navbar">
+            <px-navbar title="Primary Content">
+              <div class="navbar__right">
+                <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar')">
+                  <i class="fa fa-lg fa-navicon"></i>
+                </button>
+              </div>
+              <div class="navbar__right">
+                <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
+                  <i class="fa fa-lg fa-ellipsis-v"></i>
+                </button>
+              </div>
+            </px-navbar>
+            <section>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </section>
+            <px-action-sheet id="actionsheet1" grid>
+              <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 7" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 8" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 9" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 10" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 11" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 12" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            </px-action-sheet>
+          </section>
+          <px-footer copywrite="2016 &copy;"></px-footer>
         </px-layout>
-        <div class="splitview-container">
-          <div class="container--left">
-            <header>
-              <px-navbar title="Sidebar"></px-navbar>
-            </header>
-            <div class="container--content">
-              <h3>Post title</h3>
-              <p>Donec id elit non mi porta gravida at eget metus. </p>
-            </div>
-          </div>
-          <div id="map_canvas" class="container--right">
-            <header>
-              <px-navbar title="Content"></px-navbar>
-            </header>
-          </div>
-        </div>
-      </px-example>
-    </div>
 
-    <div class="box box--small u-mb++">
-      <h2>Progressive Layout</h2>
-      <px-example>
+        <script type="text/javascript">
+          var layoutOptions = {
+            type: 'full',
+            primarySidebar: {
+              //  type: 'persistent',
+              side: 'left',
+              theme: 'dark',
+              navItems: [
+                {
+                  label: 'Home',
+                  icon: 'fa fa-home'
+                }
+              ]
+            },
+            secondarySidebar: {
+              side: 'bottom',
+              theme: 'dark',
+              actionItems: [
+                {
+                  label: 'Edit',
+                  icon: 'fa fa-edit'
+                }
+              ]
+            },
+            primaryContent: {
+              title: 'Detail'
+            },
+            secondaryContent: {
+              title: 'List'
+            }
 
-        <div class="l-container--progressive">
-          <div>
-            <px-navbar title="Side nav"></px-navbar>
-          </div>
-          <div class="active">
-            <px-pages id="secondary">
-              <px-page id="secondaryPage1" title="Secondary">
-                <px-navbar></px-navbar>
-              </px-page>
-            </px-pages>
-          </div>
-          <div>
-            <px-navbar title="Primary"></px-navbar>
+          };
+          document.addEventListener('WebComponentsReady', function () {
+            var layout = document.getElementById('layout0');
 
-          </div>
-          <div>
-            <px-navbar title="Right nav"></px-navbar>
-          </div>
-        </div>
-      </px-example>
+            layout.options = layoutOptions;
+          })
+        </script>
 
-
-
-      <div class="box box--small u-mb++">
-        <h2>px-layout Component</h2>
-        <px-example>
-          <px-layout id="layout1" type="progressive">
-
-            <div>
-              <px-navbar title="Side nav"></px-navbar>
-            </div>
-            <div class="active">
-              <px-navbar title="Secondary">
-                <button class="btn navbar__button visible-mobile"><i class="fa fa-bars"></i></button>
-              </px-navbar>
-              <button class="btn navbar__button ">Goto Main</button>
-            </div>
-            <div class="passive">
-              <px-navbar title="Primary">
-                <button class="btn navbar__button visible-"><i class="fa fa-chevron-left"></i> Back</button>
-              </px-navbar>
-            </div>
-            <div>
-              <px-navbar title="Right nav"></px-navbar>
-            </div>
-
-          </px-layout>
-        </px-example>
-
-
-
-      </div>
+     
   </body>
-
 </html>

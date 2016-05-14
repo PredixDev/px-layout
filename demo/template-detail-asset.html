@@ -11,18 +11,14 @@
 
     <!-- TODO: Layout -->
     <link rel="import" href="../px-layout.html">
-    <link rel="import" href="../../px-design-system/px-design-system-theme.html">
 
-    <link rel="import" href="../../px-drawer/px-drawer.html">
     <link rel="import" href="../../px-alert-label/px-alert-label.html">
 
     <link rel="import" href="../../px-page/px-page.html">
     <link rel="import" href="../../px-page/px-pages.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <link rel="import" href="../../px-card/px-card.html">
-    <link rel="import" href="../../px-navbar/px-navbar.html">
-    <link rel="import" href="../../px-partials/px-header.html">
-    <link rel="import" href="../../px-partials/px-partials.html">
+ 
     <link rel="import" href="../../px-simple-line-chart/px-simple-line-chart.html">
     <style media="screen">
       body,
@@ -68,7 +64,7 @@
       <px-layout class="app">
         <px-header title="Asset Details" subtitle="Layout Template"></px-header>
         <px-drawer id="sidenav" side="left"></px-drawer>
-        <div class="content has-navbar  u-bg--gray8">
+        <div class="primary-content has-navbar  u-bg--gray8">
           <px-navbar title="{{asset.title}}" shadow back="true" back-label="GT123456">
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
@@ -76,7 +72,7 @@
               </button>
             </div>
           </px-navbar>
-          <section class="viewport asset-details">
+          <section class=" asset-details">
             <!-- TODO: Header -->
             <header class="u-m-- u-p- flex flex--col u-color--white">
               <div class="flex__item">
