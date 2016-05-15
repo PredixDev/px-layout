@@ -6,14 +6,18 @@
     <title>template-detail</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel='stylesheet' href='https://predixdev.github.io/px-library-design/css/style.css'>
+
+    <!--
+<link rel='stylesheet' href='https://predixdev.github.io/px-library-design/css/style.css'>
+    -->
     <script src="../../webcomponentsjs/webcomponents.js"></script>
-    <link rel="stylesheet" href="demo.css">
+
 
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
 
+  <link rel="stylesheet" href="demo.css">
   </head>
 
   <body unresolved class="responsive-demo">
@@ -27,15 +31,18 @@
         </px-drawer>
 
         <div class="content has-navbar">
-          <px-navbar title="View" subtitle="Context" shadow>
+          <px-navbar title="Detail View" subtitle="" shadow>
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('template-detail').toggle('primarySidebar');">
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
-            <div class="navbar__right">
+            <div class="navbar__right flex">
               <button class="navbar__button" onclick="document.getElementById('template-detail').toggle('secondarySidebar');">
-                <i class="fa fa-lg fa-ellipsis-h"></i>
+                <i class="fa fa-lg fa-search"></i>
+              </button>
+              <button class="navbar__button" onclick="document.getElementById('template-detail').toggle('secondarySidebar');">
+                <i class="fa fa-lg fa-ellipsis-v"></i>
               </button>
 
             </div>
@@ -43,39 +50,50 @@
           <section class="scrollable">
             <div id="content" class="box u-p">
 
-
-              <px-box title="Section 1">
-                <div class="table-view table-view--tiny table-view--responsive table-view--responsive">
+              <!-- TODO: Section -->
+              <px-box-section title="Resposive Table">
+                <div class="table-view table-view--bare table-view--responsive">
                   <px-table-row title="13742" label2="Case ID" type="tappable"></px-table-row>
                   <px-table-row title="None" label2="External ID" type="tappable"></px-table-row>
                   <px-table-row title="John Doe" label2="Owner" type="tappable"></px-table-row>
                   <px-table-row title="Tom Edison" label2="Creator" type="tappable"></px-table-row>
                 </div>
-              </px-box>
-              <px-box title="Section 2">
+              </px-box-section>
+
+              <!-- TODO: Section -->
+              <px-box-section title="Section 2">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                  dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-              </px-box>
-              <px-box title="Section 3">
-                <div class="box box--flush table-view">
+              </px-box-section>
+
+              <!-- TODO: Section -->
+              <px-box-section title="Single-line with icon">
+                <div class="table-view table-view--small">
+                  <px-table-row icon="fa fa-square fa-lg" type="tappable" title="Single-line item"></px-table-row>
+                  <px-table-row icon="fa fa-square fa-lg" type="tappable" title="Single-line item"></px-table-row>
                   <px-table-row icon="fa fa-square fa-lg" type="tappable" title="Single-line item"></px-table-row>
                 </div>
-              </px-box>
-              <px-box title="Section 4">
+              </px-box-section>
 
-                <div class="box box--flush table-view">
+              <!-- TODO: Section -->
+              <px-box-section title="Two-line with avatar">
+                <div class="table-view table-view--small">
+                  <px-table-row icon="fa fa-circle fa-3x" type="tappable" title="Two-line item" body="Secondary text"></px-table-row>
+                  <px-table-row icon="fa fa-circle fa-3x" type="tappable" title="Two-line item" body="Secondary text"></px-table-row>
+                  <px-table-row icon="fa fa-circle fa-3x" type="tappable" title="Two-line item" body="Secondary text"></px-table-row>
+                </div>
+              </px-box-section>
+
+              <!-- TODO: Section -->
+              <px-box-section title="Section 4">
+                <div class="table-view table-view--small">
+                  <px-table-row type="tappable" title="Three-line item" subtitle="John doez" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></px-table-row>
+                  <px-table-row type="tappable" title="Three-line item" subtitle="John doez" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></px-table-row>
                   <px-table-row type="tappable" title="Three-line item" subtitle="John doez" body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></px-table-row>
                 </div>
-              </px-box>
-
-
-
-
-
-
-
-
+              </px-box-section>
 
               <!--
               <div class="table-view table-view--tiny table-view--bare">
@@ -92,10 +110,6 @@
 
               </div>
 -->
-
-
-
-
 
             </section>
           </div>
@@ -122,7 +136,7 @@
           }
         });
       </script>
-
+      <script src="http://localhost:35724/livereload.js?snipver=1"></script>
     </body>
 
   </html>
