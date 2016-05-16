@@ -11,8 +11,7 @@
 
   <!-- TODO: Layout -->
   <link rel="import" href="../px-layout.html">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
-  <link rel="import" href="../../px-drawer/px-drawer.html">
+<link rel="import" href="../../px-drawer/px-drawer.html">
   <link rel="import" href="../../px-page/px-page.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
@@ -79,30 +78,37 @@
 
 
     <px-layout id="layout" type="splitview">
+      <px-header subtitle="Split View Template"></px-header>
+
+
       <px-drawer id="sidenav" side="left">
       </px-drawer>
 
-      <div class="content has-navbar">
-        <px-navbar title="" shadow>
-          <div class="navbar__left">
-            <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
-              <i class="fa fa-lg fa-navicon"></i>
-            </button>
-          </div>
-        </px-navbar>
-        <div class="secondary-content is-active">
+        <div class="secondary-content has-navbar is-active">
+          <px-navbar title="Secondary" shadow>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('layout').toggle('primarySidebar')">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
             in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
-        <div class="primary-content is-passive">
+
+
+        <div class="primary-content is-">
+          <px-navbar title="Primary" shadow>
+
+          </px-navbar>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
             in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
-      </div>
+
     </px-layout>
 
   </template>

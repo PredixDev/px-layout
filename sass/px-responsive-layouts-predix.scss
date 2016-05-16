@@ -30,7 +30,12 @@
 
 /// Component
 //@import 'px-mobile-design/index.scss';
-
+@import "inuit-responsive-settings/_settings.responsive.scss";
+@import "inuit-responsive-tools/_tools.responsive.scss";
+@import "px-widths-tools-design/_tools.widths.scss";
+//$inuit-use-fractions:false;
+//$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6);
+//@include inuit-widths($inuit-widths-columns-responsive, $newBreakpoints);
 
 //@include scrollbars(.5em, $gray9);
 @include media-breakpoint-down ('md') {

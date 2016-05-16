@@ -11,7 +11,18 @@ Example:
 @element px-media-query
 -->
 
-<script>
+
+
+<dom-module id="px-media-query">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    px-media-query
+  </template>
+  <script>
   Polymer({
     is: 'px-media-query',
     properties: {
@@ -93,6 +104,10 @@ Example:
       this.fire('media-query-change', mq);
       this._setQueryMatches(mq.matches);
 
+    },
+    created: function(){
+      console.warn(this.tagName, 'created', this);
     }
   });
-</script>
+  </script>
+</dom-module>

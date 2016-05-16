@@ -50,7 +50,7 @@
     <template id="app" is="dom-bind">
 
       <px-layout class="app">
-        <px-header title="Details" subtitle="Layout Template"></px-header>
+        <px-header subtitle="Turbine Details Template"></px-header>
         <px-drawer id="sidenav" side="left"></px-drawer>
         <div class="primary-content has-navbar u-bg--gray8">
           <px-navbar title="Gas Turbine Detail" shadow>
@@ -101,7 +101,7 @@
                    ]"
                   threshold="1.234567"></px-simple-line-chart>
               </px-card>
-            
+
             </div>
           </section>
         </div>
@@ -203,10 +203,7 @@
         sidebar.toggle();
       }
     </script>
-    <script>
-    document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-    ':35724/livereload.js?snipver=1"></' + 'script>')
-  </script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
 
 </html>

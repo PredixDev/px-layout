@@ -39,6 +39,25 @@
 /**
      * Dark
      */
+/*
+360px => 22.5em
+460px => 28.75em
+736px => 46em
+768px => 48em
+1024px => 64em
+1080px => 67.5em
+1200px =>
+1280px => 80em
+
+palm = 44.9375em
+lap-and-up = 45em
+lap = 45em - 63.9375em
+portable = 63.9375em
+desk <=64em
+retina =
+
+
+*/
 /** Debug Media Query Colors */
 .color-xs {
   color: #e9c069 !important; }
@@ -56,78 +75,63 @@
   color: purple !important; }
 
 .color-palm {
-  color: gold !important; }
+  color: #dfa426 !important; }
 
 .color-portable {
-  color: red !important; }
+  color: #65c937 !important; }
 
 .color-lap {
-  color: forestgreen !important; }
+  color: #df2626 !important; }
 
 .color-desk {
-  color: purple !important; }
+  color: #340034 !important; }
 
 .color-lap-and-up {
-  color: plum !important; }
+  color: #26bfdf !important; }
 
 .color-retina {
   color: blue !important; }
 
-/*
+@media screen and (max-width: 44.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: #dfa426 !important; } }
 
-//palm
-@include media-breakpoint(palm){
-  .responsive-demo {
-		background-color: $color-palm !important;
-	}
-}
-//lap
-@include media-breakpoint(lap){
-	.responsive-demo {
-		background-color: $color-lap !important;
-	}
-}
-//lap-and-up
-@include media-breakpoint(lap-and-up){
-	.responsive-demo {
-		background-color: $color-lap-and-up !important;
-	}
-}
-//portable
-@include media-breakpoint(portable){
-	.responsive-demo {
-		background-color: $color-portable !important;
-	}
-}
-///desk
-@include media-breakpoint(desk){
-	.responsive-demo {
-		background-color: $color-desk !important;
-	}
-}
-//retina
-@include media-breakpoint(retina){
-	.responsive-demo {
-		background-color: $color-retina !important;
-	}
-}
-*/
-@media screen and (max-width: 360px) {
-  .responsive-demo {
+@media screen and (min-width: 45em) and (max-width: 63.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: #df2626 !important; } }
+
+@media screen and (min-width: 45em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: #26bfdf !important; } }
+
+@media screen and (max-width: 63.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: #65c937 !important; } }
+
+@media screen and (min-width: 64em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: #340034 !important; } }
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: blue !important; } }
+
+@media (min-width: 330px) {
+  .debug-new-breakpoints .responsive-demo {
     background-color: #e9c069 !important; } }
 
-@media screen and (min-width: 375px) and (max-width: 736px) {
-  .responsive-demo {
+@media (min-width: 480px) {
+  .debug-new-breakpoints .responsive-demo {
     background-color: #93d973 !important; } }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .responsive-demo {
+@media (min-width: 768px) {
+  .debug-new-breakpoints .responsive-demo {
     background-color: #e96969 !important; } }
 
-@media screen and (min-width: 1080px) and (max-width: 1200px) {
-  .responsive-demo {
+@media (min-width: 992px) {
+  .debug-new-breakpoints .responsive-demo {
     background-color: #69d3e9 !important; } }
 
-@media screen and (min-width: 1280px) {
-  .responsive-demo {
+@media (min-width: 1200px) {
+  .debug-new-breakpoints .responsive-demo {
     background-color: purple !important; } }

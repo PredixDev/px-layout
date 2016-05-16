@@ -824,6 +824,53 @@ a {
 .flex__item--baseline {
   align-self: baseline; }
 
+.u-1\/1xs screen and {
+  width: 100% !important; }
+
+.u-1\/2xs screen and {
+  width: 50% !important;
+  flex: none !important; }
+
+.u-1\/3xs screen and {
+  width: 33.3333333333% !important;
+  flex: none !important; }
+
+.u-2\/3xs screen and {
+  width: 66.6666666667% !important;
+  flex: none !important; }
+
+.u-1\/4xs screen and {
+  width: 25% !important;
+  flex: none !important; }
+
+.u-2\/4xs screen and {
+  width: 50% !important;
+  flex: none !important; }
+
+.u-3\/4xs screen and {
+  width: 75% !important;
+  flex: none !important; }
+
+.u-1\/6xs screen and {
+  width: 16.6666666667% !important;
+  flex: none !important; }
+
+.u-2\/6xs screen and {
+  width: 33.3333333333% !important;
+  flex: none !important; }
+
+.u-3\/6xs screen and {
+  width: 50% !important;
+  flex: none !important; }
+
+.u-4\/6xs screen and {
+  width: 66.6666666667% !important;
+  flex: none !important; }
+
+.u-5\/6xs screen and {
+  width: 83.3333333333% !important;
+  flex: none !important; }
+
 @media (max-width: 991px) {
   .viewport {
     max-width: 100rem;
