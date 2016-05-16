@@ -1,134 +1,69 @@
 @import "variables";
 //@import "px-mobile-mixin-design";
 @import "mixins";
+@import "px-colors-design/_settings.colors.scss";
+@mixin createDebugColors($colors) {
+	 @each $alias, $color in $colors{
+		.color-#{$alias} {
+			color: $color !important;
+		}
+
+		.u-bg-#{$alias} {
+			background-color: $color !important;
+		}
+	}
+}
+
+.u-bg--gray7 {
+	background-color: $gray7;
+}
+
+.u-bg--gray8 {
+	background-color: $gray8;
+}
+
+.u-bg--gray9 {
+	background-color: $gray9;
+}
+
+.u-bg--gray10 {
+	background-color: $gray10;
+}
 
 /** Debug Media Query Colors */
-$color-xs: #e9c069;
-$color-sm: #93d973;
-$color-md: #e96969;
-$color-lg: #69d3e9;
-$color-xl: purple;
 
-$color-lap: darken($color-md, 15%);
-$color-retina: blue;
-$color-lap-and-up: darken($color-lg, 15%);
-$color-portable: darken($color-sm, 15%);
-$color-desk: darken($color-xl, 15%);
-$color-palm: darken($color-xs, 15%);
+$oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
 
-.color-xs {
-	color: $color-xs !important;
-}
+///Define new breakpoint colors;
+$newColors: ( xs: #e9c069, sm: #93d973, md: #e96969, lg: #69d3e9, xl: purple );
+$selector: 'responsive-demo';
 
-.color-sm {
-	color: $color-sm !important;
-}
 
-.color-md {
-	color: $color-md !important;
-}
 
-.color-lg {
-	color: $color-lg !important;
-}
 
-.color-xl {
-	color: $color-xl !important;
-}
-
-.color-palm {
-	color: $color-palm !important;
-}
-
-.color-portable {
-	color: $color-portable !important;
-}
-
-.color-lap {
-	color: $color-lap !important;
-}
-
-.color-desk {
-	color: $color-desk !important;
-}
-
-.color-lap-and-up {
-	color: $color-lap-and-up !important;
-}
-
-.color-retina {
-	color: $color-retina !important;
-}
+@include createDebugColors($newColors);
+@include createDebugColors($oldColors);
 
 .debug-old-breakpoints {
-
-	//palm
-	@include media-breakpoint(palm) {
-		.responsive-demo {
-			background-color: $color-palm !important;
-		}
-	}
-	//lap
-	@include media-breakpoint(lap) {
-		.responsive-demo {
-			background-color: $color-lap !important;
-		}
-	}
-	//lap-and-up
-	@include media-breakpoint(lap-and-up) {
-		.responsive-demo {
-			background-color: $color-lap-and-up !important;
-		}
-	}
-	//portable
-	@include media-breakpoint(portable) {
-		.responsive-demo {
-			background-color: $color-portable !important;
-		}
-	}
-	///desk
-	@include media-breakpoint(desk) {
-		.responsive-demo {
-			background-color: $color-desk !important;
-		}
-	}
-	//retina
-	@include media-breakpoint(retina) {
-		.responsive-demo {
-			background-color: $color-retina !important;
+	//@include createDebugBreakpointColors($oldColors);
+	@each $alias, $color in $oldColors {
+		// #{$alias} - #{$color}
+		@include media-breakpoint($alias) {
+			.#{$selector} {
+				background-color: $color !important;
+			}
 		}
 	}
 }
 
 .debug-new-breakpoints {
-	//xs
-	@include media-breakpoint-up(xs) {
-		.responsive-demo {
-			background-color: $color-xs !important;
-		}
-	}
-	//sm
-	@include media-breakpoint-up(sm) {
-		.responsive-demo {
-			background-color: $color-sm !important;
-		}
-	}
-	//md
-	@include media-breakpoint-up(md) {
-		.responsive-demo {
-			background-color: $color-md !important;
-		}
-	}
-	//lg
-	@include media-breakpoint-up(lg) {
-		.responsive-demo {
-			background-color: $color-lg !important;
-		}
-	}
-	//xl
-	@include media-breakpoint-up(xl) {
-		.responsive-demo {
-			background-color: $color-xl !important;
+	//@include createDebugBreakpointColors($newColors);
+	@each $alias, $color in $newColors {
+		// #{$alias} - #{$color}
+		@include media-breakpoint($alias) {
+			.#{$selector} {
+				background-color: $color !important;
+			}
 		}
 	}
 }

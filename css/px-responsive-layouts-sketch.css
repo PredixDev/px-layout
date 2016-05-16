@@ -979,75 +979,6 @@ a {
       -ms-flex-item-align: baseline;
           align-self: baseline; }
 
-.u-1\/1xs screen and {
-  width: 100% !important; }
-
-.u-1\/2xs screen and {
-  width: 50% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-1\/3xs screen and {
-  width: 33.3333333333% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-2\/3xs screen and {
-  width: 66.6666666667% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-1\/4xs screen and {
-  width: 25% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-2\/4xs screen and {
-  width: 50% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-3\/4xs screen and {
-  width: 75% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-1\/6xs screen and {
-  width: 16.6666666667% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-2\/6xs screen and {
-  width: 33.3333333333% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-3\/6xs screen and {
-  width: 50% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-4\/6xs screen and {
-  width: 66.6666666667% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
-.u-5\/6xs screen and {
-  width: 83.3333333333% !important;
-  -webkit-flex: none !important;
-      -ms-flex: none !important;
-          flex: none !important; }
-
 @media (max-width: 991px) {
   .viewport {
     max-width: 100rem;
@@ -1106,81 +1037,126 @@ a {
 :root html {
   margin-bottom: 0 !important; }
 
+.u-bg--gray7 {
+  background-color: #7c7c84; }
+
+.u-bg--gray8 {
+  background-color: #525156; }
+
+.u-bg--gray9 {
+  background-color: #3b3b3f; }
+
+.u-bg--gray10 {
+  background-color: #242326; }
+
 /** Debug Media Query Colors */
 .color-xs {
   color: #e9c069 !important; }
 
+.u-bg-xs {
+  background-color: #e9c069 !important; }
+
 .color-sm {
   color: #93d973 !important; }
+
+.u-bg-sm {
+  background-color: #93d973 !important; }
 
 .color-md {
   color: #e96969 !important; }
 
+.u-bg-md {
+  background-color: #e96969 !important; }
+
 .color-lg {
   color: #69d3e9 !important; }
+
+.u-bg-lg {
+  background-color: #69d3e9 !important; }
 
 .color-xl {
   color: purple !important; }
 
-.color-palm {
-  color: #dfa426 !important; }
-
-.color-portable {
-  color: #65c937 !important; }
+.u-bg-xl {
+  background-color: purple !important; }
 
 .color-lap {
-  color: #df2626 !important; }
+  color: lightblue !important; }
 
-.color-desk {
-  color: #340034 !important; }
-
-.color-lap-and-up {
-  color: #26bfdf !important; }
+.u-bg-lap {
+  background-color: lightblue !important; }
 
 .color-retina {
   color: blue !important; }
 
-@media screen and (max-width: 44.9375em) {
-  .debug-old-breakpoints .responsive-demo {
-    background-color: #dfa426 !important; } }
+.u-bg-retina {
+  background-color: blue !important; }
+
+.color-lap-and-up {
+  color: green !important; }
+
+.u-bg-lap-and-up {
+  background-color: green !important; }
+
+.color-portable {
+  color: crimson !important; }
+
+.u-bg-portable {
+  background-color: crimson !important; }
+
+.color-desk {
+  color: purple !important; }
+
+.u-bg-desk {
+  background-color: purple !important; }
+
+.color-palm {
+  color: gold !important; }
+
+.u-bg-palm {
+  background-color: gold !important; }
 
 @media screen and (min-width: 45em) and (max-width: 63.9375em) {
   .debug-old-breakpoints .responsive-demo {
-    background-color: #df2626 !important; } }
-
-@media screen and (min-width: 45em) {
-  .debug-old-breakpoints .responsive-demo {
-    background-color: #26bfdf !important; } }
-
-@media screen and (max-width: 63.9375em) {
-  .debug-old-breakpoints .responsive-demo {
-    background-color: #65c937 !important; } }
-
-@media screen and (min-width: 64em) {
-  .debug-old-breakpoints .responsive-demo {
-    background-color: #340034 !important; } }
+    background-color: lightblue !important; } }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
   .debug-old-breakpoints .responsive-demo {
     background-color: blue !important; } }
 
-@media (min-width: 330px) {
+@media screen and (min-width: 45em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: green !important; } }
+
+@media screen and (max-width: 63.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: crimson !important; } }
+
+@media screen and (min-width: 64em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: purple !important; } }
+
+@media screen and (max-width: 44.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: gold !important; } }
+
+@media screen and (max-width: 360px) {
   .debug-new-breakpoints .responsive-demo {
     background-color: #e9c069 !important; } }
 
-@media (min-width: 480px) {
+@media screen and (min-width: 375px) and (max-width: 736px) {
   .debug-new-breakpoints .responsive-demo {
     background-color: #93d973 !important; } }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   .debug-new-breakpoints .responsive-demo {
     background-color: #e96969 !important; } }
 
-@media (min-width: 992px) {
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
   .debug-new-breakpoints .responsive-demo {
     background-color: #69d3e9 !important; } }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .debug-new-breakpoints .responsive-demo {
     background-color: purple !important; } }
 

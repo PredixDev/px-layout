@@ -347,42 +347,31 @@
         <ul class="list-ui responsive-utilities-test visible-on">
           <li class="hidden-sm-up visible">
             <span >✔ Your viewport is exactly extra small
-
             </span>
-
           </li>
 
           <li class="hidden-xs-down not-visible">
             <span >Your viewport is NOT exactly extra small
-
             </span>
-
           </li>
           <li class="hidden-xs-down hidden-md-up visible">
             <span class="">✔ Your viewport is exactly small
-
             </span>
-
           </li>
           <li class="hidden-sm-only not-visible">
             <span>Your viewport is NOT exactly small</span>
-
           </li>
           <li class="hidden-sm-down hidden-lg-up visible">
             <span >✔ Your viewport is exactly medium</span>
-
           </li>
           <li class="hidden-md-only not-visible">
             <span >Your viewport is NOT exactly medium</span>
-
           </li>
           <li class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large
-
           </li>
           <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
           <li class="hidden-lg-down visible">✔ Your viewport is exactly extra large</li>
           <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
-
         </ul>
       </px-box-section>
 
@@ -424,7 +413,7 @@
     </template>
   </px-box-section>
 
-  <px-box-section title="Full">
+  <px-box-section title="Full Layout">
     <h2>
       <code>.l-full</code>
     </h2>
@@ -434,30 +423,32 @@
       </p>
       <demo-snippet>
         <template>
-          <px-layout id="layout0" class="responsive-demo">
-            <px-header subtitle="Full Detail Layout"></px-header>
-            <div class="primary-content has-navbar">
-              <px-navbar title="Primary Content">
-                <div class="navbar__right">
-                  <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-                    <i class="fa fa-lg fa-ellipsis-v"></i>
-                  </button>
-                </div>
-              </px-navbar>
-              <section>
-                <p>
-                  This is content.
-                </p>
-              </section>
-            </div>
-            <px-footer copywrite="2016"></px-footer>
-          </px-layout>
+          <div class="responsive-demo u-bg--gray10" style="height: 500px">
+            <px-layout id="layout0">
+              <px-header subtitle="Full Detail Layout"></px-header>
+              <div class="primary-content has-navbar">
+                <px-navbar title="Primary Content">
+                  <div class="navbar__right">
+                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+                      <i class="fa fa-lg fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </px-navbar>
+                <section>
+                  <p>
+                    This is content.
+                  </p>
+                </section>
+              </div>
+              <px-footer copywrite="2016"></px-footer>
+            </px-layout>
+          </div>
         </template>
       </demo-snippet>
     </div>
   </px-box-section>
 
-  <px-box-section title="Off Canvas">
+  <px-box-section title="Off Canvas Layout">
     <h2>
       <code>.l-offcanvas</code>
     </h2>
@@ -467,7 +458,7 @@
       </p>
       <demo-snippet>
         <template>
-          <px-layout id="layout1" class="responsive-demo">
+          <px-layout id="layout1" class="responsive-demo u-bg--gray10" style="height: 500px">
             <px-header subtitle="Off Canvas Layout"></px-header>
             <div class="secondary-content c1">
               <px-navbar title="Secondary Content">
@@ -497,7 +488,7 @@
   </px-box-section>
 
 
-  <px-box-section title="Split View">
+  <px-box-section title="Split Layout">
     <h2>
       <code>.l-splitview</code>
     </h2>
@@ -506,51 +497,52 @@
     </p>
     <demo-snippet>
       <template>
-        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
-          <px-header subtitle="Split View Layout" class="hidden-md-down "></px-header>
-          <div class="demo">
-            <div class="l-splitview">
-              <div class="l-splitview__secondary-content is-active c1">
+        <div class="responsive-demo u-bg--gray10" style="height: 500px">
 
-                <section>Secondary Content</section>
-              </div>
-              <div class="l-splitview__primary-content is-passive c2">
-                <section>Primary Content</section>
-              </div>
+          <px-layout id="layout2" type="splitview">
+            <px-header subtitle="Split View Layout"></px-header>
+            <div class="secondary-content c1">
+              Secondary Content
             </div>
-          </div>
+            <div class="primary-content c1">
+              Primary Content
+            </div>
+          </px-layout>
         </div>
       </template>
     </demo-snippet>
   </px-box-section>
 
 
-  <px-box-section title="Progressive">
+  <px-box-section title="Progressive Layout">
     <h2><code>.l-progressive</code></h2>
     <p>
       <a href="demo/progressive.html" target="_blank">View progressive demo</a>
     </p>
     <demo-snippet>
       <template>
-        <div class="responsive-demo viewport u-bg--gray10" style="height: 400px">
-          <div class="demo">
+        <div class="responsive-demo u-bg--gray10" style="height: 500px">
+          <px-layout id="progressiveDemo" type="progressive">
             <px-header subtitle="Progressive Layout" class="hidden-md-down "></px-header>
-            <button onclick="toggleSidebar('.l-progressive__primary-sidebar')">Toggle Sidebar</button>
-            <div class="l-progressive">
-              <div class="l-progressive__primary-sidebar is-active c1">
+              <div class="primary-sidebar">
                 Primary Sidebar
               </div>
-              <div class="l-progressive__secondary-content is-active c2" onclick="toggleContent('.l-progressive')">
+
+              <div class="secondary-content">
                 Secondary Content
+                <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('primarySidebar')">Toggle Sidebar</button>
               </div>
-              <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
+
+              <div class="primary-content">
                 Primary Content
+                <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('secondarySidebar')">Toggle Sidebar</button>
               </div>
-              <div class="l-progressive__secondary-sidebar c2">
+
+              <div class="secondary-sidebar">
                 Secondary Sidebar
               </div>
-            </div>
-          </div>
+
+          </px-layout>
         </div>
       </template>
     </demo-snippet>
@@ -558,7 +550,7 @@
 
 
 
-  <px-box-section title="Flexbox">
+  <px-box-section title="Flexbox Grid">
 
       <h2>
         <code>.flex</code>
