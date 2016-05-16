@@ -1,12 +1,12 @@
-<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="../px-theme/px-theme.html">
 <link rel="import" href="../px-theme/px-app.html">
 <link rel="import" href="../px-partials/px-partials.html">
 <link rel="import" href="../px-navbar/px-navbar.html">
 <link rel="import" href="../px-drawer/px-drawer.html">
 <link rel="import" href="px-media-query.html">
-
-
+<link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
+<link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
 <!--
 ## Overview
 The px-layout element aims to help developers create responsive layouts.
@@ -30,12 +30,12 @@ Code Here
 -->
 <dom-module id="px-layout">
 
-  <link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
-  <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+
   <template strip-whitespace>
     <style>
 
-      html, body{
+      body,
+      html {
         margin: 0 !important;
         width: 100%;
         height: 100%;
@@ -48,8 +48,8 @@ Code Here
         overflow: hidden;
         height: 100%;
       }
-
-      :host .scrollable, :host ::content .scrollable{
+      :host .scrollable,
+      :host ::content .scrollable {
         max-height: 100vh;
         height: 100%;
 
@@ -57,81 +57,77 @@ Code Here
         -webkit-overflow-scrolling: touch;
       }
 
-      :host .is-active{
+      :host .is-active {
         display: block;
       }
-      :host .is-passive{
+
+      :host .is-passive {
         display: none;
       }
 
-
-      :host .viewport{
-          overflow: hidden;
+      :host .viewport {
+        overflow: hidden;
         position: relative;
       }
 
-      :host .l-primary-sidebar{
+      :host .l-primary-sidebar {
         float: left;
       }
-
       :host .l-primary-content,
-      :host  .l-secondary-content{
+      :host .l-secondary-content {
         position: relative;
       }
 
     </style>
     <div id="_layoutMain" class="flex flex--col">
 
-        <!-- header -->
-        <div id="_layoutHeader" class="viewport l-header hidden-md-down">
-          <content id="headerContent" select="px-header"></content>
-        </div>
+      <!-- header -->
+      <div id="_layoutHeader" class="viewport l-header hidden-md-down">
+        <content id="headerContent" select="px-header"></content>
+      </div>
 
+      <div id="_layoutViewport" class="viewport viewport--full-height">
 
-
-
-        <div id="_layoutViewport" class="viewport viewport--full-height">
-          <!-- primary-sidebar -->
-          <div class="l-primary-sidebar">
-            <px-drawer id="primarySidebar"
-              type$="{{options.primarySidebar.type}}"
-              side$="{{options.primarySidebar.side}}"
-              theme$="{{options.primarySidebar.theme}}">
-              <content id="primarySidebarContent" select=".primary-sidebar"></content>
-            </px-drawer>
-          </div>
-          <div class="flex flex--row">
-
-            <!-- Secondary Content -->
-            <div class="l-secondary-content flex__item flex--col">
-              <content id="secondaryContent" select=".secondary-content"></content>
-            </div>
-
-            <!-- Primary Content -->
-            <div class="l-primary-content flex__item flex--col ">
-              <content id="primaryContent" select=".primary-content"></content>
-            </div>
-
-            <!-- Any Content Views / Pages -->
-            <div class="l-content">
-              <content id="contentContent" select=".content"></content>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- secondary-sidebar -->
-        <div class="l-secondary-sidebar">
-          <px-drawer id="secondarySidebar" side="right" theme="dark">
-            <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
+        <!-- primary-sidebar -->
+        <aside class="l-primary-sidebar">
+          <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
+            <content id="primarySidebarContent" select=".primary-sidebar"></content>
           </px-drawer>
+        </aside>
+
+
+        <div class="l-container full-height">
+          <!-- Secondary Content -->
+          <section class="l-secondary-content flex__item flex--col">
+            <content id="secondaryContent" select=".secondary-content"></content>
+          </section>
+
+          <!-- Primary Content -->
+          <section class="l-primary-content flex__item flex--col ">
+            <content id="primaryContent" select=".primary-content"></content>
+          </section>
+
+          <!-- Any Content Views / Pages -->
+          <section class="l-content">
+            <content id="contentContent" select=".content"></content>
+          </section>
+
+          <!-- secondary-sidebar -->
+          <aside class="l-secondary-sidebar">
+            <px-drawer id="secondarySidebar" side="right" theme="dark">
+              <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
+            </px-drawer>
+          </aside>
         </div>
 
 
-        <div id="footer" class="viewport hidden-md-down">
-          <content id="footerContent" select="px-footer"></content>
-        </div>
+      </div>
+
+
+
+      <div id="footer" class="viewport l-footer hidden-md-down">
+        <content id="footerContent" select="px-footer"></content>
+      </div>
     </div>
   </template>
   <script>
@@ -150,7 +146,7 @@ Code Here
           type: Object,
           observer: '_handleOptions',
           value: {
-            primarySidebar:{
+            primarySidebar: {
               theme: 'dark'
             }
           }
@@ -166,43 +162,52 @@ Code Here
           }
         }
       },
-      attached: function() {
-        this.toggleClass('l-container', true, this.$._layoutViewport);
-        this.toggleClass('l-container--' + this.type, true, this.$._layoutViewport);
+      attached: function () {
+        //this.toggleClass('l-container', true, this.$._layoutViewport);
+        this.toggleClass('l-container--' + this.type, true, this.$$('.l-container'));
 
         var hasNavbar = this.$$('.navbar');
-        if(hasNavbar){
+        if (hasNavbar) {
+          console.log('Layout has navbar')
+        }
+
+        if(this.type === 'progressive'){
+          this.$.primarySidebar.type = 'static';
+          this.$.secondarySidebar.type = 'static';
         }
         console.log(this.tagName, this.options);
       },
-      toggle: function(name, options) {
+      toggle: function (name, options) {
         var el = this.$[name];
-        if(el.toggle){
+        if (el.toggle) {
           el.toggle();
         }
         console.warn('toggle', name, el);
       },
-      toggleContent: function(name){
+      toggleContent: function (name) {
         //toggle primary / secondary content is-active / is-passive
         console.log("toggle content");
 
       },
-      _setElementOptions: function(options){
+      _setElementOptions: function (options) {
         var self = this;
-        var key, value, o, el;
+        var key,
+          value,
+          o,
+          el;
 
         // TODO: Beter way to set options on component;
-        if(options){
-          for(var k in options){
+        if (options) {
+          for (var k in options) {
             console.log("find element", k, 'set =>', options[k]);
             el = self.$[k];
             value = options[k];
             //el[k] = value;
-            console.log('setting', k,  options[k], value);
+            console.log('setting', k, options[k], value);
           }
         }
       },
-      _handleOptions: function(newVal, oldVal){
+      _handleOptions: function (newVal, oldVal) {
         this._setElementOptions(this.options);
         console.log(this.tagName, 'options', newVal);
       }

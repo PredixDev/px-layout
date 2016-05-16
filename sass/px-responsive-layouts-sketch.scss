@@ -19,9 +19,6 @@
 
 //@import "px-box-design/src/style.scss";
 
-@import "l-offcanvas";
-@import "l-splitview";
-@import "l-progressive";
 
 @import "px-responsive-layouts-predix";
 @import "px-responsive-layouts-demo";
@@ -30,4 +27,8 @@
 .l-container{
   min-height: $layout-min-height;
   position: relative;
+  @import "l-offcanvas";
+  @import "l-splitview";
+  @import "l-progressive";
+
 }

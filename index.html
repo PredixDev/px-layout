@@ -460,7 +460,7 @@
         <template>
           <px-layout id="layout1" class="responsive-demo u-bg--gray10" style="height: 500px">
             <px-header subtitle="Off Canvas Layout"></px-header>
-            <div class="secondary-content c1">
+            <div class="secondary-content box">
               <px-navbar title="Secondary Content">
                 <div class="navbar__left">
                   <button class="navbar__button " onclick="document.getElementById('layout1').toggle('primarySidebar')">
@@ -470,7 +470,7 @@
               </px-navbar>
               <section></section>
             </div>
-            <div class="primary-content c2">
+            <div class="primary-content box">
               <px-navbar title="Primary Content">
                 <div class="navbar__right">
                   <button class="navbar__button" onclick="document.getElementById('layout1').toggle('secondarySidebar')">
@@ -501,10 +501,10 @@
 
           <px-layout id="layout2" type="splitview">
             <px-header subtitle="Split View Layout"></px-header>
-            <div class="secondary-content c1">
+            <div class="secondary-content box">
               Secondary Content
             </div>
-            <div class="primary-content c1">
+            <div class="primary-content box">
               Primary Content
             </div>
           </px-layout>
@@ -523,22 +523,23 @@
       <template>
         <div class="responsive-demo u-bg--gray10" style="height: 500px">
           <px-layout id="progressiveDemo" type="progressive">
-            <px-header subtitle="Progressive Layout" class="hidden-md-down "></px-header>
-              <div class="primary-sidebar">
+            <px-header subtitle="Progressive Layout"></px-header>
+
+              <div class="primary-sidebar ">
                 Primary Sidebar
               </div>
 
-              <div class="secondary-content">
+              <div class="secondary-content box">
                 Secondary Content
                 <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('primarySidebar')">Toggle Sidebar</button>
               </div>
 
-              <div class="primary-content">
+              <div class="primary-content box">
                 Primary Content
                 <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('secondarySidebar')">Toggle Sidebar</button>
               </div>
 
-              <div class="secondary-sidebar">
+              <div class="secondary-sidebar ">
                 Secondary Sidebar
               </div>
 
