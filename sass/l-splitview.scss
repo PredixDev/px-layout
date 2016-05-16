@@ -6,7 +6,7 @@ $splitview-sidebar-width: 25%;
 $splitview-right-width: 25%;
 $splitview-secondary-border-color: $gray5;
 $splitview-background-color: $white;
-$splitview-min-height: 100vh;
+$splitview-min-height: 75vh;
 
 /*================================= Split View ================================*/
 @include b ('l-container') {

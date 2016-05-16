@@ -37,20 +37,11 @@ Code Here
 
   <template strip-whitespace>
     <style>
-
-      body,
-      html {
-        margin: 0 !important;
-        width: 100%;
-        height: 100%;
-        overflow: hidden !important;
-      }
-
       :host {
         display: block;
         position: relative;
         overflow: hidden;
-        height: 100%;
+        max-height: 100%;
       }
       :host .scrollable,
       :host ::content .scrollable {
@@ -69,14 +60,7 @@ Code Here
         display: none;
       }
 
-      :host .viewport {
-        overflow: hidden;
-        position: relative;
-      }
 
-      :host .l-primary-sidebar {
-        float: left;
-      }
       :host .l-primary-content,
       :host .l-secondary-content {
         position: relative;
@@ -90,24 +74,26 @@ Code Here
         <content id="headerContent" select="px-header"></content>
       </div>
 
-      <div id="_layoutViewport" class="viewport ">
-
-        <!-- primary-sidebar -->
-        <aside class="l-primary-sidebar">
-          <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
-            <content id="primarySidebarContent" select=".primary-sidebar"></content>
-          </px-drawer>
-        </aside>
+      <div id="_layoutViewport" class="viewport">
 
 
-        <div class="l-container full-height">
+
+        <div class="l-container">
+
+          <!-- primary-sidebar -->
+          <aside class="l-primary-sidebar">
+            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
+              <content id="primarySidebarContent" select=".primary-sidebar"></content>
+            </px-drawer>
+          </aside>
+
           <!-- Secondary Content -->
-          <section class="l-container__secondary-content flex__item flex--col">
+          <section class="l-container__secondary-content">
             <content id="secondaryContent" select=".secondary-content"></content>
           </section>
 
           <!-- Primary Content -->
-          <section class="l-container__primary-content flex__item flex--col ">
+          <section class="l-container__primary-content">
             <content id="primaryContent" select=".primary-content"></content>
           </section>
 

@@ -1,113 +1,93 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-splitview</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-navbar/px-navbar.html">
+    <style media="screen">
 
-<head>
-  <meta charset="utf-8">
-  <title>template-splitview</title>
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+    </style>
+  </head>
+  <body unresolved>
+    <template id="app" is="dom-bind">
+    <style media="screen">
+      .primary-sidebar .table-row__title {
+        color: #fff;
+      }
+      .primary-sidebar .table-row__media--icon {
+        align-self: baseline;
+      }
+    </style>
+      <px-layout id="layout2" type="splitview">
 
-  <script src="../../webcomponentsjs/webcomponents.js"></script>
+        <!-- TODO: Header -->
+        <px-header subtitle="Split View Template"></px-header>
 
-  <!-- TODO: Layout -->
-  <link rel="import" href="../px-layout.html">
-  <link rel="import" href="../../px-drawer/px-drawer.html">
-  <link rel="import" href="../../px-page/px-page.html">
-  <link rel="import" href="../../px-page/px-pages.html">
-  <link rel="import" href="../../px-table-view/px-table-view.html">
-  <link rel="import" href="../../px-card/px-card.html">
-  <link rel="import" href="../../px-navbar/px-navbar.html">
-  <link rel="import" href="../../px-partials/px-partials.html">
+        <!-- TODO: Primary Sidebar -->
+        <div class="primary-sidebar table-view table-view--tiny table-view--bare">
+          <template is="dom-repeat" items="{{navItems}}">
+            <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+          </template>
+        </div>
 
-  <style media="screen">
+        <!-- TODO: Secondary Content -->
+        <div class="secondary-content has-navbar">
+          <px-navbar title="Secondary" shadow>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('layout2').toggle('primarySidebar');">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <div class="u-m">
+            <p>
+              Secondary Content
+            </p>
+          </div>
+        </div>
 
+        <!-- TODO: Primary Content -->
+        <div class="primary-content has-navbar">
+          <px-navbar title="Primary" shadow></px-navbar>
+          <div class="u-m">
+            <p>
+              Primary Content
+            </p>
+          </div>
+        </div>
 
-    .table-row__media--image img {
-      height: 30px;
-      border-radius: 50%;
-    }
-
-    .spacer {
-      height: 56px !important;
-      color: #fff;
-      padding: 0 !important;
-    }
-
-    .iron-selected {
-      background-color: #525156;
-    }
-
-    px-page {
-      -webkit-transition: all 0.3s ease-out;
-      transition: all 0.3s ease-out;
-      will-change: transform;
-    }
-
-    px-page.current {
-      -webkit-transform: translate(0, 0);
-      transform: translate(0, 0);
-    }
-
-    px-page.next {
-      -webkit-transform: translate(50%, 0);
-      transform: translate(50%, 0);
-    }
-
-    px-page.previous {
-      -webkit-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
-
-    .l-splitview--has-navbar {
-      padding-top: 56px;
-    }
-
-    #sidenav {
-      background: #fff;
-    }
-  </style>
-
-</head>
-
-<body unresolved>
-
-<template id="app" is="dom-bind">
-
-
-  <px-layout id="layout2" type="splitview">
-    <px-header subtitle="Split View Layout"></px-header>
-    <div class="secondary-content">
-      <px-navbar title="Secondary"></px-navbar>
-      <div class="u-m">
-        <p>
-          Secondary Content
-        </p>
-      </div>
-    </div>
-    <div class="primary-content">
-      <px-navbar title="Primary"></px-navbar>
-      <div class="u-m">
-        <p>
-          Primary Content
-        </p>
-      </div>
-    </div>
-  </px-layout>
-
-</template>
-<script type="text/javascript">
-  function toggleSidebar(el) {
-    var sidebar = document.getElementById(el);
-    var type = sidebar.type;
-    if (type === 'mini') {
-      sidebar.type = 'persistent';
-    } else if (type === 'persistent') {
-      sidebar.type = 'mini';
-    }
-    sidebar.toggle();
-  }
-</script>
-<script src="http://localhost:35724/livereload.js?snipver=1"></script>
-</body>
-
+        <!-- TODO: Footer -->
+        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
+      </px-layout>
+    </template>
+    <script type="text/javascript">
+    var navItems = [
+      {
+        label: 'Dashboard',
+        icon: 'fa fa-dashboard'
+      }, {
+        label: 'Alerts',
+        icon: 'fa fa-exclamation-triangle'
+      }, {
+        label: 'Cases',
+        icon: 'fa fa-briefcase'
+      }, {
+        label: 'Analysis',
+        icon: 'fa fa-bar-chart'
+      }
+    ];
+    document.addEventListener('WebComponentsReady', function () {
+      app = document.getElementById('app');
+      app.navItems = navItems;
+    });
+    </script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
 </html>

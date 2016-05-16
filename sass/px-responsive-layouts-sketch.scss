@@ -24,6 +24,8 @@
 @include b ('l-container') {
   //min-height: $layout-min-height;
   position  : relative;
+  overflow  : hidden;
+  transition: all .5s ease;
 }
 @import "l-offcanvas";
 @import "l-splitview";

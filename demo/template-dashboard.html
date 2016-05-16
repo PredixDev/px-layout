@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-dashboard</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+  </head>
+  <body unresolved>
+    <template id="app" is="dom-bind">
+      <style media="screen">
+        px-card {
+          flex: 1 0 275px;
+        }
+        .table-row__title {
+          color: #fff;
+        }
+        .table-row__media--icon {
+          align-self: baseline;
+        }
+      </style>
+      <px-layout id="layout0">
+        <!-- TODO: Header -->
+        <px-header subtitle="Dashboard Template"></px-header>
+        <!-- TODO: Primary Sidebar -->
+        <div class="primary-sidebar table-view table-view--tiny table-view--bare">
+          <template is="dom-repeat" items="{{navItems}}">
+            <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+          </template>
+        </div>
+        <!-- TODO: Primary Content -->
+        <div class="primary-content has-navbar">
+          <px-navbar title="Dashboard" shadow>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <!-- TODO: Spine -->
+          <div class="spine">
+            <div class="table-view table-view--bare table-view--tiny table-view--responsive">
+              <template is="dom-repeat" items="{{spine}}">
+                <px-table-row type="tappable">
+                  <div class="table-row__content">
+                    <h3 class="table-row__title epsilon">{{item.title}}</h3>
+                    <div class="table-row__body">
+                      <span class="beta">{{item.body}}</span>
+                      <span class="delta muted">{{item.label1}}</span>
+                    </div>
+                  </div>
+                </px-table-row>
+              </template>
+            </div>
+          </div>
+          <!-- TODO: Cards -->
+          <div class="cards flex flex--wrap">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card class="u-m--" icon="{{item.icon}}" header-text="{{item.title}}">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
+        </div>
+        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
+      </px-layout>
+    </template>
+    <script type="text/javascript">
+      var navItems = [
+        {
+          label: 'Dashboard',
+          icon: 'fa fa-dashboard'
+        }, {
+          label: 'Alerts',
+          icon: 'fa fa-exclamation-triangle'
+        }, {
+          label: 'Cases',
+          icon: 'fa fa-briefcase'
+        }, {
+          label: 'Analysis',
+          icon: 'fa fa-bar-chart'
+        }
+      ];
+      var app;
+      function createDemoCards(count) {
+        var i = 0,
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+        }
+        return _out;
+      }
+      function createDemoSpine(count) {
+        var i = 0,
+          _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Lorem Ipsum',
+            body: '123.' + i,
+            label1: 'AB'
+          });
+        }
+        return _out;
+      }
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.navItems = navItems;
+        app.cards = createDemoCards(25);
+        app.spine = createDemoSpine(6);
+      });
+    </script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
+</html>

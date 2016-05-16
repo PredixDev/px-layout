@@ -20,8 +20,8 @@
 /// Base
 //@import "px-typography-design/_base.typography.scss";
 @import "px-flexbox-design/_base.flexbox.scss";
-//@import "px-viewport-design/_base.viewport.scss";
-//@import "px-layout-design/_objects.layout.scss";
+@import "px-viewport-design/_base.viewport.scss";
+@import "px-layout-design/_objects.layout.scss";
 
 /// Trumps
 
@@ -36,29 +36,21 @@
 //@include inuit-widths($inuit-widths-columns-responsive, $newBreakpoints);
 
 //@include scrollbars(.5em, $gray9);
-@include media-breakpoint-down (md) {
-  .viewport {
-    width       : 100%;
-    margin-left : auto;
-    margin-right: auto;
-    padding-left: 0;
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
+  @include media-breakpoint-down (md) {
+    width        : 100%;
+    margin-left  : auto;
+    margin-right : auto;
+    padding-left : 0;
     padding-right: 0;
   }
-
-  .viewport:not([style-scope]):not(.style-scope) {
-    width       : 100%;
-    margin-left : auto;
-    margin-right: auto;
+  @include media-breakpoint-up (lg) {
+    width        : 100%;
+    margin-left  : auto;
+    margin-right : auto;
+    padding-left : auto;
+    padding-right: auto;
   }
 }
-@include media-breakpoint-up (lg) {
-  width       : 100%;
-  margin-left : auto;
-  margin-right: auto;
-}
 @include responsiveUtils();
-
-:root {
-  body,
-  html {}
-}
