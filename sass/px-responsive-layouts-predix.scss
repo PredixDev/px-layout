@@ -7,11 +7,9 @@
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
-
 @charset "utf-8";
 @import "variables";
 @import "mixins";
-
 
 /// Generic
 @import "px-normalize-design/_generic.normalize.scss";
@@ -25,7 +23,6 @@
 //@import "px-viewport-design/_base.viewport.scss";
 //@import "px-layout-design/_objects.layout.scss";
 
-
 /// Trumps
 
 /// Component
@@ -33,31 +30,35 @@
 @import "inuit-responsive-settings/_settings.responsive.scss";
 @import "inuit-responsive-tools/_tools.responsive.scss";
 @import "px-widths-tools-design/_tools.widths.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
 //$inuit-use-fractions:false;
 //$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6);
 //@include inuit-widths($inuit-widths-columns-responsive, $newBreakpoints);
 
 //@include scrollbars(.5em, $gray9);
-@include media-breakpoint-down ('md') {
+@include media-breakpoint-down (md) {
   .viewport {
-    max-width: 100rem;
-    margin   : 0;
-    padding  : 0;
+    width       : 100%;
+    margin-left : auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .viewport:not([style-scope]):not(.style-scope) {
+    width       : 100%;
+    margin-left : auto;
+    margin-right: auto;
   }
 }
-
-@include media-breakpoint-up ('lg') {
-  .viewport {
-    max-width: 80rem;
-    padding  : auto;
-    margin   : auto;
-  }
+@include media-breakpoint-up (lg) {
+  width       : 100%;
+  margin-left : auto;
+  margin-right: auto;
 }
 @include responsiveUtils();
 
 :root {
   body,
-  html {
-    margin-bottom: 0 !important;
-  }
+  html {}
 }

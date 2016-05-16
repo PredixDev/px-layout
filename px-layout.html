@@ -5,8 +5,12 @@
 <link rel="import" href="../px-navbar/px-navbar.html">
 <link rel="import" href="../px-drawer/px-drawer.html">
 <link rel="import" href="px-media-query.html">
-<link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
+
 <link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+
+<!--
+<link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
+-->
 <!--
 ## Overview
 The px-layout element aims to help developers create responsive layouts.
@@ -86,7 +90,7 @@ Code Here
         <content id="headerContent" select="px-header"></content>
       </div>
 
-      <div id="_layoutViewport" class="viewport viewport--full-height">
+      <div id="_layoutViewport" class="viewport full-height">
 
         <!-- primary-sidebar -->
         <aside class="l-primary-sidebar">
@@ -98,22 +102,22 @@ Code Here
 
         <div class="l-container full-height">
           <!-- Secondary Content -->
-          <section class="l-secondary-content flex__item flex--col">
+          <section class="l-container__secondary-content flex__item flex--col">
             <content id="secondaryContent" select=".secondary-content"></content>
           </section>
 
           <!-- Primary Content -->
-          <section class="l-primary-content flex__item flex--col ">
+          <section class="l-container__primary-content flex__item flex--col ">
             <content id="primaryContent" select=".primary-content"></content>
           </section>
 
           <!-- Any Content Views / Pages -->
-          <section class="l-content">
+          <section class="l-container__content">
             <content id="contentContent" select=".content"></content>
           </section>
 
           <!-- secondary-sidebar -->
-          <aside class="l-secondary-sidebar">
+          <aside class="l-container__secondary-sidebar">
             <px-drawer id="secondarySidebar" side="right" theme="dark">
               <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
             </px-drawer>
@@ -147,7 +151,12 @@ Code Here
           observer: '_handleOptions',
           value: {
             primarySidebar: {
-              theme: 'dark'
+              theme: 'dark',
+              type: 'temporary'
+            },
+            secondarySidebar: {
+              theme: 'dark',
+              type: 'temporary'
             }
           }
         },

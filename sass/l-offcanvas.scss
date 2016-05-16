@@ -37,7 +37,7 @@
       transform: translateX(-100%);
     }
 
-    @include media-breakpoint ('xs') {
+    @include media-breakpoint (xs) {
       //visibility: hidden;
       //display:none;
       position : absolute;
@@ -49,7 +49,7 @@
       }
     }
 
-    @include media-breakpoint ('sm') {
+    @include media-breakpoint (sm) {
       //visibility: hidden;
       position : absolute !important;
       transform: translateX(-100%);
@@ -59,7 +59,7 @@
       }
     }
 
-    @include media-breakpoint ('sm') {
+    @include media-breakpoint (sm) {
       //display:none;
       transform: translateX(-100%);
 
@@ -74,13 +74,14 @@
       }
     }
 
-    @include media-breakpoint ('lg') {
+    @include media-breakpoint (lg) {
       flex     : 1 0 200px;
       display  : block;
       transform: translateX(0);
 
       &.is-active,
       &.is-passive {
+        display  : block !important;
         visibility: visible !important;
         transform : translateX(0) !important;
       }

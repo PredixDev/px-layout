@@ -1,179 +1,162 @@
 @import 'mixins';
 @import 'variables';
+
 $progressive-background-color: $white;
 $progressive-border: 1px solid $gray5;
 $progressive-min-height: 100vh;
+
 /*================================= progressive ================================*/
-.l-progressive {
-  min-height     : $progressive-min-height;
-  display        : flex;
-  flex-direction : row;
-  flex-wrap      : nowrap;
-  justify-content: space-between;
-  align-content  : stretch;
-  align-items    : stretch;
-  transition     : all 300ms ease-in;
-  background     : $progressive-background-color;
-
-  div {
-    position: relative;
-  }
-
-  .btn-toggle {
-    @include media-breakpoint ('sm') {
-      display: block;
-    }
-
-    @include media-breakpoint ('md') {
-      display: block;
-    }
-
-    @include media-breakpoint ('lg') {
-      display: none;
-    }
-  }
-
-  &.active {
-    display: block;
-  }
-
-  header {
+@include b ('l-container') {
+  @include m ('progressive') {
+    min-height: $progressive-min-height;
+    display: flex;
     flex-direction: row;
-    display       : flex;
-    text-transform: uppercase;
-  }
-  //Sidebar
-  @include element ('primary-sidebar') {
-    order       : 0;
-    flex        : 0 1 220px;
-    position    : relative;
-    border-right: $progressive-border;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+    transition: all 300ms ease-in;
+    background: $progressive-background-color;
 
-    @include media-breakpoint ('xs') {
-      display: none;
+    .btn-toggle {
+      @include media-breakpoint ('sm') {
+        display: block;
+      }
+
+      @include media-breakpoint ('md') {
+        display: block;
+      }
+
+      @include media-breakpoint ('lg') {
+        display: none;
+      }
+    }
+
+    &.active {
+      display: block;
+    }
+
+
+    //Sidebar
+    @include element ('primary-sidebar') {
+      order: 0;
+      flex: 0 1 220px;
+      position: relative;
+      border-right: $progressive-border;
+
+      @include media-breakpoint-down('md') {
+        //display: none;
+      }
+
+      @include media-breakpoint-up('lg') {
+
+        &.is-passive {
+          display: block;
+        }
+
+      }
+    }
+    //Secondary
+    @include element ('secondary-content') {
+      order: 1;
+      flex: 1;
+      position: relative;
+      border-right: $progressive-border;
+
+      @include media-breakpoint (xs) {
+        display: none;
+
+        &.is-active {
+          display: block;
+        }
+      }
+
+      @include media-breakpoint (sm) {
+        display: none;
+
+        &.is-active {
+          display: block;
+        }
+      }
+
+      @include media-breakpoint ('md') {
+        display: block;
+      }
+
+      @include media-breakpoint ('lg') {
+        display: block;
+
+        &.is-passive {
+          display: block !important;
+        }
+      }
+    }
+    //Primary
+    @include element ('primary-content') {
+      order: 2;
+      flex: 4;
+      align-self: auto;
+      position: relative;
+
+      @include media-breakpoint ('xs') {
+        display: none;
+
+        &.is-active {
+          display: block;
+        }
+      }
+
+      @include media-breakpoint ('sm') {
+        display: none;
+
+        &.is-active {
+          display: block;
+        }
+      }
+
+      @include media-breakpoint ('md') {
+        display: block;
+      }
+
+      @include media-breakpoint ('lg') {
+        display: block;
+
+        &.is-passive {
+          display: block !important;
+        }
+      }
 
       &.is-active {
         display: block;
       }
-    }
-
-    @include media-breakpoint ('sm') {
-      display: none;
-    }
-
-    @include media-breakpoint ('md') {
-      display: none;
-    }
-
-    @include media-breakpoint ('lg') {
-      display: block;
 
       &.is-passive {
+        display: none;
+      }
+    }
+    //Right Nav
+    @include element ('secondary-sidebar') {
+      order: 3;
+      flex: 1 1 15%;
+      align-self: auto;
+      position: relative;
+      border-left: $progressive-border;
+
+      @include media-breakpoint ('xs') {
+        display: none;
+      }
+
+      @include media-breakpoint ('sm') {
+        display: none;
+      }
+
+      @include media-breakpoint ('md') {
+        display: none;
+      }
+
+      @include media-breakpoint ('lg') {
         display: block;
       }
-
-    }
-  }
-  //Secondary
-  @include element ('secondary-content') {
-    order       : 1;
-    flex        : 2 0 35%;
-    position    : relative;
-    border-right: $progressive-border;
-
-    @include media-breakpoint ('xs') {
-      display: none;
-
-      &.is-active {
-        display: block;
-      }
-    }
-
-    @include media-breakpoint ('sm') {
-      display: none;
-
-      &.is-active {
-        display: block;
-      }
-    }
-
-    @include media-breakpoint ('md') {
-      display: block;
-    }
-
-    @include media-breakpoint ('lg') {
-      display: block;
-
-      &.is-passive {
-        display: block !important;
-      }
-    }
-  }
-  //Primary
-  @include element ('primary-content') {
-    order     : 2;
-    flex      : 4 4 50%;
-    align-self: auto;
-    position  : relative;
-
-    @include media-breakpoint ('xs') {
-      display: none;
-
-      &.is-active {
-        display: block;
-      }
-    }
-
-    @include media-breakpoint ('sm') {
-      display: none;
-
-      &.is-active {
-        display: block;
-      }
-    }
-
-    @include media-breakpoint ('md') {
-      display: block;
-    }
-
-    @include media-breakpoint ('lg') {
-      display: block;
-
-      &.is-passive {
-        display: block !important;
-      }
-    }
-
-    &.is-active {
-      display: block;
-    }
-
-    &.is-passive {
-      display: none;
-    }
-  }
-  //Right Nav
-  @include element ('secondary-sidebar') {
-    order      : 3;
-    flex       : 1 1 15%;
-    align-self : auto;
-    position   : relative;
-    border-left: $progressive-border;
-
-    @include media-breakpoint ('xs') {
-      display: none;
-    }
-
-    @include media-breakpoint ('sm') {
-      display: none;
-    }
-
-    @include media-breakpoint ('md') {
-      display: none;
-    }
-
-    @include media-breakpoint ('lg') {
-      display: block;
     }
   }
 }

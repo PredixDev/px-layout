@@ -11,13 +11,13 @@
 
   <!-- TODO: Layout -->
   <link rel="import" href="../px-layout.html">
-  <link rel="import" href="../../px-drawer/px-drawer.html">
+
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-page/px-page.html">
   <link rel="import" href="../../px-card/px-card.html">
   <link rel="import" href="../../px-navbar/px-navbar.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
-  <link rel="import" href="../../px-partials/px-partials.html">
+
   <link rel="import" href="../../px-widget-cards/px-twoup.html">
   <style media="screen">
     #widget-table {
@@ -34,7 +34,6 @@
 -->
 
 
-
   <!-- TODO: Components or just the px-design-system.html file
     <link rel="import" href="../../px-design-system/px-design-system.html">
     -->
@@ -44,73 +43,69 @@
 <body unresolved class="">
 
 
-  <div class="app">
-    <px-layout type="progressive">
-      <px-header subtitle="Progressive" class="a11y-portable"></px-header>
-      <div class="content l-progressive">
-        <div class="l-progressive__primary-sidebar is-passive c1">
-          <px-navbar title="Left Nav"></px-navbar>
-        </div>
-        <div class="l-progressive__secondary-content is-active c2" onclick="toggleContent('.l-progressive')">
-          <px-navbar title="Secondary Content"></px-navbar>
-        </div>
-        <div class="l-progressive__primary-content is-passive c1" onclick="toggleContent('.l-progressive')">
-          <px-page>
-            <px-navbar title="Primary Content"></px-navbar>
-            <section>
-              <ul id="widget-table" class="table-view table-view--bare table-view--responsive">
+<px-layout id="layout1" type="progressive">
+  <px-header subtitle="Progressive Layout"></px-header>
 
-                <li class="table-row">
-                  <px-card header-text="Widget 2">
-                    <p>
-                      Content
-                    </p>
-                  </px-card>
-                </li>
-                <li class="table-row">
-                  <px-card header-text="Widget 3">
-                    <p>
-                      Content
-                    </p>
-                  </px-card>
-                </li>
-                <li class="table-row">
-                  <px-card header-text="Widget 4">
-                    <p>
-                      Content
-                    </p>
-                  </px-card>
-                </li>
-                <li class="table-row">
-                  <px-card header-text="Widget 5">
-                    <p>
-                      Content
-                    </p>
-                  </px-card>
-                </li>
-                <li class="table-row">
-                  <px-card header-text="Widget 6">
-                    <p>
-                      Content
-                    </p>
-                  </px-card>
-                </li>
-
-              </ul>
-
-            </section>
-          </px-page>
-        </div>
-        <div class="l-progressive__secondary-sidebar is-passive c2">
-          <px-navbar title="Right Nav"></px-navbar>
-        </div>
-      </div>
-    </px-layout>
+  <div class="primary-sidebar">
+    <px-navbar title="Left Nav"></px-navbar>
   </div>
 
+  <div class="secondary-content">
+    <px-navbar title="Secondary Content"></px-navbar>
+  </div>
+  <div class="primary-content">
+
+      <px-navbar title="Primary Content"></px-navbar>
+
+        <ul id="widget-table" class="table-view table-view--bare table-view--responsive">
+
+          <li class="table-row">
+            <px-card header-text="Widget 2">
+              <p>
+                Content
+              </p>
+            </px-card>
+          </li>
+          <li class="table-row">
+            <px-card header-text="Widget 3">
+              <p>
+                Content
+              </p>
+            </px-card>
+          </li>
+          <li class="table-row">
+            <px-card header-text="Widget 4">
+              <p>
+                Content
+              </p>
+            </px-card>
+          </li>
+          <li class="table-row">
+            <px-card header-text="Widget 5">
+              <p>
+                Content
+              </p>
+            </px-card>
+          </li>
+          <li class="table-row">
+            <px-card header-text="Widget 6">
+              <p>
+                Content
+              </p>
+            </px-card>
+          </li>
+
+        </ul>
+
+  </div>
+  <div class="secondary-sidebar">
+    <px-navbar title="Right Nav"></px-navbar>
+  </div>
+
+</px-layout>
 
 
-
+<script src="http://localhost:35724/livereload.js?snipver=1"></script>
 </body>
 
 </html>

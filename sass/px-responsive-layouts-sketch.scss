@@ -18,17 +18,13 @@
 //@import "px-flex-design/src/style.scss";
 
 //@import "px-box-design/src/style.scss";
-
-
 @import "px-responsive-layouts-predix";
 @import "px-responsive-layouts-demo";
 
-
-.l-container{
-  min-height: $layout-min-height;
-  position: relative;
-  @import "l-offcanvas";
-  @import "l-splitview";
-  @import "l-progressive";
-
+@include b ('l-container') {
+  //min-height: $layout-min-height;
+  position  : relative;
 }
+@import "l-offcanvas";
+@import "l-splitview";
+//@import "l-progressive";

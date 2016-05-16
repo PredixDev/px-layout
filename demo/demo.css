@@ -5,11 +5,20 @@
   min-height: 480px;
 }
 
+.demo.demo-snippet{
+  padding: 0 !important;
+}
+.debug-colors li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .box {
-  background: #fff;
+  background-color: #fff;
   position: relative;
   overflow: hidden;
 }
+
 code {
   color: crimson;
 }
@@ -56,7 +65,4 @@ table code {
 .hidden-on .not-visible, .visible-on .not-visible {
   color: #999;
   border: 1px solid #ddd;
-}
-.box {
-  background-color: #fff;
 }

@@ -11,7 +11,7 @@
 
   <!-- TODO: Layout -->
   <link rel="import" href="../px-layout.html">
-<link rel="import" href="../../px-drawer/px-drawer.html">
+  <link rel="import" href="../../px-drawer/px-drawer.html">
   <link rel="import" href="../../px-page/px-page.html">
   <link rel="import" href="../../px-page/px-pages.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
@@ -71,63 +71,43 @@
 
 <body unresolved>
 
-  <template id="app" is="dom-bind">
-    <style>
-
-    </style>
+<template id="app" is="dom-bind">
 
 
-    <px-layout id="layout" type="splitview">
-      <px-header subtitle="Split View Template"></px-header>
+  <px-layout id="layout2" type="splitview">
+    <px-header subtitle="Split View Layout"></px-header>
+    <div class="secondary-content">
+      <px-navbar title="Secondary"></px-navbar>
+      <div class="u-m">
+        <p>
+          Secondary Content
+        </p>
+      </div>
+    </div>
+    <div class="primary-content">
+      <px-navbar title="Primary"></px-navbar>
+      <div class="u-m">
+        <p>
+          Primary Content
+        </p>
+      </div>
+    </div>
+  </px-layout>
 
-
-      <px-drawer id="sidenav" side="left">
-      </px-drawer>
-
-        <div class="secondary-content has-navbar is-active">
-          <px-navbar title="Secondary" shadow>
-            <div class="navbar__left">
-              <button class="navbar__button" onclick="document.getElementById('layout').toggle('primarySidebar')">
-                <i class="fa fa-lg fa-navicon"></i>
-              </button>
-            </div>
-          </px-navbar>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-
-
-        <div class="primary-content is-">
-          <px-navbar title="Primary" shadow>
-
-          </px-navbar>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-
-    </px-layout>
-
-  </template>
-  <script type="text/javascript">
-    function toggleSidebar(el) {
-      var sidebar = document.getElementById(el);
-      var type = sidebar.type;
-      if (type === 'mini') {
-        sidebar.type = 'persistent';
-      } else if (type === 'persistent') {
-        sidebar.type = 'mini';
-      }
-      sidebar.toggle();
+</template>
+<script type="text/javascript">
+  function toggleSidebar(el) {
+    var sidebar = document.getElementById(el);
+    var type = sidebar.type;
+    if (type === 'mini') {
+      sidebar.type = 'persistent';
+    } else if (type === 'persistent') {
+      sidebar.type = 'mini';
     }
-  </script>
-  <script>
-  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-  ':35724/livereload.js?snipver=1"></' + 'script>')
+    sidebar.toggle();
+  }
 </script>
+<script src="http://localhost:35724/livereload.js?snipver=1"></script>
 </body>
 
 </html>

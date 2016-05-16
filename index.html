@@ -1,413 +1,363 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <title>px-layout</title>
+<head>
+  <meta charset="utf-8">
+  <title>px-layout</title>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link rel="stylesheet" href="demo/demo.css">
-    <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="demo/demo.css">
+  <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title"
+        charset="utf-8">
 
-    <script src="../webcomponentsjs/webcomponents.js"></script>
+  <script src="../webcomponentsjs/webcomponents.js"></script>
 
-    <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-    <link rel="import" href="../px-partials/px-partials.html">
-    <link rel="import" href="px-layout.html">
+  <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+  <link rel="import" href="../px-partials/px-partials.html">
+  <link rel="import" href="../px-card/px-card.html">
+  <link rel="import" href="px-layout.html">
 
-    <!--
+  <script type="text/javascript">
+    function toggleDebug(name) {
+      document.body.className = name;
+      console.log('toggling', name);
+    }
+  </script>
+</head>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.6/hammer.min.js'></script>
+<body class="" unresolved>
+<!--
+<px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
 -->
+<article class="viewport box">
+  <h1 class="beta">px-layout</h1>
+  <px-box-section title="Patterns">
+    <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
-    <style media="screen">
+    <p>How to update your existing layout:</p>
+    <ol class="">
+      <li>Identify the layout pattern for your app</li>
+      <li>Use the px-layout component</li>
+      <li>Select the type you perfer</li>
+      <li>Replace old markup with new markup</li>
+    </ol>
+  </px-box-section>
 
-      body,
-      html {
-        }
-      .box {
-        background: #fff;
-        padding: 1rem;
-      }
+  <px-box-section title="Templates">
+    <ol class="list-ui">
+      <li>
+        <a href="demo/template-detail.html" target="_blank">Full - Template</a>
+      </li>
+      <li>
+        <a href="demo/template-splitview.html" target="_blank">Split View - Template</a>
+      </li>
 
-      .debug-colors li {
-        display: flex;
-        flex-direction: column;
-      }
+      <li>
+        <a href="demo/template-offcanvas.html" target="_blank">Off Canvas - Template</a>
+      </li>
 
-    </style>
+      <li>
+        <a href="demo/template-detail-asset.html" target="_blank">Asset Detail Template</a>
+      </li>
+      <li>
+        <a href="demo/template-detail-turbine.html" target="_blank">Turbine Detail Template</a>
+      </li>
+      <li>
+        <a href="demo/template-cards.html" target="_blank">Full - Dashboard Template</a>
+      </li>
 
+    </ol>
+  </px-box-section>
+
+  <px-box-section title="New Design Breakpoints">
+    <template id="mobileBreakpoints" is="dom-bind">
+      <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
+        <template is="dom-repeat" items="{{newBreakpoints}}">
+          <li>
+            <h4>
+              <code>{{item.name}}</code>
+            </h4>
+            <i class$="{{item.icon}}"></i>
+            <code>{{item.value}}</code>
+          </li>
+        </template>
+      </ul>
+      <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-new-breakpoints')">Debug</button>
+    </template>
     <script type="text/javascript">
-      function toggleDebug(name) {
-        document.body.className = name;
-        console.log('toggling', name);
-      }
+      var newBreakpoints = [
+        {
+          name: 'xs',
+          value: '24rem (330px)',
+          icon: 'fa fa-mobile fa-4x color-xs'
+        }, {
+          name: 'sm',
+          value: '25rem (480px)',
+          icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
+        }, {
+          name: 'md',
+          value: '51.2rem (768px)',
+          icon: 'fa fa-tablet fa-4x color-md'
+        }, {
+          name: 'lg',
+          value: '68.2rem (1024px)',
+          icon: 'fa fa-tablet fa-rotate-90 fa-4x color-lg'
+        }, {
+          name: 'xl',
+          value: '1280px',
+          icon: 'fa fa-desktop fa-4x color-xl'
+        }
+      ];
+      document.getElementById('mobileBreakpoints').newBreakpoints = newBreakpoints;
     </script>
-  </head>
+  </px-box-section>
 
-  <body class="" unresolved>
-    <!--
-    <px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
--->
-    <article class="box u-m">
-      <h1 class="beta">px-layout</h1>
-      <px-box-section title="Patterns">
-        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
-
-        <p>How to update your existing layout:</p>
-        <ol class="">
-          <li>Identify the layout pattern for your app</li>
-          <li>Use the px-layout component</li>
-          <li>Select the type you perfer</li>
-          <li>Replace old markup with new markup</li>
-        </ol>
-      </px-box-section>
-
-      <px-box-section title="Templates">
-        <ol class="list-ui">
+  <px-box-section title="Old Design Breakpoints">
+    <template id="pxBreakpoints" is="dom-bind">
+      <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
+        <template is="dom-repeat" items="{{oldBreakpoints}}">
           <li>
-            <a href="demo/template-detail.html" target="_blank">Blank - Detail Template</a>
+            <h4>
+              <code>{{item.name}}</code>
+            </h4>
+            <i class$="{{item.icon}}"></i>
+            <code>{{item.value}}</code>
           </li>
-          <li>
-            <a href="demo/template-detail-asset.html" target="_blank">Asset - Detail Template</a>
-          </li>
-          <li>
-            <a href="demo/template-detail-turbine.html" target="_blank">Turbine - Detail Template</a>
-          </li>
-          <li>
-            <a href="demo/template-splitview.html" target="_blank">Blank - Split View Template</a>
-          </li>
-          <li>
-            <a href="demo/index.html" target="_blank">responsive-utilities-test</a>
-          </li>
-          <li>
-            <a href="demo/offcanvas.html" target="_blank">Off Canvas</a>
-          </li>
-          <li>
-            <a href="demo/splitview.html" target="_blank">Split View</a>
-          </li>
-          <li>
-            <a href="demo/progressive.html" target="_blank">Progressive</a>
-          </li>
-        </ol>
-      </px-box-section>
-
-      <px-box-section title="New Design Breakpoints">
-        <template id="mobileBreakpoints" is="dom-bind">
-          <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
-            <template is="dom-repeat" items="{{newBreakpoints}}">
-              <li>
-                <h4>
-                  <code>{{item.name}}</code>
-                </h4>
-                <i class$="{{item.icon}}"></i>
-                <code>{{item.value}}</code>
-              </li>
-            </template>
-          </ul>
-          <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-new-breakpoints')">Debug</button>
         </template>
-        <script type="text/javascript">
-          var newBreakpoints = [
-            {
-              name: 'xs',
-              value: '320px',
-              icon: 'fa fa-mobile fa-4x color-xs'
-            }, {
-              name: 'sm',
-              value: '480px',
-              icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
-            }, {
-              name: 'md',
-              value: '768px',
-              icon: 'fa fa-tablet fa-4x color-md'
-            }, {
-              name: 'lg',
-              value: '1024px',
-              icon: 'fa fa-tablet fa-rotate-90 fa-4x color-lg'
-            }, {
-              name: 'xl',
-              value: '1280px',
-              icon: 'fa fa-desktop fa-4x color-xl'
-            }
-          ];
-          document.getElementById('mobileBreakpoints').newBreakpoints = newBreakpoints;
-        </script>
-      </px-box-section>
+      </ul>
+      <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-old-breakpoints')">Debug</button>
+    </template>
+    <script type="text/javascript">
+      var oldBreakpoints = [
+        {
+          name: 'palm',
+          value: '719px',
+          icon: 'fa fa-mobile fa-4x color-palm'
+        }, {
+          name: 'portable',
+          value: '1022px',
+          icon: 'fa fa-mobile fa-4x fa-rotate-90 color-portable'
+        }, {
+          name: 'lap',
+          value: '720px >= 1022px',
+          icon: 'fa fa-tablet fa-4x color-lap'
+        }, {
+          name: 'lap-and-up',
+          value: '720px',
+          icon: 'fa fa-desktop fa-4x color-lap-and-up'
+        }, {
+          name: 'desk',
+          value: '1024px',
+          icon: 'fa fa-desktop fa-4x color-desk'
+        }
+      ];
+      document.getElementById('pxBreakpoints').oldBreakpoints = oldBreakpoints;
+    </script>
+  </px-box-section>
 
-      <px-box-section title="Old Design Breakpoints">
-        <template id="pxBreakpoints" is="dom-bind">
-          <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
-            <template is="dom-repeat" items="{{oldBreakpoints}}">
-              <li>
-                <h4>
-                  <code>{{item.name}}</code>
-                </h4>
-                <i class$="{{item.icon}}"></i>
-                <code>{{item.value}}</code>
-              </li>
-            </template>
-          </ul>
-          <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-old-breakpoints')">Debug</button>
-        </template>
-        <script type="text/javascript">
-          var oldBreakpoints = [
-            {
-              name: 'palm',
-              value: '719px',
-              icon: 'fa fa-mobile fa-4x color-palm'
-            }, {
-              name: 'portable',
-              value: '1022px',
-              icon: 'fa fa-mobile fa-4x fa-rotate-90 color-portable'
-            }, {
-              name: 'lap',
-              value: '720px >= 1022px',
-              icon: 'fa fa-tablet fa-4x color-lap'
-            }, {
-              name: 'lap-and-up',
-              value: '720px',
-              icon: 'fa fa-desktop fa-4x color-lap-and-up'
-            }, {
-              name: 'desk',
-              value: '1024px',
-              icon: 'fa fa-desktop fa-4x color-desk'
-            }
-          ];
-          document.getElementById('pxBreakpoints').oldBreakpoints = oldBreakpoints;
-        </script>
-      </px-box-section>
+  <px-box-section title="Responsive Utilities">
+    <table class=" table table--small table-bordered table-striped responsive-utilities">
+      <thead>
+      <tr>
+        <th></th>
+        <th>
+          Extra small
+          <small>Portrait phones (&lt;34em)</small>
+        </th>
+        <th>
+          Small
+          <small>Landscape phones (≥34em)</small>
+        </th>
+        <th>
+          Medium
+          <small>Tablets (≥48em)</small>
+        </th>
+        <th>
+          Large
+          <small>Desktops (≥62em)</small>
+        </th>
+        <th>
+          Extra large
+          <small>Desktops (≥75em)</small>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">
+          <code>.hidden-xs-down</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-sm-down</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-md-down</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-lg-down</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-visible">Visible</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-xl-down</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-xs-up</code>
+        </th>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-sm-up</code>
+        </th>
+        <td class="is-visible">Visible</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-md-up</code>
+        </th>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-lg-up</code>
+        </th>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-hidden">Hidden</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.hidden-xl-up</code>
+        </th>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-visible">Visible</td>
+        <td class="is-hidden">Hidden</td>
+      </tr>
+      </tbody>
+    </table>
+  </px-box-section>
 
-      <px-box-section title="Responsive Utilities">
-        <table class=" table table--small table-bordered table-striped responsive-utilities">
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                Extra small
-                <small>Portrait phones (&lt;34em)</small>
-              </th>
-              <th>
-                Small
-                <small>Landscape phones (≥34em)</small>
-              </th>
-              <th>
-                Medium
-                <small>Tablets (≥48em)</small>
-              </th>
-              <th>
-                Large
-                <small>Desktops (≥62em)</small>
-              </th>
-              <th>
-                Extra large
-                <small>Desktops (≥75em)</small>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                <code>.hidden-xs-down</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-sm-down</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-md-down</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-lg-down</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-visible">Visible</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-xl-down</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-xs-up</code>
-              </th>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-sm-up</code>
-              </th>
-              <td class="is-visible">Visible</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-md-up</code>
-              </th>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-lg-up</code>
-              </th>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-hidden">Hidden</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-              <th scope="row">
-                <code>.hidden-xl-up</code>
-              </th>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-visible">Visible</td>
-              <td class="is-hidden">Hidden</td>
-            </tr>
-          </tbody>
-        </table>
-      </px-box-section>
+  <px-box-section title="Visibility Test">
+    <ul class="list-ui responsive-utilities-test visible-on">
+      <li class="hidden-sm-up visible">✔ Visible on extra small</li>
+      <li class="hidden-xs-down not-visible">Extra small</li>
+      <li class="hidden-md-up visible">✔ Visible on small or narrower</li>
+      <li class="hidden-sm-down not-visible">Small or narrower</li>
+      <li class="hidden-lg-up visible">✔ Visible on medium or narrower</li>
+      <li class="hidden-md-down not-visible">Medium or narrower</li>
+      <li class="hidden-xl-up visible">✔ Visible on large or narrower</li>
+      <li class="hidden-lg-down not-visible">Large or narrower</li>
+      <li class="hidden-xs-down visible">✔ Visible on small or wider</li>
+      <li class="hidden-sm-up not-visible">Small or wider</li>
+      <li class="hidden-sm-down visible">✔ Visible on medium or wider</li>
+      <li class="hidden-md-up not-visible">Medium or wider</li>
+      <li class="hidden-md-down visible">✔ Visible on large or wider</li>
+      <li class="hidden-lg-up not-visible">Large or wider</li>
+      <li class="hidden-lg-down visible">✔ Visible on extra large</li>
+      <li class="hidden-xl-up not-visible">Extra large</li>
+    </ul>
+  </px-box-section>
 
-      <px-box-section title="Visibility Test">
+  <px-box-section title="Viewport Test">
+    <ul class="list-ui responsive-utilities-test visible-on">
+      <li class="hidden-sm-up visible">✔ Your viewport is exactly extra small</li>
+      <li class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</li>
+      <li class="hidden-xs-down hidden-md-up visible">✔ Your viewport is exactly small</li>
+      <li class="hidden-sm-only not-visible">Your viewport is NOT exactly small</li>
+      <li class="hidden-sm-down hidden-lg-up visible">✔ Your viewport is exactly medium</li>
+      <li class="hidden-md-only not-visible">Your viewport is NOT exactly medium</li>
+      <li class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large</li>
+      <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
+      <li class="hidden-lg-down visible">✔ Your viewport is exactly extra large</li>
+      <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
+    </ul>
+  </px-box-section>
 
-        <ul class="list-ui responsive-utilities-test visible-on">
+  <px-box-section title="Helper - px-media-query">
+    <template id="queryExample" is="dom-bind">
+      <px-media-query id="xs" query="(min-width: 320px)" query-matches="{{isXs}}"></px-media-query>
+      <px-media-query id="sm" query="(min-width: 480px)" query-matches="{{isSm}}"></px-media-query>
+      <px-media-query id="md" query="(min-width: 768px)" query-matches="{{isMd}}"></px-media-query>
+      <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
+      <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
 
-          <li class="hidden-sm-up visible">✔ Visible on extra small</li>
-          <li class="hidden-xs-down not-visible">Extra small</li>
-
-          <li class="hidden-md-up visible">✔ Visible on small or narrower</li>
-          <li class="hidden-sm-down not-visible">Small or narrower</li>
-
-          <li class="hidden-lg-up visible">✔ Visible on medium or narrower</li>
-          <li class="hidden-md-down not-visible">Medium or narrower</li>
-
-          <li class="hidden-xl-up visible">✔ Visible on large or narrower</li>
-          <li class="hidden-lg-down not-visible">Large or narrower</li>
-
-          <li class="hidden-xs-down visible">✔ Visible on small or wider</li>
-          <li class="hidden-sm-up not-visible">Small or wider</li>
-
-          <li class="hidden-sm-down visible">✔ Visible on medium or wider</li>
-          <li class="hidden-md-up not-visible">Medium or wider</li>
-
-          <li class="hidden-md-down visible">✔ Visible on large or wider</li>
-          <li class="hidden-lg-up not-visible">Large or wider</li>
-
-          <li class="hidden-lg-down visible">✔ Visible on extra large</li>
-          <li class="hidden-xl-up not-visible">Extra large</li>
-
-        </ul>
-      </px-box-section>
-      <px-box-section title="Viewport Test">
-
-        <ul class="list-ui responsive-utilities-test visible-on">
-          <li class="hidden-sm-up visible">
-            <span >✔ Your viewport is exactly extra small
-            </span>
-          </li>
-
-          <li class="hidden-xs-down not-visible">
-            <span >Your viewport is NOT exactly extra small
-            </span>
-          </li>
-          <li class="hidden-xs-down hidden-md-up visible">
-            <span class="">✔ Your viewport is exactly small
-            </span>
-          </li>
-          <li class="hidden-sm-only not-visible">
-            <span>Your viewport is NOT exactly small</span>
-          </li>
-          <li class="hidden-sm-down hidden-lg-up visible">
-            <span >✔ Your viewport is exactly medium</span>
-          </li>
-          <li class="hidden-md-only not-visible">
-            <span >Your viewport is NOT exactly medium</span>
-          </li>
-          <li class="hidden-md-down hidden-xl-up visible">✔ Your viewport is exactly large
-          </li>
-          <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
-          <li class="hidden-lg-down visible">✔ Your viewport is exactly extra large</li>
-          <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
-        </ul>
-      </px-box-section>
-
-      <px-box-section title="Helper - px-media-query">
-        <template id="queryExample" is="dom-bind">
-          <px-media-query id="xs" query="(min-width: 320px)" query-matches="{{isXs}}"></px-media-query>
-          <px-media-query id="sm" query="(min-width: 480px)" query-matches="{{isSm}}"></px-media-query>
-          <px-media-query id="md" query="(min-width: 768px)" query-matches="{{isMd}}"></px-media-query>
-          <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
-          <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
-
-          <template is="dom-if" if="{{isXs}">
-            <p>Query Matches xs -
-              <code>{{isXs}}</code>
-            </p>
-          </template>
-          <template is="dom-if" if="{{isSm}">
-            <p>Query Matches sm -
-              <code>{{isSm}}</code>
-            </p>
-          </template>
-          <template is="dom-if" if="{{isMd}">
-            <p>Query Matches md -
-              <code>{{isMd}}</code>
-            </p>
-          </template>
-          <template is="dom-if" if="{{isLg}">
-            <p>Query Matches lg - -
-              <code>{{isLg}}</code>
-            </p>
-          </p>
-        </template>
-        <template is="dom-if" if="{{isXl}">
-          <p>Query Matches xl - -
-            <code>{{isXl}}</code>
-          </p>
+      <template is="dom-if" if="{{isXs}">
+        <p>Query Matches xs -
+          <code>{{isXs}}</code>
+        </p>
+      </template>
+      <template is="dom-if" if="{{isSm}">
+        <p>Query Matches sm -
+          <code>{{isSm}}</code>
+        </p>
+      </template>
+      <template is="dom-if" if="{{isMd}">
+        <p>Query Matches md -
+          <code>{{isMd}}</code>
+        </p>
+      </template>
+      <template is="dom-if" if="{{isLg}">
+        <p>Query Matches lg - -
+          <code>{{isLg}}</code>
+        </p>
+        </p>
+      </template>
+      <template is="dom-if" if="{{isXl}">
+        <p>Query Matches xl - -
+          <code>{{isXl}}</code>
+        </p>
         </p>
       </template>
     </template>
@@ -423,21 +373,52 @@
       </p>
       <demo-snippet>
         <template>
-          <div class="responsive-demo u-bg--gray10" style="height: 500px">
+          <div class="responsive-demo u-bg--gray9" style="">
             <px-layout id="layout0">
               <px-header subtitle="Full Detail Layout"></px-header>
-              <div class="primary-content has-navbar">
+              <div class="secondary-sidebar">
+                <p class="u-m">
+                  This is content inside the secondary sidebar.
+                </p>
+              </div>
+              <div class="primary-content">
                 <px-navbar title="Primary Content">
+                  <div class="navbar__left">
+                  </div>
                   <div class="navbar__right">
                     <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
                       <i class="fa fa-lg fa-ellipsis-v"></i>
                     </button>
                   </div>
                 </px-navbar>
-                <section>
-                  <p>
-                    This is content.
-                  </p>
+                <section class="has-navbar">
+                  <div class="u-mt--">
+                    <px-card header-text="Section">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                      </p>
+                    </px-card>
+                    <px-card header-text="Section">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                        mollit anim id est laborum.
+                      </p>
+                    </px-card>
+                  </div>
                 </section>
               </div>
               <px-footer copywrite="2016"></px-footer>
@@ -458,27 +439,48 @@
       </p>
       <demo-snippet>
         <template>
-          <px-layout id="layout1" class="responsive-demo u-bg--gray10" style="height: 500px">
+          <px-layout id="layout1" class="responsive-demo u-bg--gray9" style="">
             <px-header subtitle="Off Canvas Layout"></px-header>
-            <div class="secondary-content box">
-              <px-navbar title="Secondary Content">
-                <div class="navbar__left">
-                  <button class="navbar__button " onclick="document.getElementById('layout1').toggle('primarySidebar')">
+            <div class="primary-sidebar">
+              <p class="u-m">
+                This is content inside the primary sidebar.
+              </p>
+            </div>
+            <div class="primary-content">
+              <px-navbar title="Primary Content">
+                <div class="navbar__right">
+                  <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
                     <i class="fa fa-lg fa-bars"></i>
                   </button>
                 </div>
               </px-navbar>
-              <section></section>
-            </div>
-            <div class="primary-content box">
-              <px-navbar title="Primary Content">
-                <div class="navbar__right">
-                  <button class="navbar__button" onclick="document.getElementById('layout1').toggle('secondarySidebar')">
-                    <i class="fa fa-lg fa-ellipsis-v"></i>
-                  </button>
-                </div>
-              </px-navbar>
-              <section></section>
+              <section class="has-navbar">
+                <px-card header-text="Section">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                  </p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                  </p>
+                </px-card>
+                <px-card header-text="Section">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                  </p>
+                </px-card>
+              </section>
             </div>
             <px-footer copywrite="2016"></px-footer>
           </px-layout>
@@ -487,8 +489,7 @@
     </div>
   </px-box-section>
 
-
-  <px-box-section title="Split Layout">
+  <px-box-section title="Split View Layout">
     <h2>
       <code>.l-splitview</code>
     </h2>
@@ -497,65 +498,33 @@
     </p>
     <demo-snippet>
       <template>
-        <div class="responsive-demo u-bg--gray10" style="height: 500px">
-
+        <div class="responsive-demo u-bg--gray9" style="">
           <px-layout id="layout2" type="splitview">
             <px-header subtitle="Split View Layout"></px-header>
-            <div class="secondary-content box">
-              Secondary Content
+            <div class="secondary-content">
+              <div class="u-m">
+                <p>
+                  Secondary Content
+                </p>
+              </div>
             </div>
-            <div class="primary-content box">
-              Primary Content
+            <div class="primary-content">
+              <div class="u-m">
+                <p>
+                  Primary Content
+                </p>
+              </div>
             </div>
           </px-layout>
         </div>
       </template>
     </demo-snippet>
   </px-box-section>
-
-
-  <px-box-section title="Progressive Layout">
-    <h2><code>.l-progressive</code></h2>
-    <p>
-      <a href="demo/progressive.html" target="_blank">View progressive demo</a>
-    </p>
-    <demo-snippet>
-      <template>
-        <div class="responsive-demo u-bg--gray10" style="height: 500px">
-          <px-layout id="progressiveDemo" type="progressive">
-            <px-header subtitle="Progressive Layout"></px-header>
-
-              <div class="primary-sidebar ">
-                Primary Sidebar
-              </div>
-
-              <div class="secondary-content box">
-                Secondary Content
-                <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('primarySidebar')">Toggle Sidebar</button>
-              </div>
-
-              <div class="primary-content box">
-                Primary Content
-                <button class="navbar__button" onclick="document.getElementById('progressiveDemo').toggle('secondarySidebar')">Toggle Sidebar</button>
-              </div>
-
-              <div class="secondary-sidebar ">
-                Secondary Sidebar
-              </div>
-
-          </px-layout>
-        </div>
-      </template>
-    </demo-snippet>
-  </px-box-section>
-
-
 
   <px-box-section title="Flexbox Grid">
-
-      <h2>
-        <code>.flex</code>
-      </h2>
+    <h2>
+      <code>.flex</code>
+    </h2>
 
     <div class="page-header">
       <h2>Flex - Row</h2>
@@ -627,7 +596,8 @@
         <div class="viewport responsive-demo">
           <div id="Flex - Top Align" class="flex flex--top">
             <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae
+              dignissimos officia temporibus?
             </div>
             <div class="flex__item c1">3</div>
           </div>
@@ -642,7 +612,8 @@
         <div class="viewport responsive-demo">
           <div id="Flex - Middle Align" class="flex flex--middle">
             <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae
+              dignissimos officia temporibus?
             </div>
             <div class="flex__item c1">3</div>
           </div>
@@ -657,7 +628,8 @@
         <div class="viewport responsive-demo">
           <div id="Flex - Bottom Align" class="flex flex--bottom">
             <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae
+              dignissimos officia temporibus?
             </div>
             <div class="flex__item c1">3</div>
           </div>
@@ -672,7 +644,8 @@
         <div class="viewport responsive-demo">
           <div id="Flex - Stretch" class="flex flex--stretch">
             <div class="flex__item c1">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae
+              dignissimos officia temporibus?
             </div>
             <div class="flex__item c1">3</div>
           </div>
@@ -688,7 +661,8 @@
         <div class="viewport responsive-demo">
           <div class="flex flex--spaced">
             <div class="flex__item c1 w-100">1</div>
-            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae dignissimos officia temporibus?
+            <div class="flex__item c1">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, velit. Vitae
+              dignissimos officia temporibus?
             </div>
             <div class="flex__item--top c1">3 - flex__item--top</div>
             <div class="flex__item--middle c1">4 - flex__item--middle</div>
@@ -782,7 +756,7 @@
         </template>
       </demo-snippet>
     </div>
-</px-box-section>
+  </px-box-section>
 </article>
 <script src="http://localhost:35724/livereload.js?snipver=1"></script>
 </body>
