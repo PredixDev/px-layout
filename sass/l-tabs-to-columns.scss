@@ -1,0 +1,68 @@
+@import 'variables';
+@import 'mixins';
+///------------------------------------
+@include b('box-section') {
+	@include m('tabs-to-columns') {
+		.tabs {
+			display: flex;
+			///------------------------------------
+			///Hide tabs on desktop
+			@include media-query('(min-width: 40em)') {
+				display: none;
+				//	height: 125px;
+			}
+			a {
+				border-bottom: 1px solid #ccc;
+				color: black;
+				text-decoration: none;
+				white-space: nowrap;
+				text-transform: uppercase;
+				box-sizing: border-box;
+				flex: 1;
+				display: inline-block;
+				padding: 1em;
+				text-align: center;
+				&.active {
+					border-bottom: 3px solid #000;
+					font-weight: bold;
+				}
+			}
+		}
+
+		.content-wrapper {
+			//border: 1px solid red;
+			//margin-top: 3rem;
+			///------------------------------------
+			///One section on tablet
+			@include media-query('(max-width: 39.99em)') {
+				margin-top: 0;
+				width: 100%;
+				overflow: hidden;
+			}
+
+			///------------------------------------
+			.content {
+				display: flex;
+				///------------------------------------
+				@include media-query('(max-width: 39.99em)') {
+					width: 300%;
+				}
+				> section {
+					box-sizing: border-box;
+					flex: 1;
+					order: 1;
+					&.active {
+						order: 1;
+						flex: 2;
+					}
+					&:not(.active) {
+						@include media-query('(max-width: 39.99em)') {
+							order: 3;
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

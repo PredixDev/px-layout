@@ -3,12 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <title>template-offcanvas</title>
+  <title>template-full</title>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="demo.css">
   <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
 
   <script src="../../webcomponentsjs/webcomponents.js"></script>
+
   <link rel="import" href="../px-layout.html">
   <link rel="import" href="../../px-card/px-card.html">
   <link rel="import" href="../../px-table-view/px-table-view.html">
@@ -17,90 +19,65 @@
 
 <body unresolved class="responsive-demo">
 <template id="app" is="dom-bind">
-<style media="screen">
-.box{
-  background: #fff;
-}
-  .primary-sidebar .table-row__title {
-    color: #fff;
-  }
-  .primary-sidebar .table-row__media--icon {
-    align-self: baseline;
-  }
-</style>
+
   <px-layout id="layout0">
-    <px-header subtitle="Off Canvas Layout"></px-header>
-    <!-- TODO: Primary Sidebar -->
-    <div class="primary-sidebar table-view table-view--tiny table-view--bare">
-      <template is="dom-repeat" items="{{navItems}}">
-        <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
-      </template>
-    </div>
+    <px-header subtitle="Full Template"></px-header>
     <div class="secondary-sidebar">
       <p class="u-m">
         This is content inside the secondary sidebar.
       </p>
     </div>
+
     <div class="primary-content">
-      <px-navbar title="View Title">
+
+      <px-navbar title="">
         <div class="navbar__left">
           <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
             <i class="fa fa-lg fa-navicon"></i>
           </button>
         </div>
-        <!--  <div class="navbar__right">
-			<button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-			  <i class="fa fa-lg fa-ellipsis-v"></i>
-			</button>
-		  </div>
-		  -->
-      </px-navbar>
-      <section class="has-navbar">
-        <div class="box">
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+        <div class="navbar__right">
+          <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+            <i class="fa fa-lg fa-ellipsis-v"></i>
+          </button>
         </div>
+      </px-navbar>
+
+      <section class="has-navbar">
+        <article class="box-section box-section--tabs-to-columns">
+      			<nav class="tabs">
+      				<a href="#col1" class="active">Tab One</a>
+      				<a href="#col2">Tab Two</a>
+      			</nav>
+      			<div class="content-wrapper">
+      				<div class="content">
+      					<section id="col1" class="box box--flush active">
+      						<ul class="list-ui">
+
+      							<li>&nbsp;</li>
+      							<li>&nbsp;</li>
+      							<li>&nbsp;</li>
+
+      						</ul>
+      					</section>
+      					<section id="col2" class="box">
+      						<div class="u-m">
+      							<p>&nbsp;</p>
+
+      						</div>
+      					</section>
+      				</div>
+      			</div>
+      		</article>
+      
+
       </section>
     </div>
-    <px-footer copywrite="2016"></px-footer>
+<px-footer copywrite="&copy;2016 General Electric"></px-footer>
   </px-layout>
 
 </template>
 <script type="text/javascript">
-var navItems = [
-  {
-    label: 'Dashboard',
-    icon: 'fa fa-dashboard'
-  }, {
-    label: 'Alerts',
-    icon: 'fa fa-exclamation-triangle'
-  }, {
-    label: 'Cases',
-    icon: 'fa fa-briefcase'
-  }, {
-    label: 'Analysis',
-    icon: 'fa fa-bar-chart'
-  }
-];
-document.addEventListener('WebComponentsReady', function () {
-  app = document.getElementById('app');
-  app.navItems = navItems;
-});
   document.addEventListener('WebComponentsReady', function () {
     /* Create the unit divs for the demo */
     var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +

@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'mixins';
+
+@import "l-tabs-to-columns";
+@import "l-offcanvas";
+@import "l-splitview";
+
+@include b ('l-container') {
+  position  : relative;
+  overflow  : hidden;
+  transition: all .5s ease;
+}
+
+.viewport, .viewport:not([style-scope]):not(.style-scope) {
+  transition: all .5s ease;
+
+
+  @include media-breakpoint('md') {
+    //width        : 100%;
+    margin-left  : 0;
+    margin-right : 0;
+    padding-left : 0;
+    padding-right: 0;
+  }
+  @include media-breakpoint('lg') {
+    //  width        : 100%;
+    margin-left  : auto;
+    margin-right : auto;
+    padding-left : auto;
+    padding-right: auto;
+  }
+}

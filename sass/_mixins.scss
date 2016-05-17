@@ -1,2 +1,25 @@
 @import 'variables';
 @import "px-mobile-design/sass/_mixins.scss";
+
+
+@mixin responsive-visibility-utils($bps:$breakpoints) {
+   @content;
+
+  /// Visibility utilities
+  .invisible {
+    visibility: hidden !important;
+  }
+  ///Responsive visibility utilities
+  @each $bp in map-keys($bps) {
+    .hidden-#{$bp}-up {
+      @include media-breakpoint-up($bp) {
+        display: none !important;
+      }
+    }
+    .hidden-#{$bp}-down {
+      @include media-breakpoint-down($bp) {
+        display: none !important;
+      }
+    }
+  }
+}
