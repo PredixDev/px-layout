@@ -1,7 +1,6 @@
 @import "variables";
 //@import "px-mobile-mixin-design";
 @import "mixins";
-@import "px-colors-design/_settings.colors.scss";
 @mixin createDebugColors($colors) {
 	 @each $alias, $color in $colors{
 		.color-#{$alias} {
@@ -30,17 +29,66 @@
 	background-color: $gray10;
 }
 
+demo-snippet .demo {
+	background-color: $gray2 !important;
+}
 /** Debug Media Query Colors */
 
 $oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
 
 ///Define new breakpoint colors;
-$newColors: ( xs: #e9c069, sm: #93d973, md: #e96969, lg: #69d3e9, xl: purple );
+$newColors: ( xs: $dv-dark-blue, sm: $dv-dark-pink, md: $dv-dark-green, lg: $dv-dark-purple,
+xl: $dv-dark-orange );
 $selector: 'responsive-demo';
 
 
+.responsive-utilities {
+	.is-visible {
+		color           : $dv-dark-green;
+		background-color: $dv-light-green !important;
+	}
+
+	.is-hidden {
+		color           : $gray7;
+		background-color: $gray2 !important;
+	}
 
 
+	td {
+		text-align: center;
+	}
+
+	span {
+		padding: 5px;
+	}
+
+
+}
+
+.hidden-on .visible,
+.visible-on .visible {
+	color           : $dv-dark-green;
+	background-color: $dv-light-green;
+	border          : 1px solid $dv-dark-green;
+}
+
+.hidden-on .not-visible,
+.visible-on .not-visible {
+	color : #999;
+	border: 1px solid #ddd;
+}
+
+.debug-new-breakpoints {
+	//@include createDebugBreakpointColors($newColors);
+	@each $alias, $color in $newColors {
+		// #{$alias} - #{$color}
+		@include media-breakpoint($alias) {
+			.#{$selector} {
+				background-color: $color !important;
+			}
+		}
+	}
+}
 @include createDebugColors($newColors);
 @include createDebugColors($oldColors);
 
@@ -56,14 +104,12 @@ $selector: 'responsive-demo';
 	}
 }
 
-.debug-new-breakpoints {
-	//@include createDebugBreakpointColors($newColors);
-	@each $alias, $color in $newColors {
-		// #{$alias} - #{$color}
-		@include media-breakpoint($alias) {
-			.#{$selector} {
-				background-color: $color !important;
-			}
-		}
+.debug{
+
+	.responsive-demo *:nth-child(odd) {
+	  background-color: rgba(0, 0, 0, 0.2);
+	}
+	.responsive-demo *:nth-child(even){
+	  background-color: rgba(0, 0, 0, 0.4);
 	}
 }

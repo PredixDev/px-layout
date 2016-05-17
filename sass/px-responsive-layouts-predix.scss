@@ -1,3 +1,5 @@
+
+
 /*
  * Copyright (c) 2016 GE Global Research. All rights reserved.
  *
@@ -9,48 +11,99 @@
  */
 @charset "utf-8";
 @import "variables";
-@import "mixins";
+@import "px-defaults-design/_settings.defaults.scss";
+
+@import "px-colors-design/_settings.colors.scss";
 
 /// Generic
 @import "px-normalize-design/_generic.normalize.scss";
 @import "px-box-sizing-design/_generic.box-sizing.scss";
 @import "px-helpers-design/_generic.helpers.scss";
-//@import "px-defaults-design/_settings.defaults.scss";
 
 /// Base
 //@import "px-typography-design/_base.typography.scss";
 @import "px-flexbox-design/_base.flexbox.scss";
 @import "px-viewport-design/_base.viewport.scss";
+
+/// Objects
 @import "px-layout-design/_objects.layout.scss";
 
 /// Trumps
+@import "px-widths-design/_trumps.widths.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
+@import 'px-mobile-design/_trumps.breakpoints.scss';
 
-/// Component
-//@import 'px-mobile-design/index.scss';
+
+/// Tools
+@import "px-mobile-design/sass/_mixins.scss";
 @import "inuit-responsive-settings/_settings.responsive.scss";
 @import "inuit-responsive-tools/_tools.responsive.scss";
 @import "px-widths-tools-design/_tools.widths.scss";
-@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
-//$inuit-use-fractions:false;
-//$inuit-widths-columns-responsive: ( 1, 2, 3, 4, 6);
-//@include inuit-widths($inuit-widths-columns-responsive, $newBreakpoints);
 
-//@include scrollbars(.5em, $gray9);
+/*  Root */
+@debug"Breakpoints - #{$breakpoints}";
+
+/* inuit-widths */
+//@include inuit-widths($inuit-widths-columns-responsive, $breakpoints);
+@import "inuit-responsive-settings/_settings.responsive.scss";
+@import "inuit-responsive-tools/_tools.responsive.scss";
+
+
+/// @type List [default] - By default we will create wholes, halves, thirds, quarters, and sixths. Predefine this Map to override.
+$inuit-widths-columns-responsive: (
+    1,
+    2,
+    3,
+    4,
+    6,
+);
+
+// Loop over our breakpoints defined in _settings.responsive.scss
+@each $breakpoint in $breakpoints {
+
+  // Get the name of the breakpoint.
+  $alias: nth($breakpoint, 1);
+
+  @include media-query($alias) {
+
+    // Loop through each of our column sizes and generate its responsive width
+    // classes.
+    @each $inuit-widths-column in $inuit-widths-columns-responsive {
+      @include inuit-widths($inuit-widths-column, -#{$alias});
+    }
+
+  }
+
+}
+
+@include responsiveUtils();
+@import "l-offcanvas";
+@import "l-splitview";
+@include b ('l-container') {
+  position  : relative;
+  overflow  : hidden;
+  transition: all .5s ease;
+}
+
 .viewport,
 .viewport:not([style-scope]):not(.style-scope) {
-  @include media-breakpoint-down (md) {
-    width        : 100%;
-    margin-left  : auto;
-    margin-right : auto;
+  transition: all .5s ease;
+
+
+  @include media-breakpoint('md') {
+    //width        : 100%;
+    margin-left  : 0;
+    margin-right : 0;
     padding-left : 0;
     padding-right: 0;
   }
-  @include media-breakpoint-up (lg) {
-    width        : 100%;
+  @include media-breakpoint('lg') {
+    //  width        : 100%;
     margin-left  : auto;
     margin-right : auto;
     padding-left : auto;
     padding-right: auto;
   }
 }
-@include responsiveUtils();
+
+@import 'px-responsive-layouts-demo.scss';

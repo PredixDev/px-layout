@@ -1,3 +1,4 @@
+ 
 
 .app {
   position: relative;
@@ -6,7 +7,7 @@
 }
 
 .demo.demo-snippet{
-  padding: 0 !important;
+ background: #eee;
 }
 .debug-colors li{
   display: flex;
@@ -21,48 +22,4 @@
 
 code {
   color: crimson;
-}
-.c1:nth-child(odd), .c2:nth-child(odd) {
-  background-color: rgba(1, 1, 1, 0.5);
-}
-.c1:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-table code {
-  white-space: nowrap;
-}
-
-.responsive-demo .c1{
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-}
-
-.responsive-utilities-test .flex__item {
-    padding: 1rem !important;
-}
-
-.responsive-utilities .is-visible {
-  color: #468847;
-  background-color: #dff0d8!important;
-}
-.responsive-utilities .is-hidden {
-  color: #ccc;
-  background-color: #f9f9f9!important;
-}
-.responsive-utilities td {
-  text-align: center;
-}
-.responsive-utilities span{
-  padding: 5px;
-}
-
-.hidden-on .visible, .visible-on .visible {
-  color: #468847;
-  background-color: #dff0d8;
-  border: 1px solid #d6e9c6;
-}
-.hidden-on .not-visible, .visible-on .not-visible {
-  color: #999;
-  border: 1px solid #ddd;
 }

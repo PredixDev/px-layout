@@ -1,12 +1,18 @@
 <link rel="import" href="../polymer/polymer.html"/>
-<link rel="import" href="../px-theme/px-theme.html">
-<link rel="import" href="../px-theme/px-app.html">
 <link rel="import" href="../px-partials/px-partials.html">
 <link rel="import" href="../px-navbar/px-navbar.html">
 <link rel="import" href="../px-drawer/px-drawer.html">
-<link rel="import" href="px-media-query.html">
 
-<link rel="stylesheet" href="css/px-responsive-layouts-sketch.css">
+<link rel="import" href="../px-theme/px-app.html">
+<link rel="import" href="../px-theme/px-theme.html">
+
+<link rel="import" href="px-media-query.html">
+<link rel="import" href="px-layout-item.html">
+
+<!--
+<link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
+-->
+<link rel="stylesheet" href="css/px-responsive-layouts.css">
 
 <!--
 <link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
@@ -33,9 +39,8 @@ Code Here
 @homepage index.html
 -->
 <dom-module id="px-layout">
-
-
   <template strip-whitespace>
+
     <style>
       :host {
         display: block;
@@ -43,6 +48,7 @@ Code Here
         overflow: hidden;
         max-height: 100%;
       }
+
       :host .scrollable,
       :host ::content .scrollable {
         max-height: 100vh;
@@ -76,44 +82,38 @@ Code Here
 
       <div id="_layoutViewport" class="viewport">
 
-
-
         <div class="l-container">
 
           <!-- primary-sidebar -->
           <aside class="l-primary-sidebar">
             <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
-              <content id="primarySidebarContent" select=".primary-sidebar"></content>
+              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
             </px-drawer>
           </aside>
 
           <!-- Secondary Content -->
           <section class="l-container__secondary-content">
-            <content id="secondaryContent" select=".secondary-content"></content>
+            <content id="secondaryContent" select=".secondary-content, [role='secondary-content']"></content>
           </section>
 
           <!-- Primary Content -->
           <section class="l-container__primary-content">
-            <content id="primaryContent" select=".primary-content"></content>
+            <content id="primaryContent" select=".primary-content, [role='primary-content']"></content>
           </section>
 
           <!-- Any Content Views / Pages -->
           <section class="l-container__content">
-            <content id="contentContent" select=".content"></content>
+            <content id="contentContent" select=".content, [role='content']"></content>
           </section>
 
           <!-- secondary-sidebar -->
           <aside class="l-container__secondary-sidebar">
             <px-drawer id="secondarySidebar" side="right" theme="dark">
-              <content id="secondarySidebarContent" select=".secondary-sidebar"></content>
+              <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar']"></content>
             </px-drawer>
           </aside>
         </div>
-
-
       </div>
-
-
 
       <div id="footer" class="viewport l-footer hidden-md-down">
         <content id="footerContent" select="px-footer"></content>
