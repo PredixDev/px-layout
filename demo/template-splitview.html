@@ -11,32 +11,27 @@
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-navbar/px-navbar.html">
-    <style media="screen">
-
-    </style>
+    <style media="screen"></style>
   </head>
   <body unresolved>
     <template id="app" is="dom-bind">
-    <style media="screen">
-      .primary-sidebar .table-row__title {
-        color: #fff;
-      }
-      .primary-sidebar .table-row__media--icon {
-        align-self: baseline;
-      }
-    </style>
+      <style media="screen">
+        .primary-sidebar .table-row__title {
+          color: #fff;
+        }
+        .primary-sidebar .table-row__media--icon {
+          align-self: baseline;
+        }
+      </style>
       <px-layout id="layout2" type="splitview">
-
         <!-- TODO: Header -->
         <px-header subtitle="Split View Template"></px-header>
-
         <!-- TODO: Primary Sidebar -->
         <div class="primary-sidebar table-view table-view--tiny table-view--bare">
           <template is="dom-repeat" items="{{navItems}}">
             <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
           </template>
         </div>
-
         <!-- TODO: Secondary Content -->
         <div class="secondary-content has-navbar">
           <px-navbar title="" shadow>
@@ -48,7 +43,6 @@
           </px-navbar>
           <div class="">
             <ul class="list-ui">
-
               <li>&nbsp;</li>
               <li>&nbsp;</li>
               <li>&nbsp;</li>
@@ -61,44 +55,38 @@
               <li>&nbsp;</li>
               <li>&nbsp;</li>
               <li>&nbsp;</li>
-
-
             </ul>
           </div>
         </div>
-
         <!-- TODO: Primary Content -->
         <div class="primary-content has-navbar">
           <px-navbar title="" shadow></px-navbar>
-          <div class="u-m">
-
-          </div>
+          <div class="u-m"></div>
         </div>
-
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-layout>
     </template>
     <script type="text/javascript">
-    var navItems = [
-      {
-        label: 'Dashboard',
-        icon: 'fa fa-dashboard'
-      }, {
-        label: 'Alerts',
-        icon: 'fa fa-exclamation-triangle'
-      }, {
-        label: 'Cases',
-        icon: 'fa fa-briefcase'
-      }, {
-        label: 'Analysis',
-        icon: 'fa fa-bar-chart'
-      }
-    ];
-    document.addEventListener('WebComponentsReady', function () {
-      app = document.getElementById('app');
-      app.navItems = navItems;
-    });
+      var navItems = [
+        {
+          label: 'Dashboard',
+          icon: 'fa fa-dashboard'
+        }, {
+          label: 'Alerts',
+          icon: 'fa fa-exclamation-triangle'
+        }, {
+          label: 'Cases',
+          icon: 'fa fa-briefcase'
+        }, {
+          label: 'Analysis',
+          icon: 'fa fa-bar-chart'
+        }
+      ];
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.navItems = navItems;
+      });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>

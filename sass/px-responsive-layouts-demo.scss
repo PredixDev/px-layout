@@ -120,3 +120,36 @@ demo-snippet .demo {
 	  background-color: rgba(0, 0, 0, 0.4);
 	}
 }
+
+
+
+
+
+
+
+
+
+// TODO: Login demo
+.login{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	
+	h1{
+		color: #fff;
+		font-weight: normal;
+		margin-top: 0;
+	}
+
+	.box {
+		flex: 1;
+		background: transparent;
+		border: none;
+		text-align: center;
+		max-width: 425px;
+		overflow: hidden;
+	}
+
+}

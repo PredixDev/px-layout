@@ -9,15 +9,20 @@
 		border-right: 1px solid $gray5;
 	}
 	&--tabs-to-columns {
-		.tabs {
+		.tabs,
+		.tabs-container__nav {
 			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+
 			///------------------------------------
 			///Hide tabs on desktop
 			@include media-breakpoint-up(lg) {
-				display: none;
+				display: none !important;
 				//	height: 125px;
 			}
-			a {
+			a,
+			.tab-title {
 				border-bottom: 1px solid $gray5;
 				color: $black;
 				text-decoration: none;
@@ -29,7 +34,8 @@
 				padding: 1em;
 				text-align: center;
 				&.active {
-					border-bottom: 3px solid $black;
+					border-bottom: 1px solid $select-blue-default;
+					color: $select-blue-default;
 					font-weight: bold;
 				}
 			}
@@ -52,9 +58,9 @@
 				justify-content: space-around;
 				///------------------------------------
 				@include media-breakpoint-down(lg) {
-					width: 300%;
+					//width: 300%;
 				}
-				> section {
+				.box-section__column {
 					box-sizing: border-box;
 					flex: 1;
 					order: 1;

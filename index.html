@@ -18,7 +18,6 @@
         console.log('toggling', name);
       }
     </script>
-
   </head>
   <body class="debug-new-breakpoints" unresolved>
     <!--
@@ -29,16 +28,13 @@
       <div class="u-m">
         <h1 class="alpha">px-layout</h1>
         <p>The Predix UI layout system uses
-          <code>box-sizing: border-box;</code>
-          and
-          <code>display: flex;</code>
-          to create an extremely powerful, flexible alternative to the traditional grid system.</p>
-
+          <code>box-sizing: border-box;</code> and <code>display: flex;</code> to create an extremely powerful, flexible alternative to the traditional grid system.</p>
       </div>
 
-      <px-box-section id="patterns" title="Layout Patterns">
-        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
+
+
+      <px-box-section id="usage" title="Upgrading">
         <p>How to update your existing layout:</p>
         <ol class="">
           <li>Identify the layout pattern for your app</li>
@@ -46,6 +42,11 @@
           <li>Select the type you perfer</li>
           <li>Replace old markup with new markup</li>
         </ol>
+      </px-box-section>
+
+
+      <px-box-section id="patterns" title="Layout Patterns">
+        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
 
         <p>
           The following patterns are available.
@@ -60,46 +61,51 @@
           <li>
             <a href="demo/template-offcanvas.html" target="_blank">Off Canvas - Template</a>
           </li>
-
-
-        </ol>
-        <p>
-          Examples:
-        </p>
-        <ol>
-          <li>
-            <a href="demo/template-cards.html" target="_blank"> Card Grid</a>
-          </li>
-          <li>
-            <a href="demo/template-tabs-to-columns.html" target="_blank">tabs-to-columns</a>
-          </li>
-          <li>
-            <a href="demo/template-tabs-to-sidebar.html" target="_blank">tabs-to-sidebar</a>
-          </li>
-          <li>
-            <a href="demo/template-content-sidebar.html" target="_blank">content-sidebar</a>
-          </li>
-
-          <li>
-            <a href="demo/template-detail.html" target="_blank">Detail Template</a>
-          </li>
-          <li>
-            <a href="demo/template-detail-asset.html" target="_blank">Asset Detail Template</a>
-          </li>
-          <li>
-            <a href="demo/template-detail-turbine.html" target="_blank">Turbine Detail Template</a>
-          </li>
         </ol>
       </px-box-section>
-
+      <template id="pxExamples" is="dom-bind">
+        <px-box-section id="examples" title="Layout Examples">
+          <ol>
+            <template is="dom-repeat" items="{{examples}}">
+              <li>
+                <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
+              </li>
+            </template>
+          </ol>
+        </px-box-section>
+      </template>
+      <script type="text/javascript">
+        document.addEventListener('WebComponentsReady', function () {
+          document.getElementById('pxExamples').examples = [
+            {
+              href: 'template-cards.html',
+              title: 'Full Grid Cards'
+            }, {
+              href: 'template-tabs-to-columns.html',
+              title: 'Tabs to Columns'
+            }, {
+              href: 'template-tabs-to-sidebar.html',
+              title: 'Tabs to Sidebar'
+            }, {
+              href: 'template-content-sidebar.html',
+              title: 'Context Sidebar'
+            }, {
+              href: 'template-detail.html',
+              title: 'Full Detail'
+            }, {
+              href: 'template-detail-asset.html',
+              title: 'Asset Detail'
+            }, {
+              href: 'template-detail-turbine.html',
+              title: 'Turbine Detail'
+            }
+          ];
+        });
+      </script>
       <template id="pxBreakpoints" is="dom-bind">
-
         <px-box-section id="breakpoints" title="Breakpoints">
-
           <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>
-
           <p>For RWD (Responsive Web Design) the best practice is to:</p>
-
           <ol>
             <li>Design for your smallest viewport first.
               <strong>(Mobile First)</strong>
@@ -108,11 +114,9 @@
             <li>Insert a breakpoint.</li>
             <li>Rinse and repeat.</li>
           </ol>
-
           <blockquote>
             <p>This will force you to really identify what is the most important information on your web app.</p>
           </blockquote>
-
           <!-- TODO: New Breakpoints -->
           <px-box-section id="new-breakpoints" title="1 - New Breakpoints">
             <p>
@@ -130,10 +134,8 @@
                   </li>
                 </template>
               </ul>
-
             </div>
           </px-box-section>
-
           <!-- TODO: Old Breakpoints -->
           <px-box-section id="old-breakpoints" title="2 - Deprecated Breakpoints">
             <p>
@@ -157,44 +159,40 @@
         -->
             </div>
           </px-box-section>
-
         </px-box-section>
-
       </template>
-
       <script type="text/javascript">
         var newBreakpoints = [
           {
             name: 'xs',
-            value: '(320px)',
+            value: '320px',
             icon: 'fa fa-mobile fa-4x color-xs'
           }, {
             name: 'sm',
-            value: '(480px)',
+            value: '480px',
             icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
           }, {
             name: 'md',
-            value: '(768px)',
+            value: '768px',
             icon: 'fa fa-tablet fa-4x color-md'
           }, {
             name: 'lg',
-            value: '(1024px)',
+            value: '1024px',
             icon: 'fa fa-tablet fa-rotate-90 fa-4x color-lg'
           }, {
             name: 'xl',
-            value: '(1280px)',
+            value: '1280px',
             icon: 'fa fa-desktop fa-4x color-xl'
           }
         ];
-
         var oldBreakpoints = [
           {
             name: 'palm',
-            value: '(719px)',
+            value: '719px',
             icon: 'fa fa-mobile fa-4x color-palm'
           }, {
             name: 'portable',
-            value: '(1022px)',
+            value: '1022px',
             icon: 'fa fa-tablet fa-4x fa-rotate-90 color-portable'
           }, {
             name: 'lap',
@@ -202,11 +200,11 @@
             icon: 'fa fa-desktop fa-4x color-lap'
           }, {
             name: 'lap-and-up',
-            value: '(720px)',
+            value: '720px',
             icon: 'fa fa-desktop fa-4x color-lap-and-up'
           }, {
             name: 'desk',
-            value: '(1024px)',
+            value: '1024px',
             icon: 'fa fa-desktop fa-4x color-desk'
           }
         ];
@@ -215,7 +213,6 @@
           document.getElementById('pxBreakpoints').newBreakpoints = newBreakpoints;
         });
       </script>
-
       <px-box-section id="responsive-utils" title="Responsive Utilities">
         <px-box-section id="utils-helpers" title="1 - Helper Classes">
           <table class=" table table--small table-bordered table-striped responsive-utilities">
@@ -348,7 +345,6 @@
             </tbody>
           </table>
         </px-box-section>
-
         <!-- TODO: Visibility -->
         <px-box-section id="utils-visibility" title="2 - Visibility Test">
           <ul class="list-ui responsive-utilities-test visible-on">
@@ -370,7 +366,6 @@
             <li class="hidden-xl-up not-visible">Extra large</li>
           </ul>
         </px-box-section>
-
         <!-- TODO: View Port -->
         <px-box-section id="utils-viewport" title="3 - Viewport Test">
           <ul class="list-ui responsive-utilities-test visible-on">
@@ -386,7 +381,6 @@
             <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
           </ul>
         </px-box-section>
-
         <!-- TODO: Helpers -->
         <px-box-section id="utils-components" title="4 - px-media-query">
           <demo-snippet>
@@ -429,7 +423,6 @@
       </demo-snippet>
     </px-box-section>
   </px-box-section>
-
   <!-- TODO: Layout Templates -->
   <px-box-section id="layout-templates" title="Layout Templates">
     <!-- TODO: Full Layout -->
@@ -572,8 +565,7 @@
               </px-layout-item>
               <px-layout-item role="primary-content">
                 <px-navbar></px-navbar>
-                <div class="has-navbar">
-                </div>
+                <div class="has-navbar"></div>
               </px-layout-item>
             </px-layout>
           </div>
@@ -739,7 +731,6 @@
       </template>
     </demo-snippet>
   </px-box-section>
-
   <!-- TODO: Unit Sizings -->
   <px-box-section id="unit-sizing" title="CSS - Unit Sizing">
     <h2>
@@ -818,35 +809,29 @@
       </demo-snippet>
     </div>
   </px-box-section>
-
   <!-- TODO: Auto Layout -->
   <px-box-section id="auto-layout" title="CSS - Layout Module">
     <h2>
       <code>.layout</code>
     </h2>
     <div class="u-mb">
-
       <demo-snippet>
         <template></template>
       </demo-snippet>
-
       <demo-snippet>
         <template>
           <template id="autoLayoutTemplate" is="dom-bind">
             <div class="viewport responsive-demo">
-
               <!-- TODO: xs -->
               <div class="layout">
                 <template is="dom-repeat" items="{{widths}}">
                   <div class$="layout__item {{item}}">{{item}}</div>
                 </template>
               </div>
-
               <!-- TODO: sm -->
               <!-- TODO: md -->
               <!-- TODO: lg -->
               <!-- TODO: xl -->
-
             </div>
           </template>
           <script type="text/javascript">
@@ -871,7 +856,6 @@
         </template>
       </demo-snippet>
     </div>
-
   </px-box-section>
 </article>
 <script src="http://localhost:35724/livereload.js?snipver=1"></script>

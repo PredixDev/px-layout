@@ -9,14 +9,14 @@
     <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-tabs/px-tab-pages.html">
+    <link rel="import" href="../../px-tabs/px-tab-set.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <style media="screen">
-      .list-ui li:first-child {
+      .list-ui,
+      li:first-child {
         border-top: none;
-      }
-      .box {
-        border: none;
       }
       .box:first-child {
         border-right: inherit;
@@ -42,13 +42,45 @@
           </px-navbar>
           <!-- Tabs to columns start -->
           <article class="box-section box-section--tabs-to-columns">
+            <px-tab-set selected="{{selected}}" bare>
+              <px-tab>Tab 1</px-tab>
+              <px-tab>Tab 2</px-tab>
+            </px-tab-set>
+            <px-tab-pages selected="{{selected}}">
+              <section class="">
+                <ul class="list-ui">
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                </ul>
+              </section>
+              <section>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+              </section>
+            </px-tab-pages>
+
+            <!--
             <nav class="tabs">
-              <a href="#col1" class="active">Tab One</a>
-              <a href="#col2">Tab Two</a>
+              <a href="#col1" class="active">Column One</a>
+              <a href="#col2">Column Two</a>
             </nav>
             <div class="box-section__columns-wrapper">
               <div class="box-section__columns">
-                <section id="col1" class="border-right active">
+                <section id="col1" class="box-section__column box box--flush border-right active">
                   <ul class="list-ui">
                     <li>&nbsp;</li>
                     <li>&nbsp;</li>
@@ -65,7 +97,7 @@
                     <li>&nbsp;</li>
                   </ul>
                 </section>
-                <section id="col2" class="box">
+                <section id="col2" class="box-section__column box u-m-">
                   <p>&nbsp;</p>
                   <p>&nbsp;</p>
                   <p>&nbsp;</p>
@@ -73,16 +105,20 @@
                   <p>&nbsp;</p>
                 </section>
               </div>
+            -->
             </article>
             <!-- Tabs to columns end -->
           </div>
         </div>
+        <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-layout>
     </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript">
       document.addEventListener('WebComponentsReady', function () {
+        var app = document.getElementById('app');
+        app.selected = 0;
         $(function () {
           var $nav = $('.tabs');
           var $content = $('.box-section__columns');
