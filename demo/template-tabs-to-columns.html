@@ -1,102 +1,193 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <title>template-full</title>
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="demo.css">
-  <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
+  <head>
+    <meta charset="utf-8">
+    <title>template-tabs-to-columns</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="demo.css">
+    <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
 
-  <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
 
-  <link rel="import" href="../px-layout.html">
-  <link rel="import" href="../../px-card/px-card.html">
-  <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <style media="screen">
+      header {
 
-</head>
+      }
+      @media screen and (min-width: 40em) {
 
-<body unresolved class="responsive-demo">
-<template id="app" is="dom-bind">
+      }
 
-  <px-layout id="layout0">
-    <px-header subtitle="Full Template"></px-header>
-    <div class="secondary-sidebar">
-      <p class="u-m">
-        This is content inside the secondary sidebar.
-      </p>
-    </div>
+      .list-ui {
+        border-top: none;
+      }
+      .list-ui li:last-child {
+        border-bottom: none;
+      }
 
-    <div class="primary-content">
+      .box-section--tabs-to-columns .tabs {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      @media screen and (min-width: 40em) {
+        .box-section--tabs-to-columns .tabs {
+          display: none !important;
+        }
+      }
+      .box-section--tabs-to-columns .tabs a {
+        border-bottom: 1px solid #ccc;
+        color: black;
+        text-decoration: none;
+        white-space: nowrap;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        display: inline-block;
+        padding: 1em;
+        text-align: center;
+      }
+      .box-section--tabs-to-columns .tabs a.active {
+        border-bottom: 3px solid #000;
+        font-weight: bold;
+      }
+      @media screen and (max-width: 39.99em) {
+        .box-section--tabs-to-columns .box-section__columns-wrapper {
+          margin-top: 0;
+          overflow: hidden;
+        }
+      }
+      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section {
+        box-sizing: border-box;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+      }
+      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section.active {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+        -webkit-box-flex: 2;
+        -webkit-flex: 2;
+        -ms-flex: 2;
+        flex: 2;
+      }
+      @media screen and (max-width: 39.99em) {
+       .box-section__columns > section:not(.active) {
+          -webkit-box-ordinal-group: 4;
+          -webkit-order: 3;
+          -ms-flex-order: 3;
+          order: 3;
+          display: none;
+        }
+      }
 
-      <px-navbar title="">
-        <div class="navbar__left">
-          <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
-            <i class="fa fa-lg fa-navicon"></i>
-          </button>
+    </style>
+  </head>
+
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <px-layout id="layout0">
+        <px-header subtitle="Tabs to Columns Template"></px-header>
+        <div class="secondary-sidebar">
+          <p class="u-m">
+            This is content inside the secondary sidebar.
+          </p>
         </div>
-        <div class="navbar__right">
-          <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-            <i class="fa fa-lg fa-ellipsis-v"></i>
-          </button>
+
+        <div class="primary-content">
+
+          <div class="has-navbar">
+            <px-navbar>
+              <div class="navbar__left">
+                <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
+                  <i class="fa fa-lg fa-navicon"></i>
+                </button>
+              </div>
+            </px-navbar>
+
+            <article class="box-section box-section--tabs-to-columns">
+              <nav class="tabs ">
+                <a href="#col1" class="active">Tab One</a>
+                <a href="#col2">Tab Two</a>
+              </nav>
+              <div class="box-section__columns-wrapper">
+                <div class="box-section__columns">
+                  <section id="col1" class="box box--flush active">
+                    <ul class="list-ui">
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                      <li>&nbsp;</li>
+                    </ul>
+                  </section>
+                  <section id="col2" class="box">
+                    <div class="u-m">
+                      <p>&nbsp;</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-      </px-navbar>
+        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
+      </px-layout>
 
-      <section class="has-navbar">
-        <article class="box-section box-section--tabs-to-columns">
-      			<nav class="tabs">
-      				<a href="#col1" class="active">Tab One</a>
-      				<a href="#col2">Tab Two</a>
-      			</nav>
-      			<div class="content-wrapper">
-      				<div class="content">
-      					<section id="col1" class="box box--flush active">
-      						<ul class="list-ui">
+    </template>
 
-      							<li>&nbsp;</li>
-      							<li>&nbsp;</li>
-      							<li>&nbsp;</li>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('WebComponentsReady', function () {
 
-      						</ul>
-      					</section>
-      					<section id="col2" class="box">
-      						<div class="u-m">
-      							<p>&nbsp;</p>
+              $(function () {
+                var $nav = $('.tabs');
+                var $content = $('.box-section__columns');
+                function removeActive() {
+                  $nav.find('.active').removeClass('active');
+                  $content.find('.active').removeClass('active');
+                }
+                $('.tabs a').bind('click', function (e) {
+                  e.preventDefault();
+                  console.log(e);
+                  removeActive();
+                  $(this).toggleClass('active');
+                  var href = $(this).attr('href');
+                  $(href).toggleClass('active');
+                  console.log('toggle', href);
+                  return false;
+                });
+              });
 
-      						</div>
-      					</section>
-      				</div>
-      			</div>
-      		</article>
-      
+      });
 
-      </section>
-    </div>
-<px-footer copywrite="&copy;2016 General Electric"></px-footer>
-  </px-layout>
-
-</template>
-<script type="text/javascript">
-  document.addEventListener('WebComponentsReady', function () {
-    /* Create the unit divs for the demo */
-    var lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-      'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-    var content = document.getElementById('content');
-    var child;
-    var div;
-    var units = 100;
-    var i = 0;
-
-    for (; i <= units; i++) {
-      child = document.createElement('p');
-      child.innerHTML = lorem;
-      //  content.appendChild(child);
-      console.log('Creating div', i);
-    }
-  });
-</script>
-<script src="http://localhost:35724/livereload.js?snipver=1"></script>
-</body>
+    </script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
 
 </html>
