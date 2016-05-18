@@ -20,6 +20,7 @@
     "tests"
   ],
   "devDependencies": {
+    "px-sample-cards": "latest",
     "px-card": "latest",
     "iron-component-page": "PolymerElements/iron-component-page#~v1.1.0",
     "iron-ajax": "PolymerElements/iron-ajax#^1.0.0",

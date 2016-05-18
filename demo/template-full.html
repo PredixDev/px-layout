@@ -16,12 +16,12 @@
     <template id="app" is="dom-bind">
       <px-layout id="layout0">
         <px-header subtitle="Full Template"></px-header>
-        <div class="secondary-sidebar">
+        <px-layout-item role="secondary-sidebar">
           <p class="u-m">
             This is content inside the secondary sidebar.
           </p>
-        </div>
-        <div class="primary-content">
+        </px-layout-item>
+        <px-layout-item role="primary-content">
           <px-navbar title="View Title" back>
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
@@ -34,8 +34,7 @@
               </button>
             </div>
           </px-navbar>
-          <section class="has-navbar">
-            <div class="box">
+          <section class="has-navbar l-bg-white l-full-height">
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
@@ -53,14 +52,13 @@
               <p>&nbsp;</p>
               <p>&nbsp;</p>
               <p>&nbsp;</p>
-            </div>
           </section>
-        </div>
+        </px-layout-item>
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-layout>
     </template>
-   
+
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
 </html>

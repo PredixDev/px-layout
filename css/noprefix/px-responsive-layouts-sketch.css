@@ -1435,11 +1435,11 @@ a {
 @media (max-width: 66.0666666666rem) {
   body,
   body:not([style-scope]):not(.style-scope) {
+    height: 100%;
+    min-height: 100vh;
     overflow: hidden;
     margin-bottom: 0;
-    padding: 0;
-    height: 100%;
-    min-height: 100vh; } }
+    padding: 0; } }
 
 .viewport,
 .viewport:not([style-scope]):not(.style-scope) {
@@ -1621,6 +1621,15 @@ a {
   position: relative;
   overflow: hidden;
   transition: all 0.5s ease; }
+  .l-container .l-bg-white {
+    background: #fff; }
+  .l-container .l-full-height {
+    transition: all 0.5s ease;
+    height: 100%; }
+    @media (max-width: 66.0666666666rem) {
+      .l-container .l-full-height {
+        height: 100%;
+        min-height: 100vh; } }
   .l-container__wrapper {
     transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1); }
 

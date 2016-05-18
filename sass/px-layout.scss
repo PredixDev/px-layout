@@ -21,11 +21,10 @@ html:not([style-scope]):not(.style-scope) {
 body,
 body:not([style-scope]):not(.style-scope) {
   @include media-breakpoint-down ('md') {
+    @include full-height();
     overflow     : hidden;
     margin-bottom: 0;
     padding      : 0;
-    height       : 100%;
-    min-height   : 100vh;
   }
 }
 
@@ -54,16 +53,26 @@ body:not([style-scope]):not(.style-scope) {
 @import 'l-offcanvas';
 @import 'l-splitview';
 
-
 $l-container-transition: all .5s ease;
-$l-container-transition-wrapper: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
-
-
+$l-container-transition-wrapper: all .5s cubic-bezier(0.1, 0.7, 0.1, 1);
 
 @include b ('l-container') {
   position  : relative;
   overflow  : hidden;
-  transition:$l-container-transition;
+  transition: $l-container-transition;
+
+  .l-bg-white {
+    background: #fff;
+  }
+
+  .l-full-height {
+    transition: $l-container-transition;
+    height    : 100%;
+
+    @include media-breakpoint-down ('md') {
+      @include full-height();
+    }
+  }
 
   @include e ('wrapper') {
     transition: $l-container-transition-wrapper;

@@ -7,7 +7,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
+      <link rel="import" href="../../px-sample-cards/widgets-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
   </head>
   <body unresolved>
@@ -15,6 +17,7 @@
       <style media="screen">
         px-card {
           flex: 1 0 275px;
+          min-width: 275px;
         }
         .table-row__title {
           color: #fff;
@@ -33,38 +36,58 @@
           </template>
         </div>
         <!-- TODO: Primary Content -->
-        <div class="primary-content has-navbar">
+        <div class="primary-content">
           <px-navbar title="Dashboard" shadow>
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
+            <div class="navbar__right">
+              <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
+                <i class="fa fa-lg fa-ellipsis-v"></i>
+              </button>
+            </div>
           </px-navbar>
-          <!-- TODO: Spine -->
-          <div class="spine">
-            <div class="table-view table-view--bare table-view--tiny table-view--responsive">
-              <template is="dom-repeat" items="{{spine}}">
-                <px-table-row type="tappable">
-                  <div class="table-row__content">
-                    <h3 class="table-row__title epsilon">{{item.title}}</h3>
-                    <div class="table-row__body">
-                      <span class="beta">{{item.body}}</span>
-                      <span class="delta muted">{{item.label1}}</span>
+          <section class="has-navbar l-full-height scrollable">
+            <!-- TODO: Spine -->
+            <div class="spine u-mb-">
+              <div class="table-view table-view--bare table-view--tiny table-view--responsive">
+                <template is="dom-repeat" items="{{spine}}">
+                  <px-table-row type="tappable">
+                    <div class="table-row__content">
+                      <h3 class="table-row__title epsilon">{{item.title}}</h3>
+                      <div class="table-row__body">
+                        <span class="beta">{{item.body}}</span>
+                        <span class="delta muted">{{item.label1}}</span>
+                      </div>
                     </div>
-                  </div>
-                </px-table-row>
+                  </px-table-row>
+                </template>
+              </div>
+            </div>
+            <div class="u-mb-">
+              <widgets-card id="card03"></widgets-card>
+            </div>
+            <!-- TODO: Cards -->
+            <div class="cards flex flex--wrap">
+              <template is="dom-repeat" items="{{cards}}">
+                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="flex__item">
+                  <p>{{item.body}}</p>
+                </px-card>
               </template>
             </div>
-          </div>
-          <!-- TODO: Cards -->
-          <div class="cards flex flex--wrap">
-            <template is="dom-repeat" items="{{cards}}">
-              <px-card class="u-m--" icon="{{item.icon}}" header-text="{{item.title}}">
-                <p>{{item.body}}</p>
-              </px-card>
-            </template>
-          </div>
+          </section>
+
+          <px-action-sheet id="actionsheet1" grid>
+              <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+              <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+
+            </px-action-sheet>
         </div>
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
@@ -114,7 +137,7 @@
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;
-        app.cards = createDemoCards(25);
+        app.cards = createDemoCards(100);
         app.spine = createDemoSpine(6);
       });
     </script>
