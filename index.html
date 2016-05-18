@@ -28,13 +28,71 @@
       <div class="u-m">
         <h1 class="alpha">px-layout</h1>
         <p>The Predix UI layout system uses
-          <code>box-sizing: border-box;</code> and <code>display: flex;</code> to create an extremely powerful, flexible alternative to the traditional grid system.</p>
+          <code>box-sizing: border-box;</code>
+          and
+          <code>display: flex;</code>
+          to create an extremely powerful, flexible alternative to the traditional grid system.</p>
       </div>
 
+      <px-box-section id="usage" title="Usage">
+        <p>
+          The markup structure of an application can become very messy and deeply nested.
+          So we have identified the essential elements that are needed to create a basic responsive application.
+        </p>
 
+        <ul>
+          <li>header - branding / product name </li>
+          <li>section - primary / secondary content</li>
+          <li>aside - primary / secondary sidebar</li>
+          <li>footer - links, copywrite</li>
+        </ul>
 
+        <p>
+          The following markup is a basic example of usage. Open in
+          <a href="demo/template-basic.html" target="_blank">new window</a>
+        </p>
 
-      <px-box-section id="usage" title="Upgrading">
+        <demo-snippet>
+          <template>
+            <article class="u-bg--gray9">
+
+              <!-- Layout -->
+              <px-layout id="layoutx" type="full">
+
+                <!-- Header -->
+                <px-header title="My App"></px-header>
+
+                <!-- Primary Content -->
+                <px-layout-item role="primary-content" class="l-bg-white">
+
+                  <!-- Navbar -->
+                  <px-navbar>
+                    <button class="navbar__left navbar__button" onclick="document.getElementById('layoutx').toggle('primarySidebar');">
+                      <i class="fa fa-lg fa-navicon"></i>
+                    </button>
+                  </px-navbar>
+
+                  <!-- Content -->
+                  <section class="has-navbar l-full-height">
+                    <div class="u-m">
+                      <px-title-bar title="Primary Content"></px-title-bar>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                  </section>
+
+                </px-layout-item>
+
+                <!-- Footer -->
+                <px-footer copywrite="2016 Demos"></px-footer>
+
+              </px-layout>
+            </article>
+          </template>
+
+        </demo-snippet>
+      </px-box-section>
+
+      <px-box-section id="upgrade" title="Upgrading">
         <p>How to update your existing layout:</p>
         <ol class="">
           <li>Identify the layout pattern for your app</li>
@@ -44,10 +102,8 @@
         </ol>
       </px-box-section>
 
-
       <px-box-section id="patterns" title="Layout Patterns">
         <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
-
         <p>
           The following patterns are available.
         </p>
@@ -63,6 +119,9 @@
           </li>
         </ol>
       </px-box-section>
+
+
+
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Layout Examples">
           <ol>
@@ -78,8 +137,20 @@
         document.addEventListener('WebComponentsReady', function () {
           document.getElementById('pxExamples').examples = [
             {
+              href: 'template-basic.html',
+              title: 'Basic Layout'
+            },
+            {
               href: 'template-dashboard.html',
-              title: 'Full Dashboard'
+              title: 'Dashboard'
+            },
+            {
+              href: 'template-login.html',
+              title: 'Login'
+            },
+            {
+              href: 'template-google-example.html',
+              title: 'Google Example'
             },
             {
               href: 'template-cards.html',
@@ -90,22 +161,42 @@
             }, {
               href: 'template-tabs-to-sidebar.html',
               title: 'Tabs to Sidebar'
-            }, {
+            },
+            {
+              href: 'template-content-mini-sidebar.html',
+              title: 'Context Mini Sidebar'
+            },
+            {
               href: 'template-content-sidebar.html',
-              title: 'Context Sidebar'
-            }, {
+              title: 'Context Static Sidebar'
+            },
+            {
               href: 'template-detail.html',
               title: 'Full Detail'
-            }, {
+            },
+            {
               href: 'template-detail-asset.html',
               title: 'Asset Detail'
-            }, {
+            },
+            {
               href: 'template-detail-turbine.html',
               title: 'Turbine Detail'
             }
           ];
         });
       </script>
+
+      <px-box-section id="depends" title="Components Used">
+        <p>
+          The following components are used exclusivly.
+        </p>
+        <ol class="">
+          <li><a href="../px-partials" target="_blank">px-partials</a></li>
+          <li><a href="../px-navbar" target="_blank">px-navbar</a></li>
+          <li><a href="../px-drawer" target="_blank">px-drawer</a></li>
+        </ol>
+      </px-box-section>
+
       <template id="pxBreakpoints" is="dom-bind">
         <px-box-section id="breakpoints" title="Breakpoints">
           <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>

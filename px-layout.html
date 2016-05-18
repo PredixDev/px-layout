@@ -71,13 +71,14 @@ Code Here
         <content id="headerContent" select="px-header"></content>
       </div>
       <div id="_layoutViewport" class="viewport">
+        <!-- primary-sidebar -->
+        <aside class="l-primary-sidebar">
+          <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
+            <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
+          </px-drawer>
+        </aside>
         <div class="l-container">
-          <!-- primary-sidebar -->
-          <aside class="l-primary-sidebar">
-            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
-              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
-            </px-drawer>
-          </aside>
+
           <div class="l-container__wrapper">
             <!-- Secondary Content -->
             <section class="l-container__secondary-content">
@@ -98,7 +99,10 @@ Code Here
               </px-drawer>
             </aside>
           </div>
+
         </div>
+
+
       </div>
       <div id="_layoutFooter" class="viewport l-footer hidden-md-down">
         <content id="footerContent" select="px-footer"></content>
@@ -164,14 +168,14 @@ Code Here
         this.toggleClass('l-container--' + this.type, true, this.$$('.l-container__wrapper'));
         var hasNavbar = this.$$('.navbar');
         if (hasNavbar) {
-          console.log('Layout has navbar')
+        //  console.log('Layout has navbar')
         }
         this.$.primarySidebar.addEventListener('toggle', this._sidebarToggleHandler.bind(this));
         if (this.type === 'progressive') {
           this.$.primarySidebar.type = 'static';
           this.$.secondarySidebar.type = 'static';
         }
-        console.log(this.tagName, this.options);
+        //console.log(this.tagName, this.options);
       },
       detached: function () {
         this.$.primarySidebar.removeEventListener('toggle', this._sidebarToggleHandler.bind(this));
@@ -189,7 +193,7 @@ Code Here
        * Handle listening for the sidebar to toggle and push the content.
        */
       _sidebarToggleHandler: function (e) {
-        console.warn('toggle', e);
+      //  console.warn('toggle', e);
         var sidebarWidth = e.target.offsetWidth;
         if (e.target.open) {
           sidebarWidth = e.target.offsetWidth;
@@ -200,7 +204,7 @@ Code Here
       },
       toggleContent: function (name) {
         //toggle primary / secondary content is-active / is-passive
-        console.log("toggle content");
+      //  console.log("toggle content");
       },
       _setElementOptions: function (options) {
         var self = this;
@@ -211,17 +215,17 @@ Code Here
         // TODO: Beter way to set options on component;
         if (options) {
           for (var k in options) {
-            console.log("find element", k, 'set =>', options[k]);
+          //  console.log("find element", k, 'set =>', options[k]);
             el = self.$[k];
             value = options[k];
             //el[k] = value;
-            console.log('setting', k, options[k], value);
+          //  console.log('setting', k, options[k], value);
           }
         }
       },
       _handleOptions: function (newVal, oldVal) {
         this._setElementOptions(this.options);
-        console.log(this.tagName, 'options', newVal);
+      //  console.log(this.tagName, 'options', newVal);
       }
     });
   </script>

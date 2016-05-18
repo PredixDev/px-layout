@@ -9,7 +9,7 @@
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
-      <link rel="import" href="../../px-sample-cards/widgets-card.html">
+    <link rel="import" href="../../px-sample-cards/widgets-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
   </head>
   <body unresolved>
@@ -25,6 +25,7 @@
         .table-row__media--icon {
           align-self: baseline;
         }
+
       </style>
       <px-layout id="layout0">
         <!-- TODO: Header -->
@@ -80,14 +81,13 @@
           </section>
 
           <px-action-sheet id="actionsheet1" grid>
-              <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-              <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
-              <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-              <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-              <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-              <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-
-            </px-action-sheet>
+            <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
+            <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+          </px-action-sheet>
         </div>
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
@@ -138,7 +138,7 @@
         app = document.getElementById('app');
         app.navItems = navItems;
         app.cards = createDemoCards(100);
-        app.spine = createDemoSpine(6);
+        app.spine = createDemoSpine(5);
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>

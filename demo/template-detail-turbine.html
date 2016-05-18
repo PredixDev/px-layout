@@ -12,7 +12,7 @@
     <!-- TODO: Layout -->
     <link rel="import" href="../px-layout.html">
 
-     <link rel="import" href="../../px-alert-label/px-alert-label.html">
+    <link rel="import" href="../../px-alert-label/px-alert-label.html">
 
     <link rel="import" href="../../px-page/px-page.html">
     <link rel="import" href="../../px-page/px-pages.html">
@@ -49,14 +49,20 @@
 
     <template id="app" is="dom-bind">
 
-      <px-layout class="app">
+      <px-layout id="layoutx" class="app">
         <px-header subtitle="Turbine Details Template"></px-header>
-        <px-drawer id="sidenav" side="left"></px-drawer>
+        <div class="primary-sidebar table-view table-view--tiny table-view--bare"></div>
+        <div class="secondary-sidebar"></div>
         <div class="primary-content has-navbar u-bg--gray8">
           <px-navbar title="Gas Turbine Detail" shadow>
             <div class="navbar__left">
-              <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
+              <button class="navbar__button" onclick="document.getElementById('layoutx').toggle('primarySidebar')">
                 <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+            <div class="navbar__right">
+              <button class="navbar__button" onclick="document.getElementById('layoutx').toggle('secondarySidebar')">
+                <i class="fa fa-lg fa-ellipsis-v"></i>
               </button>
             </div>
           </px-navbar>

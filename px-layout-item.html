@@ -1,7 +1,10 @@
 <link rel="import" href="../polymer/polymer.html">
 <dom-module id="px-layout-item">
   <template>
-    <style></style>
+    <style>
+    :host{
+      display:block;
+      }</style>
     <content select="*"></content>
   </template>
   <script>
@@ -13,17 +16,17 @@
         }
       },
       created: function(){
-        console.log(this.tagName, 'created');
+        //console.log(this.tagName, 'created');
       },
       ready: function(){
-        console.log(this.tagName, 'ready');
+        //console.log(this.tagName, 'ready');
         //this.toggleClass('layout__item')
       },
       attached: function(){
-        console.log(this.tagName, 'attached');
+      //  console.log(this.tagName, 'attached');
       },
       detached: function(){
-        console.log(this.tagName, 'detached');
+      //  console.log(this.tagName, 'detached');
       }
     });
   </script>
