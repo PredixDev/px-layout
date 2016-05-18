@@ -1,19 +1,25 @@
 @import 'variables';
 @import 'mixins';
 ///------------------------------------
-@include b('box-section') {
-	@include m('tabs-to-columns') {
+.box-section {
+	.border-right{
+		border-right: 1px solid $gray5;
+	}
+	.border-left{
+		border-right: 1px solid $gray5;
+	}
+	&--tabs-to-columns {
 		.tabs {
 			display: flex;
 			///------------------------------------
 			///Hide tabs on desktop
-			@include media-query('(min-width: 40em)') {
+			@include media-breakpoint-up(lg) {
 				display: none;
 				//	height: 125px;
 			}
 			a {
-				border-bottom: 1px solid #ccc;
-				color: black;
+				border-bottom: 1px solid $gray5;
+				color: $black;
 				text-decoration: none;
 				white-space: nowrap;
 				text-transform: uppercase;
@@ -23,28 +29,29 @@
 				padding: 1em;
 				text-align: center;
 				&.active {
-					border-bottom: 3px solid #000;
+					border-bottom: 3px solid $black;
 					font-weight: bold;
 				}
 			}
 		}
-
-		.content-wrapper {
+		.box-section__columns-wrapper {
+			min-height: 50vh;
 			//border: 1px solid red;
 			//margin-top: 3rem;
 			///------------------------------------
 			///One section on tablet
-			@include media-query('(max-width: 39.99em)') {
+			@include media-breakpoint-down(lg) {
 				margin-top: 0;
-				width: 100%;
+				//width: 100%;
 				overflow: hidden;
 			}
-
 			///------------------------------------
-			.content {
+			.box-section__columns {
 				display: flex;
+				align-items: stretch;
+				justify-content: space-around;
 				///------------------------------------
-				@include media-query('(max-width: 39.99em)') {
+				@include media-breakpoint-down(lg) {
 					width: 300%;
 				}
 				> section {
@@ -56,7 +63,7 @@
 						flex: 2;
 					}
 					&:not(.active) {
-						@include media-query('(max-width: 39.99em)') {
+						@include media-breakpoint-down(lg) {
 							order: 3;
 							display: none;
 						}

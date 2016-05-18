@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>template-tabs-to-columns</title>
@@ -8,103 +7,22 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
     <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
-
     <script src="../../webcomponentsjs/webcomponents.js"></script>
-
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <style media="screen">
-      header {
-
-      }
-      @media screen and (min-width: 40em) {
-
-      }
-
-      .list-ui {
+      .list-ui li:first-child {
         border-top: none;
       }
-      .list-ui li:last-child {
-        border-bottom: none;
+      .box {
+        border: none;
       }
-
-      .box-section--tabs-to-columns .tabs {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
+      .box:first-child {
+        border-right: inherit;
       }
-      @media screen and (min-width: 40em) {
-        .box-section--tabs-to-columns .tabs {
-          display: none !important;
-        }
-      }
-      .box-section--tabs-to-columns .tabs a {
-        border-bottom: 1px solid #ccc;
-        color: black;
-        text-decoration: none;
-        white-space: nowrap;
-        text-transform: uppercase;
-        box-sizing: border-box;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        display: inline-block;
-        padding: 1em;
-        text-align: center;
-      }
-      .box-section--tabs-to-columns .tabs a.active {
-        border-bottom: 3px solid #000;
-        font-weight: bold;
-      }
-      @media screen and (max-width: 39.99em) {
-        .box-section--tabs-to-columns .box-section__columns-wrapper {
-          margin-top: 0;
-          overflow: hidden;
-        }
-      }
-      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-      }
-      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section {
-        box-sizing: border-box;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-        -ms-flex-order: 1;
-        order: 1;
-      }
-      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section.active {
-        -webkit-box-ordinal-group: 2;
-        -webkit-order: 1;
-        -ms-flex-order: 1;
-        order: 1;
-        -webkit-box-flex: 2;
-        -webkit-flex: 2;
-        -ms-flex: 2;
-        flex: 2;
-      }
-      @media screen and (max-width: 39.99em) {
-       .box-section__columns > section:not(.active) {
-          -webkit-box-ordinal-group: 4;
-          -webkit-order: 3;
-          -ms-flex-order: 3;
-          order: 3;
-          display: none;
-        }
-      }
-
     </style>
   </head>
-
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <px-layout id="layout0">
@@ -114,80 +32,77 @@
             This is content inside the secondary sidebar.
           </p>
         </div>
-
-        <div class="primary-content">
-
-          <div class="has-navbar">
-            <px-navbar>
-              <div class="navbar__left">
-                <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
-                  <i class="fa fa-lg fa-navicon"></i>
-                </button>
-              </div>
-            </px-navbar>
-
-            <article class="box-section box-section--tabs-to-columns">
-              <nav class="tabs ">
-                <a href="#col1" class="active">Tab One</a>
-                <a href="#col2">Tab Two</a>
-              </nav>
-              <div class="box-section__columns-wrapper">
-                <div class="box-section__columns">
-                  <section id="col1" class="box box--flush active">
-                    <ul class="list-ui">
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-                      <li>&nbsp;</li>
-                    </ul>
-                  </section>
-                  <section id="col2" class="box">
-                    <div class="u-m">
-                      <p>&nbsp;</p>
-                    </div>
-                  </section>
-                </div>
+        <div class="primary-content box box--flush has-navbar">
+          <px-navbar>
+            <div class="navbar__left">
+              <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
+                <i class="fa fa-lg fa-navicon"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <!-- Tabs to columns start -->
+          <article class="box-section box-section--tabs-to-columns">
+            <nav class="tabs">
+              <a href="#col1" class="active">Tab One</a>
+              <a href="#col2">Tab Two</a>
+            </nav>
+            <div class="box-section__columns-wrapper">
+              <div class="box-section__columns">
+                <section id="col1" class="border-right active">
+                  <ul class="list-ui">
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                  </ul>
+                </section>
+                <section id="col2" class="box">
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                </section>
               </div>
             </article>
+            <!-- Tabs to columns end -->
           </div>
         </div>
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-layout>
-
     </template>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript">
       document.addEventListener('WebComponentsReady', function () {
-
-              $(function () {
-                var $nav = $('.tabs');
-                var $content = $('.box-section__columns');
-                function removeActive() {
-                  $nav.find('.active').removeClass('active');
-                  $content.find('.active').removeClass('active');
-                }
-                $('.tabs a').bind('click', function (e) {
-                  e.preventDefault();
-                  console.log(e);
-                  removeActive();
-                  $(this).toggleClass('active');
-                  var href = $(this).attr('href');
-                  $(href).toggleClass('active');
-                  console.log('toggle', href);
-                  return false;
-                });
-              });
-
+        $(function () {
+          var $nav = $('.tabs');
+          var $content = $('.box-section__columns');
+          function removeActive() {
+            $nav.find('.active').removeClass('active');
+            $content.find('.active').removeClass('active');
+          }
+          $('.tabs a').bind('click', function (e) {
+            e.preventDefault();
+            console.log(e);
+            removeActive();
+            $(this).toggleClass('active');
+            var href = $(this).attr('href');
+            $(href).toggleClass('active');
+            console.log('toggle', href);
+            return false;
+          });
+        });
       });
-
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
-
 </html>

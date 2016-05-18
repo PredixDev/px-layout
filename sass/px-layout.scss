@@ -1,32 +1,71 @@
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+@charset 'utf-8';
 @import 'variables';
 @import 'mixins';
 
-@import "l-tabs-to-columns";
-@import "l-offcanvas";
-@import "l-splitview";
-
-@include b ('l-container') {
-  position  : relative;
-  overflow  : hidden;
-  transition: all .5s ease;
+html:not([style-scope]):not(.style-scope) {
+  @include media-breakpoint-down ('md') {
+    overflow  : hidden !important;
+    overflow-y: hidden !important;
+  }
+}
+//Remove all margins/paddings on lower
+body,
+body:not([style-scope]):not(.style-scope) {
+  @include media-breakpoint-down ('md') {
+    overflow     : hidden;
+    margin-bottom: 0;
+    padding      : 0;
+    height       : 100%;
+    min-height   : 100vh;
+  }
 }
 
-.viewport, .viewport:not([style-scope]):not(.style-scope) {
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
   transition: all .5s ease;
 
-
-  @include media-breakpoint('md') {
+  //Remove all margins/paddings on lower
+  @include media-breakpoint-down ('md') {
     //width        : 100%;
     margin-left  : 0;
     margin-right : 0;
     padding-left : 0;
     padding-right: 0;
   }
-  @include media-breakpoint('lg') {
+
+  @include media-breakpoint ('lg') {
     //  width        : 100%;
     margin-left  : auto;
     margin-right : auto;
     padding-left : auto;
     padding-right: auto;
+  }
+}
+@import 'l-tabs-to-columns';
+@import 'l-offcanvas';
+@import 'l-splitview';
+
+
+$l-container-transition: all .5s ease;
+$l-container-transition-wrapper: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1);
+
+
+
+@include b ('l-container') {
+  position  : relative;
+  overflow  : hidden;
+  transition:$l-container-transition;
+
+  @include e ('wrapper') {
+    transition: $l-container-transition-wrapper;
   }
 }

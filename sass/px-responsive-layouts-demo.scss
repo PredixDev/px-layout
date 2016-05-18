@@ -1,6 +1,18 @@
 @import "variables";
-//@import "px-mobile-mixin-design";
 @import "mixins";
+//@import "px-mobile-mixin-design";
+/** Debug Media Query Colors */
+
+$oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
+
+///Define new breakpoint colors;
+$newColors: ( xs: $dv-dark-blue, sm: $dv-dark-pink, md: $dv-dark-green, lg: $dv-dark-purple,
+xl: $dv-dark-orange );
+$selector: 'responsive-demo';
+
+
+
+
 @mixin createDebugColors($colors) {
 	 @each $alias, $color in $colors{
 		.color-#{$alias} {
@@ -32,15 +44,6 @@
 demo-snippet .demo {
 	background-color: $gray2 !important;
 }
-/** Debug Media Query Colors */
-
-$oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
-
-///Define new breakpoint colors;
-$newColors: ( xs: $dv-dark-blue, sm: $dv-dark-pink, md: $dv-dark-green, lg: $dv-dark-purple,
-xl: $dv-dark-orange );
-$selector: 'responsive-demo';
-
 
 .responsive-utilities {
 	.is-visible {
@@ -78,6 +81,12 @@ $selector: 'responsive-demo';
 	border: 1px solid #ddd;
 }
 
+
+
+@include createDebugColors($newColors);
+@include createDebugColors($oldColors);
+
+
 .debug-new-breakpoints {
 	//@include createDebugBreakpointColors($newColors);
 	@each $alias, $color in $newColors {
@@ -89,8 +98,6 @@ $selector: 'responsive-demo';
 		}
 	}
 }
-@include createDebugColors($newColors);
-@include createDebugColors($oldColors);
 
 .debug-old-breakpoints {
 	//@include createDebugBreakpointColors($oldColors);

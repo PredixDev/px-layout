@@ -9,25 +9,35 @@
 
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="stylesheet" href="demo.css">
+    <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
 
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <style media="screen">
-    px-card.box {
+    px-card {
       flex: 1 0 300px;
     }
+    </style>
+    <style media="screen">
+    .box{
+      background: #fff;
+    }
+      .primary-sidebar .table-row__title {
+        color: #fff;
+      }
+
     </style>
   </head>
 
   <body unresolved class="-responsive-demo">
     <template id="app" is="dom-bind">
       <px-layout id="layout" type="full">
-        <px-header title="Full Layout Template" subtitle="Cards"></px-header>
+        <px-header title="px-layout" subtitle="Full Grid"></px-header>
 
 
         <aside class="primary-sidebar">
-          <div class="table-view table-view--flush table-view--bare">
+          <div class="table-view table-view--tiny table-view--bare">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row
                 type="tappable"
@@ -37,7 +47,7 @@
           </div>
         </aside>
 
-        <div class="primary-content has-navbar">
+        <div class="primary-content has-navbar u-bg--gray7">
           <px-navbar title="Cards" shadow>
             <div class="navbar__left">
               <button class="navbar__button" onclick="document.getElementById('layout').toggle('primarySidebar');">
@@ -47,7 +57,7 @@
           </px-navbar>
           <section id="content" class="scrollable flex flex--wrap flex--spaced">
             <template is="dom-repeat" items="{{cards}}">
-              <px-card class="box u-m-"
+              <px-card class="u-m--"
                 icon="{{item.icon}}"
                 header-text="{{item.title}}">
                 <p>{{item.body}}</p>
@@ -121,7 +131,7 @@
         app.cards = cards;
       });
     </script>
-    
+
   </body>
 
 </html>

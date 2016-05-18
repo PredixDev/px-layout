@@ -53,9 +53,9 @@ Code Here
       :host ::content .scrollable {
         max-height: 100vh;
         height: 100%;
-
         overflow: auto;
         -webkit-overflow-scrolling: touch;
+        padding-bottom: 10%;
       }
 
       :host .is-active {
@@ -91,31 +91,34 @@ Code Here
             </px-drawer>
           </aside>
 
-          <!-- Secondary Content -->
-          <section class="l-container__secondary-content">
-            <content id="secondaryContent" select=".secondary-content, [role='secondary-content']"></content>
-          </section>
+          <div class="l-container__wrapper">
+            <!-- Secondary Content -->
+            <section class="l-container__secondary-content">
+              <content id="secondaryContent" select=".secondary-content, [role='secondary-content']"></content>
+            </section>
 
-          <!-- Primary Content -->
-          <section class="l-container__primary-content">
-            <content id="primaryContent" select=".primary-content, [role='primary-content']"></content>
-          </section>
+            <!-- Primary Content -->
+            <section class="l-container__primary-content">
+              <content id="primaryContent" select=".primary-content, [role='primary-content']"></content>
+            </section>
 
-          <!-- Any Content Views / Pages -->
-          <section class="l-container__content">
-            <content id="contentContent" select=".content, [role='content']"></content>
-          </section>
+            <!-- Any Content Views / Pages -->
+            <section class="l-container__content">
+              <content id="contentContent" select=".content, [role='content']"></content>
+            </section>
 
-          <!-- secondary-sidebar -->
-          <aside class="l-container__secondary-sidebar">
-            <px-drawer id="secondarySidebar" side="right" theme="dark">
-              <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar']"></content>
-            </px-drawer>
-          </aside>
+            <!-- secondary-sidebar -->
+            <aside class="l-container__secondary-sidebar">
+              <px-drawer id="secondarySidebar" side="right" theme="dark">
+                <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar']"></content>
+              </px-drawer>
+            </aside>
+          </div>
+
         </div>
       </div>
 
-      <div id="footer" class="viewport l-footer hidden-md-down">
+      <div id="_layoutFooter" class="viewport l-footer hidden-md-down">
         <content id="footerContent" select="px-footer"></content>
       </div>
     </div>
@@ -137,7 +140,9 @@ Code Here
           observer: '_handleOptions',
           value: {
             primarySidebar: {
+              open: false,
               theme: 'dark',
+              reveal: 'push',
               type: 'temporary'
             },
             secondarySidebar: {
@@ -159,12 +164,14 @@ Code Here
       },
       attached: function () {
         //this.toggleClass('l-container', true, this.$._layoutViewport);
-        this.toggleClass('l-container--' + this.type, true, this.$$('.l-container'));
+        this.toggleClass('l-container--' + this.type, true, this.$$('.l-container__wrapper'));
 
         var hasNavbar = this.$$('.navbar');
         if (hasNavbar) {
           console.log('Layout has navbar')
         }
+
+        this.$.primarySidebar.addEventListener('toggle', this._sidebarToggleHandler.bind(this));
 
         if(this.type === 'progressive'){
           this.$.primarySidebar.type = 'static';
@@ -174,11 +181,29 @@ Code Here
       },
       toggle: function (name, options) {
         var el = this.$[name];
+
+
         if (el.toggle) {
-          el.toggle();
+
+            el.toggle();
         }
+
         console.warn('toggle', name, el);
       },
+
+      _sidebarToggleHandler: function(e){
+        console.warn('toggle', e);
+        var sidebarWidth = e.target.offsetWidth;
+        if(e.target.open){
+          sidebarWidth = e.target.offsetWidth;
+        } else {
+          sidebarWidth = 0;
+        }
+        this.transform('translateX('+sidebarWidth+'px)', this.$$('.l-container__wrapper'));
+
+      },
+
+
       toggleContent: function (name) {
         //toggle primary / secondary content is-active / is-passive
         console.log("toggle content");

@@ -1418,10 +1418,60 @@ a {
 .hidden-xl-down {
   display: none !important; }
 
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+@media (max-width: 66.0666666666rem) {
+  html:not([style-scope]):not(.style-scope) {
+    overflow: hidden !important;
+    overflow-y: hidden !important; } }
+
+@media (max-width: 66.0666666666rem) {
+  body,
+  body:not([style-scope]):not(.style-scope) {
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh; } }
+
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
+  transition: all .5s ease; }
+  @media (max-width: 66.0666666666rem) {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0; } }
+  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: auto;
+      padding-right: auto; } }
+
+.box-section .border-right {
+  border-right: 1px solid #b1b1bc; }
+
+.box-section .border-left {
+  border-right: 1px solid #b1b1bc; }
+
 .box-section--tabs-to-columns .tabs {
   display: flex; }
+  @media (min-width: 66.1333333333rem) {
+    .box-section--tabs-to-columns .tabs {
+      display: none; } }
   .box-section--tabs-to-columns .tabs a {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #b1b1bc;
     color: black;
     text-decoration: none;
     white-space: nowrap;
@@ -1432,18 +1482,33 @@ a {
     padding: 1em;
     text-align: center; }
     .box-section--tabs-to-columns .tabs a.active {
-      border-bottom: 3px solid #000;
+      border-bottom: 3px solid black;
       font-weight: bold; }
 
-.box-section--tabs-to-columns .content-wrapper .content {
-  display: flex; }
-  .box-section--tabs-to-columns .content-wrapper .content > section {
-    box-sizing: border-box;
-    flex: 1;
-    order: 1; }
-    .box-section--tabs-to-columns .content-wrapper .content > section.active {
-      order: 1;
-      flex: 2; }
+.box-section--tabs-to-columns .box-section__columns-wrapper {
+  min-height: 50vh; }
+  @media (max-width: 79.9333333333rem) {
+    .box-section--tabs-to-columns .box-section__columns-wrapper {
+      margin-top: 0;
+      overflow: hidden; } }
+  .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around; }
+    @media (max-width: 79.9333333333rem) {
+      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns {
+        width: 300%; } }
+    .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section {
+      box-sizing: border-box;
+      flex: 1;
+      order: 1; }
+      .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section.active {
+        order: 1;
+        flex: 2; }
+      @media (max-width: 79.9333333333rem) {
+        .box-section--tabs-to-columns .box-section__columns-wrapper .box-section__columns > section:not(.active) {
+          order: 3;
+          display: none; } }
 
 /*================================= Off Canvas ================================*/
 .l-offcanvas {
@@ -1547,23 +1612,11 @@ a {
 .l-container {
   position: relative;
   overflow: hidden;
-  transition: all .5s ease; }
+  transition: all 0.5s ease; }
+  .l-container__wrapper {
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.1, 1); }
 
-.viewport, .viewport:not([style-scope]):not(.style-scope) {
-  transition: all .5s ease; }
-  @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
-    .viewport, .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0; } }
-  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
-    .viewport, .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: auto;
-      padding-right: auto; } }
-
+/** Debug Media Query Colors */
 .u-bg--gray7 {
   background-color: #7c7c84; }
 
@@ -1579,7 +1632,6 @@ a {
 demo-snippet .demo {
   background-color: #efeff4 !important; }
 
-/** Debug Media Query Colors */
 .responsive-utilities .is-visible {
   color: #059748;
   background-color: #90cd97 !important; }
@@ -1604,26 +1656,6 @@ demo-snippet .demo {
 .visible-on .not-visible {
   color: #999;
   border: 1px solid #ddd; }
-
-@media screen and (max-width: 31rem) {
-  .debug-new-breakpoints .responsive-demo {
-    background-color: #265dab !important; } }
-
-@media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
-  .debug-new-breakpoints .responsive-demo {
-    background-color: #e5126f !important; } }
-
-@media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
-  .debug-new-breakpoints .responsive-demo {
-    background-color: #059748 !important; } }
-
-@media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
-  .debug-new-breakpoints .responsive-demo {
-    background-color: #7b3a96 !important; } }
-
-@media screen and (min-width: 85.3333333333rem) {
-  .debug-new-breakpoints .responsive-demo {
-    background-color: #df5c24 !important; } }
 
 .color-xs {
   color: #265dab !important; }
@@ -1690,6 +1722,26 @@ demo-snippet .demo {
 
 .u-bg-palm {
   background-color: gold !important; }
+
+@media screen and (max-width: 31rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #265dab !important; } }
+
+@media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #e5126f !important; } }
+
+@media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #059748 !important; } }
+
+@media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #7b3a96 !important; } }
+
+@media screen and (min-width: 85.3333333333rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #df5c24 !important; } }
 
 @media screen and (min-width: 45em) and (max-width: 63.9375em) {
   .debug-old-breakpoints .responsive-demo {
