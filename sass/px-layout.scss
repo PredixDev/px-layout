@@ -11,6 +11,47 @@
 @import 'variables';
 @import 'mixins';
 
+
+
+
+$l-container-transition: all .5s ease;
+$l-container-transition-wrapper: all .5s cubic-bezier(0.1, 0.7, 0.1, 1);
+
+
+
+@debug"Breakpoints - #{$breakpoints}";
+
+
+$inuit-widths-columns-responsive: (
+  1,
+  2,
+  3,
+  4,
+  6,
+);
+
+
+// Loop over our breakpoints defined in _settings.responsive.scss
+@each $breakpoint in $breakpoints {
+  // Get the name of the breakpoint.
+  $bp: nth($breakpoint, 2);
+  $alias: nth($breakpoint, 1);
+  @debug" Found #{$alias} - #{$bp}";
+  @include media-query($alias) {
+    @each $inuit-widths-column in $inuit-widths-columns-responsive {
+      @include inuit-widths($inuit-widths-column, -#{$alias});
+    }
+  }
+}
+
+@include responsive-utils();
+
+@import 'l-tabs-to-columns';
+@import 'l-offcanvas';
+@import 'l-splitview';
+
+
+
 html, html:not([style-scope]):not(.style-scope) {
   @include scrollable();
   @include media-breakpoint-down ('md') {
@@ -51,12 +92,12 @@ body:not([style-scope]):not(.style-scope) {
     padding-right: auto;
   }
 }
-@import 'l-tabs-to-columns';
-@import 'l-offcanvas';
-@import 'l-splitview';
 
-$l-container-transition: all .5s ease;
-$l-container-transition-wrapper: all .5s cubic-bezier(0.1, 0.7, 0.1, 1);
+
+
+
+
+
 
 @include b ('l-container') {
   position  : relative;

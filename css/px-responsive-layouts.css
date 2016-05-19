@@ -1147,7 +1147,7 @@ a {
     padding: 0 !important;
     clip: rect(0 0 0 0) !important; } }
 
-@media screen and (max-width: 31rem) {
+@media screen and (max-width: 21.3333333333rem) {
   .a11y-xs,
   .visuallyhidden-xs {
     position: absolute !important;
@@ -1214,6 +1214,15 @@ a {
   visibility: hidden !important; }
 
 /*  Root */
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
 @media screen and (max-width: 44.9375em) {
   .u-1\/1-palm {
     width: 100% !important; }
@@ -1568,7 +1577,7 @@ a {
         -ms-flex: none !important;
             flex: none !important; } }
 
-@media screen and (max-width: 31rem) {
+@media screen and (max-width: 21.3333333333rem) {
   .u-1\/1-xs {
     width: 100% !important; }
   .u-1\/2-xs {
@@ -1863,92 +1872,47 @@ a {
         -ms-flex: none !important;
             flex: none !important; } }
 
-.invisible {
+.is-invisible {
   visibility: hidden !important; }
 
 @media (min-width: 22rem) {
-  .hidden-xs-up {
+  .is-hidden\@xs\+ {
     display: none !important; } }
 
 @media (max-width: 31.9333333333rem) {
-  .hidden-xs-down {
+  .is-hidden\@xs- {
     display: none !important; } }
 
 @media (min-width: 32rem) {
-  .hidden-sm-up {
+  .is-hidden\@sm\+ {
     display: none !important; } }
 
 @media (max-width: 51.1333333333rem) {
-  .hidden-sm-down {
+  .is-hidden\@sm- {
     display: none !important; } }
 
 @media (min-width: 51.2rem) {
-  .hidden-md-up {
+  .is-hidden\@md\+ {
     display: none !important; } }
 
 @media (max-width: 66.0666666666rem) {
-  .hidden-md-down {
+  .is-hidden\@md- {
     display: none !important; } }
 
 @media (min-width: 66.1333333333rem) {
-  .hidden-lg-up {
+  .is-hidden\@lg\+ {
     display: none !important; } }
 
 @media (max-width: 79.9333333333rem) {
-  .hidden-lg-down {
+  .is-hidden\@lg- {
     display: none !important; } }
 
 @media (min-width: 80rem) {
-  .hidden-xl-up {
+  .is-hidden\@xl\+ {
     display: none !important; } }
 
-.hidden-xl-down {
+.is-hidden\@xl- {
   display: none !important; }
-
-/*
- * Copyright (c) 2016 GE Global Research. All rights reserved.
- *
- * The copyright to the computer software herein is the property of
- * GE Global Research. The software may be used and/or copied only
- * with the written permission of GE Global Research or in accordance
- * with the terms and conditions stipulated in the agreement/contract
- * under which the software has been supplied.
- */
-html, html:not([style-scope]):not(.style-scope) {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-
-body,
-body:not([style-scope]):not(.style-scope) {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-  @media (max-width: 66.0666666666rem) {
-    body,
-    body:not([style-scope]):not(.style-scope) {
-      height: 100%;
-      min-height: 100vh;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-bottom: 0;
-      padding: 0; } }
-
-.viewport,
-.viewport:not([style-scope]):not(.style-scope) {
-  transition: all .5s ease; }
-  @media (max-width: 66.0666666666rem) {
-    .viewport,
-    .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0; } }
-  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
-    .viewport,
-    .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: auto;
-      padding-right: auto; } }
 
 .box-section .border-right {
   border-right: 1px solid #b1b1bc; }
@@ -2083,7 +2047,7 @@ body:not([style-scope]):not(.style-scope) {
       display: none !important;
       -webkit-transform: translateX(-100%);
               transform: translateX(-100%); }
-    @media screen and (max-width: 31rem) {
+    @media screen and (max-width: 21.3333333333rem) {
       .l-offcanvas__secondary-content {
         position: absolute;
         -webkit-transform: translateX(-100%);
@@ -2187,9 +2151,45 @@ body:not([style-scope]):not(.style-scope) {
   -webkit-flex-grow: 2;
       -ms-flex-positive: 2;
           flex-grow: 2; }
-  @media screen and (max-width: 31rem) {
+  @media screen and (max-width: 21.3333333333rem) {
     .l-container__primary-content.is-active {
       display: block !important; } }
+
+html, html:not([style-scope]):not(.style-scope) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
+
+body,
+body:not([style-scope]):not(.style-scope) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
+  @media (max-width: 66.0666666666rem) {
+    body,
+    body:not([style-scope]):not(.style-scope) {
+      height: 100%;
+      min-height: 100vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 0;
+      padding: 0; } }
+
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
+  transition: all .5s ease; }
+  @media (max-width: 66.0666666666rem) {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0; } }
+  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: auto;
+      padding-right: auto; } }
 
 .l-container {
   position: relative;
@@ -2314,7 +2314,7 @@ demo-snippet .demo {
 .u-bg-palm {
   background-color: gold !important; }
 
-@media screen and (max-width: 31rem) {
+@media screen and (max-width: 21.3333333333rem) {
   .debug-new-breakpoints .responsive-demo {
     background-color: #265dab !important; } }
 

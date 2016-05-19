@@ -9,6 +9,7 @@
  */
 @charset "utf-8";
 
+
 /// Settings
 @import "variables";
 @import "px-defaults-design/_settings.defaults.scss";
@@ -39,32 +40,8 @@
 @import "px-box-sizing-design/_generic.box-sizing.scss";
 @import "px-helpers-design/_generic.helpers.scss";
 /*  Root */
-@debug"Breakpoints - #{$breakpoints}";
 
-
-$inuit-widths-columns-responsive: (
-    1,
-    2,
-    3,
-    4,
-    6,
-);
-
-
-// Loop over our breakpoints defined in _settings.responsive.scss
-@each $breakpoint in $breakpoints {
-  // Get the name of the breakpoint.
-  $bp: nth($breakpoint, 2);
-  $alias: nth($breakpoint, 1);
-  @debug" Found #{$alias} - #{$bp}";
-  @include media-query($alias) {
-    @each $inuit-widths-column in $inuit-widths-columns-responsive {
-      @include inuit-widths($inuit-widths-column, -#{$alias});
-    }
-  }
-}
-
-@include responsiveUtils();
 
 @import 'px-layout.scss';
 @import 'px-responsive-layouts-demo.scss';
+
