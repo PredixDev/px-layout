@@ -71,14 +71,14 @@ Code Here
         <content id="headerContent" select="px-header"></content>
       </div>
       <div id="_layoutViewport" class="viewport">
-        <!-- primary-sidebar -->
-        <aside class="l-primary-sidebar">
-          <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
-            <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
-          </px-drawer>
-        </aside>
-        <div class="l-container">
 
+        <div class="l-container">
+          <!-- primary-sidebar -->
+          <aside class="l-primary-sidebar">
+            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
+              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
+            </px-drawer>
+          </aside>
           <div class="l-container__wrapper">
             <!-- Secondary Content -->
             <section class="l-container__secondary-content">

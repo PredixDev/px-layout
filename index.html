@@ -18,8 +18,24 @@
         console.log('toggling', name);
       }
     </script>
+    <style media="screen">
+    html, body{
+      overflow: auto !important;
+    }
+    #flexbox .flex *{
+      text-align: center;
+      padding: 1rem;
+    }
+      .scrollable{
+
+        height: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10%;
+      }
+    </style>
   </head>
-  <body class="debug-new-breakpoints" unresolved>
+  <body class="debug-new-breakpoints scrollable" unresolved>
     <!--
 
 <px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
@@ -481,9 +497,9 @@
           <demo-snippet>
             <template id="">
               <template id="queryExample" is="dom-bind">
-                <px-media-query id="xs" query="(min-width: 320px)" query-matches="{{isXs}}">This is content</px-media-query>
-                <px-media-query id="sm" query="(min-width: 480px)" query-matches="{{isSm}}"></px-media-query>
-                <px-media-query id="md" query="(min-width: 768px)" query-matches="{{isMd}}"></px-media-query>
+                <px-media-query id="xs" query="(max-width: 31rem)" query-matches="{{isXs}}" full>This is content</px-media-query>
+                <px-media-query id="sm" query="(min-width: 22rem) and (max-width: 49rem)" query-matches="{{isSm}}" full></px-media-query>
+                <px-media-query id="md" query="(min-width: 51.2rem) and (max-width: 68.2rem)" full query-matches="{{isMd}}"></px-media-query>
                 <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
                 <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
                 <template is="dom-if" if="{{isXs}">
@@ -646,8 +662,14 @@
               <px-header subtitle="Split View Layout"></px-header>
               <px-layout-item role="secondary-content">
                 <px-navbar></px-navbar>
-                <div class="has-navbar">
+                <div class="has-navbar scrollable">
                   <ul class="list-ui u-mt++">
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
                     <li>&nbsp;</li>
                     <li>&nbsp;</li>
                     <li>&nbsp;</li>
@@ -669,7 +691,7 @@
     </px-box-section>
   </px-box-section>
   <!-- TODO: Flexbox -->
-  <px-box-section title="CSS - Flexbox Grid">
+  <px-box-section id="flexbox" title="CSS - Flexbox Grid">
     <h2>
       <code>.flex</code>
     </h2>

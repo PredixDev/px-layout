@@ -73,7 +73,7 @@
             <!-- TODO: Cards -->
             <div class="cards flex flex--wrap">
               <template is="dom-repeat" items="{{cards}}">
-                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="flex__item">
+                <px-card icon="{{item.icon}}" header-text="{{item.title}}">
                   <p>{{item.body}}</p>
                 </px-card>
               </template>
@@ -81,12 +81,9 @@
           </section>
 
           <px-action-sheet id="actionsheet1" grid>
-            <px-action-sheet-button label="Item 1" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-            <px-action-sheet-button label="Item 2" icon="fa fa-2x fa-paste"></px-action-sheet-button>
-            <px-action-sheet-button label="Item 3" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-            <px-action-sheet-button label="Item 4" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-            <px-action-sheet-button label="Item 5" icon="fa fa-2x fa-copy"></px-action-sheet-button>
-            <px-action-sheet-button label="Item 6" icon="fa fa-2x fa-copy"></px-action-sheet-button>
+            <p>
+              This is actions
+            </p>
           </px-action-sheet>
         </div>
         <!-- TODO: Footer -->

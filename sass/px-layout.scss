@@ -11,18 +11,20 @@
 @import 'variables';
 @import 'mixins';
 
-html:not([style-scope]):not(.style-scope) {
+html, html:not([style-scope]):not(.style-scope) {
+  @include scrollable();
   @include media-breakpoint-down ('md') {
-    overflow  : hidden !important;
-    overflow-y: hidden !important;
+  //  overflow  : hidden !important;
+  //  overflow-y: hidden !important;
   }
 }
 //Remove all margins/paddings on lower
 body,
 body:not([style-scope]):not(.style-scope) {
+  @include scrollable();
   @include media-breakpoint-down ('md') {
     @include full-height();
-    overflow     : hidden;
+    @include scrollable();
     margin-bottom: 0;
     padding      : 0;
   }

@@ -1427,19 +1427,23 @@ a {
  * with the terms and conditions stipulated in the agreement/contract
  * under which the software has been supplied.
  */
-@media (max-width: 66.0666666666rem) {
-  html:not([style-scope]):not(.style-scope) {
-    overflow: hidden !important;
-    overflow-y: hidden !important; } }
+html, html:not([style-scope]):not(.style-scope) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
 
-@media (max-width: 66.0666666666rem) {
-  body,
-  body:not([style-scope]):not(.style-scope) {
-    height: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    margin-bottom: 0;
-    padding: 0; } }
+body,
+body:not([style-scope]):not(.style-scope) {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; }
+  @media (max-width: 66.0666666666rem) {
+    body,
+    body:not([style-scope]):not(.style-scope) {
+      height: 100%;
+      min-height: 100vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 0;
+      padding: 0; } }
 
 .viewport,
 .viewport:not([style-scope]):not(.style-scope) {

@@ -1,7 +1,14 @@
 @import 'variables';
 @import "px-mobile-design/sass/_mixins.scss";
 
-
+/// Scrollable solution
+/// @group px-table-view
+@mixin scrollable() {
+  //  overflow-y                : scroll;
+  overflow-y                : auto;
+  -webkit-overflow-scrolling: touch;
+  @content;
+}
 @mixin responsive-visibility-utils($bps:$breakpoints) {
    @content;
 
