@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
-
+<!-- Forked from iron-media-query -->
 <!--
 `px-media-query` can be used to data bind to a CSS media query.
 The `query` property is a bare CSS media query.
@@ -10,9 +10,6 @@ Example:
 @demo demo/index.html
 @element px-media-query
 -->
-
-
-
 <dom-module id="px-media-query">
   <style>
     :host {
@@ -66,12 +63,12 @@ Example:
       }
     },
     attached: function () {
-      console.log(this.tagName, 'attached');
+    //  console.log(this.tagName, 'attached');
       this.style.display = 'none';
       this.queryChanged();
     },
     detached: function () {
-      console.log(this.tagName, 'detached');
+      //console.log(this.tagName, 'detached');
       this._remove();
     },
     _add: function () {
@@ -88,7 +85,7 @@ Example:
     queryChanged: function () {
       this._remove();
       var query = this.query;
-      console.log('queryChanged', query);
+      //console.log('queryChanged', query);
       if (!query) {
         return;
       }
@@ -100,13 +97,10 @@ Example:
       this.queryHandler(this._mq);
     },
     queryHandler: function (mq) {
-      console.log('queryHandler', mq.media, 'matches', mq.matches);
+      //console.log('queryHandler', mq.media, 'matches', mq.matches);
       this.fire('media-query-change', mq);
       this._setQueryMatches(mq.matches);
 
-    },
-    created: function(){
-      console.warn(this.tagName, 'created', this);
     }
   });
   </script>
