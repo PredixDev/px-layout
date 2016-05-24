@@ -1,0 +1,79 @@
+<link rel="import" href="../polymer/polymer.html">
+<!--
+
+Usage:
+
+```
+<px-drawer-layout>
+  <px-drawer>
+    drawer content
+  </px-drawer>
+  <div>
+    main content
+  </div>
+</px-drawer-layout>
+```
+
+
+Usage with header layout__item
+
+```
+<px-drawer-layout>
+	<px-drawer>
+		drawer-content
+	</px-drawer>
+	<px-header-layout>
+		<px-header>
+			<px-navbar>
+				<div title>App name</div>
+			</px-navbar>
+		</px-header>
+			main content
+	</px-header-layout>
+</px-drawer-layout>
+```
+
+-->
+<dom-module id="px-header-layout">
+  <template>
+    <style>
+      :host {
+        display: block;
+
+      }
+    </style>
+    <article class="flex flex--col flex--stretch">
+
+
+        <content select="[header], px-header"></content>
+
+
+      <section class="full-height">
+        <content select="[content], *"></content>
+      </section>
+    </article>
+  </template>
+  <script>
+    Polymer({
+      is: 'px-header-layout',
+      properties: {
+        title: {
+          type: String
+        }
+      },
+      created: function () {
+        console.log(this.tagName, 'created');
+      },
+      ready: function () {
+        console.log(this.tagName, 'ready');
+        //this.toggleClass('layout__item')
+      },
+      attached: function () {
+        console.log(this.tagName, 'attached');
+      },
+      detached: function () {
+        console.log(this.tagName, 'detached');
+      }
+    });
+  </script>
+</dom-module>

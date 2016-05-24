@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-drawer-header-layout</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../px-layout.html">
+  </head>
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <px-drawer-layout id="layout">
+        <px-drawer>
+          drawer-content
+        </px-drawer>
+        <px-header-layout>
+          <px-header>
+            <px-navbar>
+              <div title>App name</div>
+            </px-navbar>
+          </px-header>
+          <div class="">
+            <p>
+              main content
+            </p>
+            <button type="button" class="btn" onclick="document.getElementById('layout').drawer.toggle()">Open Drawer</button>
+
+          </div>
+        </px-header-layout>
+      </px-drawer-layout>
+    </template>
+  </body>
+</html>

@@ -7,6 +7,8 @@
 <link rel="import" href="../px-theme/px-theme.html">
 
 <link rel="import" href="px-media-query.html">
+<link rel="import" href="px-header-layout.html">
+<link rel="import" href="px-drawer-layout.html">
 <link rel="import" href="px-layout-item.html">
 <!--
 <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
@@ -137,7 +139,7 @@ Code Here
             primarySidebar: {
               open: false,
               theme: 'dark',
-              reveal: 'push',
+              //reveal: 'push',
               type: 'temporary'
             },
             secondarySidebar: {
@@ -200,7 +202,9 @@ Code Here
         } else {
           sidebarWidth = 0;
         }
-        this.transform('translateX(' + sidebarWidth + 'px)', this.$$('.l-container__wrapper'));
+        if(this.options.primarySidebar.reveal === 'push'){
+          this.transform('translateX(' + sidebarWidth + 'px)', this.$$('.l-container__wrapper'));
+        }
       },
       toggleContent: function (name) {
         //toggle primary / secondary content is-active / is-passive
