@@ -49,6 +49,7 @@
           <code>display: flex;</code>
           to create an extremely powerful, flexible alternative to the traditional grid system.</p>
       </div>
+      <!-- TODO: Usage -->
       <px-box-section id="usage" title="Usage">
         <p>
           The markup structure of an application can become very messy and deeply nested. So we have identified the essential elements that are needed to create a basic responsive application.
@@ -64,9 +65,40 @@
           The following markup is a basic example of usage. Open in
           <a href="demo/template-basic.html" target="_blank">new window</a>
         </p>
+
+
         <demo-snippet>
           <template>
-            <article class="u-bg--gray9">
+            <px-drawer-layout id="layout" class="u-bg--gray9" style="height: 600px;">
+              <px-drawer>
+                drawer-content
+              </px-drawer>
+              <px-header-layout>
+                <px-header>
+                  <px-navbar shadow>
+                    <div left>
+                      <button type="button" class="btn" drawer-toggle>Open Drawer</button>
+                    </div>
+                    <div title>
+                      px-drawer-layout
+                    </div>
+                  </px-navbar>
+                </px-header>
+                <div class="">
+                  <p>
+                    main content
+                  </p>
+
+                </div>
+              </px-header-layout>
+            </px-drawer-layout>
+          </template>
+        </demo-snippet>
+
+
+        <demo-snippet>
+          <template>
+            <article class="u-bg--gray9" style="height: 600px;">
               <!-- Layout -->
               <px-layout id="layoutx" type="full">
                 <!-- Header -->
@@ -94,6 +126,7 @@
           </template>
         </demo-snippet>
       </px-box-section>
+      <!-- TODO: Upgrade -->
       <px-box-section id="upgrade" title="Upgrading">
         <p>How to update your existing layout:</p>
         <ol class="">

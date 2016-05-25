@@ -47,6 +47,8 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
     <style>
       :host {
         display: block;
+        position: relative;
+        overflow: hidden;
       }
       :host section {
         flex: 1;
@@ -74,7 +76,7 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
         'tap': '_tapHandler'
         //'app-drawer-reset-layout': 'resetLayout'
       },
-      
+
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle')) {

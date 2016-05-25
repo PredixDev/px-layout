@@ -2191,6 +2191,10 @@ body:not([style-scope]):not(.style-scope) {
       padding-left: auto;
       padding-right: auto; } }
 
+.has-navbar {
+  position: relative;
+  padding-top: 56px; }
+
 .l-container {
   position: relative;
   overflow: hidden;

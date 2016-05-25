@@ -39,15 +39,11 @@ Usage with header layout__item
     <style>
       :host {
         display: block;
-
+        position: relative;
       }
     </style>
     <article class="flex flex--col flex--stretch">
-
-
-        <content select="[header], px-header"></content>
-
-
+      <content select="[header], px-header"></content>
       <section class="full-height">
         <content select="[content], *"></content>
       </section>
