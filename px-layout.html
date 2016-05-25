@@ -12,8 +12,9 @@
 <link rel="import" href="px-layout-item.html">
 <!--
 <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
--->
 <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
+-->
+
 <link rel="stylesheet" href="css/px-responsive-layouts.css">
 <!--
 <link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
@@ -162,17 +163,16 @@ Code Here
           }
         }
       },
-      /**
-       *
-       */
+
       attached: function () {
-        //this.toggleClass('l-container', true, this.$._layoutViewport);
+
         this.toggleClass('l-container--' + this.type, true, this.$$('.l-container__wrapper'));
         var hasNavbar = this.$$('.navbar');
         if (hasNavbar) {
-        //  console.log('Layout has navbar')
+
         }
         this.$.primarySidebar.addEventListener('toggle', this._sidebarToggleHandler.bind(this));
+
         if (this.type === 'progressive') {
           this.$.primarySidebar.type = 'static';
           this.$.secondarySidebar.type = 'static';
