@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-drawer-layout</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../px-layout.html">
+  </head>
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <px-drawer-layout id="layout">
+        <px-drawer type="static">
+          <div style="height: 100%; overflow: auto;" class="u-m">
+            <form>
+              <h4>px-navbar Properties</h4>
+              <fieldset>
+                <ul class="list-bare">
+                  <li class="form-field">
+                    <label for="position">
+                      <input type="checkbox" name="position" value="fixed"> fixed
+                    </label>
+                  </li>
+                  <li>
+                    <label for="shadow">
+                      <input type="checkbox" name="shadow" value="true"> shadow
+                    </label>
+                  </li>
+                </ul>
+              </fieldset>
+              <h4>px-drawer Properties</h4>
+            </form>
+          </div>
+        </px-drawer>
+
+        <div content>
+          <px-navbar fixed shadow>
+            <div left>
+              <button type="button" class="btn" drawer-toggle>Open Drawer</button>
+            </div>
+            <div title>
+              px-drawer-layout
+            </div>
+          </px-navbar>
+
+          <div class="u-m">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
+        </div>
+
+      </px-drawer-layout>
+    </template>
+    <script type="text/javascript">
+      var app;
+      function createDemoCards(count) {
+        var i = 0,
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
+              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+        }
+        return _out;
+      }
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.cards = createDemoCards(100);
+      });
+    </script>
+  </body>
+</html>

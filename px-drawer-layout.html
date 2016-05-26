@@ -54,9 +54,9 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
         flex: 1;
       }
     </style>
-    <article class="flex flex--row flex--stretch">
-      <section id="contentContainer" class="flex flex--col">
-        <content id="contentContent" select="[content], *"></content>
+    <article class="flex flex--stretch">
+      <section id="contentContainer" class="flex flex--col flex--stretch">
+        <content id="contentContent" select="[content]"></content>
       </section>
       <content id="drawerContent" select="px-drawer"></content>
     </article>
