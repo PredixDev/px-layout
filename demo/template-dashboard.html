@@ -63,8 +63,8 @@
               <px-table-view modifier="tiny responsive row">
                 <template is="dom-repeat" items="{{spine}}">
                   <px-table-row modifier="tappable" class="flex">
-                    <div content>
-                      <h3 class="table-row__title epsilon">{{item.title}}</h3>
+                    <div class="table-row__content table-row__content--row" content>
+                      <span class="table-row__title epsilon">{{item.title}}</span>
                       <div class="table-row__body">
                         <span class="beta">{{item.body}}</span>
                         <span class="delta muted">{{item.label1}}</span>
@@ -79,10 +79,8 @@
 
             <!-- TODO: Cards -->
 
-            <div class="flex flex--wrap u-m">
-
-
-              <px-card header-text="Visitors">
+            <div class="flex flex--wrap">
+              <px-card header-text="Visitors" class="u-m">
                 <px-simple-line-chart id="myLineChart"
                         width="auto"
                         height="250"
@@ -112,7 +110,7 @@
                 </px-simple-line-chart>
               </px-card>
 
-              <px-card header-text="Browsers">
+              <px-card header-text="Browsers" class="u-m">
                 <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto"
                   height="250"
                   chart-data="[250,100,76,25]"
@@ -200,7 +198,7 @@
         app = document.getElementById('app');
         app.navItems = navItems;
         app.cards = createDemoCards(100);
-        app.spine = createDemoSpine(5);
+        app.spine = createDemoSpine(4);
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
