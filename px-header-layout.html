@@ -55,20 +55,36 @@ Usage with header layout__item
       properties: {
         title: {
           type: String
+        },
+        drawer: {
+          type: Object
         }
+      },
+      listeners: {
+        'tap': '_tapHandler'
+        //'app-drawer-reset-layout': 'resetLayout'
       },
       created: function () {
         console.log(this.tagName, 'created');
+
       },
+
       ready: function () {
         console.log(this.tagName, 'ready');
         //this.toggleClass('layout__item')
       },
       attached: function () {
         console.log(this.tagName, 'attached');
+        this.drawer = this.queryEffectiveChildren('px-drawer');
       },
       detached: function () {
         console.log(this.tagName, 'detached');
+      },
+      _tapHandler: function (e) {
+        var target = Polymer.dom(e).localTarget;
+        if (target && target.hasAttribute('drawer-toggle') && this.drawer) {
+          this.drawer.toggle();
+        }
       }
     });
   </script>

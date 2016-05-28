@@ -9,6 +9,11 @@
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-layout.html">
+    <style media="screen">
+      html, body{
+        background: #eee;
+      }
+    </style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
@@ -22,13 +27,15 @@
         </px-drawer>
         <px-navbar fixed shadow>
           <div left>
-            <button type="button" class="btn" drawer-toggle>Open Drawer</button>
+            <button class="navbar__button" on-tap="toggleDrawer">
+              <i class="fa fa-lg fa-bars"></i>
+            </button>
           </div>
           <div title>
             px-drawer-layout
           </div>
         </px-navbar>
-        <div class="u-m">
+        <div class="u-m" content>
 
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}">
@@ -40,6 +47,7 @@
     </template>
     <script type="text/javascript">
       var app;
+
       function createDemoCards(count) {
         var i = 0,
           lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
@@ -55,6 +63,9 @@
       }
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
+        app.toggleDrawer = function(){
+          document.getElementById('layout').drawer.toggle()
+        };
         app.cards = createDemoCards(100);
       });
     </script>

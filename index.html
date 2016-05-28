@@ -2,12 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>px-layout</title>
+    <title>px-responsive-layouts</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="demo/demo.css">
+
     <script src="../webcomponentsjs/webcomponents.js"></script>
+
+
+    <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
     <link rel="import" href="../px-partials/px-partials.html">
     <link rel="import" href="../px-card/px-card.html">
@@ -33,22 +37,50 @@
         -webkit-overflow-scrolling: touch;
         padding-bottom: 10%;
       }
+      .img-responsive{
+        width: 100%;
+        max-width: 100%;
+      }
+
     </style>
   </head>
-  <body class="debug-new-breakpoints scrollable" unresolved>
+  <body class="debug-new-breakpoints scrollable box" unresolved>
     <!--
 
 <px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
 -->
-    <article class="viewport box">
-      <div class="u-m">
-        <h1 class="alpha">px-layout</h1>
-        <p>The Predix UI layout system uses
-          <code>box-sizing: border-box;</code>
-          and
-          <code>display: flex;</code>
-          to create an extremely powerful, flexible alternative to the traditional grid system.</p>
+
+
+
+
+
+<!-- TODO: Laytout -->
+    <article class="viewport ">
+      <div class="u-mb">
+        <h1 class="alpha">px-responsive-layouts</h1>
+        <p>
+          Includes 3 pre-defined layout wrapper components that enables you to create responsive progressive web apps.
+        </p>
+
+        <h3>Bundled Elements</h3>
+        <ul>
+          <li>px-drawer-layout</li>
+          <li>px-header-layout</li>
+          <li>px-layout</li>
+        </ul>
+
+
+  <device-layout-viewer device="all"
+  src="/px-responsive-layouts/demo/template-drawer-layout.html"></device-layout-viewer>
       </div>
+
+
+
+
+
+
+
+
       <!-- TODO: Usage -->
       <px-box-section id="usage" title="Usage">
         <p>
@@ -65,7 +97,6 @@
           The following markup is a basic example of usage. Open in
           <a href="demo/template-basic.html" target="_blank">new window</a>
         </p>
-
 
         <demo-snippet>
           <template>
@@ -94,7 +125,6 @@
             </px-drawer-layout>
           </template>
         </demo-snippet>
-
 
         <demo-snippet>
           <template>
@@ -126,17 +156,43 @@
           </template>
         </demo-snippet>
       </px-box-section>
-      <!-- TODO: Upgrade -->
-      <px-box-section id="upgrade" title="Upgrading">
-        <p>How to update your existing layout:</p>
+
+      <px-box-section id="depends" title="Components">
+        <p>
+          The following components are used and bundled in this component.
+        </p>
         <ol class="">
-          <li>Identify the layout pattern for your app</li>
-          <li>Use the px-layout component</li>
-          <li>Select the type you perfer</li>
-          <li>Replace old markup with new markup</li>
+          <li>
+            <a href="../px-partials" target="_blank">px-partials</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-brand" target="_blank">px-brand</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-header" target="_blank">px-header</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-footer" target="_blank">px-footer</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-icon" target="_blank">px-icon</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-button" target="_blank">px-button</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-title-bar" target="_blank">px-title-bar</a>
+          </li>
+          <li>
+            <a href="../px-navbar" target="_blank">px-navbar</a>
+          </li>
+          <li>
+            <a href="../px-drawer" target="_blank">px-drawer</a>
+          </li>
         </ol>
       </px-box-section>
-      <px-box-section id="patterns" title="Layout Patterns">
+
+      <px-box-section id="patterns" title=" Patterns">
         <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
         <p>
           The following patterns are available.
@@ -159,15 +215,23 @@
           </li>
         </ol>
       </px-box-section>
+
       <template id="pxExamples" is="dom-bind">
-        <px-box-section id="examples" title="Layout Examples">
-          <ol>
+        <px-box-section id="examples" title="Examples">
+          <p>How to update your existing layout:</p>
+          <ol class="">
+            <li>Identify the layout pattern for your app</li>
+            <li>Use the px-layout component</li>
+            <li>Select the type you perfer</li>
+            <li>Replace old markup with new markup</li>
+          </ol>
+          <ul>
             <template is="dom-repeat" items="{{examples}}">
               <li>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
               </li>
             </template>
-          </ol>
+          </ul>
         </px-box-section>
       </template>
       <script type="text/javascript">
@@ -213,22 +277,7 @@
           ];
         });
       </script>
-      <px-box-section id="depends" title="Components Used">
-        <p>
-          The following components are used exclusivly.
-        </p>
-        <ol class="">
-          <li>
-            <a href="../px-partials" target="_blank">px-partials</a>
-          </li>
-          <li>
-            <a href="../px-navbar" target="_blank">px-navbar</a>
-          </li>
-          <li>
-            <a href="../px-drawer" target="_blank">px-drawer</a>
-          </li>
-        </ol>
-      </px-box-section>
+
       <template id="pxBreakpoints" is="dom-bind">
         <px-box-section id="breakpoints" title="Breakpoints">
           <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>
@@ -340,7 +389,7 @@
           document.getElementById('pxBreakpoints').newBreakpoints = newBreakpoints;
         });
       </script>
-      <px-box-section id="responsive-utils" title="Responsive Helpers">
+      <px-box-section id="responsive-utils" title="Responsive Utils">
         <p>
           Show/hide content depending on the width of the viewport
         </p>

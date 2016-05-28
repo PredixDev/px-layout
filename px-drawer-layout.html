@@ -48,15 +48,25 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       :host {
         display: block;
         position: relative;
-        overflow: hidden;
+
       }
       :host section {
         flex: 1;
       }
     </style>
+<!--
+    <px-media-query id="xs" query="(max-width: 31rem)" query-matches="{{isXs}}" full></px-media-query>
+    <px-media-query id="sm" query="(min-width: 22rem) and (max-width: 49rem)" query-matches="{{isSm}}" full></px-media-query>
+-->
+    <px-media-query id="mediaQuery" query$="{{responsiveQuery}}"
+      query-matches$="{{queryMatches}}"></px-media-query>
+<!--
+    <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
+    <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
+  -->
     <article class="flex flex--stretch">
       <section id="contentContainer" class="flex flex--col flex--stretch">
-        <content id="contentContent" select="[content]"></content>
+        <content id="contentContent" select="[content], *"></content>
       </section>
       <content id="drawerContent" select="px-drawer"></content>
     </article>
@@ -67,6 +77,15 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       properties: {
         title: {
           type: String
+        },
+        responsiveQuery: {
+          type: String,
+          value: '(min-width: 51.2rem)'
+        },
+        queryMatches: {
+          type: Boolean,
+          notify: true,
+          observe: '_handleQuery'
         },
         drawer: {
           type: Object
@@ -80,21 +99,26 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle')) {
-          this.drawer.toggle();
+          this.drawer.open();
         }
       },
       created: function () {
         console.log(this.tagName, 'created');
-        this.drawer = this.queryEffectiveChildren('px-drawer');
-        this.drawer.fixed = true;
+
       },
       ready: function () {},
       attached: function () {
         console.log(this.tagName, 'attached');
-        console.log(this.tagName, 'ready', this.drawer);
+        this.drawer = this.queryEffectiveChildren('px-drawer');
+        this.drawer.fixed = true;
+
+
       },
       detached: function () {
         console.log(this.tagName, 'detached');
+      },
+      _handleQuery: function(newVal, oldVal){
+        console.log(this.tagName, '_handleQuery', newVal);
       }
     });
   </script>
