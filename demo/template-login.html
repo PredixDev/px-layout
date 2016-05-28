@@ -12,25 +12,69 @@
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
-  
+
   </head>
   <body unresolved class=" responsive-demo">
     <template id="app" is="dom-bind">
       <px-layout id="layout0">
 
         <px-layout-item role="primary-content">
-        <style media="screen">
+          <div class="content">
+    	<div class="header">
+    		<div></div>
+    		<div class="header-image"></div>
+    	</div>
 
-        </style>
-        <div class="login">
+    	<div class="island">
+    		<h1>Welcome!</h1>
+    		<div class="island-content">
 
-        	<div class="box">
+    			<form method="get" novalidate="novalidate">
+    				<div class="alert alert-error">
+    					<p>Invalid login attempt, request does not meet our security standards, please try again.</p>
 
-        		<h1 class="alpha">Predix</h1>
+    				</div>
+    				<input class="form-control" name="username" type="text" placeholder="Email" autocomplete="true" autofocus="autofocus">
+    				<input class="form-control" name="password" type="password" placeholder="Password" autocomplete="false">
+    				<input type="submit" value="Sign in" class="island-button">
+    				<input type="hidden" name="X-Uaa-Csrf" value="gNnyMl"></form>
+
+    			<div class="saml-login">
+
+
+    			</div>
+
+    			<span class="left">
+                <a href="https://predix.io/registration/" class="link-lowlight">Create account</a>
+            </span>
+    			<span class="right">
+                <a href="https://login.system.aws-usw02-pr.ice.predix.io/forgot_password" class="link-lowlight">Reset password</a>
+            </span>
+
+    		</div>
+    	</div>
+    	<div class="footer-spacer"></div>
+    </div>
+    <div class="footer">
+    	<div class="copyright" title="Version: 3.1.0, Commit: 9b5c13d, Timestamp: 2016-02-05T14:27:13+0000, UAA: https://uaa.system.aws-usw02-pr.ice.predix.io">
+    		Copyright © 2016 General Electric Company. All rights reserved.
+    		<a href="mailto:info@predix.io">Contact Us</a> —
+    		<a href="https://www.gesoftware.com">GE Digital</a> —
+    		<a href="https://predix-io.run.aws-usw02-pr.ice.predix.io/legal">Legal</a>
+    	</div>
+    </div>
+        <div class="login flex flex--center flex--middle">
+
+
+
 <!--
-<div class="brand">
-  <px-brand height="125" width="125"></px-brand>
-</div>
+        	<div class="box">
+            <div class="logo">
+              <div class="brand">
+                <px-brand height="125" width="125"></px-brand>
+              </div>
+          		<h1 class="alpha">Predix</h1>
+            </div>
             <form action="">
         			<ul class="list-bare">
         				<li class="form-field">
@@ -44,7 +88,7 @@
         				</li>
         			</ul>
         		</form>
-          -->
+
             <form class="" action="" method="">
               <ul class="table-view table-view--bare">
                 <li class="table-row form-field">
@@ -57,7 +101,7 @@
                   <button class="btn btn--primary btn--full">Sign-in</button>
                 </li>
               </ul>
-            </form>
+            </form>-->
 
         	</div>
         </div>

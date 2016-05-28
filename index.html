@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>px-responsive-layouts</title>
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="demo/demo.css">
 
@@ -62,17 +63,10 @@
           Includes 3 pre-defined layout wrapper components that enables you to create responsive progressive web apps.
         </p>
 
-        <h3>Bundled Elements</h3>
-        <ul>
-          <li>px-drawer-layout</li>
-          <li>px-header-layout</li>
-          <li>px-layout</li>
-        </ul>
+          <device-layout-viewer device="all" src="./demo/template-drawer-layout.html"></device-layout-viewer>
+              </div>
 
 
-  <device-layout-viewer device="all"
-  src="/px-responsive-layouts/demo/template-drawer-layout.html"></device-layout-viewer>
-      </div>
 
 
 
@@ -86,6 +80,14 @@
         <p>
           The markup structure of an application can become very messy and deeply nested. So we have identified the essential elements that are needed to create a basic responsive application.
         </p>
+        <h3>Bundled Elements</h3>
+        <ul>
+          <li>px-drawer-layout</li>
+          <li>px-header-layout</li>
+          <li>px-layout</li>
+        </ul>
+
+
         <ul>
           <li>header - branding / product name
           </li>
@@ -193,6 +195,9 @@
       </px-box-section>
 
       <px-box-section id="patterns" title=" Patterns">
+        <p>
+          Sample code for various UI patterns.
+        </p>
         <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
         <p>
           The following patterns are available.
@@ -217,21 +222,24 @@
       </px-box-section>
 
       <template id="pxExamples" is="dom-bind">
-        <px-box-section id="examples" title="Examples">
-          <p>How to update your existing layout:</p>
+        <px-box-section id="examples" title="Templates">
+          <p>
+            The templates are a means to define, illustrate and share best practices in px-layout. Select a template and customize to suit your needs.
+          </p>
           <ol class="">
             <li>Identify the layout pattern for your app</li>
             <li>Use the px-layout component</li>
             <li>Select the type you perfer</li>
             <li>Replace old markup with new markup</li>
           </ol>
-          <ul>
+          <h5>Examples</h5>
+          <ol>
             <template is="dom-repeat" items="{{examples}}">
               <li>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
               </li>
             </template>
-          </ul>
+          </ol>
         </px-box-section>
       </template>
       <script type="text/javascript">
@@ -277,6 +285,14 @@
           ];
         });
       </script>
+
+
+
+
+
+
+
+      <h2 class="beta">Docs</h2>
 
       <template id="pxBreakpoints" is="dom-bind">
         <px-box-section id="breakpoints" title="Breakpoints">

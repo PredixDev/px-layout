@@ -24,11 +24,11 @@
         <px-header subtitle="Content Sidebar Mini"></px-header>
         <!-- TODO: Primary Sidebar -->
         <div class="primary-sidebar has-navbar">
-          <nav class="table-view table-view--tiny table-view--bare">
+          <px-table-view>
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
-          </nav>
+          </px-table-view>
         </div>
         <!-- TODO: Secondary Sidebar -->
         <div class="secondary-sidebar">

@@ -71,6 +71,32 @@
               <widgets-card id="card03"></widgets-card>
             </div>
             <!-- TODO: Cards -->
+
+            <div class="">
+              <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html" />
+
+<px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart"
+  width="auto"
+  height="250"
+  chart-data="[
+    250,
+    100,
+    76,
+    25
+  ]"
+  legend-labels='[
+  "Chrome",
+  "Safari",
+  "Firefox",
+  "IE 9+"
+  ]'
+  colors='[
+    "#029bde",
+    "#99399b",
+    "#e23838",
+    "#f88303"
+  ]'>
+            </div>
             <div class="cards flex flex--wrap">
               <template is="dom-repeat" items="{{cards}}">
                 <px-card icon="{{item.icon}}" header-text="{{item.title}}">
