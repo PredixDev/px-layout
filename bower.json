@@ -26,7 +26,7 @@
     "iron-ajax": "PolymerElements/iron-ajax#^1.0.0",
     "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.2.3",
-    "px-widths-design": "https://github.com/PredixDev/px-widths-design.git#^0.3.7",
+    "px-demo-helpers": "https://github.com/PredixDev/px-demo-helpers.git",
     "px-partials": "https://github.com/PredixDev/px-partials.git",
     "px-navbar": "https://github.com/PredixDev/px-navbar.git",
     "px-table-view": "https://github.com/PredixDev/px-table-view.git",
