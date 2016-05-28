@@ -10,6 +10,7 @@
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-sample-cards/widgets-card.html">
+      <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html" />
     <link rel="import" href="../../px-table-view/px-table-view.html">
   </head>
   <body unresolved>
@@ -31,11 +32,15 @@
         <!-- TODO: Header -->
         <px-header subtitle="Dashboard Template"></px-header>
         <!-- TODO: Primary Sidebar -->
-        <div class="primary-sidebar table-view table-view--tiny table-view--bare">
-          <template is="dom-repeat" items="{{navItems}}">
-            <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
-          </template>
+        <div class="primary-sidebar">
+          <px-table-view modifier="bare">
+            <template is="dom-repeat" items="{{navItems}}">
+              <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+            </template>
+          </px-table-view>
         </div>
+
+
         <!-- TODO: Primary Content -->
         <div class="primary-content">
           <px-navbar title="Dashboard" shadow>
@@ -50,13 +55,15 @@
               </button>
             </div>
           </px-navbar>
+
           <section class="has-navbar l-full-height scrollable">
+
             <!-- TODO: Spine -->
-            <div class="spine u-mb-">
-              <div class="table-view table-view--bare table-view--tiny table-view--responsive">
+            <div class="spine u-m">
+              <px-table-view modifier="tiny responsive row">
                 <template is="dom-repeat" items="{{spine}}">
-                  <px-table-row type="tappable">
-                    <div class="table-row__content">
+                  <px-table-row modifier="tappable" class="flex">
+                    <div content>
                       <h3 class="table-row__title epsilon">{{item.title}}</h3>
                       <div class="table-row__body">
                         <span class="beta">{{item.body}}</span>
@@ -65,57 +72,89 @@
                     </div>
                   </px-table-row>
                 </template>
-              </div>
+              </px-table-view>
             </div>
-            <div class="u-mb-">
-              <widgets-card id="card03"></widgets-card>
-            </div>
+
+
+
             <!-- TODO: Cards -->
 
-            <div class="">
-              <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html" />
+            <div class="flex flex--wrap u-m">
 
-<px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart"
-  width="auto"
-  height="250"
-  chart-data="[
-    250,
-    100,
-    76,
-    25
-  ]"
-  legend-labels='[
-  "Chrome",
-  "Safari",
-  "Firefox",
-  "IE 9+"
-  ]'
-  colors='[
-    "#029bde",
-    "#99399b",
-    "#e23838",
-    "#f88303"
-  ]'>
+
+              <px-card header-text="Visitors">
+                <px-simple-line-chart id="myLineChart"
+                        width="auto"
+                        height="250"
+                        min="0"
+                        max="4"
+                        line-data="[
+                        [1397102460000,1.99],
+                        [1397139660000,1.92],
+                        [1397177400000,1.97],
+                        [1397228040000,1.12],
+                        [1397248260000,1.09],
+                        [1397291280000,1],
+                        [1397318100000,1.99],
+                        [1397342100000,1.75],
+                        [1397390820000,1.11],
+                        [1397408100000,1.93],
+                        [1397458800000,1.84],
+                        [1397522940000,1.99],
+                        [1397542800000,1.96],
+                        [1397640960000,1.88],
+                        [1397663100000,1.79],
+                        [1397700000000,1.85],
+                        [1397753040000,1.83],
+                        [1397772540000,1.93]
+                        ]"
+                        threshold="1.234567" >
+                </px-simple-line-chart>
+              </px-card>
+
+              <px-card header-text="Browsers">
+                <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto"
+                  height="250"
+                  chart-data="[250,100,76,25]"
+                  legend-labels='["Chrome", "Safari", "Firefox", "IE 9+" ]' colors='["#029bde","#99399b","#e23838", "#f88303"]'>
+                </px-simple-horizontal-bar-chart>
+              </px-card>
+
             </div>
             <div class="cards flex flex--wrap">
               <template is="dom-repeat" items="{{cards}}">
-                <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-m">
                   <p>{{item.body}}</p>
                 </px-card>
               </template>
             </div>
           </section>
 
-          <px-action-sheet id="actionsheet1" grid>
+          <px-action-sheet grid>
             <p>
               This is actions
             </p>
           </px-action-sheet>
+          <px-drawer id="actionsheet1"  align="bottom" theme="dark">
+            <p>
+              This is actions
+            </p>
+          </px-drawer>
+
+
         </div>
+
+
+
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-layout>
     </template>
+
+
+
+
+
     <script type="text/javascript">
       var navItems = [
         {
