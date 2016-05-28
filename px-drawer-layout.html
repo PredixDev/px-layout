@@ -1,10 +1,15 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="px-media-query.html">
 <!--
 
 px-drawer-layout is a wrapper element that positions a px-drawer element and other content.
 
 When the viewport width is smaller than `responsiveWidth`, this element changes to narrow layout.
+
 In narrow layout, the drawer will be stacked on top of the main content.
+
 The drawer will slide in/out to hide/reveal the main content.
 
 
@@ -53,39 +58,65 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       :host section {
         flex: 1;
       }
+      :host #contentContainer{
+        position: relative;
+      }
     </style>
-<!--
+    <!--
     <px-media-query id="xs" query="(max-width: 31rem)" query-matches="{{isXs}}" full></px-media-query>
     <px-media-query id="sm" query="(min-width: 22rem) and (max-width: 49rem)" query-matches="{{isSm}}" full></px-media-query>
--->
+
     <px-media-query id="mediaQuery" query$="{{responsiveQuery}}"
       query-matches$="{{queryMatches}}"></px-media-query>
-<!--
+    -->
+    <!--
     <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
     <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
   -->
     <article class="flex flex--stretch">
       <section id="contentContainer" class="flex flex--col flex--stretch">
-        <content id="contentContent" select="[content], *"></content>
+        <content select=":not(px-drawer)"></content>
       </section>
-      <content id="drawerContent" select="px-drawer"></content>
+      <content id="drawerContainer" select="px-drawer"></content>
     </article>
+
+    <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
     Polymer({
       is: 'px-drawer-layout',
       properties: {
+        /**
+       * If true, ignore `responsiveWidth` setting and force the narrow layout.
+       */
+        forceNarrow: {
+          type: Boolean,
+          value: false
+        },
+        /**
+       * If the viewport's width is smaller than this value, the panel will change to narrow
+       * layout. In the mode the drawer will be closed.
+       */
+        responsiveWidth: {
+          type: String,
+          value: '768px'
+        },
         title: {
           type: String
-        },
-        responsiveQuery: {
-          type: String,
-          value: '(min-width: 51.2rem)'
         },
         queryMatches: {
           type: Boolean,
           notify: true,
           observe: '_handleQuery'
+        },
+        /**
+    * Returns true if it is in narrow layout. This is useful if you need to show/hide
+    * elements based on the layout.
+    */
+        narrow: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
         },
         drawer: {
           type: Object
@@ -95,7 +126,8 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
         'tap': '_tapHandler'
         //'app-drawer-reset-layout': 'resetLayout'
       },
-
+      observers: ['resetLayout(narrow, isAttached)'],
+      behaviors: [Polymer.IronResizableBehavior],
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle')) {
@@ -111,14 +143,50 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
         console.log(this.tagName, 'attached');
         this.drawer = this.queryEffectiveChildren('px-drawer');
         this.drawer.fixed = true;
-
-
       },
       detached: function () {
         console.log(this.tagName, 'detached');
       },
-      _handleQuery: function(newVal, oldVal){
+      _handleQuery: function (newVal, oldVal) {
         console.log(this.tagName, '_handleQuery', newVal);
+      },
+      resetLayout: function () {
+        console.warn('resetLayout');
+        this.debounce('_resetLayout', function () {
+
+          if (!this.isAttached) {
+            return;
+          }
+          var drawer = this.drawer;
+          var drawerWidth = this.drawer.getWidth();
+          var contentContainer = this.$.contentContainer;
+          if (this.narrow) {
+            drawer.opened = drawer.persistent = false;
+            contentContainer.classList.add('narrow');
+            contentContainer.style.marginLeft = '';
+            contentContainer.style.marginRight = '';
+          } else {
+            drawer.opened = drawer.persistent = true;
+            contentContainer.classList.remove('narrow');
+            if (drawer.position == 'right') {
+              contentContainer.style.marginLeft = '';
+              contentContainer.style.marginRight = drawerWidth + 'px';
+            } else {
+              contentContainer.style.marginLeft = drawerWidth + 'px';
+              contentContainer.style.marginRight = '';
+            }
+          }
+          this.notifyResize();
+        });
+      },
+      _onQueryMatchesChanged: function (event) {
+        console.warn('queryMatches', event.detail.value);
+        this._setNarrow(event.detail.value);
+      },
+      _computeMediaQuery: function (forceNarrow, responsiveWidth) {
+        return forceNarrow
+          ? '(min-width: 0px)'
+          : '(max-width: ' + responsiveWidth + ')';
       }
     });
   </script>
