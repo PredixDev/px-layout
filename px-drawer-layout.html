@@ -65,17 +65,7 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       }
 
     </style>
-    <!--
-    <px-media-query id="xs" query="(max-width: 31rem)" query-matches="{{isXs}}" full></px-media-query>
-    <px-media-query id="sm" query="(min-width: 22rem) and (max-width: 49rem)" query-matches="{{isSm}}" full></px-media-query>
 
-    <px-media-query id="mediaQuery" query$="{{responsiveQuery}}"
-      query-matches$="{{queryMatches}}"></px-media-query>
-    -->
-    <!--
-    <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
-    <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
-  -->
     <article id="container" class="flex flex--stretch">
       <content id="drawerContainer" select="px-drawer"></content>
       <section id="contentContainer" class="flex flex--col flex--stretch">
@@ -92,6 +82,9 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       behaviors: [
         Polymer.IronResizableBehavior, pxLayoutBehavior
       ],
+      hostAttributes: {
+				role: 'main'
+			},
       properties: {
 
 

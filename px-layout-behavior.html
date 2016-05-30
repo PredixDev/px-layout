@@ -1,0 +1,95 @@
+<script type="text/javascript">
+  var pxLayoutBehavior = {
+    properties: {
+      /**
+     * If true, ignore `responsiveWidth` setting and force the narrow layout.
+     */
+      forceNarrow: {
+        type: Boolean,
+        value: false
+      },
+      /**
+     * If the viewport's width is smaller than this value, the panel will change to narrow
+     * layout. In this mode the drawer will be closed.
+     */
+      responsiveWidth: {
+        type: String,
+        value: '768px'
+      },
+
+      /**
+      * Returns true if it is in narrow layout. This is useful if you need to show/hide
+      * elements based on the layout.
+      */
+      narrow: {
+        type: Boolean,
+        readOnly: true,
+        notify: true
+      }
+    },
+    /**
+    * A reference to the px-drawer element.
+    * @property drawer
+    */
+    get drawer() {
+      if(this.$.drawerContainer){
+        return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
+      }
+    },
+    listeners: {
+      'tap': '_tapHandler',
+      'px-drawer-reset-layout': 'resetLayout'
+    },
+    observers: ['resetLayout(narrow, isAttached)'],
+
+    _tapHandler: function (e) {
+      var target = Polymer.dom(e).localTarget;
+      if (target && target.hasAttribute('drawer-toggle')) {
+        this.drawer.open();
+      }
+    },
+    resetLayout: function () {
+      console.warn('resetLayout');
+      this.debounce('_resetLayout', function () {
+        if (!this.isAttached) {
+          return;
+        }
+        var drawer = this.drawer;
+        if(!drawer){
+          return;
+        }
+        var drawerWidth = this.drawer.getWidth();
+        var contentContainer = this.$.contentContainer;
+
+        if (this.narrow) {
+          drawer.opened = drawer.persistent = false;
+
+          contentContainer.classList.add('narrow');
+          contentContainer.style.marginLeft = '';
+          contentContainer.style.marginRight = '';
+        } else {
+
+          drawer.opened = drawer.persistent = true;
+          contentContainer.classList.remove('narrow');
+          if (drawer.position == 'right') {
+            contentContainer.style.marginLeft = '';
+            contentContainer.style.marginRight = drawerWidth + 'px';
+          } else {
+            contentContainer.style.marginLeft = drawerWidth + 'px';
+            contentContainer.style.marginRight = '';
+          }
+        }
+        this.notifyResize();
+      });
+    },
+    _onQueryMatchesChanged: function (event) {
+      console.warn('queryMatches', event.detail.value);
+      this._setNarrow(event.detail.value);
+    },
+    _computeMediaQuery: function (forceNarrow, responsiveWidth) {
+      return forceNarrow
+        ? '(min-width: 0px)'
+        : '(max-width: ' + responsiveWidth + ')';
+    }
+  };
+</script>

@@ -59,16 +59,16 @@ Usage with `px-drawer-layout`:
         display: block;
         position: relative;
       }
+
     </style>
-    <div class="viewport">
-    
-      <article class="flex flex--col flex--stretch">
-        <content id="headerContainer" select="px-header"></content>
-        <section id="contentContainer" class="flex flex--col flex--stretch">
-          <content select=":not(px-header)"></content>
-        </section>
-      </article>
-    </div>
+
+    <article class="flex flex--col flex--stretch">
+      <content id="headerContainer" select="px-header"></content>
+      <section id="contentContainer" class="flex flex--col flex--stretch">
+        <content select=":not(px-header)"></content>
+      </section>
+    </article>
+
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
 
   </template>
