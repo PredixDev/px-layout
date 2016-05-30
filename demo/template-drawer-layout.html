@@ -11,22 +11,20 @@
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-layout.html">
     <style media="screen">
-      html, body{
-        background: #eee;
-      }
+
     </style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <px-drawer-layout id="layout">
-        <px-drawer >
+        <px-drawer fixed>
           <div style="height: 100%; overflow: auto;">
             <p>
               You can close me with the <code>ESC</code> key.
             </p>
           </div>
         </px-drawer>
-        <px-navbar shadow>
+        <px-navbar shadow >
           <div left>
             <button class="navbar__button" on-tap="toggleDrawer">
               <i class="fa fa-lg fa-bars"></i>

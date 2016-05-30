@@ -6,8 +6,8 @@
 $oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
 
 ///Define new breakpoint colors;
-$newColors: ( xs: $dv-dark-blue, sm: $dv-dark-pink, md: $dv-dark-green, lg: $dv-dark-purple,
-xl: $dv-dark-orange );
+$newColors: ( xs: #fa62af, sm: #4abde6, md: #a3e572, lg:#ffab40,
+xl: #eddd46 );
 $selector: 'responsive-demo';
 
 

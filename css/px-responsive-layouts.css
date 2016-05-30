@@ -2253,34 +2253,34 @@ demo-snippet .demo {
   border: 1px solid #ddd; }
 
 .color-xs {
-  color: #265dab !important; }
+  color: #fa62af !important; }
 
 .u-bg-xs {
-  background-color: #265dab !important; }
+  background-color: #fa62af !important; }
 
 .color-sm {
-  color: #e5126f !important; }
+  color: #4abde6 !important; }
 
 .u-bg-sm {
-  background-color: #e5126f !important; }
+  background-color: #4abde6 !important; }
 
 .color-md {
-  color: #059748 !important; }
+  color: #a3e572 !important; }
 
 .u-bg-md {
-  background-color: #059748 !important; }
+  background-color: #a3e572 !important; }
 
 .color-lg {
-  color: #7b3a96 !important; }
+  color: #ffab40 !important; }
 
 .u-bg-lg {
-  background-color: #7b3a96 !important; }
+  background-color: #ffab40 !important; }
 
 .color-xl {
-  color: #df5c24 !important; }
+  color: #eddd46 !important; }
 
 .u-bg-xl {
-  background-color: #df5c24 !important; }
+  background-color: #eddd46 !important; }
 
 .color-lap {
   color: lightblue !important; }
@@ -2320,23 +2320,23 @@ demo-snippet .demo {
 
 @media screen and (max-width: 21.3333333333rem) {
   .debug-new-breakpoints .responsive-demo {
-    background-color: #265dab !important; } }
+    background-color: #fa62af !important; } }
 
 @media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
   .debug-new-breakpoints .responsive-demo {
-    background-color: #e5126f !important; } }
+    background-color: #4abde6 !important; } }
 
 @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
   .debug-new-breakpoints .responsive-demo {
-    background-color: #059748 !important; } }
+    background-color: #a3e572 !important; } }
 
 @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
   .debug-new-breakpoints .responsive-demo {
-    background-color: #7b3a96 !important; } }
+    background-color: #ffab40 !important; } }
 
 @media screen and (min-width: 85.3333333333rem) {
   .debug-new-breakpoints .responsive-demo {
-    background-color: #df5c24 !important; } }
+    background-color: #eddd46 !important; } }
 
 @media screen and (min-width: 45em) and (max-width: 63.9375em) {
   .debug-old-breakpoints .responsive-demo {
