@@ -39,7 +39,7 @@
           <px-header>
             <px-navbar shadow >
               <div left>
-                <button class="navbar__button" on-tap="toggleDrawer">
+                <button class="navbar__button"  drawer-toggle>
                   <i class="fa fa-lg fa-bars"></i>
                 </button>
               </div>
@@ -51,7 +51,7 @@
           <div class="u-m" content>
 
             <template is="dom-repeat" items="{{cards}}">
-              <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb+">
                 <p>{{item.body}}</p>
               </px-card>
             </template>

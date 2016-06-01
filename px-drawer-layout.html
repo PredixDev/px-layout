@@ -63,12 +63,15 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       :host #contentContainer {
         position: relative;
       }
+      #contentContainer:not(.narrow) > ::content [drawer-toggle] {
+  display: none;
+}
 
     </style>
 
     <article id="container" class="flex flex--stretch">
       <content id="drawerContainer" select="px-drawer"></content>
-      <section id="contentContainer" class="flex flex--col flex--stretch">
+      <section id="contentContainer" class="flex flex--col flex--stretch has-navbar">
         <content select=":not(px-drawer)"></content>
       </section>
 

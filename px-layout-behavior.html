@@ -43,9 +43,10 @@
     observers: ['resetLayout(narrow, isAttached)'],
 
     _tapHandler: function (e) {
+        console.warn('_tapHandler');
       var target = Polymer.dom(e).localTarget;
       if (target && target.hasAttribute('drawer-toggle')) {
-        this.drawer.open();
+        this.drawer.toggle();
       }
     },
     resetLayout: function () {
