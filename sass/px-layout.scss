@@ -11,38 +11,13 @@
 @import 'variables';
 @import 'mixins';
 
-
-
-
 $l-container-transition: all .5s ease;
 $l-container-transition-wrapper: all .5s cubic-bezier(0.1, 0.7, 0.1, 1);
 
+@debug "Breakpoints - #{$breakpoints}";
 
 
-@debug"Breakpoints - #{$breakpoints}";
 
-
-$inuit-widths-columns-responsive: (
-  1,
-  2,
-  3,
-  4,
-  6,
-);
-
-
-// Loop over our breakpoints defined in _settings.responsive.scss
-@each $breakpoint in $breakpoints {
-  // Get the name of the breakpoint.
-  $bp: nth($breakpoint, 2);
-  $alias: nth($breakpoint, 1);
-  @debug" Found #{$alias} - #{$bp}";
-  @include media-query($alias) {
-    @each $inuit-widths-column in $inuit-widths-columns-responsive {
-      @include inuit-widths($inuit-widths-column, -#{$alias});
-    }
-  }
-}
 
 @include responsive-utils();
 
@@ -50,15 +25,14 @@ $inuit-widths-columns-responsive: (
 @import 'l-offcanvas';
 @import 'l-splitview';
 
-
-
 html, html:not([style-scope]):not(.style-scope) {
   @include scrollable();
   @include media-breakpoint-down ('md') {
-  //  overflow  : hidden !important;
-  //  overflow-y: hidden !important;
+    //  overflow  : hidden !important;
+    //  overflow-y: hidden !important;
   }
 }
+
 //Remove all margins/paddings on lower
 body,
 body:not([style-scope]):not(.style-scope) {
@@ -67,7 +41,7 @@ body:not([style-scope]):not(.style-scope) {
     @include full-height();
     @include scrollable();
     margin-bottom: 0;
-    padding      : 0;
+    padding: 0;
   }
 }
 
@@ -78,33 +52,29 @@ body:not([style-scope]):not(.style-scope) {
   //Remove all margins/paddings on lower
   @include media-breakpoint-down ('md') {
     //width        : 100%;
-    margin-left  : 0;
-    margin-right : 0;
-    padding-left : 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
     padding-right: 0;
   }
 
   @include media-breakpoint ('lg') {
     //  width        : 100%;
-    margin-left  : auto;
-    margin-right : auto;
-    padding-left : auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: auto;
     padding-right: auto;
   }
 }
 
-
-
-.has-navbar{
+.has-navbar {
   position: relative;
   padding-top: 56px;
 }
 
-
-
 @include b ('l-container') {
-  position  : relative;
-  overflow  : hidden;
+  position: relative;
+  overflow: hidden;
   transition: $l-container-transition;
 
   .l-bg-white {
@@ -113,7 +83,7 @@ body:not([style-scope]):not(.style-scope) {
 
   .l-full-height {
     transition: $l-container-transition;
-    height    : 100%;
+    height: 100%;
 
     @include media-breakpoint-down ('md') {
       @include full-height();
