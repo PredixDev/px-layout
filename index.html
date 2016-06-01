@@ -8,10 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="demo/demo.css">
-
     <script src="../webcomponentsjs/webcomponents.js"></script>
-
-
     <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
     <link rel="import" href="../px-partials/px-partials.html">
@@ -38,11 +35,10 @@
         -webkit-overflow-scrolling: touch;
         padding-bottom: 10%;
       }
-      .img-responsive{
+      .img-responsive {
         width: 100%;
         max-width: 100%;
       }
-
     </style>
   </head>
   <body class="debug-new-breakpoints scrollable box" unresolved>
@@ -50,57 +46,63 @@
 
 <px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
 -->
-
-
-
-
-
-<!-- TODO: Laytout -->
+    <!-- TODO: Laytout -->
     <article class="viewport ">
       <div class="u-mb">
         <h1 class="alpha">px-responsive-layouts</h1>
         <p>
-          Includes 3 pre-defined layout wrapper components that enables you to create responsive progressive web apps.
+          Includes 3 pre-defined layout wrapper components that enables you to create responsive Industrial Internet web apps.
         </p>
-
-          <device-layout-viewer device="all" src="./demo/template-dashboard.html"></device-layout-viewer>
-              </div>
-
-
-
-
-
-
-
-
-
-
+        <device-layout-viewer device="all" src="./demo/template-dashboard.html"></device-layout-viewer>
+      </div>
       <!-- TODO: Usage -->
       <px-box-section id="usage" title="Usage">
         <p>
           The markup structure of an application can become very messy and deeply nested. So we have identified the essential elements that are needed to create a basic responsive application.
         </p>
-        <h3>Bundled Elements</h3>
-        <ul>
+        <h3>Bundled layouts</h3>
+        <ol>
           <li>px-drawer-layout</li>
           <li>px-header-layout</li>
           <li>px-layout</li>
-        </ul>
+        </ol>
 
-
-        <ul>
-          <li>header - branding / product name
+        <h3>Bundled components</h3>
+        <ol class="">
+          <li>
+            <a href="../px-partials" target="_blank">px-partials</a>
           </li>
-          <li>section - primary / secondary content</li>
-          <li>aside - primary / secondary sidebar</li>
-          <li>footer - links, copywrite</li>
-        </ul>
+          <li>
+            <a href="../px-partials/index.html#px-brand" target="_blank">px-brand</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-header" target="_blank">px-header</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-footer" target="_blank">px-footer</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-icon" target="_blank">px-icon</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-button" target="_blank">px-button</a>
+          </li>
+          <li>
+            <a href="../px-partials/index.html#px-title-bar" target="_blank">px-title-bar</a>
+          </li>
+          <li>
+            <a href="../px-navbar" target="_blank">px-navbar</a>
+          </li>
+          <li>
+            <a href="../px-drawer" target="_blank">px-drawer</a>
+          </li>
+        </ol>
+             <!--
         <p>
           The following markup is a basic example of usage. Open in
           <a href="demo/template-basic.html" target="_blank">new window</a>
         </p>
 
-<!--
         <demo-snippet>
           <template>
             <px-drawer-layout id="layout" class="u-bg-gray9" style="height: 600px;">
@@ -164,49 +166,12 @@
         -->
       </px-box-section>
 
-      <px-box-section id="depends" title="Components">
-        <p>
-          The following components are used and bundled in this component.
-        </p>
-        <ol class="">
-          <li>
-            <a href="../px-partials" target="_blank">px-partials</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-brand" target="_blank">px-brand</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-header" target="_blank">px-header</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-footer" target="_blank">px-footer</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-icon" target="_blank">px-icon</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-button" target="_blank">px-button</a>
-          </li>
-          <li>
-            <a href="../px-partials/index.html#px-title-bar" target="_blank">px-title-bar</a>
-          </li>
-          <li>
-            <a href="../px-navbar" target="_blank">px-navbar</a>
-          </li>
-          <li>
-            <a href="../px-drawer" target="_blank">px-drawer</a>
-          </li>
-        </ol>
-      </px-box-section>
-
       <px-box-section id="patterns" title=" Patterns">
         <p>
-          Sample code for various UI patterns.
+          Sample code for layout patterns.
         </p>
-        <p>A layout pattern is pattern that determines how your layout changes at different breakpoints.</p>
-        <p>
-          The following patterns are available.
-        </p>
+
+
         <ol class="">
           <li>
             <a href="demo/template-drawer-layout.html" target="_blank">Drawer Layout - Template</a>
@@ -224,8 +189,8 @@
             <a href="demo/template-offcanvas.html" target="_blank">Off Canvas - Template</a>
           </li>
         </ol>
+        <blockquote>A layout pattern is pattern that determines how your layout changes at different breakpoints.</blockquote>
       </px-box-section>
-
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Templates">
           <p>
@@ -290,15 +255,7 @@
           ];
         });
       </script>
-
-
-
-
-
-
-
       <h2 class="beta">Docs</h2>
-
       <template id="pxBreakpoints" is="dom-bind">
         <px-box-section id="breakpoints" title="Breakpoints">
           <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>
@@ -333,7 +290,7 @@
               </ul>
             </div>
           </px-box-section>
-          <!-- TODO: Old Breakpoints -->
+          <!-- TODO: Old Breakpoints
           <px-box-section id="old-breakpoints" title="2 - Deprecated Breakpoints">
             <p>
               The following are the depricated breakpoints that use device names for the targets.
@@ -350,12 +307,10 @@
                   </li>
                 </template>
               </ul>
-              <!--
-          <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-new-breakpoints')">Debug</button>
-          <button type="button" class="btn btn--full btn--large" onclick="toggleDebug('debug-old-breakpoints')">Debug</button>
-        -->
+
             </div>
           </px-box-section>
+          -->
         </px-box-section>
       </template>
       <script type="text/javascript">

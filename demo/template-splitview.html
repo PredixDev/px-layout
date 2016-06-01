@@ -11,6 +11,7 @@
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-navbar/px-navbar.html">
+    <script src="demo.js"></script>
     <style media="screen"></style>
   </head>
   <body unresolved>
@@ -19,19 +20,23 @@
         .primary-sidebar .table-row__title {
           color: #fff;
         }
-        .primary-sidebar .table-row__media--icon {
-          align-self: baseline;
-        }
+
       </style>
       <px-layout id="layout2" type="splitview">
         <!-- TODO: Header -->
         <px-header subtitle="Split View Template"></px-header>
+
+
         <!-- TODO: Primary Sidebar -->
-        <div class="primary-sidebar table-view table-view--tiny table-view--bare">
-          <template is="dom-repeat" items="{{navItems}}">
-            <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
-          </template>
-        </div>
+        <px-layout-item class="primary-sidebar">
+          <px-table-view modifier="bare">
+            <template is="dom-repeat" items="{{navItems}}">
+              <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+            </template>
+          </px-table-view>
+        </px-layout-item>
+
+
         <!-- TODO: Secondary Content -->
         <div class="secondary-content">
           <px-navbar title="" shadow>
@@ -41,29 +46,22 @@
               </button>
             </div>
           </px-navbar>
-          <section class="has-navbar l-bg-white l-full-height">
-            <ul class="list-ui">
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-              <li>&nbsp;</li>
-            </ul>
+
+          <array-selector id="selector" items="{{items}}" selected="{{selected}}" toggle></array-selector>
+          <section class="has-navbar l-bg-white l-full-height scrollable">
+            <px-table-view>
+              <template is="dom-repeat" items="{{items}}" id="itemsList">
+                <px-table-row title="{{item.title}}" modifier="tappable" on-click="onSelect"></px-table-row>
+              </template>
+            </px-table-view>
           </section>
 
         </div>
         <!-- TODO: Primary Content -->
-        <div class="primary-content has-navbar">
-          <px-navbar title="" shadow></px-navbar>
-          <section class="has-navbar l-bg-white l-full-height">
-
+        <div class="primary-content has-navbar flex flex--col">
+          <px-navbar title="{{selected.title}}" shadow></px-navbar>
+          <section>
+            
           </section>
         </div>
         <!-- TODO: Footer -->
@@ -71,24 +69,16 @@
       </px-layout>
     </template>
     <script type="text/javascript">
-      var navItems = [
-        {
-          label: 'Dashboard',
-          icon: 'fa fa-dashboard'
-        }, {
-          label: 'Alerts',
-          icon: 'fa fa-exclamation-triangle'
-        }, {
-          label: 'Cases',
-          icon: 'fa fa-briefcase'
-        }, {
-          label: 'Analysis',
-          icon: 'fa fa-bar-chart'
-        }
-      ];
+
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;
+        app.selected = {};
+        app.items = createDemoItems(250);
+        app.onSelect = function(e){
+          var item = this.$.itemsList.itemForElement(e.target);
+          this.$.selector.select(item);
+        }
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
