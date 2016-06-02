@@ -1,18 +1,18 @@
 var navItems = [{
   label: 'Dashboard',
-  icon: 'polymer-font-awesome:fa-home'
+  icon: 'fa:fa-home'
 }, {
   label: 'Alerts',
-  icon: 'polymer-font-awesome:fa-exclamation-triangle'
+  icon: 'fa:fa-exclamation-triangle'
 }, {
   label: 'Profile',
-  icon: 'polymer-font-awesome:fa-pencil'
+  icon: 'fa:fa-pencil'
 }, {
   label: 'Cases',
-  icon: 'polymer-font-awesome:fa-briefcase'
+  icon: 'fa:fa-briefcase'
 }, {
   label: 'Analysis',
-  icon: 'polymer-font-awesome:fa-bar-chart'
+  icon: 'fa:fa-bar-chart'
 }];
 
 function createDemoCards(count) {
