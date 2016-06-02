@@ -9,6 +9,7 @@
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
+    <script src="demo.js"></script>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
@@ -16,26 +17,18 @@
         .box {
           background: #fff;
         }
-        .primary-sidebar .table-row__title {
-          color: #fff;
-        }
-        .primary-sidebar .table-row__media--icon {
-          align-self: baseline;
-        }
       </style>
       <px-layout id="layout0">
         <px-header subtitle="Off Canvas Layout"></px-header>
-        <!-- TODO: Primary Sidebar -->
-        <div class="primary-sidebar table-view table-view--tiny table-view--bare">
-          <template is="dom-repeat" items="{{navItems}}">
-            <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
-          </template>
+
+        <div class="primary-sidebar">
+          <px-table-view modifier="tiny bare">
+            <template is="dom-repeat" items="{{navItems}}">
+              <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+            </template>
+          </px-table-view>
         </div>
-        <div class="secondary-sidebar">
-          <p class="u-m">
-            This is content inside the secondary sidebar.
-          </p>
-        </div>
+
         <div class="primary-content">
           <px-navbar title="View Title">
             <div class="navbar__left">
@@ -43,12 +36,6 @@
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
-            <!--  <div class="navbar__right">
-			<button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-			  <i class="fa fa-lg fa-ellipsis-v"></i>
-			</button>
-		  </div>
-		  -->
           </px-navbar>
           <section class="has-navbar l-bg-white l-full-height">
             <p>&nbsp;</p>
@@ -75,21 +62,7 @@
       </px-layout>
     </template>
     <script type="text/javascript">
-      var navItems = [
-        {
-          label: 'Dashboard',
-          icon: 'fa fa-dashboard'
-        }, {
-          label: 'Alerts',
-          icon: 'fa fa-exclamation-triangle'
-        }, {
-          label: 'Cases',
-          icon: 'fa fa-briefcase'
-        }, {
-          label: 'Analysis',
-          icon: 'fa fa-bar-chart'
-        }
-      ];
+
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;

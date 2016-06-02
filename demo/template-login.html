@@ -6,105 +6,58 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
-
     <script src="../../webcomponentsjs/webcomponents.js"></script>
 
     <link rel="import" href="../px-layout.html">
-    <link rel="import" href="../../px-card/px-card.html">
-    <link rel="import" href="../../px-table-view/px-table-view.html">
-
+    <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css">
   </head>
   <body unresolved class=" responsive-demo">
     <template id="app" is="dom-bind">
+      <style is="custom-style">
+        body,
+        html {
+          background: #3b3b3f;
+        }
+        .login {
+          -webkit-align-self: center;
+          -ms-flex-item-align: center;
+          align-self: center;
+        }
+        .login .box {
+          margin: 15% auto;
+          background: #fff;
+          text-align: center;
+          min-width: 320px;
+        }
+        .login .box h1 {
+          color: #000;
+          font-weight: normal;
+        }
+      </style>
       <px-layout id="layout0">
-
         <px-layout-item role="primary-content">
-          <div class="content">
-    	<div class="header">
-    		<div></div>
-    		<div class="header-image"></div>
-    	</div>
-
-    	<div class="island">
-    		<h1>Welcome!</h1>
-    		<div class="island-content">
-
-    			<form method="get" novalidate="novalidate">
-    				<div class="alert alert-error">
-    					<p>Invalid login attempt, request does not meet our security standards, please try again.</p>
-
-    				</div>
-    				<input class="form-control" name="username" type="text" placeholder="Email" autocomplete="true" autofocus="autofocus">
-    				<input class="form-control" name="password" type="password" placeholder="Password" autocomplete="false">
-    				<input type="submit" value="Sign in" class="island-button">
-    				<input type="hidden" name="X-Uaa-Csrf" value="gNnyMl"></form>
-
-    			<div class="saml-login">
-
-
-    			</div>
-
-    			<span class="left">
-                <a href="https://predix.io/registration/" class="link-lowlight">Create account</a>
-            </span>
-    			<span class="right">
-                <a href="https://login.system.aws-usw02-pr.ice.predix.io/forgot_password" class="link-lowlight">Reset password</a>
-            </span>
-
-    		</div>
-    	</div>
-    	<div class="footer-spacer"></div>
-    </div>
-    <div class="footer">
-    	<div class="copyright" title="Version: 3.1.0, Commit: 9b5c13d, Timestamp: 2016-02-05T14:27:13+0000, UAA: https://uaa.system.aws-usw02-pr.ice.predix.io">
-    		Copyright © 2016 General Electric Company. All rights reserved.
-    		<a href="mailto:info@predix.io">Contact Us</a> —
-    		<a href="https://www.gesoftware.com">GE Digital</a> —
-    		<a href="https://predix-io.run.aws-usw02-pr.ice.predix.io/legal">Legal</a>
-    	</div>
-    </div>
-        <div class="login flex flex--center flex--middle">
-
-
-
-<!--
-        	<div class="box">
-            <div class="logo">
-              <div class="brand">
-                <px-brand height="125" width="125"></px-brand>
+          <article class="viewport login">
+            <div class="flex flex--center">
+              <div class="u-m">
+                <div class="box">
+                  <h1 class="alpha">Predix</h1>
+                  <form action="">
+                    <ul class="list-bare">
+                      <li class="form-field">
+                        <input type="email" class="text-input" placeholder="E-mail" required/>
+                      </li>
+                      <li class="form-field">
+                        <input type="password" class="text-input" placeholder="Password" required/>
+                      </li>
+                      <li class="form-field">
+                        <button class="btn btn--primary btn--full btn--large">Sign-in</button>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
               </div>
-          		<h1 class="alpha">Predix</h1>
             </div>
-            <form action="">
-        			<ul class="list-bare">
-        				<li class="form-field">
-        					<input type="email" class="text-input" placeholder="E-mail" required/>
-        				</li>
-        				<li class="form-field">
-        					<input type="password" class="text-input" placeholder="Password" required/>
-        				</li>
-        				<li class="form-field">
-        					<button class="btn btn--primary btn--full">Sign-in</button>
-        				</li>
-        			</ul>
-        		</form>
-
-            <form class="" action="" method="">
-              <ul class="table-view table-view--bare">
-                <li class="table-row form-field">
-                  <input type="email" class="text-input" placeholder="E-mail" required/>
-                </li>
-                <li class="table-row form-field">
-                  <input type="password" class="text-input" placeholder="Password" required/>
-                </li>
-                <li class="table-row form-field">
-                  <button class="btn btn--primary btn--full">Sign-in</button>
-                </li>
-              </ul>
-            </form>-->
-
-        	</div>
-        </div>
+          </article>
         </px-layout-item>
       </px-layout>
     </template>
