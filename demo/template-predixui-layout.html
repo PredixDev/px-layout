@@ -1,284 +1,317 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>template-predixui-layout</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <head>
+    <meta charset="utf-8">
+    <title>template-predixui-layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <link rel="stylesheet" href="/predixdev.css">
-  <link rel="stylesheet" href="/predixio.css">
-  <link rel="stylesheet" href="demo.css">
-  <script src="../../webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="../../px-table-view/px-table-view.html">
-  <link rel="import" href="../../px-card/px-card.html">
-  <link rel="import" href="../../px-page/px-pages.html">
 
-  <link rel="import" href="../px-layout.html">
-  <style media="screen">
-    body,
-    html {
-      background-color: #e9e9e9 !important;
-    }
-
-    .content {
-      background-color: #fff;
-    }
-
-  </style>
-
-</head>
-<body unresolved class="responsive-demo">
-
-<template id="app" is="dom-bind">
-  <style is="custom-style">
-    :root {
-      --px-table-row: {
-        border-bottom: none;
-      } --px-footer: {
-      background-color: #666;
-    } --px-navbar: {
-      background-color: #268a12;
-      color: #fff;
-      border-bottom: 1px solid #258913;
-    }
-    }
-
-    .green {
-      --px-navbar: {
-        background-color: #4aab1d;
-
-        max-height: 56px;
-        color: #fff;
-        border-bottom: 1px solid #268a12;
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-page/px-pages.html">
+    <link rel="import" href="../px-layout.html">
+    <link rel="stylesheet" href="/predixdev.css">
+    <link rel="stylesheet" href="/predixio.css">
+    <style media="screen">
+      body,
+      html {
+        background-color: #e9e9e9 !important;
       }
-    }
-  </style>
-
-  <px-drawer-layout id="layout">
-    <px-drawer fixed>
-      <px-navbar class="green">
-        <div left>
-          <div class="flex flex--middle u-ml u-mt">
-            <span class="epsilon">Predix-UI</span>
-          </div>
-
-        </div>
-      </px-navbar>
-      <div class="has-navbar full-height scrollable">
-        <px-table-view modifier="small">
-
-          <template is="dom-repeat" items="{{navMenu}}" item-as="item">
-            <px-table-row title="{{item.title}}" modifier="tappable" collapsable data-toggle on-tap="gotoPage">
-              <div content>
-                <px-table-view modifier="tiny">
-                  <template is="dom-repeat" items="{{item.children}}">
-                    <px-table-row title$="{{item.title}}" modifier="tappable" ></px-table-row>
-                  </template>
-                </px-table-view>
+      .content {
+        background-color: #fff;
+      }
+      body:not([style-scope]):not(.style-scope) {
+     margin-bottom: 0;
+}
+    </style>
+  </head>
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <style is="custom-style">
+        :root {
+          --px-table-row: {
+            border-bottom: none;
+          }
+          --px-footer: {
+            background-color: #666;
+          }
+          --px-navbar: {
+            background-color: #268a12;
+            color: #fff;
+            border-bottom: 1px solid #258913;
+          }
+        }
+        .green {
+          --px-navbar: {
+            background-color: #4aab1d;
+            max-height: 56px;
+            color: #fff;
+            border-bottom: 1px solid #268a12;
+          }
+        }
+      </style>
+      <px-drawer-layout id="layout">
+        <!-- TODO: Sidebar -->
+        <px-drawer fixed>
+          <px-navbar class="green">
+            <div left>
+              <div class="flex flex--middle u-ml u-mt">
+                <span class="epsilon">Predix-UI</span>
               </div>
-            </px-table-row>
-          </template>
-
-          <!--
-
-                    <px-table-row title="Customization" modifier="tappable" collapsable data-toggle onclick="gotoPage(1)">
-                      <div content>
-                        <px-table-view modifier="tiny">
-                          <px-table-row title="Themes" modifier="tappable" icon="fa:picture"></px-table-row>
-                          <px-table-row title="Colors" modifier="tappable" icon="fa"></px-table-row>
-                        </px-table-view>
-                      </div>
-                    </px-table-row>
-
-                    <px-table-row title="Components" modifier="tappable" collapsable opened data-toggle onclick="gotoPage(2)">
-                      <div content>
-                        <px-table-view modifier="tiny">
-                          <px-table-row title="Navbar" modifier="tappable" icon="fa fa-dashboard"></px-table-row>
-                          <px-table-row title="Date Picker" modifier="tappable" icon="fa fa-exclamation-triangle"></px-table-row>
-                        </px-table-view>
-                      </div>
-                    </px-table-row>
-
-                    <px-table-row title="Resources" modifier="tappable" collapsable opened data-toggle onclick="gotoPage(3)">
-                      <div content>
-                        <px-table-view modifier="tiny">
-                          <px-table-row title="Github" modifier="tappable" icon="fa fa-dashboard"></px-table-row>
-                          <px-table-row title="Predix.io" modifier="tappable" icon="fa fa-exclamation-triangle"></px-table-row>
-                        </px-table-view>
-                      </div>
-                    </px-table-row>
-          -->
-        </px-table-view>
-
-      </div>
-    </px-drawer>
-
-    <px-navbar class="navbar--dark" shadow view-container="pages">
-      <div left>
-        <div class="lnk first flex flex--middle">
-          <button class="navbar__button" drawer-toggle>
-            <i class="fa fa-lg fa-bars"></i>
-          </button>
-        </div>
-      </div>
-
-    </px-navbar>
-
-    <section class="content-container viewport--full-height" content>
-
-
-      <px-pages id="pages" selected="{{selected}}">
-
-        <px-page id="home" title="Predix-UI" main>
-          <section>
-            <!-- TODO: Hero -->
-            <section class="osp-hero">
-              <div class="osp-hero-background">
-                <div class="osp-hero-container">
-                  <h1 class="osp-hero-title">
-                    Predix
-                  </h1>
-                  <h2 class="subHeader white">
-                    Your cloud platform for the Industrial Internet
-                  </h2>
-                </div>
-              </div>
-            </section>
-
-            <div class="content u-m u-p">
-
-              <!-- TODO:
-          -->
-              <div class="platform text--center">
-                <div class="ops-hero-subtitle">Predix UI</div>
-                <p class="header">We've produced Predix UI as a set of user interface components that enable designers
-                  and developers to quickly and easily create Industrial Internet web applications that run on top of
-                  Predix services and data.</p>
-                <div class="seed_shot">
-                  <img src="/img/seed_beautyshot.png" alt="Predix Seed On a Laptop"></div>
-                <h2 class="subHeader">Try Predix UI</h2>
-                <p>New to Predix? Just click below to learn more and get started.</p>
-                <a href="https://www.predix.io/services/starter-pack.html?id=1225" class="btn btn--primary">Visit the
-                  Predix developer site</a>
-              </div>
-
-
-              <div class="platform text--center">
-                <div class="ops-hero-subtitle">Predix UI</div>
-                <p class="header">We've produced Predix UI as a set of user interface components that enable designers
-                  and developers to quickly and easily create Industrial Internet web applications that run on top of
-                  Predix services and data.</p>
-                <div class="seed_shot">
-                  <img src="/img/seed_beautyshot.png" alt="Predix Seed On a Laptop"></div>
-                <h2 class="subHeader">Try Predix UI</h2>
-                <p>New to Predix? Just click below to learn more and get started.</p>
-                <a href="https://www.predix.io/services/starter-pack.html?id=1225" class="btn btn--primary">Visit the
-                  Predix developer site</a>
-              </div>
-
-
-              <template is="dom-repeat" items="{{cards}}">
-                <px-card icon="{{item.icon}}" header-text="{{item.title}}">
-                  <p>{{item.body}}</p>
-                </px-card>
-              </template>
-
             </div>
+          </px-navbar>
+          <div class="has-navbar full-height scrollable">
+            <px-table-view modifier="small">
+              <template is="dom-repeat" items="{{navMenu}}" item-as="item">
+                <px-table-row title="{{item.title}}" modifier="tappable" collapsable data-toggle on-tap="gotoPage">
+                  <div content>
+                    <px-table-view modifier="tiny">
+                      <template is="dom-repeat" items="{{item.children}}">
+                        <px-table-row title$="{{item.title}}" modifier="tappable"></px-table-row>
+                      </template>
+                    </px-table-view>
+                  </div>
+                </px-table-row>
+              </template>
+            </px-table-view>
+          </div>
+        </px-drawer>
+        <!-- TODO: Content -->
+        <px-navbar class="navbar--dark" shadow view-container="pages" disable-back>
+          <div left>
+            <div class="lnk first flex flex--middle">
+              <button class="navbar__button" drawer-toggle>
+                <i class="fa fa-lg fa-bars"></i>
+              </button>
+            </div>
+          </div>
+        </px-navbar>
+        <section class="content-container viewport--full-height" content>
+          <px-pages id="pages" selected="{{selected}}">
+            <px-page id="home" title="Predix-UI" main>
+              <section>
 
-          </section>
+                <!-- TODO: Hero -->
+                <section class="osp-hero">
+                  <div class="osp-hero-background">
+                    <div class="osp-hero-container">
+                      <h1 class="osp-hero-title">
+                        Predix UI
+                      </h1>
+                      <h2 class="subHeader white">
+                        Your UI platform for the Industrial Internet
+                      </h2>
+                    </div>
+                  </div>
+                </section>
+                <div class="content u-m u-p">
 
-        </px-page>
-
-        <px-page id="getting-started" title="Getting Started">
-        </px-page>
-        <px-page id="usage" title="Usage">
-        </px-page>
-        <px-page id="examples" title="Examples">
-        </px-page>
-        <px-page id="components" title="Components">
-
-
-        </px-page>
-        <px-page id="resources" title="Resources">
-
-
-        </px-page>
-        <px-page id="customization" title="Customization">
-
-
-        </px-page>
-      </px-pages>
-
-    </section>
-
-    <px-footer copywrite="2016 General Electric Company. All rights reserved.">
-      <div class="flex flex--center flex--middle flex--spaced">
-        <px-brand></px-brand>
-        <span class="u-ml- ">GE Digital</span>
-      </div>
-    </px-footer>
-  </px-drawer-layout>
-
-</template>
-
-<script type="text/javascript">
-  var app = {};
+                  <!-- TODO: Platform -->
+                  <div class="platform text--center">
+                    <div class="ops-hero-subtitle">Predix UI</div>
+                    <p class="header">We've produced Predix UI as a set of user interface components that enable designers and developers to quickly and easily create Industrial Internet web applications that run on top of Predix services and data.</p>
+                    <div class="seed_shot">
+                      <img src="/img/seed_beautyshot.png" alt="Predix Seed On a Laptop" class="img-responsive">
+                    </div>
+                    <h2 class="subHeader">Try Predix UI</h2>
+                    <p>New to Predix? Just click below to learn more and get started.</p>
+                    <a href="https://www.predix.io/services/starter-pack.html?id=1225" class="btn btn--large btn--primary">Visit the Predix developer site</a>
+                  </div>
 
 
-  function createDemoCards(count) {
-    var i = 0,
-      lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-        'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-    _out = [];
-    for (; i < count; i++) {
-      _out.push({
-        title: 'Card ' + i,
-        body: lorem
+                  <hr>
+
+                  <div class="flex">
+                    <div class="flex__item flex__item--middle u-m++ u-p"><p>The high-contrast visual language and card-based modular view framework deliver the most meaningful and useful information. That means you can create custom apps that deliver data based on specific context and user needs.</p></div>
+                    <div class="flex__item flex__item--middle u-m++"><img src="/img/predix_ui_screen.png" alt="Slide" class="img-responsive"></div>
+                  </div>
+                  <hr>
+
+                  <div class="flex">
+                    <div class="flex__item flex__item--middle u-m++"><img src="/img/polymer_logo.jpg" alt="Polymer"></div>
+                    <div class="flex__item flex__item--middle u-m++ u-p">
+                      <p>Predix UI uses Google's <a href="https://www.polymer-project.org">Polymer</a>, which provides innovative "syntactic sugar" and polyfill libraries for practical adoption of modern web components. Polymer helps build web applications with custom, encapsuled, reusable components that work just like HTML elements.</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- TODO: Github -->
+                  <div class="github flex flex--col">
+                    <h2 class="subHeader">Get Predix UI on GitHub</h2>
+                    <p class="headerBottom">We're adding design patterns for small and large screens, localization and accessibility, advanced visualizations plus stencils for designers.</p>
+                    <br>
+                    <p class="headerBottom">But you don't have to wait! Predix UI is up and running on GitHub so get it now.</p>
+                    <br>
+                    <a href="https://github.com/predixDev/?utf8=%E2%9C%93&amp;query=px" class="btn btn--large btn--primary">Predix Developer GitHub</a>
+                  </div>
+
+                  <!--
+                  <template is="dom-repeat" items="{{cards}}">
+                    <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                      <p>{{item.body}}</p>
+                    </px-card>
+                  </template>
+
+                -->
+                </div>
+              </section>
+            </px-page>
+            <px-page id="getting-started" title="Getting Started"></px-page>
+            <px-page id="usage" title="Usage"></px-page>
+            <px-page id="examples" title="Examples"></px-page>
+            <px-page id="components" title="Components"></px-page>
+            <px-page id="resources" title="Resources"></px-page>
+            <px-page id="customization" title="Customization"></px-page>
+          </px-pages>
+        </section>
+        <px-footer copywrite="2016 General Electric Company. All rights reserved.">
+          <div class="flex flex--center flex--middle flex--spaced">
+            <px-brand></px-brand>
+            <span class="u-ml- ">GE Digital</span>
+          </div>
+        </px-footer>
+      </px-drawer-layout>
+    </template>
+    <script type="text/javascript">
+      var app = {};
+      function createDemoCards(count) {
+        var i = 0,
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
+              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+        }
+        return _out;
+      }
+      app.toggleDrawer = function () {
+        document.getElementById('layout').drawer.toggle()
+      };
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.selected = 0;
+        app.cards = createDemoCards(2);
+        app.navMenu = [
+          {
+            title: 'Getting Started',
+            page: 'getting-started',
+            children: [
+              {
+                title: 'Prerequisites',
+                page: 'prerequisites'
+              }, {
+                title: 'Installation',
+                page: 'install'
+              }, {
+                title: 'Usage',
+                page: 'usage'
+              }, {
+                title: 'Examples',
+                page: 'examples'
+              }
+            ]
+          }, {
+            title: 'Customization',
+            page: 'customization',
+            children: [
+              {
+                title: 'Themes'
+              }, {
+                title: 'Colors'
+              }
+            ]
+          }, {
+            title: 'Components',
+            page: 'components',
+            children: [
+              {
+                title: 'Action Sheet',
+                page: 'px-action-sheet'
+              },
+              {
+                title: 'Alert Messages',
+                page: 'alerts'
+              }, {
+                title: 'Cards',
+                page: 'px-card'
+              }, {
+                title: 'Charts',
+                page: 'px-chart'
+              }, {
+                title: 'Context Browser',
+                page: 'px-context-browser'
+              }, {
+                title: 'Data Table',
+                page: 'px-data-table'
+              }, {
+                title: 'Drawer',
+                page: 'px-drawer'
+              }, {
+                title: 'Dropdown',
+                page: 'px-dropdown'
+              }, {
+                title: 'Model',
+                page: 'px-modal'
+              }, {
+                title: 'Navbar',
+                page: 'px-navbar'
+              }, {
+                title: 'Partials',
+                page: 'px-partials'
+              }, {
+                title: 'Pages',
+                page: 'px-page'
+              }, {
+                title: 'Range Picker',
+                page: 'px-rangepicker'
+              }, {
+                title: 'Responsive Layouts',
+                page: 'px-responsive-layouts'
+              }, {
+                title: 'Simple Bar Chart',
+                page: 'px-simple-bar-chart'
+              }, {
+                title: 'Simple Line Chart',
+                page: 'px-simple-line-chart'
+              }, {
+                title: 'Slider',
+                page: 'px-slider'
+              }, {
+                title: 'Spinner',
+                page: 'px-spinner'
+              }, {
+                title: 'Tabs',
+                page: 'px-tabs'
+              }, {
+                title: 'Tooltip',
+                page: 'px-tooltip'
+              }
+            ]
+          }, {
+            title: 'Resources',
+            page: 'resources',
+            children: [
+              {
+                title: 'Github'
+              }, {
+                title: 'Predix.io'
+              }
+            ]
+          }
+        ];
+        app.gotoPage = function (e) {
+          var target = Polymer.dom(e).localTarget;
+          app.selected = e.model.item.page;
+          document.getElementById('pages').goto(e.model.item.page);
+          console.warn('gotopage', e, target.model);
+        };
       });
-    }
-    return _out;
-  }
-
-
-  app.toggleDrawer = function () {
-    document.getElementById('layout').drawer.toggle()
-  };
-
-
-
-  document.addEventListener('WebComponentsReady', function () {
-    app = document.getElementById('app');
-    app.selected = 0;
-    app.cards = createDemoCards(2);
-    app.navMenu = [
-      {
-        title: 'Getting Started',
-        page: 'getting-started',
-        children: [
-          {title: 'Prerequisites', page: 'prerequisites'},
-          {title: 'Installation', page: 'install'},
-          {title: 'Usage', page: 'usage'},
-          {title: 'Server Rendering', page: 'server'},
-          {title: 'Examples', page: 'examples'}
-        ]
-      },
-      {title: 'Customization', page: 'customization'},
-      {title: 'Components', page: 'components'},
-      {title: 'Resources', page: 'resources'}
-    ];
-    app.gotoPage = function (e) {
-      var target = Polymer.dom(e).localTarget;
-      app.selected = e.model.item.page;
-      document.getElementById('pages').goto(e.model.item.page);
-
-      console.warn('gotopage', e, target.model);
-    };
-
-  });
-</script>
-
-<script src="http://localhost:35724/livereload.js?snipver=1"></script>
-</body>
+    </script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
 </html>
