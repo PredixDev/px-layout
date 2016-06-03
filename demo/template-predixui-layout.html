@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-predixui-layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="/predixdev.css">
+    <link rel="stylesheet" href="/predixio.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../px-layout.html">
+    <style media="screen">
+      body,
+      html {
+        background-color: #e9e9e9 !important;
+      }
+      .content{
+        background-color: #fff;
+      }
+
+    </style>
+
+  </head>
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <style is="custom-style">
+        :root{
+          --px-table-row:{
+            border-bottom: none;
+          }
+          --px-footer: {
+            background-color: #666;
+          }
+          --px-navbar: {
+                background-color: #268a12;
+            color: #fff;
+          border-bottom: 1px solid #258913;
+          }
+        }
+
+        .green{
+          --px-navbar: {
+              background-color: #4aab1d;
+
+            max-height: 56px;
+            color: #fff;
+            border-bottom: 1px solid #268a12;
+          }
+        }
+      </style>
+      <px-drawer-layout id="layout">
+        <px-drawer fixed>
+          <px-navbar class="green">
+            <div left>
+              <div class="flex flex--middle u-ml u-mt">
+                <span class="epsilon">Predix-UI</span>
+              </div>
+
+            </div>
+          </px-navbar>
+          <div class="has-navbar full-height scrollable">
+            <px-table-view modifier="small">
+
+
+              <px-table-row title="Get Started" modifier="tappable" collapsable data-toggle>
+                <div content>
+                  <px-table-view modifier="tiny">
+                    <px-table-row title="Prerequisites" modifier="tappable" icon="fa:picture"></px-table-row>
+                    <px-table-row title="Installation" modifier="tappable" icon="fa:picture"></px-table-row>
+                    <px-table-row title="Usage" modifier="tappable" icon="fa"></px-table-row>
+                    <px-table-row title="Server Rendering" modifier="tappable" icon="fa"></px-table-row>
+                    <px-table-row title="Examples" modifier="tappable" icon="fa"></px-table-row>
+                  </px-table-view>
+                </div>
+              </px-table-row>
+              <px-table-row title="Customization" modifier="tappable" collapsable data-toggle>
+                <div content>
+                  <px-table-view modifier="tiny">
+                    <px-table-row title="Themes" modifier="tappable" icon="fa:picture"></px-table-row>
+                    <px-table-row title="Colors" modifier="tappable" icon="fa"></px-table-row>
+                  </px-table-view>
+                </div>
+              </px-table-row>
+              <px-table-row title="Components" modifier="tappable" collapsable opened data-toggle>
+                <div content>
+                  <px-table-view modifier="tiny">
+                    <px-table-row title="Navbar" modifier="tappable" icon="fa fa-dashboard"></px-table-row>
+                    <px-table-row title="Date Picker" modifier="tappable" icon="fa fa-exclamation-triangle"></px-table-row>
+                  </px-table-view>
+                </div>
+              </px-table-row>
+              <px-table-row title="Resources" modifier="tappable" collapsable opened data-toggle>
+                <div content>
+                  <px-table-view modifier="tiny">
+                    <px-table-row title="Github" modifier="tappable" icon="fa fa-dashboard"></px-table-row>
+                    <px-table-row title="Predix.io" modifier="tappable" icon="fa fa-exclamation-triangle"></px-table-row>
+
+                  </px-table-view>
+                </div>
+              </px-table-row>
+
+            </px-table-view>
+          </div>
+        </px-drawer>
+
+        <px-navbar class="navbar--dark" shadow>
+          <div left>
+            <div class="lnk first flex flex--middle">
+              <button class="navbar__button" drawer-toggle>
+                <i class="fa fa-lg fa-bars"></i>
+              </button>
+
+            </div>
+          </div>
+          <div title></div>
+          <div right>
+
+          </div>
+        </px-navbar>
+
+
+        <section class="content-container viewport--full-height" content>
+          <!-- TODO: Hero -->
+          <section class="osp-hero">
+            <div class="osp-hero-background">
+              <div class="osp-hero-container">
+                <h1 class="osp-hero-title">
+                  Predix
+                </h1>
+                <h2 class="subHeader white">
+                  Your cloud platform for the Industrial Internet
+                </h2>
+              </div>
+            </div>
+          </section>
+
+          <div class="content u-m u-p">
+
+            <!-- TODO:
+        -->
+        <div class="platform text--center">
+            <div class="ops-hero-subtitle">Predix UI</div>
+              <p class="header">We've produced Predix UI as a set of user interface components that enable designers and developers to quickly and easily create Industrial Internet web applications that run on top of Predix services and data.</p>
+            <div class="seed_shot">
+              <img src="/img/seed_beautyshot.png" alt="Predix Seed On a Laptop"></div>
+            <h2 class="subHeader">Try Predix UI</h2>
+            <p>New to Predix? Just click below to learn more and get started.</p>
+              <a href="https://www.predix.io/services/starter-pack.html?id=1225" class="btn btn--primary">Visit the Predix developer site</a>
+          </div>
+
+
+          <div class="platform text--center">
+                    <div class="ops-hero-subtitle">Predix UI</div>
+                      <p class="header">We've produced Predix UI as a set of user interface components that enable designers and developers to quickly and easily create Industrial Internet web applications that run on top of Predix services and data.</p>
+                    <div class="seed_shot">
+                      <img src="/img/seed_beautyshot.png" alt="Predix Seed On a Laptop"></div>
+                    <h2 class="subHeader">Try Predix UI</h2>
+                    <p>New to Predix? Just click below to learn more and get started.</p>
+                      <a href="https://www.predix.io/services/starter-pack.html?id=1225" class="btn btn--primary">Visit the Predix developer site</a>
+                  </div>
+
+
+
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
+        </section>
+
+      <px-footer copywrite="2016 General Electric Company. All rights reserved.">
+          <div class="flex flex--center flex--middle flex--spaced">
+            <px-brand></px-brand>
+            <span class="u-ml- ">GE Digital</span>
+          </div>
+      </px-footer>
+      </px-drawer-layout>
+    </template>
+    <script type="text/javascript">
+      var app;
+
+      function createDemoCards(count) {
+        var i = 0,
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
+              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+        }
+        return _out;
+      }
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.toggleDrawer = function () {
+          document.getElementById('layout').drawer.toggle()
+        };
+        app.cards = createDemoCards(2);
+      });
+    </script>
+
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
+</html>

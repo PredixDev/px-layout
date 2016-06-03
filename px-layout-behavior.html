@@ -37,17 +37,20 @@
       }
     },
     listeners: {
-      'tap': '_tapHandler',
+    //  'tap': '_tapHandler',
       'px-drawer-reset-layout': 'resetLayout'
     },
     observers: ['resetLayout(narrow, isAttached)'],
 
     _tapHandler: function (e) {
-        console.warn('_tapHandler');
+        console.warn('_tapHandler', this.drawer.persistent);
       var target = Polymer.dom(e).localTarget;
       if (target && target.hasAttribute('drawer-toggle')) {
-        this.drawer.toggle();
+        if(!this.drawer.persistent){
+          this.drawer.toggle();
+        }
       }
+      return e;
     },
     resetLayout: function () {
       console.warn('resetLayout');
