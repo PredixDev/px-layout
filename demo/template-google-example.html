@@ -14,26 +14,30 @@
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
-    <style>
+    <style is="custom-style">
       .box {
         position: relative;
       }
-      #googleMenu .table-row {
-        color: #747474;
+
+
+      .googleMenu .table-row {
+  color: #747474;
       }
-      #googleMenu .iron-selected {
+
+      .googleMenu .selected {
         background: #f3f3f3;
         color: #e91e63 !important;
       }
+
       #googleMenu .table-row__content {
-        margin-left: 1rem;
+
       }
       .sidebox {
         max-width: 250px;
         border-right: none;
       }
       #googleExample .navbar {
-        background-color: #e91e63;
+
       }
       #googleExample .navbar__button {
         color: #fff;
@@ -46,42 +50,46 @@
       #googleExample .spacer {
         height: 56px;
       }
-
     </style>
   </head>
 
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
+      <style is="custom-style">
+        :root{
+          --px-navbar: {
+            background-color: #e91e63;
+          }
+        }
+      </style>
+      <px-drawer-layout id="googleExample">
 
-      <px-layout id="googleExample">
-        <px-header subtitle="Full Template"></px-header>
-        <div class="secondary-sidebar">
-          <p class="u-m">
-            This is content inside the secondary sidebar.
-          </p>
-        </div>
 
-        <px-layout-item role="primary-content">
-          <section class="">
-            <div class="flex">
-              <div class="sidebox flex__item box box--flush">
-                <div class="spacer"></div>
-                <px-table-view id="googleMenu" class="table-view--bare table-view--tiny" selected="0">
-                  <px-table-row title="Inbox" type="tappable" icon="fa fa-lg fa-inbox"></px-table-row>
-                  <px-table-row title="Starred" type="tappable" icon="fa fa-lg fa-star"></px-table-row>
-                  <px-table-row title="All mail" type="tappable" icon="fa fa-lg fa-envelope"></px-table-row>
-                  <px-table-row title="Trash" type="tappable" icon="fa fa-lg fa-trash"></px-table-row>
-                  <px-table-row title="Spam" type="tappable" icon="fa fa-lg fa-flag"></px-table-row>
-                </px-table-view>
+        <px-drawer>
+          <div class="sidebox">
+            <div class="spacer"></div>
+            <px-table-view id="googleMenu" class="googleMenu" selected="0">
+              <px-table-row title="Inbox" type="tappable" icon="fa:fa-inbox"></px-table-row>
+              <px-table-row title="Starred" type="tappable" icon="fa:fa-star"></px-table-row>
+              <px-table-row title="All mail" type="tappable" icon="fa:fa-envelope"></px-table-row>
+              <px-table-row title="Trash" type="tappable" icon="fa:fa-trash"></px-table-row>
+              <px-table-row title="Spam" type="tappable" icon="fa:fa-flag"></px-table-row>
+            </px-table-view>
+          </div>
+        </px-drawer>
+
+
+
+          <section class="has-navbar" content>
+            <px-navbar shadow>
+              <div left>
+                <span class="navbar__title u-mt">Inbox</span>
               </div>
-              <div class="has-navbar flex__item">
-                <px-navbar shadow>
-                  <div class="navbar__left">
-                    <span class="navbar__title u-mt-">Inbox</span>
-                  </div>
-                </px-navbar>
-                <section class="box">
+            </px-navbar>
+            <div class="fle">
+              <div class=" ">
 
+                <section class="box">
                   <p>
                     &nbsp;
                   </p>
@@ -111,9 +119,9 @@
               </div>
             </div>
           </section>
-        </px-layout-item>
-        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
-      </px-layout>
+        
+
+      </px-drawer-layout>
 
     </template>
     <script type="text/javascript">

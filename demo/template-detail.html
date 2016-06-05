@@ -26,16 +26,11 @@
         This is content inside the secondary sidebar.
       </p>
     </div>
-    <div class="primary-content">
+    <px-layout-item role="primary-content">
       <px-navbar title="Primary Content" back="true">
 
-        <div class="navbar__left">
-          <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
-            <i class="fa fa-lg fa-navicon"></i>
-          </button>
-        </div>
         <!---->
-        <div class="navbar__right">
+        <div right>
           <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
             <i class="fa fa-lg fa-ellipsis-v"></i>
           </button>
@@ -45,12 +40,12 @@
         <div class="u-mt">
 
           <div class="u-mb">
-            <div class="table-view table-view--bare table-view--responsive">
-              <px-table-row title="13742" label2="Case ID" type="tappable"></px-table-row>
+          <px-table-view modifier="small bare responsive row">
+                <px-table-row title="13742" label2="Case ID" type="tappable"></px-table-row>
               <px-table-row title="None" label2="External ID" type="tappable"></px-table-row>
               <px-table-row title="John Doe" label2="Owner" type="tappable"></px-table-row>
               <px-table-row title="Tom Edison" label2="Creator" type="tappable"></px-table-row>
-            </div>
+            </px-table-view>
           </div>
 
           <px-card header-text="Card">
