@@ -37,20 +37,18 @@
       }
     },
     listeners: {
-    //  'tap': '_tapHandler',
+     'tap': '_tapHandler',
       'px-drawer-reset-layout': 'resetLayout'
     },
     observers: ['resetLayout(narrow, isAttached)'],
 
     _tapHandler: function (e) {
-        console.warn('_tapHandler', this.drawer.persistent);
       var target = Polymer.dom(e).localTarget;
-      if (target && target.hasAttribute('drawer-toggle')) {
-        if(!this.drawer.persistent){
-          this.drawer.toggle();
-        }
+
+      if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
+      //  console.warn( this.tagName, '_tapHandler', target, this.drawer);
+        this.drawer.open();
       }
-      return e;
     },
     resetLayout: function () {
       console.warn('resetLayout');
