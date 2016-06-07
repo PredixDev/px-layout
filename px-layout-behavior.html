@@ -66,13 +66,14 @@
         if (this.narrow) {
           drawer.opened = drawer.persistent = false;
 
-          contentContainer.classList.add('narrow');
+          contentContainer.classList.add('drawer-layout__content--is-narrow');
           contentContainer.style.marginLeft = '';
           contentContainer.style.marginRight = '';
+          console.warn(this.tagName, this.narrow, 'adding narrow class', drawerWidth);
         } else {
-
+          console.warn(this.tagName, this.narrow, 'removing narrow class');
           drawer.opened = drawer.persistent = true;
-          contentContainer.classList.remove('narrow');
+          contentContainer.classList.remove('drawer-layout__content--is-narrow', drawerWidth);
           if (drawer.position == 'right') {
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = drawerWidth + 'px';

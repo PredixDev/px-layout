@@ -12,16 +12,10 @@
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
-      <style media="screen">
-        .table-row__title {
-          color: #fff;
-        }
-        .table-row__media--icon {
-          align-self: baseline;
-        }
-      </style>
+
       <px-layout id="layout0">
         <px-header subtitle="Content Sidebar Mini"></px-header>
+
         <!-- TODO: Primary Sidebar -->
         <div class="primary-sidebar has-navbar">
           <px-table-view>
@@ -30,20 +24,22 @@
             </template>
           </px-table-view>
         </div>
+
         <!-- TODO: Secondary Sidebar -->
         <div class="secondary-sidebar">
           <p class="u-m">
             This is content inside the secondary sidebar.
           </p>
         </div>
+
         <div class="primary-content">
           <px-navbar title="Content">
-            <div class="navbar__left">
+            <div left>
               <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
-            <div class="navbar__right">
+            <div right>
               <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
                 <i class="fa fa-lg fa-ellipsis-v"></i>
               </button>

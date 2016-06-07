@@ -202,8 +202,8 @@
             <li>Select the type you perfer</li>
             <li>Replace old markup with new markup</li>
           </ol>
-          <h5>Examples</h5>
-          <ol class="flex flex--spaced list-bare flex--wrap">
+          <h3>Examples</h3>
+          <ol class="">
             <template is="dom-repeat" items="{{examples}}">
               <li>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
@@ -222,15 +222,17 @@
               href: 'template-basic.html',
               title: 'Basic Layout'
             }, {
+            {
+              href: 'template-vanilla-seed-layout.html',
+              title: 'Vanilla Seed Layout'
+            }, {
               href: 'template-dashboard.html',
-              title: 'Dashboard'
+              title: 'Dashboard Seed Layout'
             }, {
               href: 'template-login.html',
               title: 'Login'
-            }, {
-              href: 'template-google-example.html',
-              title: 'Google Example'
-            }, {
+            },
+            {
               href: 'template-cards.html',
               title: 'Grid to List'
             }, {
@@ -242,10 +244,16 @@
             }, {
               href: 'template-content-mini-sidebar.html',
               title: 'Context Mini Sidebar'
-            }, {
+            },
+            {
               href: 'template-content-sidebar.html',
               title: 'Context Static Sidebar'
-            }, {
+            },
+            {
+              href: 'template-google-example.html',
+              title: 'Google Example'
+            },
+            {
               href: 'template-detail.html',
               title: 'Full Detail'
             }, {

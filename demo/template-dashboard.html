@@ -6,6 +6,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="demo.js"></script>
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
@@ -20,12 +21,7 @@
           flex: 1 0 275px;
           min-width: 275px;
         }
-        .table-row__title {
-          color: #fff;
-        }
-        .table-row__media--icon {
-          align-self: baseline;
-        }
+
 
       </style>
       <px-layout id="layout0">
@@ -33,7 +29,7 @@
         <px-header subtitle="Dashboard Template"></px-header>
         <!-- TODO: Primary Sidebar -->
         <div class="primary-sidebar">
-          <px-table-view modifier="bare">
+          <px-table-view modifier="small">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
@@ -44,12 +40,12 @@
         <!-- TODO: Primary Content -->
         <div class="primary-content">
           <px-navbar title="Dashboard" shadow>
-            <div class="navbar__left">
+            <div left>
               <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
-            <div class="navbar__right">
+            <div right>
               <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
                 <i class="fa fa-lg fa-ellipsis-v"></i>
               </button>
@@ -60,7 +56,7 @@
 
             <!-- TODO: Spine -->
             <div class="spine u-m">
-              <px-table-view modifier="tiny responsive row">
+              <px-table-view modifier="small responsive row">
                 <template is="dom-repeat" items="{{spine}}">
                   <px-table-row modifier="tappable" class="flex">
                     <div class="table-row__content table-row__content--row" content>
@@ -154,21 +150,7 @@
 
 
     <script type="text/javascript">
-      var navItems = [
-        {
-          label: 'Dashboard',
-          icon: 'fa fa-dashboard'
-        }, {
-          label: 'Alerts',
-          icon: 'fa fa-exclamation-triangle'
-        }, {
-          label: 'Cases',
-          icon: 'fa fa-briefcase'
-        }, {
-          label: 'Analysis',
-          icon: 'fa fa-bar-chart'
-        }
-      ];
+
       var app;
       function createDemoCards(count) {
         var i = 0,

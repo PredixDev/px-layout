@@ -60,23 +60,20 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       :host section {
         flex: 1;
       }
-      :host #contentContainer {
+      :host .drawer-layout__content {
         position: relative;
       }
-      #contentContainer:not(.narrow) > ::content [drawer-toggle] {
-  display: none;
-}
+      .drawer-layout__content:not(.drawer-layout__content--is-narrow) > ::content [drawer-toggle] {
+        display: none;
+      }
 
     </style>
-
-    <article id="container" class="flex flex--stretch">
+    <article id="container" class="drawer-layout flex flex--stretch">
       <content id="drawerContainer" select="px-drawer"></content>
-      <section id="contentContainer" class="flex flex--col flex--stretch has-navbar">
+      <section id="contentContainer" class="drawer-layout__content has-navbar">
         <content select=":not(px-drawer)"></content>
       </section>
-
     </article>
-
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
@@ -86,13 +83,8 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
         Polymer.IronResizableBehavior, pxLayoutBehavior
       ],
       hostAttributes: {
-				role: 'main'
-			},
-      properties: {
-
-
+        role: 'main'
       },
-
       created: function () {
         console.log(this.tagName, 'created');
       },

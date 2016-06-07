@@ -29,7 +29,7 @@
 
         <!-- TODO: Primary Sidebar -->
         <px-layout-item class="primary-sidebar">
-          <px-table-view modifier="bare">
+          <px-table-view modifier="tiny">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
@@ -40,7 +40,7 @@
         <!-- TODO: Secondary Content -->
         <div class="secondary-content">
           <px-navbar title="" shadow>
-            <div class="navbar__left">
+            <div left>
               <button class="navbar__button" onclick="document.getElementById('layout2').toggle('primarySidebar');">
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
@@ -61,7 +61,7 @@
         <div class="primary-content has-navbar flex flex--col">
           <px-navbar title="{{selected.title}}" shadow></px-navbar>
           <section>
-            
+
           </section>
         </div>
         <!-- TODO: Footer -->

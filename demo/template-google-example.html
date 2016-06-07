@@ -14,112 +14,96 @@
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
-    <style is="custom-style">
-      .box {
-        position: relative;
-      }
 
-
-      .googleMenu .table-row {
-  color: #747474;
-      }
-
-      .googleMenu .selected {
-        background: #f3f3f3;
-        color: #e91e63 !important;
-      }
-
-      #googleMenu .table-row__content {
-
-      }
-      .sidebox {
-        max-width: 250px;
-        border-right: none;
-      }
-      #googleExample .navbar {
-
-      }
-      #googleExample .navbar__button {
-        color: #fff;
-      }
-      #googleExample .navbar__title {
-        color: #fff;
-        font-size: 1.5rem;
-        margin-left: 1rem;
-      }
-      #googleExample .spacer {
-        height: 56px;
-      }
-    </style>
   </head>
 
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <style is="custom-style">
-        :root{
+        :root {
           --px-navbar: {
             background-color: #e91e63;
           }
+          --px-table-row: {
+            color: #747474;
+          }
         }
+
+        #googleMenu .custom-selected {
+          background: #f3f3f3;
+          color: #e91e63 !important;
+        }
+
+        
+
+        .box {
+          position: relative;
+        }
+
+        :root .navbar__title {
+          color: #fff;
+          font-size: 1.5rem;
+          margin-left: 1rem;
+        }
+        :root .spacer {
+          height: 56px;
+        }
+
       </style>
-      <px-drawer-layout id="googleExample">
 
-
+      <px-drawer-layout id="layout">
         <px-drawer>
           <div class="sidebox">
             <div class="spacer"></div>
             <px-table-view id="googleMenu" class="googleMenu" selected="0">
-              <px-table-row title="Inbox" type="tappable" icon="fa:fa-inbox"></px-table-row>
-              <px-table-row title="Starred" type="tappable" icon="fa:fa-star"></px-table-row>
-              <px-table-row title="All mail" type="tappable" icon="fa:fa-envelope"></px-table-row>
-              <px-table-row title="Trash" type="tappable" icon="fa:fa-trash"></px-table-row>
-              <px-table-row title="Spam" type="tappable" icon="fa:fa-flag"></px-table-row>
+              <iron-selector attr-for-selected="title" selected="{{selected}}" selected-class="custom-selected" content>
+
+                <px-table-row title="Inbox" modifier="tappable" icon="fa:fa-inbox"></px-table-row>
+                <px-table-row title="Starred" modifier="tappable" icon="fa:fa-star"></px-table-row>
+                <px-table-row title="All mail" modifier="tappable" icon="fa:fa-envelope"></px-table-row>
+                <px-table-row title="Trash" modifier="tappable" icon="fa:fa-trash"></px-table-row>
+                <px-table-row title="Spam" modifier="tappable" icon="fa:fa-flag"></px-table-row>
+              </iron-selector>
+
             </px-table-view>
           </div>
         </px-drawer>
 
-
-
-          <section class="has-navbar" content>
-            <px-navbar shadow>
-              <div left>
-                <span class="navbar__title u-mt">Inbox</span>
-              </div>
-            </px-navbar>
-            <div class="fle">
-              <div class=" ">
-
-                <section class="box">
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                  <p>
-                    &nbsp;
-                  </p>
-                </section>
-
-              </div>
+        <section class="" content>
+          <px-navbar shadow>
+            <div left>
+              <span class="navbar__title u-mt">Inbox</span>
             </div>
-          </section>
-        
+          </px-navbar>
+          <div class="box">
+
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+            <p>
+              &nbsp;
+            </p>
+
+          </div>
+        </section>
 
       </px-drawer-layout>
 

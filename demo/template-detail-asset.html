@@ -66,8 +66,8 @@
         <px-drawer id="sidenav" side="left"></px-drawer>
         <div class="primary-content has-navbar  u-bg--gray8">
           <px-navbar title="{{asset.title}}" shadow back="true" back-label="GT123456">
-            <div class="navbar__left">
-              <button class="navbar__button" onclick="document.getElementById('sidenav').toggle()">
+            <div left>
+              <button class="navbar__button" drawer-toggle>
                 <i class="fa fa-lg fa-navicon"></i>
               </button>
             </div>
@@ -77,18 +77,16 @@
             <header class="u-m-- u-p- flex flex--col u-color--white">
               <div class="flex__item">
                 <h3>Asset Details</h3>
-                <ul id="table-responsive" class="table-view table-view--bare table-view--responsive">
-                  <template is="dom-repeat" items="{{asset.details}}">
-                    <li>
+                <px-table-row modifier="bare row responsive">
+                  <template is="dom-repeat" items="{{asset.details}}" content>
                       <px-table-row type="">
-                        <div class="table-row__content">
+                        <div class="table-row__content" content>
                           <span class="table-row__title muted zeta">{{item.name}}</span>
                           <span class="table-row__body ">{{item.value}}</span>
                         </div>
                       </px-table-row>
-                    </li>
                   </template>
-                </ul>
+                </px-table-row>
               </div>
               <div class="flex__item">
                 <h3>Customer Information</h3>
@@ -237,7 +235,7 @@
         sidebar.toggle();
       }
     </script>
-    
+
   </body>
 
 </html>

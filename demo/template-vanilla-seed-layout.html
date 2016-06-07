@@ -15,18 +15,26 @@
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <style is="custom-style">
-      html, body{
-        background: #fff;
-      }
+        html, body{
+          background: #efeff4;
+        }
+
         :root {
           --px-navbar-color: #fff;
           --px-navbar-background-color: #0d5eb6;
+        }
+        .navbar__button{
+          color: #fff;
         }
 
       </style>
       <px-drawer-layout id="layout">
         <px-drawer fixed>
+
           <div style="height: 100%; overflow: auto;">
+            <div class="brand">
+              <img src="https://upload.wikimedia.org/wikipedia/en/2/22/Pitney_Bowes.svg" alt="Logo" />
+            </div>
             <p>
               You can close me with the
               <code>ESC</code>
@@ -35,15 +43,34 @@
           </div>
         </px-drawer>
         <px-navbar id="navbar">
-          <div left class="flex flex--middle">
-            <button class="navbar__button" drawer-toggle on-tap="toggleDrawer">
-              <i class="fa fa-lg fa-bars"></i>
-            </button>
-            <span class="epsilon">vanilla-seed-layout</span>
-          </div>
+          <div left>
+            <div class="flex flex--center">
 
+              <button class="navbar__button" drawer-toggle on-tap="toggleDrawer">
+                <i class="fa fa-lg fa-bars"></i>
+              </button>
+
+              <span class="epsilon u-m">Vanilla Seed</span>
+            </div>
+          </div>
+          <div right>
+            <button class="navbar__button">
+              <span>Tom Edison</span>
+            </button>
+
+          </div>
         </px-navbar>
         <div class="u-m flex flex--wrap" content>
+          <section class="u-m">
+            <h2>Predix Seed App</h2>
+          <p>
+            Use the Seed App to develop your own industrial monitoring application.
+          </p>
+          <p>
+            For documentation on the seed app go to https://predix.ge.com/docs/?r=396874#z5YOiuHh
+          </p>
+
+          </section>
           <template is="dom-repeat" items="{{cards}}" >
             <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="flex__item">
               <h1>Hello World</h1>
@@ -72,6 +99,7 @@
             </px-card>
           </template>
         </div>
+        <px-footer></px-footer>
       </px-drawer-layout>
     </template>
     <script type="text/javascript">
@@ -95,8 +123,9 @@
         app.toggleDrawer = function () {
           document.getElementById('layout').drawer.toggle()
         };
-        app.cards = createDemoCards(100);
+        app.cards = createDemoCards(10);
       });
     </script>
+        <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
 </html>
