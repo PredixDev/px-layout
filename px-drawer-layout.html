@@ -4,31 +4,26 @@
 <link rel="import" href="px-media-query.html">
 <!--
 
-px-drawer-layout is a wrapper element that positions a px-drawer element and other content.
+`px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
+When the viewport width is smaller than `responsiveWidth`, this element changes to mobile layout where the drawer will be stacked on top of the main content.
+Any element with the `drawer-toggle` attribute will make the drawer will slide in/out to hide/reveal the main content when tapped.
 
-When the viewport width is smaller than `responsiveWidth`, this element changes to narrow layout.
+By default the `px-drawer` is aligned to the left.
 
-In narrow layout, the drawer will be stacked on top of the main content.
-
-The drawer will slide in/out to hide/reveal the main content.
-
-
-
-By default the drawer is aligned to the start, which is left in LTR layouts:
+### Basic Usage
 
 ```
 <px-drawer-layout>
   <px-drawer>
     drawer content
   </px-drawer>
-  <div>
+  <div content>
     main content
   </div>
 </px-drawer-layout>
 ```
 
-
-### Usage with px-header-layout:
+### Usage with `px-header-layout`:
 
 ```
 <px-drawer-layout>
@@ -41,10 +36,14 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
 				<div title>App name</div>
 			</px-navbar>
 		</px-header>
-			main content
+    <div content>
+      main content
+    </div>
 	</px-header-layout>
 </px-drawer-layout>
 ```
+
+
 @element px-drawer-layout
 @demo demo/template-drawer-layout.html
 @homepage index.html
@@ -55,7 +54,6 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       :host {
         display: block;
         position: relative;
-
       }
       :host section {
         flex: 1;
@@ -66,7 +64,6 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       .drawer-layout__content:not(.drawer-layout__content--is-narrow) > ::content [drawer-toggle] {
         display: none;
       }
-
     </style>
     <article id="container" class="drawer-layout flex flex--stretch">
       <content id="drawerContainer" select="px-drawer"></content>
@@ -84,18 +81,6 @@ By default the drawer is aligned to the start, which is left in LTR layouts:
       ],
       hostAttributes: {
         role: 'main'
-      },
-      created: function () {
-        console.log(this.tagName, 'created');
-      },
-      attached: function () {
-        console.log(this.tagName, 'attached');
-      },
-      detached: function () {
-        console.log(this.tagName, 'detached');
-      },
-      _handleQuery: function (newVal, oldVal) {
-        console.log(this.tagName, '_handleQuery', newVal);
       }
     });
   </script>

@@ -1,4 +1,10 @@
+
+
 <script type="text/javascript">
+  /**
+   * `pxLayoutBehavior` handles the behavior of the layout.
+   * @polymerBehavior
+   */
   var pxLayoutBehavior = {
     properties: {
       /**
@@ -16,7 +22,6 @@
         type: String,
         value: '768px'
       },
-
       /**
       * Returns true if it is in narrow layout. This is useful if you need to show/hide
       * elements based on the layout.
@@ -32,32 +37,39 @@
     * @property drawer
     */
     get drawer() {
-      if(this.$.drawerContainer){
+      if (this.$.drawerContainer) {
         return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
       }
     },
     listeners: {
-     'tap': '_tapHandler',
-      'px-drawer-reset-layout': 'resetLayout'
+      'tap': '_tapHandler',
+      'px-drawer-layout-reset': 'resetLayout'
     },
     observers: ['resetLayout(narrow, isAttached)'],
-
+    created: function () {},
+    attached: function () {},
+    detached: function () {},
+    /**
+     * Handle when a tap event occurs, when if the element as a `drawer-toggle` attribute
+     ( toggle the drawer.
+     */
     _tapHandler: function (e) {
       var target = Polymer.dom(e).localTarget;
-
       if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
-      //  console.warn( this.tagName, '_tapHandler', target, this.drawer);
         this.drawer.open();
       }
     },
+    /**
+     * Handle resetting the layout and either hiding or revealing the drawer.
+     * @event px-drawer-reset
+     */
     resetLayout: function () {
-      console.warn('resetLayout');
       this.debounce('_resetLayout', function () {
         if (!this.isAttached) {
           return;
         }
         var drawer = this.drawer;
-        if(!drawer){
+        if (!drawer) {
           return;
         }
         var drawerWidth = this.drawer.getWidth();
@@ -65,13 +77,10 @@
 
         if (this.narrow) {
           drawer.opened = drawer.persistent = false;
-
           contentContainer.classList.add('drawer-layout__content--is-narrow');
           contentContainer.style.marginLeft = '';
           contentContainer.style.marginRight = '';
-          console.warn(this.tagName, this.narrow, 'adding narrow class', drawerWidth);
         } else {
-          console.warn(this.tagName, this.narrow, 'removing narrow class');
           drawer.opened = drawer.persistent = true;
           contentContainer.classList.remove('drawer-layout__content--is-narrow', drawerWidth);
           if (drawer.position == 'right') {
@@ -83,10 +92,16 @@
           }
         }
         this.notifyResize();
+        this.fire('px-layout-reset');
       });
     },
+    /**
+     * Handle when the media query changes.
+     * @event px-media-query
+     */
     _onQueryMatchesChanged: function (event) {
       console.warn('queryMatches', event.detail.value);
+      this.fire('px-media-query', event.detail.value);
       this._setNarrow(event.detail.value);
     },
     _computeMediaQuery: function (forceNarrow, responsiveWidth) {
