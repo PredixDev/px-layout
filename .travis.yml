@@ -7,7 +7,6 @@ branches:
   except:
   - gh-pages
 addons:
-  firefox: latest
   apt:
     sources:
     - google-chrome
