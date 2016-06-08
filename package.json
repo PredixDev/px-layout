@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "A px mobile web component.",
   "keywords": [
-		"px",
-		"px-mobile"
-	],
+    "px",
+    "px-mobile"
+  ],
   "license": "ISC",
   "author": "Jonnie Spratley",
   "scripts": {
@@ -24,6 +24,7 @@
     "grunt-contrib-jshint": "~v0.10.0",
     "grunt-contrib-watch": "~v0.6.1",
     "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
+    "grunt-gh-pages": "^1.1.0",
     "grunt-sass": "^v1.0.0",
     "grunt-shell": "~v1.1.1",
     "gulp": "^3.9.1",
