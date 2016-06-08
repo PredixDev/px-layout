@@ -61,6 +61,8 @@
               <template is="dom-repeat" items="[[items]]" id="itemsList">
                 <px-table-row
                 title="{{item.title}}"
+                deleted="{{item.deleted}}"
+                flagged="{{item.flagged}}"
                 on-tap="onSelect"
                 modifier="tappable nav-right"
                 swipeable
