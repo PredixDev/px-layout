@@ -38,6 +38,7 @@ function createDemoItems(count) {
   _out = [];
   for (; i < count; i++) {
     _out.push({
+      id: 'item-' + i,
       title: 'Item ' + i,
       body: lorem
     });

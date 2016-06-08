@@ -16,16 +16,25 @@
   </head>
   <body unresolved>
     <template id="app" is="dom-bind">
-      <style media="screen">
+      <style is="custom-style">
         .primary-sidebar .table-row__title {
           color: #fff;
+        }
+        :root{
+          --px-table-row-selected-background-color: red;
+          --px-table-row-underlay: {
+            right: 0;
+          }
+          .table-row__label{
+            color: #555;
+            margin-right: 1rem;
+          }
         }
 
       </style>
       <px-layout id="layout2" type="splitview">
         <!-- TODO: Header -->
         <px-header subtitle="Split View Template"></px-header>
-
 
         <!-- TODO: Primary Sidebar -->
         <px-layout-item class="primary-sidebar">
@@ -35,7 +44,6 @@
             </template>
           </px-table-view>
         </px-layout-item>
-
 
         <!-- TODO: Secondary Content -->
         <div class="secondary-content">
@@ -47,25 +55,51 @@
             </div>
           </px-navbar>
 
-          <array-selector id="selector" items="{{items}}" selected="{{selected}}" toggle></array-selector>
+          <array-selector id="selector" items="[[items]]" selected="{{selected}}"></array-selector>
           <section class="has-navbar l-bg-white l-full-height scrollable">
-            <px-table-view>
-              <template is="dom-repeat" items="{{items}}" id="itemsList">
-                <px-table-row title="{{item.title}}" modifier="tappable" on-click="onSelect"></px-table-row>
+            <px-table-view id="table" selected="{{}}" pull-to-refresh>
+              <template is="dom-repeat" items="[[items]]" id="itemsList">
+                <px-table-row
+                title="{{item.title}}"
+                on-tap="onSelect"
+                modifier="tappable nav-right"
+                swipeable
+                swipe-left
+                fit-underlay>
+                  <div underlay class="full-height flex flex--right">
+                    <!--<px-table-row-action-button label="More" type="more"></px-table-row-action-button>-->
+                    <px-table-row-action-button icon="fa:fa-flag" type="flag" on-tap="flagItem"></px-table-row-action-button>
+                    <px-table-row-action-button icon="fa:fa-trash" on-tap="deleteItem" type="delete"></px-table-row-action-button>
+                  </div>
+                </px-table-row>
+
               </template>
             </px-table-view>
           </section>
 
         </div>
         <!-- TODO: Primary Content -->
-        <div class="primary-content has-navbar flex flex--col">
+        <div class="primary-content">
           <px-navbar title="{{selected.title}}" shadow></px-navbar>
-          <section>
+          <section class="has-navbar">
 
+            <px-card>
+              <px-title-bar title="Alert Information"></px-title-bar>
+              <px-table-view modifier="bare">
+                <px-table-row label2="ID" title="{{selected.id}}"></px-table-row>
+              </px-table-view>
+              <dl class="" hidden$="{{!selected}}">
+                <dt>ID:</dt><dd>{{selected.id}}</dd>
+                <dt>Title:</dt><dd>{{selected.title}}</dd>
+                <dt>Body:</dt><dd>{{selected.body}}</dd>
+              </dl>
+              <px-title-bar title="Asset Information"></px-title-bar>
+
+            </px-card>
           </section>
         </div>
         <!-- TODO: Footer -->
-        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
+        <px-footer ></px-footer>
       </px-layout>
     </template>
     <script type="text/javascript">
@@ -73,12 +107,76 @@
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;
-        app.selected = {};
-        app.items = createDemoItems(250);
-        app.onSelect = function(e){
+        app.selected = null;
+        app.items = createDemoItems(50);
+
+
+        function log(type, args){
+          console.log('info', type, args);
+        }
+
+        app.onSelect = function (e) {
           var item = this.$.itemsList.itemForElement(e.target);
           this.$.selector.select(item);
-        }
+          log('onSelect', e, item);
+            console.log('model is:', e.model.item);
+
+            app.set('selected', e.model.item);
+          //  app.selected = e.model;
+        };
+
+        app.flagItem = function (e) {
+          log( 'flagItem', e);
+          var normalizedEvent = Polymer.dom(e);
+          // logs #myButton
+          console.info('rootTarget is:', normalizedEvent.rootTarget);
+          // logs the instance of event-targeting that hosts #myButton
+          console.info('localTarget is:', normalizedEvent.localTarget);
+          // logs [#myButton, document-fragment, event-retargeting,       body, html, document, Window]
+          console.info('path is:', normalizedEvent.path);
+
+
+          e.model.item.flagged = !e.model.item.flagged;
+            console.log('model is:', e.model.item);
+        };
+
+
+        app.deleteItem = function (e) {
+          log('deleteItem', e);
+          e.model.item.deleted = !e.model.item.deleted;
+            console.log('model is:', e.model.item);
+        };
+
+        var table = document.getElementById('table');
+
+        ['px-tap-underlay', 'px-swipe-reset', 'px-swipe-start', 'px-swipe-end'].forEach(function (event) {
+          table.addEventListener(event, function (e) {
+            log('Fired Event =', e.type, e);
+          });
+        });
+        ['ptr-ready', 'ptr-reset', 'ptr-refresh', 'ptr-loading', 'ptr-complete'].forEach(function (event) {
+          table.addEventListener(event, function (e) {
+            console.log('Fired Event =', e.type, e);
+          });
+        });
+
+
+        table.loadingFunction = function handleLoad() {
+          return new Promise(function (resolve, reject) {
+            console.log('Fetching more items');
+            resolve({});
+          });
+        };
+
+
+        table.addEventListener('px-swipe-start', function (e) {
+          var openedRow = table.rows.filter(function (row) {
+            return row.underlayOpened;
+          });
+          if (openedRow && openedRow[0]) {
+            openedRow[0].resetPosition();
+          }
+        });
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>

@@ -6149,7 +6149,7 @@ a {
 /*================================= Split View ================================*/
 .l-container--splitview {
   background: white;
-  min-height: 75vh;
+  min-height: 50vh;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -6177,9 +6177,9 @@ a {
   -webkit-order: 1;
       -ms-flex-order: 1;
           order: 1;
-  -webkit-flex: 1 1 200px;
-      -ms-flex: 1 1 200px;
-          flex: 1 1 200px;
+  -webkit-flex: 1 1 var(--l-splitview-secondary-content-width, 200px);
+      -ms-flex: 1 1 var(--l-splitview-secondary-content-width, 200px);
+          flex: 1 1 var(--l-splitview-secondary-content-width, 200px);
   -webkit-align-self: auto;
       -ms-flex-item-align: auto;
           align-self: auto;
@@ -6193,15 +6193,21 @@ a {
   @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
     .l-container__secondary-content.is-active {
       display: block; } }
+  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+    .l-container__secondary-content {
+      display: block; } }
+  @media screen and (min-width: 85.3333333333rem) {
+    .l-container__secondary-content {
+      display: block; } }
 
 .l-container__primary-content {
   position: relative;
   -webkit-order: 2;
       -ms-flex-order: 2;
           order: 2;
-  -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  -webkit-flex: 1 0 300px;
+      -ms-flex: 1 0 300px;
+          flex: 1 0 300px;
   -webkit-align-self: auto;
       -ms-flex-item-align: auto;
           align-self: auto;

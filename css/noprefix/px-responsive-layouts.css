@@ -5464,7 +5464,7 @@ a {
 /*================================= Split View ================================*/
 .l-container--splitview {
   background: white;
-  min-height: 75vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -5478,7 +5478,7 @@ a {
 .l-container__secondary-content {
   position: relative;
   order: 1;
-  flex: 1 1 200px;
+  flex: 1 1 var(--l-splitview-secondary-content-width, 200px);
   align-self: auto;
   transition: all 0.4s ease;
   transform: translateX(0);
@@ -5489,11 +5489,17 @@ a {
   @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
     .l-container__secondary-content.is-active {
       display: block; } }
+  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+    .l-container__secondary-content {
+      display: block; } }
+  @media screen and (min-width: 85.3333333333rem) {
+    .l-container__secondary-content {
+      display: block; } }
 
 .l-container__primary-content {
   position: relative;
   order: 2;
-  flex: 1 0 auto;
+  flex: 1 0 300px;
   align-self: auto;
   flex-grow: 2; }
   @media screen and (max-width: 21.3333333333rem) {

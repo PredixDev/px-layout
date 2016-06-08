@@ -39,6 +39,7 @@
         width: 100%;
         max-width: 100%;
       }
+
     </style>
   </head>
   <body class="debug-new-breakpoints scrollable box" unresolved>
@@ -97,7 +98,7 @@
             <a href="../px-drawer" target="_blank">px-drawer</a>
           </li>
         </ol>
-             <!--
+        <!--
         <p>
           The following markup is a basic example of usage. Open in
           <a href="demo/template-basic.html" target="_blank">new window</a>
@@ -171,7 +172,6 @@
           Sample code for layout patterns.
         </p>
 
-
         <ol class="">
           <li>
             <a href="demo/template-drawer-layout.html" target="_blank">Drawer Layout - Template</a>
@@ -207,9 +207,7 @@
             <template is="dom-repeat" items="{{examples}}">
               <li>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
-                <p>
-
-                </p>
+                <p></p>
               </li>
             </template>
           </ol>
@@ -222,17 +220,19 @@
               href: 'template-basic.html',
               title: 'Basic Layout'
             }, {
-            {
               href: 'template-vanilla-seed-layout.html',
               title: 'Vanilla Seed Layout'
             }, {
               href: 'template-dashboard.html',
               title: 'Dashboard Seed Layout'
+           
+            }, {
+              href: 'template-splitview.html',
+              title: 'Splitview Layout'
             }, {
               href: 'template-login.html',
               title: 'Login'
-            },
-            {
+            }, {
               href: 'template-cards.html',
               title: 'Grid to List'
             }, {
@@ -244,16 +244,13 @@
             }, {
               href: 'template-content-mini-sidebar.html',
               title: 'Context Mini Sidebar'
-            },
-            {
+            }, {
               href: 'template-content-sidebar.html',
               title: 'Context Static Sidebar'
-            },
-            {
+            }, {
               href: 'template-google-example.html',
               title: 'Google Example'
-            },
-            {
+            }, {
               href: 'template-detail.html',
               title: 'Full Detail'
             }, {
