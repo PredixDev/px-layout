@@ -69,7 +69,7 @@ By default the `px-drawer` is aligned to the left.
     <article id="container" class="drawer-layout flex flex--stretch">
       <content id="drawerContainer" select="px-drawer"></content>
       <section id="contentContainer" class="drawer-layout__content has-navbar">
-        <content select=":not(px-drawer)"></content>
+        <content id="content" select=":not(px-drawer)"></content>
       </section>
     </article>
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>

@@ -7,10 +7,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="demo.css">
-    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-responsive-layouts.html">
     <script src="demo.js"></script>
+    <style media="screen">
+      px-card{
+        flex: 1 0 200px;
+      }
+    </style>
   </head>
   <body unresolved class="responsive-demo viewport">
     <template id="app" is="dom-bind">
@@ -23,11 +30,13 @@
           </px-navbar>
         </px-header>
         <div class="has-navbar u-mt" content>
+        <div class="flex flex--wrap">
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
               <p>{{item.body}}</p>
             </px-card>
           </template>
+        </div>
         </div>
         <px-footer></px-footer>
       </px-header-layout>

@@ -11,6 +11,10 @@
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-responsive-layouts.html">
     <style media="screen">
+    px-card{
+      flex: 1 0 200px;
+      margin: .5rem;
+    }
 
     </style>
   </head>
@@ -36,11 +40,13 @@
         </px-navbar>
         <div class="u-m" content>
 
-          <template is="dom-repeat" items="{{cards}}">
-            <px-card icon="{{item.icon}}" header-text="{{item.title}}">
-              <p>{{item.body}}</p>
-            </px-card>
-          </template>
+          <div class="flex flex--wrap">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
         </div>
       </px-drawer-layout>
     </template>
@@ -65,7 +71,7 @@
         app.toggleDrawer = function(){
           document.getElementById('layout').drawer.toggle()
         };
-        app.cards = createDemoCards(100);
+        app.cards = createDemoCards(5);
       });
     </script>
   </body>
