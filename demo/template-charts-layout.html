@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-drawer-layout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../px-layout.html">
+    <style media="screen"></style>
+  </head>
+  <body unresolved class="responsive-demo">
+    <template id="app" is="dom-bind">
+      <px-drawer-layout id="layout">
+        <px-drawer fixed>
+          <div style="height: 100%; overflow: auto;">
+            <p>
+              You can close me with the
+              <code>ESC</code>
+              key.
+            </p>
+          </div>
+        </px-drawer>
+        <px-navbar shadow>
+          <div left>
+            <button class="navbar__button" drawer-toggle>
+              <i class="fa fa-lg fa-bars"></i>
+            </button>
+          </div>
+          <div title>
+            px-drawer-layout
+          </div>
+        </px-navbar>
+        <div class="u-m" content>
+          <px-card header-text="Time Series Bar Chart">
+            <div class="chart-example">
+              <px-chart type="bar">
+                <px-chart-series-bar id="fan-vibration-cruise" units="Hz">
+                  <iron-ajax handle-as="json" url="/bower_components/px-demo-data/demo-data/aviation/fan-vibration-cruise.json"></iron-ajax>
+                </px-chart-series-bar>
+                <px-chart-series-bar id="core-vibe-rear-cruise" units="Hz">
+                  <iron-ajax handle-as="json" url="/bower_components/px-demo-data/demo-data/aviation/core-vibe-rear-cruise.json"></iron-ajax>
+                </px-chart-series-bar>
+              </px-chart>
+            </div>
+          </px-card>
+          <template is="dom-repeat" items="{{cards}}">
+            <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+              <p>{{item.body}}</p>
+            </px-card>
+          </template>
+        </div>
+      </px-drawer-layout>
+    </template>
+    <script type="text/javascript">
+      var app;
+      function createDemoCards(count) {
+        var i = 0,
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
+              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        _out = [];
+        for (; i < count; i++) {
+          _out.push({
+            title: 'Card ' + i,
+            body: lorem
+          });
+        }
+        return _out;
+      }
+      document.addEventListener('WebComponentsReady', function () {
+        app = document.getElementById('app');
+        app.toggleDrawer = function () {
+          document.getElementById('layout').drawer.toggle()
+        };
+        app.cards = createDemoCards(100);
+      });
+    </script>
+  </body>
+</html>
