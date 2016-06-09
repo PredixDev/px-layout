@@ -1,21 +1,22 @@
 <link rel="import" href="../polymer/polymer.html">
-<!-- Forked from iron-media-query -->
+
 <!--
 
-**Forked from iron-media-query**
+*Forked from iron-media-query*
 
 `px-media-query` can be used to data bind to a CSS media query.
 
-The `query` property is a bare CSS media query.
-
-The  `queryName` property is the name of the CSS media query.
-
-The `query-matches` property is a boolean representing whether the page matches that media query.
+* The `query` property is a bare CSS media query.
+* The  `query-name` property is the name of the CSS media query.
+* The `query-matches` property is a boolean representing whether the page matches that media query.
 
 Example:
-    <px-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></px-media-query>
 
-@demo demo/index.html
+```
+<px-media-query query="(min-width: 600px)" query-matches="{{queryMatches}}"></px-media-query>
+```
+
+@demo demo/demo-px-media-query.html
 @element px-media-query
 -->
 <dom-module id="px-media-query">
@@ -116,7 +117,7 @@ Example:
     },
     queryHandler: function (mq) {
       //console.log('queryHandler', mq.media, 'matches', mq.matches);
-      this.fire('media-query-change', mq);
+      this.fire('px-media-query-change', mq);
       this._setQueryMatches(mq.matches);
 
     }

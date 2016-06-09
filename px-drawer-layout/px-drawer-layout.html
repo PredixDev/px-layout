@@ -45,7 +45,7 @@ By default the `px-drawer` is aligned to the left.
 
 
 @element px-drawer-layout
-@demo demo/template-drawer-layout.html
+@demo px-drawer-layout/demo.html
 @homepage index.html
 -->
 <dom-module id="px-drawer-layout">
@@ -55,20 +55,23 @@ By default the `px-drawer` is aligned to the left.
         display: block;
         position: relative;
       }
-      :host section {
-        flex: 1;
-      }
-      :host .drawer-layout__content {
+
+      :host .l-drawer-layout__content {
         position: relative;
         transition: all .3s;
       }
-      .drawer-layout__content:not(.drawer-layout__content--is-narrow) > ::content [drawer-toggle] {
+      .l-drawer-layout__content:not(.l-drawer-layout__content--is-narrow) > ::content [drawer-toggle] {
         display: none;
       }
+
+      .l-drawer-layout__content:not(.l-drawer-layout__content--is-narrow) > ::content .navbar--fixed {
+        left: 256px;
+      }
+
     </style>
-    <article id="container" class="drawer-layout flex flex--stretch">
+    <article id="container" class="l-drawer-layout">
       <content id="drawerContainer" select="px-drawer"></content>
-      <section id="contentContainer" class="drawer-layout__content has-navbar">
+      <section id="contentContainer" class="l-drawer-layout__content has-navbar">
         <content id="content" select=":not(px-drawer)"></content>
       </section>
     </article>

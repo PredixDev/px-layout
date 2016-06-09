@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "A px mobile web component.",
   "keywords": [
-    "px",
-    "px-mobile"
-  ],
+		"px",
+		"px-mobile"
+	],
   "license": "ISC",
   "author": "Jonnie Spratley",
   "scripts": {

@@ -1,5 +1,3 @@
-
-
 <script type="text/javascript">
   /**
    * `pxLayoutBehavior` handles the behavior of the layout.
@@ -41,6 +39,18 @@
         return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
       }
     },
+    /**
+    * A reference to the px-navbar element (if it exists)
+    * @property navbar
+    */
+    get navbar() {
+      if (this.$.content) {
+        var n = Polymer.dom(this.$.content).getDistributedNodes()[0];
+        if (n && n.$.navbar) {
+          return n;
+        }
+      }
+    },
     listeners: {
       'tap': '_tapHandler',
       'px-drawer-layout-reset': 'resetLayout'
@@ -48,6 +58,9 @@
     observers: ['resetLayout(narrow, isAttached)'],
     created: function () {},
     attached: function () {},
+    ready: function () {
+
+    },
     detached: function () {},
     /**
      * Handle when a tap event occurs, when if the element as a `drawer-toggle` attribute
@@ -74,15 +87,14 @@
         }
         var drawerWidth = this.drawer.getWidth();
         var contentContainer = this.$.contentContainer;
-
         if (this.narrow) {
           drawer.opened = drawer.persistent = false;
-          contentContainer.classList.add('drawer-layout__content--is-narrow');
+          contentContainer.classList.add('l-drawer-layout__content--is-narrow');
           contentContainer.style.marginLeft = '';
           contentContainer.style.marginRight = '';
         } else {
           drawer.opened = drawer.persistent = true;
-          contentContainer.classList.remove('drawer-layout__content--is-narrow', drawerWidth);
+          contentContainer.classList.remove('l-drawer-layout__content--is-narrow', drawerWidth);
           if (drawer.position == 'right') {
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = drawerWidth + 'px';
@@ -100,7 +112,6 @@
      * @event px-media-query
      */
     _onQueryMatchesChanged: function (event) {
-      console.warn('queryMatches', event.detail.value);
       this.fire('px-media-query', event.detail.value);
       this._setNarrow(event.detail.value);
     },

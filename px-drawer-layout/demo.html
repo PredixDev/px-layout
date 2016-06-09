@@ -24,7 +24,7 @@
             </p>
           </div>
         </px-drawer>
-        <px-navbar shadow >
+        <px-navbar shadow auto-hide fixed>
           <div left>
             <button class="navbar__button"  drawer-toggle>
               <i class="fa fa-lg fa-bars"></i>
@@ -34,7 +34,7 @@
             px-drawer-layout
           </div>
         </px-navbar>
-        <div class="u-m" content>
+        <div class="u-m">
 
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}">
@@ -65,8 +65,9 @@
         app.toggleDrawer = function(){
           document.getElementById('layout').drawer.toggle()
         };
-        app.cards = createDemoCards(100);
+        app.cards = createDemoCards(50);
       });
     </script>
+      <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
 </html>
