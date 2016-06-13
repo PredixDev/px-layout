@@ -3,22 +3,22 @@
   "description": "A responsive layout component.",
   "main": "px-layout.html",
   "authors": [
-    "Jonnie Spratley"
-  ],
+		"Jonnie Spratley"
+	],
   "license": "GE",
   "keywords": [
-    "px",
-    "px-mobile"
-  ],
+		"px",
+		"px-mobile"
+	],
   "moduleType": [],
   "homepage": "",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
   "devDependencies": {
     "px-sample-cards": "latest",
     "px-card": "latest",
@@ -27,11 +27,9 @@
     "px-mobile-design": "https://github.com/PredixDev/px-mobile-design.git",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.2.3",
     "px-demo-helpers": "https://github.com/PredixDev/px-demo-helpers.git",
-    "px-partials": "https://github.com/PredixDev/px-partials.git",
-    "px-navbar": "https://github.com/PredixDev/px-navbar.git",
-    "px-table-view": "https://github.com/PredixDev/px-table-view.git",
+
     "px-page": "https://github.com/PredixDev/px-page.git",
-    "px-drawer": "https://github.com/PredixDev/px-drawer.git",
+
     "px-colors-design": "https://github.com/PredixDev/px-colors-design.git#^0.2.15",
     "px-widths-responsive-design": "https://github.com/PredixDev/px-widths-responsive-design.git#^0.3.7",
     "inuit-responsive-settings": "^0.1.5",
@@ -41,6 +39,10 @@
     "px-simple-horizontal-bar-chart": "~0.4.6"
   },
   "dependencies": {
+    "px-partials": "latest",
+    "px-navbar": "latest",
+    "px-table-view": "latest",
+    "px-drawer": "latest",
     "px-library-design": "^0.2.0",
     "hammerjs": "^2.0.8",
     "fastclick": "^1.0.6"
