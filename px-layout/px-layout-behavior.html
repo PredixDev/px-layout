@@ -31,8 +31,9 @@
       }
     },
     /**
-    * A reference to the px-drawer element.
+    * A reference to the px-drawer element. (if it exists)
     * @property drawer
+    * return Element
     */
     get drawer() {
       if (this.$.drawerContainer) {
@@ -40,8 +41,9 @@
       }
     },
     /**
-    * A reference to the px-navbar element (if it exists)
+    * A reference to the px-navbar element. (if it exists)
     * @property navbar
+    * return Element
     */
     get navbar() {
       if (this.$.content) {
@@ -56,12 +58,6 @@
       'px-drawer-layout-reset': 'resetLayout'
     },
     observers: ['resetLayout(narrow, isAttached)'],
-    created: function () {},
-    attached: function () {},
-    ready: function () {
-
-    },
-    detached: function () {},
     /**
      * Handle when a tap event occurs, when if the element as a `drawer-toggle` attribute
      ( toggle the drawer.
@@ -74,7 +70,7 @@
     },
     /**
      * Handle resetting the layout and either hiding or revealing the drawer.
-     * @event px-drawer-reset
+     * @event px-layout-reset
      */
     resetLayout: function () {
       this.debounce('_resetLayout', function () {

@@ -3,9 +3,8 @@
 <link rel="import" href="../px-layout/px-layout-behavior.html">
 <link rel="import" href="../px-media-query.html">
 <!--
-The `px-header-layout` is a responsive layout that is used to display a brand header and/or navbar.
+The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
 When the viewport is less than the `responsiveWidth` the brand header will be hidden.
-
 
 Usage:
 
@@ -29,27 +28,8 @@ Usage with `px-navbar`:
 </px-header-layout>
 ```
 
-
-
-Usage with `px-drawer-layout`:
-
-```
-<px-drawer-layout>
-	<px-drawer>
-		drawer-content
-	</px-drawer>
-	<px-header-layout>
-		<px-header>
-			<px-navbar>
-				<div title>App name</div>
-			</px-navbar>
-		</px-header>
-			main content
-	</px-header-layout>
-</px-drawer-layout>
-```
 @element px-header-layout
-@demo demo/template-header-layout.html
+@demo demo.html
 @homepage index.html
 -->
 <dom-module id="px-header-layout">
@@ -78,17 +58,7 @@ Usage with `px-drawer-layout`:
       behaviors: [
         Polymer.IronResizableBehavior, pxLayoutBehavior
       ],
-      properties: {
-        title: {
-          type: String
-        }
-      },
-      attached: function () {
-        console.log(this.tagName, 'attached');
-        this.drawer = this.queryEffectiveChildren('px-drawer');
-      },
-      detached: function () {
-        console.log(this.tagName, 'detached');
+      attached: function(){
       }
     });
   </script>
