@@ -2,10 +2,14 @@
 <dom-module id="px-layout-item">
   <template>
     <style>
-    :host{
-      display:block;
-      }</style>
-    <content select="*"></content>
+      :host {
+        display: block;
+      }
+
+    </style>
+    <div>
+      <content select="*"></content>
+    </div>
   </template>
   <script>
     Polymer({
@@ -15,18 +19,17 @@
           type: String
         }
       },
-      created: function(){
+      created: function () {
         //console.log(this.tagName, 'created');
       },
-      ready: function(){
-        //console.log(this.tagName, 'ready');
-        //this.toggleClass('layout__item')
+      ready: function () {
+        //console.log(this.tagName, 'ready'); this.toggleClass('layout__item')
       },
-      attached: function(){
-      //  console.log(this.tagName, 'attached');
+      attached: function () {
+        //  console.log(this.tagName, 'attached');
       },
-      detached: function(){
-      //  console.log(this.tagName, 'detached');
+      detached: function () {
+        //  console.log(this.tagName, 'detached');
       }
     });
   </script>

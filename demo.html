@@ -11,7 +11,7 @@
     <script src="../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-    
+
     <link rel="import" href="../px-card/px-card.html">
     <link rel="import" href="px-responsive-layouts.html">
     <script type="text/javascript">
@@ -29,6 +29,15 @@
         text-align: center;
         padding: 1rem;
       }
+      .responsive-demo div {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.28);
+    
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.5rem;
+}
       .scrollable {
         height: 100%;
         overflow: auto;
@@ -174,10 +183,10 @@
 
         <ol class="">
           <li>
-            <a href="demo/template-drawer-layout.html" target="_blank">Drawer Layout - Template</a>
+            <a href="px-drawer-layout/demo.html" target="_blank">Drawer Layout - Template</a>
           </li>
           <li>
-            <a href="demo/template-header-layout.html" target="_blank">Header Layout - Template</a>
+            <a href="px-header-layout/demo.html" target="_blank">Header Layout - Template</a>
           </li>
           <li>
             <a href="demo/template-full.html" target="_blank">Full - Template</a>
@@ -549,11 +558,11 @@
           <demo-snippet>
             <template id="">
               <template id="queryExample" is="dom-bind">
-                <px-media-query id="xs" query="(max-width: 31rem)" query-matches="{{isXs}}" full>This is content</px-media-query>
-                <px-media-query id="sm" query="(min-width: 22rem) and (max-width: 49rem)" query-matches="{{isSm}}" full></px-media-query>
-                <px-media-query id="md" query="(min-width: 51.2rem) and (max-width: 68.2rem)" full query-matches="{{isMd}}"></px-media-query>
-                <px-media-query id="lg" query="(min-width: 1024px)" query-matches="{{isLg}}"></px-media-query>
-                <px-media-query id="xl" query="(min-width: 1200px)" query-matches="{{isXl}}"></px-media-query>
+                <px-media-query id="xs" query="xs" query-matches="{{isXs}}" full>This is content</px-media-query>
+                <px-media-query id="sm" query="sm" query-matches="{{isSm}}" full></px-media-query>
+                <px-media-query id="md" query="md" query-matches="{{isMd}}"></px-media-query>
+                <px-media-query id="lg" query="lg" query-matches="{{isLg}}"></px-media-query>
+                <px-media-query id="xl" query="xl" query-matches="{{isXl}}"></px-media-query>
                 <template is="dom-if" if="{{isXs}">
                   <p>Query Matches xs -
                     <code>{{isXs}}</code>

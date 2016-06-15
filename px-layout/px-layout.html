@@ -76,7 +76,7 @@ Code Here
         <div class="l-container">
           <!-- primary-sidebar -->
           <aside class="l-primary-sidebar">
-            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" side$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
+            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" align$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
               <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
             </px-drawer>
           </aside>
@@ -95,7 +95,7 @@ Code Here
             </section>
             <!-- secondary-sidebar -->
             <aside class="l-container__secondary-sidebar">
-              <px-drawer id="secondarySidebar" side="right" theme="dark">
+              <px-drawer id="secondarySidebar" align="right" theme="dark">
                 <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar']"></content>
               </px-drawer>
             </aside>
@@ -137,12 +137,14 @@ Code Here
           value: {
             primarySidebar: {
               open: false,
+              side: 'left',
               theme: 'dark',
               //reveal: 'push',
               type: 'temporary'
             },
             secondarySidebar: {
               theme: 'dark',
+              side: 'right',
               type: 'temporary'
             }
           }

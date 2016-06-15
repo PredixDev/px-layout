@@ -3,16 +3,26 @@
 <link rel="import" href="../px-layout/px-layout-behavior.html">
 <link rel="import" href="../px-media-query.html">
 <!--
+## Overview
+The `px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
 
-`px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
 When the viewport width is smaller than `responsiveWidth`, this element changes to mobile layout where the drawer will be stacked on top of the main content.
+
 Any element with the `drawer-toggle` attribute will make the drawer will slide in/out to hide/reveal the main content when tapped.
+
+
+
+### Usage
+Import the element.
+
+```
+<link rel="import" href="../px-responsive-layouts/px-responsive-layouts.html"/>
+```
 
 By default the `px-drawer` is aligned to the left.
 
-### Basic Usage
-
 ```
+
 <px-drawer-layout>
   <px-drawer>
     drawer content
@@ -22,6 +32,10 @@ By default the `px-drawer` is aligned to the left.
   </div>
 </px-drawer-layout>
 ```
+
+If an element inside the `content` attribute with the `drawer-toggle` attribute will trigger the `toggle` method on the `px-drawer` element, when a touch happens.
+
+
 
 ### Usage with `px-header-layout`:
 

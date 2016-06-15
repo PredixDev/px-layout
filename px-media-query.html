@@ -23,103 +23,107 @@ Example:
     :host {
       display: block;
     }
+
   </style>
   <template>
     px-media-query
   </template>
   <script>
-  Polymer({
-    is: 'px-media-query',
-    properties: {
-      /**
+    Polymer({
+      is: 'px-media-query',
+      properties: {
+        /**
        * The Boolean return value of the media query.
        */
-      queryMatches: {
-        type: Boolean,
-        value: false,
-        readOnly: true,
-        notify: true
-      },
-      /**
+        queryMatches: {
+          type: Boolean,
+          value: false,
+          readOnly: true,
+          notify: true
+        },
+        /**
        * The CSS media query to evaluate.
        */
-      query: {
-        type: String,
-        observer: 'queryChanged'
-      },
-      /**
+        query: {
+          type: String,
+          observer: 'queryChanged'
+        },
+        /**
        * If true, the query attribute is assumed to be a complete media query
        * string rather than a single media feature.
        */
-      full: {
-        type: Boolean,
-        value: false
-      },
-      /**
+        full: {
+          type: Boolean,
+          value: false
+        },
+        /**
        * @type {function(MediaQueryList)}
        */
-      _boundMQHandler: {
-        value: function () {
-          return this.queryHandler.bind(this);
-        }
-      },
-      /**
+        _boundMQHandler: {
+          value: function () {
+            return this.queryHandler.bind(this);
+          }
+        },
+        /**
        * @type {MediaQueryList}
        */
-      _mq: {
-        value: null
-      },
-      _namedQueries: {
-        type: Object,
-        value: {
-          xs: '320px',
-          sm: '480px',
-          md: '768px',
-          lg: '1024px',
-          xl: '1200px'
+        _mq: {
+          value: null
+        },
+        _namedQueries: {
+          type: Object,
+          value: {
+            xs: '(max-width: 21.33rem)',
+            sm: '(min-width: 22rem) and (max-width: 49.06rem)',
+            md: '(min-width: 51.2rem) and (max-width: 68.2rem)',
+            lg: '(min-width: 68.26rem) and (max-width: 80rem)',
+            xl: '(min-width: 85.33rem)'
+          }
         }
+      },
+      attached: function () {
+        //  console.log(this.tagName, 'attached');
+        this.style.display = 'none';
+        this.queryChanged();
+      },
+      detached: function () {
+        //console.log(this.tagName, 'detached');
+        this._remove();
+      },
+      _add: function () {
+        if (this._mq) {
+          this._mq.addListener(this._boundMQHandler);
+        }
+      },
+      _remove: function () {
+        if (this._mq) {
+          this._mq.removeListener(this._boundMQHandler);
+        }
+        this._mq = null;
+      },
+      queryChanged: function () {
+        this._remove();
+        var query = this.query;
+        //console.log('queryChanged', query);
+        if(this._namedQueries[query]){
+          query = this._namedQueries[query];
+        }
+        if (!query) {
+          return;
+        }
+        if (!this.full && query[0] !== '(') {
+          query = '(' + query + ')';
+        }
+        this._mq = window.matchMedia(query);
+        this._add();
+        this.queryHandler(this._mq);
+    
+      },
+      queryHandler: function (mq) {
+        //console.log('queryHandler', mq.media, 'matches', mq.matches);
+        this.fire('px-media-query-change', mq);
+        this._setQueryMatches(mq.matches);
       }
-    },
-    attached: function () {
-    //  console.log(this.tagName, 'attached');
-      this.style.display = 'none';
-      this.queryChanged();
-    },
-    detached: function () {
-      //console.log(this.tagName, 'detached');
-      this._remove();
-    },
-    _add: function () {
-      if (this._mq) {
-        this._mq.addListener(this._boundMQHandler);
-      }
-    },
-    _remove: function () {
-      if (this._mq) {
-        this._mq.removeListener(this._boundMQHandler);
-      }
-      this._mq = null;
-    },
-    queryChanged: function () {
-      this._remove();
-      var query = this.query;
-      //console.log('queryChanged', query);
-      if (!query) {
-        return;
-      }
-      if (!this.full && query[0] !== '(') {
-        query = '(' + query + ')';
-      }
-      this._mq = window.matchMedia(query);
-      this._add();
-      this.queryHandler(this._mq);
-    },
-    queryHandler: function (mq) {
-      //console.log('queryHandler', mq.media, 'matches', mq.matches);
-      this.fire('px-media-query-change', mq);
-      this._setQueryMatches(mq.matches);
-
-    }
-  });
+    });
   </script>
 </dom-module>

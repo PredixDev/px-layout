@@ -11,46 +11,58 @@
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-sample-cards/widgets-card.html">
-      <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html" />
+    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html"/>
     <link rel="import" href="../../px-table-view/px-table-view.html">
   </head>
   <body unresolved>
     <template id="app" is="dom-bind">
-      <style media="screen">
+      <style is="custom-styles">
         px-card {
           flex: 1 0 275px;
           min-width: 275px;
         }
+        :root {
+          }
 
+        .sidebar {
+          --px-table-row: {
+            border-bottom: none;
+          }
+        }
 
       </style>
-      <px-layout id="layout0">
-        <!-- TODO: Header -->
-        <px-header subtitle="Dashboard Template"></px-header>
+      <px-header-layout id="layout0">
+
+
+
+
         <!-- TODO: Primary Sidebar -->
-        <div class="primary-sidebar">
-          <px-table-view modifier="small">
+        <px-drawer  swipe-open swipe-close>
+          <px-table-view modifier="small" class="sidebar">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
           </px-table-view>
-        </div>
-
+        </px-drawer>
 
         <!-- TODO: Primary Content -->
         <div class="primary-content">
-          <px-navbar title="Dashboard" shadow>
-            <div left>
-              <button class="navbar__button" onclick="document.getElementById('layout0').toggle('primarySidebar');">
-                <i class="fa fa-lg fa-navicon"></i>
-              </button>
-            </div>
-            <div right>
-              <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
-                <i class="fa fa-lg fa-ellipsis-v"></i>
-              </button>
-            </div>
-          </px-navbar>
+          <!-- TODO: Header -->
+          <px-header subtitle="Dashboard Template">
+            <px-navbar title="Dashboard" shadow >
+              <div left>
+                <button class="navbar__button" drawer-toggle>
+                  <i class="fa fa-lg fa-navicon"></i>
+                </button>
+              </div>
+              <div right>
+                <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
+                  <i class="fa fa-lg fa-ellipsis-v"></i>
+                </button>
+              </div>
+            </px-navbar>
+          </px-header>
+
 
           <section class="has-navbar l-full-height scrollable">
 
@@ -71,18 +83,17 @@
               </px-table-view>
             </div>
 
-
-
             <!-- TODO: Cards -->
 
             <div class="flex flex--wrap">
               <px-card header-text="Visitors" class="u-m">
-                <px-simple-line-chart id="myLineChart"
-                        width="auto"
-                        height="250"
-                        min="0"
-                        max="4"
-                        line-data="[
+                <px-simple-line-chart
+                  id="myLineChart"
+                  width="auto"
+                  height="250"
+                  min="0"
+                  max="4"
+                  line-data="[
                         [1397102460000,1.99],
                         [1397139660000,1.92],
                         [1397177400000,1.97],
@@ -102,16 +113,11 @@
                         [1397753040000,1.83],
                         [1397772540000,1.93]
                         ]"
-                        threshold="1.234567" >
-                </px-simple-line-chart>
+                  threshold="1.234567"></px-simple-line-chart>
               </px-card>
 
               <px-card header-text="Browsers" class="u-m">
-                <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto"
-                  height="250"
-                  chart-data="[250,100,76,25]"
-                  legend-labels='["Chrome", "Safari", "Firefox", "IE 9+" ]' colors='["#029bde","#99399b","#e23838", "#f88303"]'>
-                </px-simple-horizontal-bar-chart>
+                <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[250,100,76,25]" legend-labels='["Chrome", "Safari", "Firefox", "IE 9+" ]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
               </px-card>
 
             </div>
@@ -129,25 +135,18 @@
               This is actions
             </p>
           </px-action-sheet>
-          <px-drawer id="actionsheet1"  align="bottom" theme="dark">
+          <px-drawer id="actionsheet1" align="bottom" theme="dark">
             <p>
               This is actions
             </p>
           </px-drawer>
 
-
         </div>
-
-
 
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
-      </px-layout>
+      </px-header-layout>
     </template>
-
-
-
-
 
     <script type="text/javascript">
 

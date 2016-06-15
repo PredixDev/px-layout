@@ -6,7 +6,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
-    <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
+
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../px-responsive-layouts.html">
     <link rel="import" href="../../px-card/px-card.html">
@@ -16,11 +16,16 @@
     <template id="app" is="dom-bind">
       <px-layout id="layout0">
         <px-header subtitle="Full Template"></px-header>
-        <px-layout-item role="secondary-sidebar">
+
+        <px-layout-item role="primary-sidebar">
           <p class="u-m">
-            This is content inside the secondary sidebar.
+            This is content inside the primary sidebar.
+          </p>
+          <p>
+            You can close me with the <code>ESC</code> key.
           </p>
         </px-layout-item>
+
         <px-layout-item role="primary-content">
           <px-navbar title="View Title">
             <div left>
@@ -29,7 +34,7 @@
               </button>
             </div>
             <div right>
-              <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+              <button class="navbar__button">
                 <i class="fa fa-lg fa-ellipsis-v"></i>
               </button>
             </div>
