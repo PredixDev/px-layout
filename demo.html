@@ -30,13 +30,7 @@
         padding: 1rem;
       }
       .responsive-demo div {
-    text-align: center;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.28);
-    
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1.5rem;
+
 }
       .scrollable {
         height: 100%;
@@ -671,11 +665,22 @@
                   This is content inside the primary sidebar.
                 </p>
               </div>
+              <div class="secondary-sidebar">
+                <p class="u-m">
+                  This is content inside the secondary sidebar.
+                </p>
+              </div>
               <px-layout-item role="primary-content">
                 <px-navbar title="Primary Content">
-                  <div class="navbar__right">
+
+                  <div left>
                     <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
                       <i class="fa fa-lg fa-bars"></i>
+                    </button>
+                  </div>
+                  <div right>
+                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+                      <i class="fa fa-lg fa-ellipsis-v"></i>
                     </button>
                   </div>
                 </px-navbar>
@@ -722,7 +727,18 @@
             <px-layout id="layout2" type="splitview">
               <px-header subtitle="Split View Layout"></px-header>
               <px-layout-item role="secondary-content">
-                <px-navbar></px-navbar>
+                <px-navbar>
+                  <div left>
+                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
+                      <i class="fa fa-lg fa-flip-horizontal fa-expand"></i>
+                    </button>
+                  </div>
+                  <div right>
+                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
+                      <i class="fa fa-lg fa-ellipsis-v"></i>
+                    </button>
+                  </div>
+                </px-navbar>
                 <div class="has-navbar scrollable">
                   <ul class="list-ui u-mt++">
                     <li>&nbsp;</li>
@@ -742,7 +758,23 @@
                 </div>
               </px-layout-item>
               <px-layout-item role="primary-content">
-                <px-navbar></px-navbar>
+                <px-navbar>
+                  <div left>
+                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
+                      <i class="fa fa-lg fa-flip-horizontal fa-expand"></i>
+                    </button>
+                  </div>
+                  <div right>
+                    <div class="flex flex--center">
+                      <button class="navbar__button">
+                        <i class="fa fa-lg fa-angle-up"></i>
+                      </button>
+                      <button class="navbar__button">
+                        <i class="fa fa-lg fa-angle-down"></i>
+                      </button>
+                    </div>
+                  </div>
+                </px-navbar>
                 <div class="has-navbar"></div>
               </px-layout-item>
             </px-layout>

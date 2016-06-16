@@ -21,6 +21,14 @@
           color: #fff;
         }
         :root{
+          .iron-selected{
+            background-color: blue;
+          }
+
+          --px-table-row: {
+            border-bottom: 1px solid #ccc;
+          }
+
 
           --px-table-row-underlay: {
             right: 0;
@@ -37,8 +45,8 @@
         <px-header subtitle="Split View Template"></px-header>
 
         <!-- TODO: Primary Sidebar -->
-        <px-layout-item class="primary-sidebar">
-          <px-table-view modifier="tiny">
+        <px-layout-item role="primary-sidebar">
+          <px-table-view modifier="tiny" selected-class="table-row--selected">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
@@ -46,7 +54,7 @@
         </px-layout-item>
 
         <!-- TODO: Secondary Content -->
-        <div class="secondary-content">
+        <px-layout-item role="secondary-content">
           <px-navbar title="" shadow>
             <div left>
               <button class="navbar__button" onclick="document.getElementById('layout2').toggle('primarySidebar');">
@@ -77,27 +85,42 @@
             </px-table-view>
           </section>
 
-        </div>
-        <!-- TODO: Primary Content -->
-        <div class="primary-content">
-          <px-navbar title="{{selected.title}}" shadow></px-navbar>
-          <section class="has-navbar">
+        </px-layout-item>
 
+
+        <!-- TODO: Primary Content -->
+        <px-layout-item role="primary-content">
+          <px-navbar shadow>
+            <div left>
+              <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
+                <i class="fa fa-lg fa-flip-horizontal fa-expand"></i>
+              </button>
+            </div>
+            <div right>
+              <div class="flex flex--center">
+                <button class="navbar__button">
+                  <i class="fa fa-lg fa-angle-up"></i>
+                </button>
+                <button class="navbar__button">
+                  <i class="fa fa-lg fa-angle-down"></i>
+                </button>
+              </div>
+            </div>
+          </px-navbar>
+          <section class="has-navbar">
             <px-card>
-              <px-title-bar title="Alert Information"></px-title-bar>
-              <px-table-view modifier="bare">
-                <px-table-row label2="ID" title="{{selected.id}}"></px-table-row>
+              <px-title-bar title$="{{selected.title}}"></px-title-bar>
+
+              <px-table-view modifier="bare" hidden$="{{!selected}}">
+                <px-table-row label2="id" title="{{selected.id}}"></px-table-row>
+                <px-table-row label2="title" title="{{selected.title}}"></px-table-row>
+                <px-table-row label2="body" title="{{selected.body}}"></px-table-row>
               </px-table-view>
-              <dl class="" hidden$="{{!selected}}">
-                <dt>ID:</dt><dd>{{selected.id}}</dd>
-                <dt>Title:</dt><dd>{{selected.title}}</dd>
-                <dt>Body:</dt><dd>{{selected.body}}</dd>
-              </dl>
-              <px-title-bar title="Asset Information"></px-title-bar>
 
             </px-card>
           </section>
-        </div>
+        </px-layout-item>
+
         <!-- TODO: Footer -->
         <px-footer ></px-footer>
       </px-layout>
@@ -108,7 +131,7 @@
         app = document.getElementById('app');
         app.navItems = navItems;
         app.selected = null;
-        app.items = createDemoItems(50);
+        app.items = createDemoItems(5);
 
 
         function log(type, args){
@@ -168,6 +191,7 @@
         table.loadingFunction = function handleLoad() {
           return new Promise(function (resolve, reject) {
             console.log('Fetching more items');
+            app.push('items', createDemoItems(5));
             resolve({});
           });
         };
