@@ -6,16 +6,18 @@
 The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
 When the viewport is less than the `responsiveWidth` the brand header will be hidden.
 
-Usage:
+### Usage:
 
 ```
 <px-header-layout>
-  <px-header title="My App">
-  </px-header>
-    main content
+  <px-header></px-header>
+  <section content>
+    Content
+  </section>
 </px-header-layout>
 ```
-Usage with `px-navbar`:
+
+### Usage with `px-navbar`:
 
 ```
 <px-header-layout>
@@ -28,29 +30,43 @@ Usage with `px-navbar`:
 </px-header-layout>
 ```
 
+### Styling
+The following custom properties are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--px-header-layout` | Mixin applied to component | {}
+
 @element px-header-layout
 @demo demo.html
 @homepage index.html
 -->
 <dom-module id="px-header-layout">
-  <template>
+  <template strip-whitespace>
     <style>
       :host {
         display: block;
         position: relative;
       }
-
+      :host .l-header-layout{
+        @apply(--px-header-layout);
+      }
+      :host .l-header-layout__content{
+        position: relative;
+      }
     </style>
-
-    <article class="flex flex--col flex--stretch">
-      <content id="headerContainer" select="px-header"></content>
-      <section id="contentContainer" class="flex flex--col flex--stretch">
-        <content select=":not(px-header)"></content>
+    <article class="l-header-layout flex flex--col flex--stretch">
+      <div class="l-header-layout__header" hidden$="{{narrow}}">
+        <content id="headerContent" select="px-header"></content>
+      </div>
+      <section id="contentContainer" class="l-header-layout__content">
+        <content id="content" select="[content]"></content>
       </section>
+      <div class="l-header-layout__footer" hidden$="{{narrow}}">
+        <content id="footerContent" select="px-footer"></content>
+      </div>
     </article>
-
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
-
   </template>
   <script>
     Polymer({
@@ -58,7 +74,12 @@ Usage with `px-navbar`:
       behaviors: [
         Polymer.IronResizableBehavior, pxLayoutBehavior
       ],
-      attached: function(){
+      attached: function () {
+        var hasNavbar = Polymer.dom(this.$.content).querySelector('px-navbar');
+        var distributed = Polymer.dom(this.$.content).getDistributedNodes()[0];
+
+        console.log('hasNavbar', hasNavbar, distributed);
+
       }
     });
   </script>

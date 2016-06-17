@@ -112,8 +112,8 @@ The `px-media-query` element can be used to data bind to a CSS media query.
       queryChanged: function () {
         this._remove();
         var query = this.query;
-        if (this._namedQueries[query]) {
-          query = this._namedQueries[query];
+        if (this.namedQueries[query]) {
+          query = this.namedQueries[query];
         }
         if (!query) {
           return;
