@@ -104,6 +104,9 @@ retina =
 .flex {
   display: flex; }
 
+.inline--flex {
+  display: inline-flex; }
+
 .flex--row {
   flex-direction: row; }
 
@@ -5736,12 +5739,17 @@ pre {
 html {
   box-sizing: border-box; }
 
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+/**
+ * the html and :host declarations cannot be adjacent to one other
+ * or cssmin will combine them into a single rule, breaking in
+ * Safari and Firefox.
+ */
 :host {
   /*! Comment to prevent cssmin munging this rule with html above and borking Safari */
   box-sizing: border-box; }
-
-*, *:before, *:after {
-  box-sizing: inherit; }
 
 /*  Root */
 /** Debug Media Query Colors */
@@ -5756,9 +5764,6 @@ html {
 
 .u-bg--gray10 {
   background-color: #242326; }
-
-demo-snippet .demo {
-  background-color: #efeff4 !important; }
 
 .responsive-utilities .is-visible {
   color: #059748;

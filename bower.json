@@ -1,7 +1,7 @@
 {
   "name": "px-responsive-layouts",
-  "description": "A responsive layout component.",
-  "main": "px-layout.html",
+  "description": "A set responsive layout elements.",
+  "main": "px-responsive-layouts.html",
   "authors": [
     "Jonnie Spratley"
   ],
@@ -19,6 +19,15 @@
     "test",
     "tests"
   ],
+  "dependencies": {
+    "polymer": "~1.5.0",
+    "px-partials": "master",
+    "px-navbar": "master",
+    "px-drawer": "master",
+    "px-library-design": "^0.2.0",
+    "hammerjs": "^2.0.8",
+    "fastclick": "^1.0.6"
+  },
   "devDependencies": {
     "px-sample-cards": "latest",
     "px-card": "latest",
@@ -34,16 +43,8 @@
     "px-widths-design": "https://github.com/PredixDev/px-widths-design.git#^0.3.7",
     "px-flexbox-design": "https://github.com/PredixDev/px-flexbox-design.git#^0.3.7",
     "px-simple-bar-chart": "~1.3.7",
-    "px-simple-horizontal-bar-chart": "~0.4.6"
-  },
-  "dependencies": {
-    "px-partials": "master",
-    "px-navbar": "master",
     "px-table-view": "master",
-    "px-drawer": "master",
-    "px-library-design": "^0.2.0",
-    "hammerjs": "^2.0.8",
-    "fastclick": "^1.0.6"
+    "px-simple-horizontal-bar-chart": "~0.4.6"
   },
   "resolutions": {
     "px-library-design": "master",
@@ -58,6 +59,7 @@
     "web-animations-js": "^2.2.0",
     "polymer-font-awesome": "~0.1.0",
     "px-simple-bar-chart": "~1.3.7",
-    "px-navbar": "master"
+    "px-navbar": "master",
+    "px-drawer": "master"
   }
 }

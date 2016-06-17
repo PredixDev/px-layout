@@ -6,13 +6,8 @@
 $oldColors: ( lap: lightblue, retina: blue, lap-and-up: green, portable: crimson, desk: purple, palm: gold );
 
 ///Define new breakpoint colors;
-$newColors: ( xs: #fa62af, sm: #4abde6, md: #a3e572, lg:#ffab40,
-xl: #eddd46 );
+$newColors: ( xs: #fa62af, sm: #4abde6, md: #a3e572, lg:#ffab40, xl: #eddd46 );
 $selector: 'responsive-demo';
-
-
-
-
 @mixin createDebugColors($colors) {
 	 @each $alias, $color in $colors{
 		.color-#{$alias} {
@@ -42,9 +37,6 @@ $selector: 'responsive-demo';
 	background-color: $gray10;
 }
 
-demo-snippet .demo {
-	background-color: $gray2 !important;
-}
 
 .responsive-utilities {
 	.is-visible {
@@ -57,7 +49,6 @@ demo-snippet .demo {
 		background-color: $gray2 !important;
 	}
 
-
 	td {
 		text-align: center;
 	}
@@ -65,7 +56,6 @@ demo-snippet .demo {
 	span {
 		padding: 5px;
 	}
-
 
 }
 
@@ -81,12 +71,8 @@ demo-snippet .demo {
 	color : #999;
 	border: 1px solid #ddd;
 }
-
-
-
 @include createDebugColors($newColors);
 @include createDebugColors($oldColors);
-
 
 .debug-new-breakpoints {
 	//@include createDebugBreakpointColors($newColors);
@@ -112,45 +98,37 @@ demo-snippet .demo {
 	}
 }
 
-.debug{
-
+.debug {
 	.responsive-demo *:nth-child(odd) {
-	  background-color: rgba(0, 0, 0, 0.2);
+		background-color: rgba(0, 0, 0, 0.2);
 	}
-	.responsive-demo *:nth-child(even){
-	  background-color: rgba(0, 0, 0, 0.4);
+
+	.responsive-demo *:nth-child(even) {
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 }
 
-
-
-
-
-
-
-
-
 // TODO: Login demo
-.login{
-	height: 100vh;
-	display: flex;
-	align-items: center;
+.login {
+	height         : 100vh;
+	display        : flex;
+	align-items    : center;
 	justify-content: center;
-	align-content: center;
+	align-content  : center;
 
-	h1{
-		color: #fff;
+	h1 {
+		color      : #fff;
 		font-weight: normal;
-		margin-top: 0;
+		margin-top : 0;
 	}
 
 	.box {
-		flex: 1;
+		flex      : 1;
 		background: transparent;
-		border: none;
+		border    : none;
 		text-align: center;
-		max-width: 425px;
-		overflow: hidden;
+		max-width : 425px;
+		overflow  : hidden;
 	}
 
 }
