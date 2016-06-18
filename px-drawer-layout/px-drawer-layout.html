@@ -85,7 +85,6 @@ Custom property | Description | Default
       :host .l-drawer-layout__content {
         position: relative;
         transition: all 0.3s;
-        margin-left: 256px;
         @apply(--px-drawer-layout-content);
       }
       .l-drawer-layout__content:not(.is-narrow) > ::content [drawer-toggle] {
@@ -96,12 +95,12 @@ Custom property | Description | Default
       }
 
     </style>
-    <article id="container" class="l-drawer-layout">
+    <div id="container" class="l-drawer-layout">
       <content id="drawerContainer" select="px-drawer"></content>
-      <section id="contentContainer" class="l-drawer-layout__content">
+      <div id="contentContainer" class="l-drawer-layout__content">
         <content id="content" select=":not(px-drawer)"></content>
-      </section>
-    </article>
+      </div>
+    </div>
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
@@ -141,9 +140,7 @@ Custom property | Description | Default
       * return Element
       */
       get drawer() {
-        if (this.$.drawerContainer) {
-          return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
-        }
+        return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
       },
       /**
       * A reference to the px-navbar element. (if it exists)
@@ -186,7 +183,7 @@ Custom property | Description | Default
           }
           var drawer = this.drawer;
           if (!drawer) {
-          //  console.warn('no drawer');
+            console.warn('no drawer');
             return;
           }
           var drawerWidth = this.drawer.getWidth();
