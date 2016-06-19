@@ -82,22 +82,22 @@ Custom property | Description | Default
         @apply(--px-drawer-layout);
       }
 
-      :host .l-drawer-layout__content {
+      :host .l-drawer-layout__container {
         position: relative;
         transition: all 0.3s;
         @apply(--px-drawer-layout-content);
       }
-      .l-drawer-layout__content:not(.is-narrow) > ::content [drawer-toggle] {
+      .l-drawer-layout__container:not(.is-narrow) > ::content [drawer-toggle] {
         display: none;
       }
-      .l-drawer-layout__content:not(.is-narrow) > ::content .navbar--fixed {
+      .l-drawer-layout__container:not(.is-narrow) > ::content .navbar--fixed {
         left: 256px;
       }
 
     </style>
     <div id="container" class="l-drawer-layout">
       <content id="drawerContainer" select="px-drawer"></content>
-      <div id="contentContainer" class="l-drawer-layout__content">
+      <div id="contentContainer" class="l-drawer-layout__container">
         <content id="content" select=":not(px-drawer)"></content>
       </div>
     </div>
@@ -130,8 +130,8 @@ Custom property | Description | Default
         */
         narrow: {
           type: Boolean,
-          readOnly: true,
-          notify: true
+          reflectToAttribute: true,
+          readOnly: true
         }
       },
       /**
@@ -155,6 +155,7 @@ Custom property | Description | Default
           }
         }
       },
+
       listeners: {
         'tap': '_tapHandler',
         'px-drawer-layout-reset': 'resetLayout'
@@ -176,27 +177,32 @@ Custom property | Description | Default
        */
       resetLayout: function () {
         this.debounce('_resetLayout', function () {
-          console.warn('resetLayout');
+
+          console.log('debounce.resetLayout');
           if (!this.isAttached) {
             console.warn('notAttached');
             return;
           }
           var drawer = this.drawer;
-          if (!drawer) {
-            console.warn('no drawer');
-            return;
-          }
           var drawerWidth = this.drawer.getWidth();
           var contentContainer = this.$.contentContainer;
+
+          console.warn('DrawerWidth', drawerWidth, drawer.getComputedStyleValue('width'));
+          this.toggleClass('is-narrow', this.narrow);
+
           if (this.narrow) {
+            console.warn('narrow', this.narrow);
+
             drawer.opened = drawer.persistent = false;
-            contentContainer.classList.add('l-drawer-layout__content--is-narrow');
+            contentContainer.classList.add('is-narrow');
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = '';
           } else {
+
             drawer.opened = drawer.persistent = true;
-            contentContainer.classList.remove('l-drawer-layout__content--is-narrow', drawerWidth);
-            if (drawer.position == 'right') {
+            contentContainer.classList.remove('is-narrow');
+
+            if (drawer.align == 'right') {
               contentContainer.style.marginLeft = '';
               contentContainer.style.marginRight = drawerWidth + 'px';
             } else {
@@ -205,7 +211,6 @@ Custom property | Description | Default
             }
           }
           this.notifyResize();
-          this.fire('px-layout-reset');
         });
       },
       /**
@@ -220,6 +225,13 @@ Custom property | Description | Default
         return forceNarrow
           ? '(min-width: 0px)'
           : '(max-width: ' + responsiveWidth + ')';
+      },
+      _resizeHandler: function () {
+        console.log('_resizeHandler');
+        this.debounce('_resetLayout', function () {
+          this.resetLayout();
+        }, 1);
+
       }
     });
   </script>
