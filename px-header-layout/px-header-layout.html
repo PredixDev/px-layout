@@ -1,6 +1,5 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../px-layout/px-layout-behavior.html">
 <link rel="import" href="../px-media-query.html">
 <!--
 The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
@@ -47,39 +46,121 @@ Custom property | Description | Default
       :host {
         display: block;
         position: relative;
+        @apply(--px-header-layout);
       }
       :host .l-header-layout{
         @apply(--px-header-layout);
       }
       :host .l-header-layout__content{
         position: relative;
+        @apply(--px-header-layout-content);
       }
     </style>
-    <article class="l-header-layout flex flex--col flex--stretch">
+    <div class="l-header-layout flex flex--col flex--stretch">
       <div class="l-header-layout__header" hidden$="{{narrow}}">
         <content id="headerContent" select="px-header"></content>
       </div>
-      <section id="contentContainer" class="l-header-layout__content">
-        <content id="content" select="[content]"></content>
-      </section>
+      <div id="contentContainer" class="l-header-layout__content">
+        <content id="content" select=":not(px-header):not(px-footer)"></content>
+      </div>
       <div class="l-header-layout__footer" hidden$="{{narrow}}">
         <content id="footerContent" select="px-footer"></content>
       </div>
-    </article>
+    </div>
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
     Polymer({
       is: 'px-header-layout',
       behaviors: [
-        Polymer.IronResizableBehavior, pxLayoutBehavior
+        Polymer.IronResizableBehavior
       ],
+      properties: {
+        /**
+       * If true, ignore `responsiveWidth` setting and force the narrow layout.
+       */
+        forceNarrow: {
+          type: Boolean,
+          value: false
+        },
+        /**
+       * If the viewport's width is smaller than this value, the panel will change to narrow
+       * layout. In this mode the drawer will be closed.
+       */
+        responsiveWidth: {
+          type: String,
+          value: '425px'
+        },
+        /**
+        * Returns true if it is in narrow layout. This is useful if you need to show/hide
+        * elements based on the layout.
+        */
+        narrow: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
+        }
+      },
+      /**
+      * A reference to the px-header element. (if it exists)
+      * @property header
+      * return Element
+      */
+      get header() {
+        return Polymer.dom(this.$.headerContent).getDistributedNodes()[0];
+      },
+      /**
+      * A reference to the px-footer element. (if it exists)
+      * @property footer
+      * return Element
+      */
+      get footer() {
+        return Polymer.dom(this.$.footerContent).getDistributedNodes()[0];
+      },
+      /**
+      * A reference to the px-navbar element. (if it exists)
+      * @property navbar
+      * return Element
+      */
+      get navbar() {
+        if (this.$.content) {
+          var n = Polymer.dom(this.$.content).getDistributedNodes()[0];
+          if (n && n.$.navbar) {
+            return n;
+          }
+        }
+      },
+      listeners: {
+      //  'tap': '_tapHandler'
+      },
+      observers: ['resetLayout(narrow, isAttached)'],
       attached: function () {
-        var hasNavbar = Polymer.dom(this.$.content).querySelector('px-navbar');
-        var distributed = Polymer.dom(this.$.content).getDistributedNodes()[0];
-
-        console.log('hasNavbar', hasNavbar, distributed);
-
+      },
+      /**
+       * Handle resetting the layout and either hiding or revealing the drawer.
+       * @event px-layout-reset
+       */
+      resetLayout: function () {
+        this.debounce('_resetLayout', function () {
+          if (!this.isAttached) {
+            console.warn('notAttached');
+            return;
+          }
+          this.notifyResize();
+        });
+      },
+      /**
+       * Handle when the media query changes.
+       * @event px-media-query
+       */
+      _onQueryMatchesChanged: function (event) {
+        this.fire('px-media-query', event.detail.value);
+        this._setNarrow(event.detail.value);
+      },
+      _computeMediaQuery: function (forceNarrow, responsiveWidth) {
+        return forceNarrow
+          ? '(min-width: 0px)'
+          : '(max-width: ' + responsiveWidth + ')';
       }
     });
   </script>

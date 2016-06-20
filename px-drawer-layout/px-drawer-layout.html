@@ -2,7 +2,6 @@
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
 <link rel="import" href="../../px-drawer/px-drawer.html">
-<link rel="import" href="../px-layout/px-layout-behavior.html">
 
 <!--
 ## Overview
@@ -177,21 +176,18 @@ Custom property | Description | Default
        */
       resetLayout: function () {
         this.debounce('_resetLayout', function () {
-
-          console.log('debounce.resetLayout');
           if (!this.isAttached) {
             console.warn('notAttached');
             return;
           }
+
           var drawer = this.drawer;
           var drawerWidth = this.drawer.getWidth();
           var contentContainer = this.$.contentContainer;
 
-          console.warn('DrawerWidth', drawerWidth, drawer.getComputedStyleValue('width'));
           this.toggleClass('is-narrow', this.narrow);
 
           if (this.narrow) {
-            console.warn('narrow', this.narrow);
 
             drawer.opened = drawer.persistent = false;
             contentContainer.classList.add('is-narrow');
@@ -227,7 +223,6 @@ Custom property | Description | Default
           : '(max-width: ' + responsiveWidth + ')';
       },
       _resizeHandler: function () {
-        console.log('_resizeHandler');
         this.debounce('_resetLayout', function () {
           this.resetLayout();
         }, 1);

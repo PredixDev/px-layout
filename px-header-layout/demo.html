@@ -14,44 +14,40 @@
     <link rel="import" href="../px-responsive-layouts.html">
     <script src="../demo/demo.js"></script>
     <style media="screen">
-      px-card{
+      px-card {
         flex: 1 0 250px;
-
       }
     </style>
   </head>
   <body unresolved class="responsive-demo viewport">
     <template id="app" is="dom-bind">
       <px-header-layout id="layout">
-        <px-header>
-          <px-navbar auto-hide shadow>
-            <div title>
-              px-header-layout
-            </div>
-          </px-navbar>
-        </px-header>
-        <div class="has-navbar u-mt" content>
-        <div class="flex flex--wrap">
-          <template is="dom-repeat" items="{{cards}}">
-            <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-m-">
-              <p>{{item.body}}</p>
-            </px-card>
-          </template>
-        </div>
+        <px-header class="u-m"></px-header>
+        <px-navbar auto-hide shadow>
+          <div title>
+            px-header-layout
+          </div>
+        </px-navbar>
+        <div class="has-navbar">
+          <div class="flex flex--wrap flex--spaced">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
         </div>
         <px-footer></px-footer>
       </px-header-layout>
     </template>
     <script type="text/javascript">
       var app;
-
-
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
-        app.toggleDrawer = function(){
+        app.toggleDrawer = function () {
           document.getElementById('layout').drawer.toggle()
         };
-        app.cards = createDemoCards(10);
+        app.cards = createDemoCards(30);
       });
     </script>
   </body>

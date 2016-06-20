@@ -2,30 +2,149 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../web-component-tester/browser.js"></script>
     <link rel="import" href="px-responsive-layouts.html">
+    <style media="screen">
+    html, body{
+      background: #fff !important
+    }
+      .demo{
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
 
-    <px-layout id="fixture">
-      <px-header></px-header>
-      <px-drawer></px-drawer>
-      <px-footer></px-footer>
-    </px-layout>
+    <h3>Web Component Test : Fixture for px-responsive-layouts</h3>
+
+    <div class="demo">
+      <h2>px-layout specs</h2>
+      <px-layout id="fixture" type="splitview">
+        <px-layout-item primary-sidebar>
+          <p>
+            Primary Sidebar
+          </p>
+        </px-layout-item>
+        <px-layout-item secondary-sidebar>
+          <p>
+            Secondary Sidebar
+          </p>
+        </px-layout-item>
+        <px-layout-item primary-content>
+          <px-navbar title="Primary Content">
+            <div left>
+              <button class="navbar__button" id="btn1" type="button" primary-sidebar-toggle>T</button>
+            </div>
+            <div right>
+              <button class="navbar__button" id="btn2" type="button" secondary-sidebar-toggle>T</button>
+            </div>
+          </px-navbar>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </px-layout-item>
+        <px-layout-item secondary-content>
+          <px-navbar title="Secondary Content">
+            <div left>
+              <button class="navbar__button" id="btn3" type="button" primary-content-toggle>Toggle</button>
+            </div>
+            <div right>
+              <button class="navbar__button" id="btn4" type="button" secondary-sidebar-toggle>Toggle</button>
+            </div>
+          </px-navbar>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </px-layout-item>
+      </px-layout>
+    </div>
+
+
+    <div class="demo">
+      <h2>px-drawer-layout specs</h2>
+      <px-drawer-layout id="px_layout_1">
+        <px-drawer  overlay></px-drawer>
+
+        <section content>
+          <px-navbar title="px-drawer-layout fixture">
+            <div left>
+              <button id="toggleButton1" type="button" drawer-toggle>Toggle Drawer</button>
+            </div>
+          </px-navbar>
+        </section>
+        <px-footer></px-footer>
+      </px-drawer-layout>
+    </div>
+
+
+    <div class="demo">
+      <h2>px-header-layout specs</h2>
+      <px-header-layout id="px_layout_2">
+        <px-header></px-header>
+        <section content>
+          <px-navbar title="px-header-layout fixture">
+            <div left>
+              <button id="toggleButton2" type="button" drawer-toggle>Toggle Drawer</button>
+            </div>
+          </px-navbar>
+        </section>
+        <px-footer></px-footer>
+      </px-header-layout>
+    </div>
+
 
     <script>
+
+
       suite('<px-layout>', function () {
         var element = document.getElementById('fixture');
         test('renders', function () {
           assert.ok(element);
         });
-        test('has reference to px-header', function () {
-          assert.ok(element.header);
+
+
+
+
+
+
+        suite('<px-drawer-layout>', function () {
+          var element = document.getElementById('px_layout_1');
+          test('renders', function () {
+            assert.ok(element);
+          });
+          test('has reference to px-drawer', function () {
+            assert.ok(element.drawer);
+          });
+
+          test('element is [drawer-toggle] when tapped toggles px-drawer', function () {
+            assert.ok(element.drawer);
+          });
         });
-        test('has reference to px-footer', function () {
-          assert.ok(element.footer);
+
+
+        suite('<px-header-layout>', function () {
+          var element = document.getElementById('px_layout_2');
+
+          test('renders', function () {
+            assert.ok(element);
+          });
+
+          test('has reference to px-header', function () {
+            assert.ok(element.header);
+          });
+
+          test('has reference to px-footer', function () {
+            assert.ok(element.footer);
+          });
         });
+
+
       });
     </script>
   </body>

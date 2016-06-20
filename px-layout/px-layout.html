@@ -1,9 +1,8 @@
 <link rel="import" href="../../polymer/polymer.html"/>
-<link rel="import" href="../../px-partials/px-partials.html">
+<link rel="import" href="../../px-partials/px-header.html">
+<link rel="import" href="../../px-partials/px-footer.html">
 <link rel="import" href="../../px-navbar/px-navbar.html">
 <link rel="import" href="../../px-drawer/px-drawer.html">
-<link rel="import" href="../../px-theme/px-app.html">
-<link rel="import" href="../../px-theme/px-theme.html">
 
 <link rel="import" href="../px-media-query.html">
 <link rel="import" href="px-layout-item.html">
@@ -11,13 +10,10 @@
 <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css" media="screen" title="no title" charset="utf-8">
 <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
 -->
-
 <link rel="stylesheet" href="../css/px-responsive-layouts.css"/>
 <!--
 <link rel="stylesheet" href="../px-mobile-design/css/px-mobile-design.css">
 -->
-
-
 <!--
 The `px-layout` element aims to help Predix developers create responsive layouts.
 
@@ -68,55 +64,51 @@ Code Here
     </style>
     <div id="_layoutMain" class="flex flex--col">
       <!-- header -->
-      <div id="_layoutHeader" class="viewport l-header is-hidden@md-">
+      <div id="_layoutHeader" class=" l-header is-hidden@md-">
         <content id="headerContent" select="px-header"></content>
       </div>
-      <div id="_layoutViewport" class="viewport">
-
+      <div id="_layoutViewport" class="">
         <div class="l-container">
           <!-- primary-sidebar -->
-          <aside class="l-primary-sidebar">
-            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" align$="{{options.primarySidebar.side}}" theme$="{{options.primarySidebar.theme}}">
-              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar']"></content>
+          <div class="l-primary-sidebar">
+            <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" align$="{{options.primarySidebar.align}}">
+              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar'], [primary-sidebar]"></content>
             </px-drawer>
-          </aside>
+          </div>
           <div class="l-container__wrapper">
             <!-- Secondary Content -->
-            <section class="l-container__secondary-content">
-              <content id="secondaryContent" select=".secondary-content, [role='secondary-content']"></content>
-            </section>
+            <div class="l-container__secondary-content">
+              <content id="secondaryContent" select=".secondary-content, [role='secondary-content'], [secondary-content]"></content>
+            </div>
             <!-- Primary Content -->
-            <section class="l-container__primary-content">
-              <content id="primaryContent" select=".primary-content, [role='primary-content']"></content>
-            </section>
+            <div class="l-container__primary-content">
+              <content id="primaryContent" select=".primary-content, [role='primary-content'], [primary-content]"></content>
+            </div>
             <!-- Any Content Views / Pages -->
-            <section class="l-container__content">
-              <content id="contentContent" select=".content, [role='content']"></content>
-            </section>
+            <div class="l-container__content">
+              <content id="contentContent" select=".content, [role='content'], [content]"></content>
+            </div>
             <!-- secondary-sidebar -->
-            <aside class="l-container__secondary-sidebar">
-              <px-drawer id="secondarySidebar" align="right" theme="dark">
-                <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar']"></content>
+            <div class="l-container__secondary-sidebar">
+              <px-drawer id="secondarySidebar" align$="{{options.primarySidebar.align}}">
+                <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar'], [secondary-sidebar]"></content>
               </px-drawer>
-            </aside>
+            </div>
           </div>
-
         </div>
-
-
       </div>
-      <div id="_layoutFooter" class="viewport l-footer is-hidden@md-">
+      <div id="_layoutFooter" class=" l-footer is-hidden@md-">
         <content id="footerContent" select="px-footer"></content>
       </div>
     </div>
+    <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
     Polymer({
       is: 'px-layout',
       properties: {
-        //The layout type (full, progressive, splitview, offcanvas)
         /**
-         *
+         * The layout type (full, progressive, splitview, offcanvas)
          */
         type: {
           type: String,
@@ -137,42 +129,63 @@ Code Here
           value: {
             primarySidebar: {
               open: false,
-              side: 'left',
-              theme: 'dark',
-              //reveal: 'push',
+              align: 'left',
               type: 'temporary'
             },
             secondarySidebar: {
-              theme: 'dark',
-              side: 'right',
+              open: false,
+              align: 'right',
               type: 'temporary'
             }
           }
         },
+
         /**
-         *
-         */
-        breakpoints: {
-          type: Object,
-          value: {
-            xs: '(min-width: 330px)',
-            sm: '(min-width: 480px)',
-            md: '(min-width: 768px)',
-            lg: '(min-width: 992px)',
-            xl: '(min-width: 1200px)'
-          }
+       * If true, ignore `responsiveWidth` setting and force the narrow layout.
+       */
+        forceNarrow: {
+          type: Boolean,
+          value: false
+        },
+        /**
+       * If the viewport's width is smaller than this value, the panel will change to narrow
+       * layout. In this mode the drawer will be closed.
+       */
+        responsiveWidth: {
+          type: String,
+          value: '49.06rem'
+        },
+        /**
+        * Returns true if it is in narrow layout. This is useful if you need to show/hide
+        * elements based on the layout.
+        */
+        narrow: {
+          type: Boolean,
+          readOnly: true,
+          notify: true
         }
       },
+      listeners: {
+        'tap': '_tapHandler'
+      },
+      _tapHandler: function (e) {
+        var target = Polymer.dom(e).localTarget;
 
+
+
+        if (target && target.hasAttribute('secondary-sidebar-toggle') || target && target.parentElement.hasAttribute('secondary-sidebar-toggle')) {
+          this.$.secondarySidebar.toggle();
+        }
+        if (target && target.hasAttribute('primary-sidebar-toggle') || target && target.parentElement.hasAttribute('primary-sidebar-toggle')) {
+          this.$.primarySidebar.toggle();
+        }
+
+      },
       attached: function () {
-
         this.toggleClass('l-container--' + this.type, true, this.$$('.l-container__wrapper'));
         var hasNavbar = this.$$('.navbar');
-        if (hasNavbar) {
-
-        }
+        if (hasNavbar) {}
         this.$.primarySidebar.addEventListener('toggle', this._sidebarToggleHandler.bind(this));
-
         if (this.type === 'progressive') {
           this.$.primarySidebar.type = 'static';
           this.$.secondarySidebar.type = 'static';
@@ -195,20 +208,18 @@ Code Here
        * Handle listening for the sidebar to toggle and push the content.
        */
       _sidebarToggleHandler: function (e) {
-      //  console.warn('toggle', e);
         var sidebarWidth = e.target.offsetWidth;
         if (e.target.open) {
           sidebarWidth = e.target.offsetWidth;
         } else {
           sidebarWidth = 0;
         }
-        if(this.options.primarySidebar.reveal === 'push'){
+        if (this.options.primarySidebar.reveal === 'push') {
           this.transform('translateX(' + sidebarWidth + 'px)', this.$$('.l-container__wrapper'));
         }
       },
       toggleContent: function (name) {
-        //toggle primary / secondary content is-active / is-passive
-      //  console.log("toggle content");
+        //toggle primary / secondary content is-active / is-passive  console.log("toggle content");
       },
       _setElementOptions: function (options) {
         var self = this;
@@ -219,17 +230,28 @@ Code Here
         // TODO: Beter way to set options on component;
         if (options) {
           for (var k in options) {
-          //  console.log("find element", k, 'set =>', options[k]);
+            //  console.log("find element", k, 'set =>', options[k]);
             el = self.$[k];
             value = options[k];
-            //el[k] = value;
-          //  console.log('setting', k, options[k], value);
+            //el[k] = value;  console.log('setting', k, options[k], value);
           }
         }
       },
       _handleOptions: function (newVal, oldVal) {
         this._setElementOptions(this.options);
-      //  console.log(this.tagName, 'options', newVal);
+      },
+      /**
+     * Handle when the media query changes.
+     * @event px-media-query
+     */
+      _onQueryMatchesChanged: function (event) {
+        this.fire('px-media-query', event.detail.value);
+        this._setNarrow(event.detail.value);
+      },
+      _computeMediaQuery: function (forceNarrow, responsiveWidth) {
+        return forceNarrow
+          ? '(min-width: 0px)'
+          : '(max-width: ' + responsiveWidth + ')';
       }
     });
   </script>
