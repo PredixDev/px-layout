@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Layout Demo</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../px-demo-helpers/px-demo-helpers.html"/>
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html"/>
+    <link rel="import" href="../px-responsive-layouts.html">
+    <script src="./demo.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('WebComponentsReady', function (e) {
+        createToc('toc');
+      });
+    </script>
+    <style media="screen">
+      body,
+      html {
+        background-color: #eee !important;
+      }
+      .u-1\/6:before {
+        content: 'u-1/6';
+      }
+      .responsive-demo .layout .u-1\/6:before {
+        content: "u-1/6";
+      }
+      .responsive-demo .layout .u-2\/6:before {
+        content: "u-2/6";
+      }
+      .responsive-demo .layout .u-3\/6:before {
+        content: "u-3/6";
+      }
+      .responsive-demo .layout .u-4\/6:before {
+        content: "u-4/6";
+      }
+      .responsive-demo .layout .u-5\/6:before {
+        content: "u-5/6";
+      }
+      .responsive-demo .layout .u-1\/1:before {
+        content: "u-1/1";
+      }
+      .responsive-demo .layout .u-1\/2:before {
+        content: "u-1/2";
+      }
+      .responsive-demo .layout .u-1\/3:before {
+        content: "u-1/3";
+      }
+      .responsive-demo .layout .u-2\/3:before {
+        content: "u-2/3";
+      }
+      .responsive-demo .layout .u-1\/4:before {
+        content: "u-1/4";
+      }
+      .responsive-demo .layout .u-2\/4:before {
+        content: "u-2/4";
+      }
+      .responsive-demo .layout .u-3\/4:before {
+        content: "u-3/4";
+      }
+      .responsive-demo .flex > * {
+        margin: 4px;
+      }
+      .responsive-demo .flex > *,
+      .responsive-demo .layout > * {
+        padding: 1rem;
+        text-align: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+      .responsive-demo .flex > *:nth-child(odd),
+      .responsive-demo .layout > *:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+      .responsive-demo .flex > *:nth-child(even),
+      .responsive-demo .layout > *:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <div class="viewport u-p">
+      <h1 class="beta">
+        Layout
+        <code>.layout</code>
+      </h1>
+      <ol id="toc"></ol>
+      <p>
+        Note: The padding and margins are for demo purposes.
+      </p>
+
+      <div class="page-header">
+        <h2>Flex - Column - Reverse</h2>
+      </div>
+      <demo-snippet>
+        <template>
+          <div class="viewport responsive-demo">
+            <div class="flex flex--col flex--col--rev">
+              <div class="flex__item">1</div>
+              <div class="flex__item">2</div>
+              <div class="flex__item">3</div>
+            </div>
+          </div>
+        </template>
+
+      </demo-snippet>
+      <h2>Unit Sizing
+        <code>.u-*/*</code>
+      </h2>
+      <div class="u-mb debug">
+        <demo-snippet>
+          <template>
+            <div class="responsive-demo">
+              <div id="u-1/1" class="layout">
+                <div class="layout__item u-1/1"></div>
+              </div>
+            </div>
+            <div class="responsive-demo">
+              <div id="u-1/2" class="layout">
+                <div class="layout__item u-1/2"></div>
+                <div class="layout__item u-1/2"></div>
+              </div>
+            </div>
+            <div class="responsive-demo">
+              <div id="u-1/3" class="layout">
+                <div class="layout__item u-1/3"></div>
+                <div class="layout__item u-1/3"></div>
+                <div class="layout__item u-1/3"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div id="u-1/4" class="layout">
+                <div class="layout__item u-1/4"></div>
+                <div class="layout__item u-1/4"></div>
+                <div class="layout__item u-1/4"></div>
+                <div class="layout__item u-1/4"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div id="u-1/6" class="layout">
+                <div class="layout__item u-1/6"></div>
+                <div class="layout__item u-1/6"></div>
+                <div class="layout__item u-1/6"></div>
+                <div class="layout__item u-1/6"></div>
+                <div class="layout__item u-1/6"></div>
+                <div class="layout__item u-1/6"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div id="u-2/4" class="layout">
+                <div class="layout__item u-2/4"></div>
+                <div class="layout__item u-2/4"></div>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="responsive-demo">
+              <div id="u-2/6" class="layout">
+                <div class="layout__item u-2/6"></div>
+                <div class="layout__item u-2/6"></div>
+                <div class="layout__item u-2/6"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div id="content-sidebar" class="layout">
+                <div class="layout__item u-1/3"></div>
+                <div class="layout__item u-2/3"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div id="u-2/3" class="layout">
+                <div class="layout__item u-2/3"></div>
+                <div class="layout__item u-2/6"></div>
+              </div>
+            </div>
+            <br>
+            <div class="responsive-demo">
+              <div class="layout">
+                <div class="layout__item u-3/4"></div>
+                <div class="layout__item u-1/4"></div>
+              </div>
+            </div>
+          </template>
+        </demo-snippet>
+      </div>
+
+
+
+
+
+      <demo-snippet>
+        <template>
+          <template id="autoLayoutTemplate" is="dom-bind">
+            <div class="viewport responsive-demo">
+              <!-- TODO: xs -->
+              <div class="layout">
+                <template is="dom-repeat" items="{{widths}}">
+                  <div class$="layout__item {{item}}">{{item}}</div>
+                </template>
+              </div>
+              <!-- TODO: sm -->
+              <!-- TODO: md -->
+              <!-- TODO: lg -->
+              <!-- TODO: xl -->
+            </div>
+          </template>
+          <script type="text/javascript">
+            document.addEventListener('WebComponentsReady', function () {
+              var tmpl = document.getElementById('autoLayoutTemplate');
+              tmpl.widths = [
+                'u-1/1',
+                'u-1/2',
+                'u-1/3',
+                'u-1/4',
+                'u-2/4',
+                'u-3/4',
+                'u-1/6',
+                'u-2/6',
+                'u-3/6',
+                'u-4/6',
+                'u-5/6'
+              ];
+              tmpl.xs = ['u-1/1'];
+            });
+          </script>
+        </template>
+      </demo-snippet>
+
+      <br><br>
+      <h1>Try it out</h1>
+      <px-code-editor id="myEditor" layout="bottom" style="height: 500px;"></px-code-editor>
+    </div>
+  </body>
+</html>

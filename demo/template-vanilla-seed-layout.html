@@ -9,22 +9,23 @@
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html">
     <link rel="import" href="../px-responsive-layouts.html">
-
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <style is="custom-style">
-      px-card{
-        flex: 1 0 200px;
-        margin: .5rem;
-      }
+        px-card {
+          flex: 1 0 200px;
+          margin: 0.5rem;
+        }
         body,
         html {
           background: #efeff4;
         }
-
         :root {
           --px-navbar-color: #fff;
           --px-navbar-background-color: #0d5eb6;
@@ -32,18 +33,19 @@
         .navbar__button {
           color: #fff;
         }
-
+        .brand-spacer {
+          height: 56px;
+          border-bottom: 1px solid #3b3b3f;
+        }
       </style>
-      <px-drawer-layout id="layout" force-narrow>
-        <px-drawer fixed>
+      <px-drawer-layout id="layout">
+        <px-drawer fixed overlay>
+          <div class="brand-spacer flex flex--center flex--middle">
+            <px-brand wordmark size="135"></px-brand>
+          </div>
           <div style="height: 100%; overflow: auto;">
-            <div class="brand u-mt flex flex--center">
-
-            </div>
-            <p>
-              You can close me with the
-              <code>ESC</code>
-              key.
+            <p class="u-m">
+              Place your navigation here.
             </p>
           </div>
         </px-drawer>
@@ -53,7 +55,6 @@
               <button class="navbar__button" drawer-toggle>
                 <i class="fa fa-lg fa-bars"></i>
               </button>
-
               <span class="epsilon u-m">Vanilla Seed</span>
             </div>
           </div>
@@ -64,29 +65,24 @@
           </div>
         </px-navbar>
         <div class="u-ml u-mr flex flex--col flex--wrap" content>
-          <section class="box u-mb">
-            <h2>Predix Seed App</h2>
+          <px-card header-text="px-drawer-layout">
             <p>
-              Use the Seed App to develop your own industrial monitoring application.
+              The drawer layout component is responsive and can layout your content.
             </p>
-            <p>
-              For documentation on the seed app go to https://predix.ge.com/docs/?r=396874#z5YOiuHh
-            </p>
-          </section>
-
+            <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-responsive-layouts">
+              <px-icon icon="fa:fa-github"></px-icon>
+              Github Repo
+            </a>
+          </px-card>
           <div class="flex flex--wrap u-mb">
-            <px-card header-text="Browser Statistics" class=" u-mr">
+            <px-card header-text="Browser Statistics" class="">
               <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
             </px-card>
-
-            <px-card header-text="Mobile Device Statistics" class=" ">
+            <px-card header-text="Mobile Device Statistics" class="">
               <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
             </px-card>
-
           </div>
-
           <div class="flex flex--wrap">
-
             <template is="dom-repeat" items="{{cards}}">
               <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="flex__item">
                 <h1>Hello World</h1>
@@ -95,9 +91,7 @@
                   adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
                   esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-
                 <hr>
-
                 <h2>Title</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -106,7 +100,6 @@
                   <li>In voluptate velit esse cillum</li>
                   <li>In voluptate velit esse cillum</li>
                 </ul>
-
                 <blockquote>
                   irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 </blockquote>
@@ -121,7 +114,6 @@
     </template>
     <script type="text/javascript">
       var app;
-
       function createDemoCards(count) {
         var i = 0,
           lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +

@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
     <link rel="stylesheet" href="demo/demo.css">
-    <script src="../webcomponentsjs/webcomponents.js"></script>
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
-
+    <link rel="import" href="../px-theme/px-app.html">
+    <link rel="import" href="../px-partials/px-partials.html">
+    <link rel="import" href="../px-theme/px-theme.html">
     <link rel="import" href="../px-card/px-card.html">
     <link rel="import" href="px-responsive-layouts.html">
     <script type="text/javascript">
@@ -24,14 +25,13 @@
       body,
       html {
         overflow: auto !important;
+        background-color: #eee !important;
       }
       #flexbox .flex * {
         text-align: center;
         padding: 1rem;
       }
-      .responsive-demo div {
-
-}
+      .responsive-demo div {}
       .scrollable {
         height: 100%;
         overflow: auto;
@@ -42,23 +42,21 @@
         width: 100%;
         max-width: 100%;
       }
-
     </style>
   </head>
-  <body class="debug-new-breakpoints scrollable box" unresolved>
-    <!--
+  <body class="debug-new-breakpoints scrollable " unresolved>
 
-<px-header title="Predix UI" subtitle="Responsive Layouts"></px-header>
--->
     <!-- TODO: Laytout -->
-    <article class="viewport ">
+    <article class="viewport">
       <div class="u-mb">
         <h1 class="alpha">px-responsive-layouts</h1>
         <p>
           Includes 3 pre-defined layout wrapper components that enables you to create responsive Industrial Internet web apps.
         </p>
-        <device-layout-viewer device="all" src="./demo/template-dashboard.html"></device-layout-viewer>
+        <device-layout-viewer device="all" src="./demo/template-vanilla-seed-layout.html"></device-layout-viewer>
       </div>
+
+
       <!-- TODO: Usage -->
       <px-box-section id="usage" title="Usage">
         <p>
@@ -68,10 +66,9 @@
         <ol>
           <li>px-drawer-layout</li>
           <li>px-header-layout</li>
-          <li>px-layout</li>
         </ol>
 
-        <h3>Bundled components</h3>
+        <h3>Bundled Elements</h3>
         <ol class="">
           <li>
             <a href="../px-partials/index.html#px-button" target="_blank">px-button</a>
@@ -167,32 +164,12 @@
         -->
       </px-box-section>
 
-      <px-box-section id="patterns" title=" Patterns">
-        <p>
-          Sample code for layout patterns.
-        </p>
-
-        <ol class="">
-          <li>
-            <a href="px-drawer-layout/demo.html" target="_blank">Drawer Layout - Template</a>
-          </li>
-          <li>
-            <a href="px-header-layout/demo.html" target="_blank">Header Layout - Template</a>
-          </li>
-          <li>
-            <a href="demo/template-full.html" target="_blank">Full - Template</a>
-          </li>
-          <li>
-            <a href="demo/template-splitview.html" target="_blank">Split View - Template</a>
-          </li>
-        </ol>
-        <blockquote>A layout pattern is pattern that determines how your layout changes at different breakpoints.</blockquote>
-      </px-box-section>
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Templates">
           <p>
             The templates are a means to define, illustrate and share best practices in px-layout. Select a template and customize to suit your needs.
           </p>
+          <!--
           <ol class="">
             <li>Identify the layout pattern for your app</li>
             <li>Use the px-layout component</li>
@@ -200,6 +177,7 @@
             <li>Replace old markup with new markup</li>
           </ol>
           <h3>Examples</h3>
+        -->
           <ol class="">
             <template is="dom-repeat" items="{{examples}}">
               <li>
@@ -214,15 +192,27 @@
         document.addEventListener('WebComponentsReady', function () {
           document.getElementById('pxExamples').examples = [
             {
+              href: 'template-drawer-layout.html',
+              title: 'Drawer Layout'
+            },
+            {
+              href: 'template-drawer-header-layout.html',
+              title: 'Drawer Header Layout'
+            },
+            {
+              href: 'template-header-layout.html',
+              title: 'Header Layout'
+            },
+            {
               href: 'template-basic.html',
               title: 'Basic Layout'
-            }, {
+            },
+            {
               href: 'template-vanilla-seed-layout.html',
               title: 'Vanilla Seed Layout'
             }, {
               href: 'template-dashboard.html',
               title: 'Dashboard Seed Layout'
-
             }, {
               href: 'template-splitview.html',
               title: 'Splitview Layout'
@@ -260,651 +250,21 @@
           ];
         });
       </script>
-      <h2 class="beta">Docs</h2>
-      <template id="pxBreakpoints" is="dom-bind">
-        <px-box-section id="breakpoints" title="Breakpoints">
-          <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>
-          <p>For RWD (Responsive Web Design) the best practice is to:</p>
-          <ol>
-            <li>Design for your smallest viewport first.
-              <strong>(Mobile First)</strong>
-            </li>
-            <li>Expand the viewport until it looks like crap.</li>
-            <li>Insert a breakpoint.</li>
-            <li>Rinse and repeat.</li>
-          </ol>
-          <blockquote>
-            <p>This will force you to really identify what is the most important information on your web app.</p>
-          </blockquote>
-          <!-- TODO: New Breakpoints -->
-          <px-box-section id="new-breakpoints" title="1 - New Breakpoints">
-            <p>
-              The following new breakpoints enable you to use t-shirt sizing to target specific sizes, not devices.
-            </p>
-            <div class="u-m">
-              <ul class="list-bare flex flex--spaced text--center debug-colors">
-                <template is="dom-repeat" items="{{newBreakpoints}}">
-                  <li class="flex">
-                    <h4>
-                      <code>{{item.name}}</code>
-                    </h4>
-                    <i class$="{{item.icon}}"></i>
-                    <code>{{item.value}}</code>
-                  </li>
-                </template>
-              </ul>
-            </div>
-          </px-box-section>
-          <!-- TODO: Old Breakpoints
-          <px-box-section id="old-breakpoints" title="2 - Deprecated Breakpoints">
-            <p>
-              The following are the depricated breakpoints that use device names for the targets.
-            </p>
-            <div class="u-m">
-              <ul class="list-bare flex  u-mb flex--spaced text--center debug-colors">
-                <template is="dom-repeat" items="{{oldBreakpoints}}">
-                  <li>
-                    <h4>
-                      <code>{{item.name}}</code>
-                    </h4>
-                    <i class$="{{item.icon}}"></i>
-                    <code>{{item.value}}</code>
-                  </li>
-                </template>
-              </ul>
 
-            </div>
-          </px-box-section>
-          -->
-        </px-box-section>
-      </template>
-      <script type="text/javascript">
-        var newBreakpoints = [
-          {
-            name: 'xs',
-            value: '320px',
-            icon: 'fa fa-mobile fa-4x color-xs'
-          }, {
-            name: 'sm',
-            value: '480px',
-            icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
-          }, {
-            name: 'md',
-            value: '768px',
-            icon: 'fa fa-tablet fa-4x color-md'
-          }, {
-            name: 'lg',
-            value: '1024px',
-            icon: 'fa fa-tablet fa-rotate-90 fa-4x color-lg'
-          }, {
-            name: 'xl',
-            value: '1280px',
-            icon: 'fa fa-desktop fa-4x color-xl'
-          }
-        ];
-        var oldBreakpoints = [
-          {
-            name: 'palm',
-            value: '719px',
-            icon: 'fa fa-mobile fa-4x color-palm'
-          }, {
-            name: 'portable',
-            value: '1022px',
-            icon: 'fa fa-tablet fa-4x fa-rotate-90 color-portable'
-          }, {
-            name: 'lap',
-            value: '(720px >= 1022px)',
-            icon: 'fa fa-desktop fa-4x color-lap'
-          }, {
-            name: 'lap-and-up',
-            value: '720px',
-            icon: 'fa fa-desktop fa-4x color-lap-and-up'
-          }, {
-            name: 'desk',
-            value: '1024px',
-            icon: 'fa fa-desktop fa-4x color-desk'
-          }
-        ];
-        document.addEventListener('WebComponentsReady', function () {
-          document.getElementById('pxBreakpoints').oldBreakpoints = oldBreakpoints;
-          document.getElementById('pxBreakpoints').newBreakpoints = newBreakpoints;
-        });
-      </script>
-      <px-box-section id="responsive-utils" title="Responsive Utils">
+
+      <px-box-section id="docs" title="Documentation">
         <p>
-          Show/hide content depending on the width of the viewport
+          More documentation can be found below:
         </p>
-        <px-box-section id="utils-helpers" title="1 - Helper Classes">
-          <table class=" table table--small table-bordered table-striped responsive-utilities">
-            <thead>
-              <tr>
-                <th></th>
-                <th>
-                  Extra small
-                  <small>Portrait phones (&lt;34em)</small>
-                </th>
-                <th>
-                  Small
-                  <small>Landscape phones (≥34em)</small>
-                </th>
-                <th>
-                  Medium
-                  <small>Tablets (≥48em)</small>
-                </th>
-                <th>
-                  Large
-                  <small>Desktops (≥62em)</small>
-                </th>
-                <th>
-                  Extra large
-                  <small>Desktops (≥75em)</small>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@xs-</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@sm-</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@md-</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@lg-</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@xl-</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@xs+</code>
-                </th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@sm+</code>
-                </th>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@md+</code>
-                </th>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@lg+</code>
-                </th>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <code>.is-hidden@xl+</code>
-                </th>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-              </tr>
-            </tbody>
-          </table>
-        </px-box-section>
-        <!-- TODO: Visibility -->
-        <px-box-section id="utils-visibility" title="2 - Visibility Test">
-          <ul class="list-ui responsive-utilities-test visible-on">
-            <li class="is-hidden@sm+ visible">✔ Visible on extra small</li>
-            <li class="is-hidden@xs- not-visible">Extra small</li>
-            <li class="is-hidden@md+ visible">✔ Visible on small or narrower</li>
-            <li class="is-hidden@sm- not-visible">Small or narrower</li>
-            <li class="is-hidden@lg+ visible">✔ Visible on medium or narrower</li>
-            <li class="is-hidden@md- not-visible">Medium or narrower</li>
-            <li class="is-hidden@xl+ visible">✔ Visible on large or narrower</li>
-            <li class="is-hidden@lg- not-visible">Large or narrower</li>
-            <li class="is-hidden@xs- visible">✔ Visible on small or wider</li>
-            <li class="is-hidden@sm+ not-visible">Small or wider</li>
-            <li class="is-hidden@sm- visible">✔ Visible on medium or wider</li>
-            <li class="is-hidden@md+ not-visible">Medium or wider</li>
-            <li class="is-hidden@md- visible">✔ Visible on large or wider</li>
-            <li class="is-hidden@lg+ not-visible">Large or wider</li>
-            <li class="is-hidden@lg- visible">✔ Visible on extra large</li>
-            <li class="is-hidden@xl+ not-visible">Extra large</li>
-          </ul>
-        </px-box-section>
-        <!-- TODO: View Port -->
-        <px-box-section id="utils-viewport" title="3 - Viewport Test">
-          <ul class="list-ui responsive-utilities-test visible-on">
-            <li class="is-hidden@sm+ visible">✔ Your viewport is exactly extra small</li>
-            <li class="is-hidden@xs- not-visible">Your viewport is NOT exactly extra small</li>
-            <li class="is-hidden@xs- is-hidden@md+ visible">✔ Your viewport is exactly small</li>
-            <li class="hidden-sm-only not-visible">Your viewport is NOT exactly small</li>
-            <li class="is-hidden@sm- is-hidden@lg+ visible">✔ Your viewport is exactly medium</li>
-            <li class="hidden-md-only not-visible">Your viewport is NOT exactly medium</li>
-            <li class="is-hidden@md- is-hidden@xl+ visible">✔ Your viewport is exactly large</li>
-            <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
-            <li class="is-hidden@lg- visible">✔ Your viewport is exactly extra large</li>
-            <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
-          </ul>
-        </px-box-section>
-        <!-- TODO: Helpers -->
-        <px-box-section id="utils-components" title="4 - px-media-query">
-          <demo-snippet>
-            <template id="">
-              <template id="queryExample" is="dom-bind">
-                <px-media-query id="xs" query="xs" query-matches="{{isXs}}" full>This is content</px-media-query>
-                <px-media-query id="sm" query="sm" query-matches="{{isSm}}" full></px-media-query>
-                <px-media-query id="md" query="md" query-matches="{{isMd}}"></px-media-query>
-                <px-media-query id="lg" query="lg" query-matches="{{isLg}}"></px-media-query>
-                <px-media-query id="xl" query="xl" query-matches="{{isXl}}"></px-media-query>
-                <template is="dom-if" if="{{isXs}">
-                  <p>Query Matches xs -
-                    <code>{{isXs}}</code>
-                  </p>
-                </template>
-                <template is="dom-if" if="{{isSm}">
-                  <p>Query Matches sm
-                    <code>{{isSm}}</code>
-                  </p>
-                </template>
-                <template is="dom-if" if="{{isMd}">
-                  <p>Query Matches md
-                    <code>{{isMd}}</code>
-                  </p>
-                </template>
-                <template is="dom-if" if="{{isLg}">
-                  <p>Query Matches lg -
-                    <code>{{isLg}}</code>
-                  </p>
-                </p>
-              </template>
-              <template is="dom-if" if="{{isXl}">
-                <p>Query Matches xl -
-                  <code>{{isXl}}</code>
-                </p>
-              </p>
-            </template>
-          </template>
-        </template>
-      </demo-snippet>
-    </px-box-section>
-  </px-box-section>
-  <!-- TODO: Layout Templates -->
-  <px-box-section id="layout-templates" title="Layout Templates">
-    <!-- TODO: Full Layout -->
-    <px-box-section id="full-layout" title="1 - Full Layout">
-      <h2>
-        <code>.l-full</code>
-      </h2>
-      <div class="u-mb++">
-        <p>
-          <a href="demo/template-detail.html" target="_blank">View full demo</a>
-        </p>
-        <demo-snippet>
-          <template>
-            <div class="responsive-demo u-bg--gray9" style="">
-              <px-layout id="layout0">
-                <px-header subtitle="Full Detail Layout"></px-header>
-                <div class="secondary-sidebar">
-                  <p class="u-m">
-                    This is content inside the secondary sidebar.
-                  </p>
-                </div>
-                <div class="primary-content">
-                  <px-navbar title="Primary Content">
-                    <div class="navbar__left"></div>
-                    <div class="navbar__right">
-                      <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-                        <i class="fa fa-lg fa-ellipsis-v"></i>
-                      </button>
-                    </div>
-                  </px-navbar>
-                  <section class="has-navbar">
-                    <div class="u-mt--">
-                      <px-card header-text="Section">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </px-card>
-                      <px-card header-text="Section">
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                      </px-card>
-                    </div>
-                  </section>
-                </div>
-                <px-footer copywrite="&copy; 2016"></px-footer>
-              </px-layout>
-            </div>
-          </template>
-        </demo-snippet>
-      </div>
-    </px-box-section>
-    <!-- TODO: Offcanvas Layout -->
-    <px-box-section title="2 - Off Canvas Layout">
-      <h2>
-        <code>.l-offcanvas</code>
-      </h2>
-      <div class="u-mb++">
-        <p>
-          <a href="demo/offcanvas.html" target="_blank">View Off Canvas demo</a>
-        </p>
-        <demo-snippet>
-          <template>
-            <px-layout id="layout1" class="responsive-demo u-bg--gray9" style="">
-              <px-header subtitle="Off Canvas Layout"></px-header>
-              <div class="primary-sidebar">
-                <p class="u-m">
-                  This is content inside the primary sidebar.
-                </p>
-              </div>
-              <div class="secondary-sidebar">
-                <p class="u-m">
-                  This is content inside the secondary sidebar.
-                </p>
-              </div>
-              <px-layout-item role="primary-content">
-                <px-navbar title="Primary Content">
-
-                  <div left>
-                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
-                      <i class="fa fa-lg fa-bars"></i>
-                    </button>
-                  </div>
-                  <div right>
-                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-                      <i class="fa fa-lg fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </px-navbar>
-                <section class="has-navbar">
-                  <div class="u-mt--">
-                    <px-card header-text="Section">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                    </px-card>
-                  </div>
-                </section>
-              </px-layout-item>
-              <px-footer copywrite="&copy; 2016"></px-footer>
-            </px-layout>
-          </template>
-        </demo-snippet>
-      </div>
-    </px-box-section>
-    <!-- TODO: Splitview -->
-    <px-box-section title="3- Split View Layout">
-      <h2>
-        <code>.l-splitview</code>
-      </h2>
-      <p>
-        <a href="demo/splitview.html" target="_blank">View demo</a>
-      </p>
-      <demo-snippet>
-        <template>
-          <div class="responsive-demo u-bg--gray9" style="">
-            <px-layout id="layout2" type="splitview">
-              <px-header subtitle="Split View Layout"></px-header>
-              <px-layout-item role="secondary-content">
-                <px-navbar>
-                  <div left>
-                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
-                      <i class="fa fa-lg fa-flip-horizontal fa-expand"></i>
-                    </button>
-                  </div>
-                  <div right>
-                    <button class="navbar__button" onclick="document.getElementById('layout0').toggle('secondarySidebar')">
-                      <i class="fa fa-lg fa-ellipsis-v"></i>
-                    </button>
-                  </div>
-                </px-navbar>
-                <div class="has-navbar scrollable">
-                  <ul class="list-ui u-mt++">
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                  </ul>
-                </div>
-              </px-layout-item>
-              <px-layout-item role="primary-content">
-                <px-navbar>
-                  <div left>
-                    <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
-                      <i class="fa fa-lg fa-flip-horizontal fa-expand"></i>
-                    </button>
-                  </div>
-                  <div right>
-                    <div class="flex flex--center">
-                      <button class="navbar__button">
-                        <i class="fa fa-lg fa-angle-up"></i>
-                      </button>
-                      <button class="navbar__button">
-                        <i class="fa fa-lg fa-angle-down"></i>
-                      </button>
-                    </div>
-                  </div>
-                </px-navbar>
-                <div class="has-navbar"></div>
-              </px-layout-item>
-            </px-layout>
-          </div>
-        </template>
-      </demo-snippet>
-    </px-box-section>
-  </px-box-section>
+        <ul>
+          <li><a href="./demo/demo-breakpoints.html" target="_blank">Breakpoints</a></li>
+          <li><a href="./demo/demo-flexbox.html" target="_blank">Flexbox</a></li>
+          <li><a href="./demo/demo-layout.html" target="_blank">Layout</a></li>
+        </ul>
+      </px-box-section>
 
 
-  <!-- TODO: Unit Sizings -->
-  <px-box-section id="unit-sizing" title="CSS - Unit Sizing">
-    <h2>
-      <code>.u-*/*</code>
-    </h2>
-    <div class="u-mb debug">
-      <demo-snippet>
-        <template>
-          <div class="responsive-demo">
-            <div id="u-1/1" class="layout">
-              <div class="layout__item u-1/1">u-1/1</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-1/2" class="layout">
-              <div class="layout__item u-1/2">u-1/2</div>
-              <div class="layout__item u-1/2">u-1/2</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-1/3" class="layout">
-              <div class="layout__item u-1/3">u-1/3</div>
-              <div class="layout__item u-1/3">u-1/3</div>
-              <div class="layout__item u-1/3">u-1/3</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-1/4" class="layout">
-              <div class="layout__item u-1/4">u-1/4</div>
-              <div class="layout__item u-1/4">u-1/4</div>
-              <div class="layout__item u-1/4">u-1/4</div>
-              <div class="layout__item u-1/4">u-1/4</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-1/6" class="layout">
-              <div class="layout__item u-1/6">u-1/6</div>
-              <div class="layout__item u-1/6">u-1/6</div>
-              <div class="layout__item u-1/6">u-1/6</div>
-              <div class="layout__item u-1/6">u-1/6</div>
-              <div class="layout__item u-1/6">u-1/6</div>
-              <div class="layout__item u-1/6">u-1/6</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-2/4" class="layout">
-              <div class="layout__item u-2/4">u-2/4</div>
-              <div class="layout__item u-2/4">u-2/4</div>
-              <div class="layout__item u-2/4">u-2/4</div>
-              <div class="layout__item u-2/4">u-2/4</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-2/6" class="layout">
-              <div class="layout__item u-2/6">u-2/6</div>
-              <div class="layout__item u-2/6">u-2/6</div>
-              <div class="layout__item u-2/6">u-2/6</div>
-              <div class="layout__item u-2/6">u-2/6</div>
-              <div class="layout__item u-2/6">u-2/6</div>
-              <div class="layout__item u-2/6">u-2/6</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="content-sidebar" class="layout">
-              <div class="layout__item u-1/3">u-1/3</div>
-              <div class="layout__item u-2/3">u-2/3</div>
-            </div>
-          </div>
-          <div class="responsive-demo">
-            <div id="u-2/3" class="layout">
-              <div class="layout__item u-2/3">u-2/3</div>
-              <div class="layout__item u-1/3">u-1/3</div>
-            </div>
-          </div>
-        </template>
-      </demo-snippet>
-    </div>
-  </px-box-section>
-  <!-- TODO: Auto Layout -->
-  <px-box-section id="auto-layout" title="CSS - Layout Module">
-    <h2>
-      <code>.layout</code>
-    </h2>
-    <div class="u-mb">
-      <demo-snippet>
-        <template></template>
-      </demo-snippet>
-      <demo-snippet>
-        <template>
-          <template id="autoLayoutTemplate" is="dom-bind">
-            <div class="viewport responsive-demo">
-              <!-- TODO: xs -->
-              <div class="layout">
-                <template is="dom-repeat" items="{{widths}}">
-                  <div class$="layout__item {{item}}">{{item}}</div>
-                </template>
-              </div>
-              <!-- TODO: sm -->
-              <!-- TODO: md -->
-              <!-- TODO: lg -->
-              <!-- TODO: xl -->
-            </div>
-          </template>
-          <script type="text/javascript">
-            document.addEventListener('WebComponentsReady', function () {
-              var tmpl = document.getElementById('autoLayoutTemplate');
-              tmpl.widths = [
-                'u-1/1',
-                'u-1/2',
-                'u-1/3',
-                'u-1/4',
-                'u-2/4',
-                'u-3/4',
-                'u-1/6',
-                'u-2/6',
-                'u-3/6',
-                'u-4/6',
-                'u-5/6'
-              ];
-              tmpl.xs = ['u-1/1'];
-            });
-          </script>
-        </template>
-      </demo-snippet>
-    </div>
-  </px-box-section>
+
 </article>
 <script src="http://localhost:35724/livereload.js?snipver=1"></script>
 </body>

@@ -5,9 +5,11 @@
     <title>template-splitview</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
     <script src="../../webcomponentsjs/webcomponents.js"></script>
-  <link rel="import" href="../px-responsive-layouts.html">
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
+    <link rel="import" href="../px-responsive-layouts.html">
     <link rel="import" href="../../px-table-view/px-table-view.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-navbar/px-navbar.html">
@@ -20,41 +22,35 @@
         .primary-sidebar .table-row__title {
           color: #fff;
         }
-        :root{
-          .iron-selected{
+        :root {
+          .iron-selected {
             background-color: blue;
           }
-
           --px-table-row: {
             border-bottom: 1px solid #ccc;
           }
-
-
           --px-table-row-underlay: {
             right: 0;
           }
-          .table-row__label{
+          .table-row__label {
             color: #555;
             margin-right: 1rem;
           }
         }
-
       </style>
       <px-layout id="layout2" type="splitview">
         <!-- TODO: Header -->
         <px-header subtitle="Split View Template"></px-header>
-
         <!-- TODO: Primary Sidebar -->
-        <px-layout-item role="primary-sidebar">
+        <div role="primary-sidebar">
           <px-table-view modifier="tiny" selected-class="table-row--selected">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
           </px-table-view>
-        </px-layout-item>
-
+        </div>
         <!-- TODO: Secondary Content -->
-        <px-layout-item role="secondary-content">
+        <div role="secondary-content">
           <px-navbar title="" shadow>
             <div left>
               <button class="navbar__button" onclick="document.getElementById('layout2').toggle('primarySidebar');">
@@ -62,19 +58,11 @@
               </button>
             </div>
           </px-navbar>
-
           <array-selector id="selector" items="[[items]]" selected="{{selected}}"></array-selector>
           <section class="has-navbar l-bg-white l-full-height scrollable">
             <px-table-view id="table" selected="{{}}" pull-to-refresh>
               <template is="dom-repeat" items="[[items]]" id="itemsList">
-                <px-table-row
-                  title="{{item.title}}"
-                  deleted="{{item.deleted}}"
-                  flagged="{{item.flagged}}"
-                  modifier="tappable nav-right"
-                  swipeable
-                  swipe-left
-                  fit-underlay>
+                <px-table-row title="{{item.title}}" deleted="{{item.deleted}}" flagged="{{item.flagged}}" modifier="tappable nav-right" swipeable swipe-left fit-underlay>
                   <div underlay class="full-height flex flex--right">
                     <!--<px-table-row-action-button label="More" type="more"></px-table-row-action-button>-->
                     <px-table-row-action-button icon="fa:fa-flag" type="flag" on-tap="flagItem"></px-table-row-action-button>
@@ -84,12 +72,9 @@
               </template>
             </px-table-view>
           </section>
-
-        </px-layout-item>
-
-
+        </div>
         <!-- TODO: Primary Content -->
-        <px-layout-item role="primary-content">
+        <div role="primary-content">
           <px-navbar shadow>
             <div left>
               <button class="navbar__button" onclick="document.getElementById('layout1').toggle('primarySidebar')">
@@ -110,44 +95,35 @@
           <section class="has-navbar">
             <px-card>
               <px-title-bar title$="{{selected.title}}"></px-title-bar>
-
               <px-table-view modifier="bare" hidden$="{{!selected}}">
                 <px-table-row label2="id" title="{{selected.id}}"></px-table-row>
                 <px-table-row label2="title" title="{{selected.title}}"></px-table-row>
                 <px-table-row label2="body" title="{{selected.body}}"></px-table-row>
               </px-table-view>
-
             </px-card>
           </section>
-        </px-layout-item>
-
+        </div>
         <!-- TODO: Footer -->
         <px-footer ></px-footer>
       </px-layout>
     </template>
     <script type="text/javascript">
-
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;
         app.selected = null;
         app.items = createDemoItems(5);
-
-
-        function log(type, args){
+        function log(type, args) {
           console.log('info', type, args);
         }
-
         var table = document.getElementById('table');
-        document.addEventListener('px-table-row-tap', function(e){
+        document.addEventListener('px-table-row-tap', function (e) {
           console.log('px-table-row-tap', e);
           var item = app.$.itemsList.itemForElement(e.target);
           app.$.selector.select(item);
         });
-
-
         app.flagItem = function (e) {
-          log( 'flagItem', e);
+          log('flagItem', e);
           var normalizedEvent = Polymer.dom(e);
           // logs #myButton
           console.info('rootTarget is:', normalizedEvent.rootTarget);
@@ -155,39 +131,25 @@
           console.info('localTarget is:', normalizedEvent.localTarget);
           // logs [#myButton, document-fragment, event-retargeting,       body, html, document, Window]
           console.info('path is:', normalizedEvent.path);
-
-
           e.model.item.flagged = !e.model.item.flagged;
-            console.log('model is:', e.model.item);
+          console.log('model is:', e.model.item);
         };
-
-
         app.deleteItem = function (e) {
           log('deleteItem', e);
           e.model.item.deleted = !e.model.item.deleted;
-            console.log('model is:', e.model.item);
+          console.log('model is:', e.model.item);
         };
-
         var table = document.getElementById('table');
-
-        ['px-table-row-tap-underlay', 'px-table-row-swipe-reset', 'px-table-row-swipe-start', 'px-table-row-swipe-end']
-        .forEach(function (event, index) {
+        ['px-table-row-tap-underlay', 'px-table-row-swipe-reset', 'px-table-row-swipe-start', 'px-table-row-swipe-end'].forEach(function (event, index) {
           document.addEventListener(event, function (e) {
             log('Fired Event =', e.type, e);
           });
         });
-        [
-          'px-table-view-ptr-ready',
-          'px-table-view-ptr-reset',
-          'px-table-view-ptr-refresh',
-          'px-table-view-ptr-loading',
-          'px-table-view-ptr-complete'].forEach(function (event) {
+        ['px-table-view-ptr-ready', 'px-table-view-ptr-reset', 'px-table-view-ptr-refresh', 'px-table-view-ptr-loading', 'px-table-view-ptr-complete'].forEach(function (event) {
           document.addEventListener(event, function (e) {
             console.log('Fired Event =', e.type, e);
           });
         });
-
-
         table.loadingFunction = function handleLoad() {
           return new Promise(function (resolve, reject) {
             console.log('Fetching more items');
@@ -195,8 +157,6 @@
             resolve({});
           });
         };
-
-
         table.addEventListener('px-swipe-start', function (e) {
           var openedRow = table.rows.filter(function (row) {
             return row.underlayOpened;

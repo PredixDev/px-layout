@@ -35,6 +35,7 @@ The following custom properties are available for styling:
 Custom property | Description | Default
 ----------------|-------------|----------
 `--px-header-layout` | Mixin applied to component | {}
+`--px-header-layout-content` | Mixin applied to content | {}
 
 @element px-header-layout
 @demo demo.html
@@ -46,12 +47,11 @@ Custom property | Description | Default
       :host {
         display: block;
         position: relative;
+      }
+      :host .l-header-layout {
         @apply(--px-header-layout);
       }
-      :host .l-header-layout{
-        @apply(--px-header-layout);
-      }
-      :host .l-header-layout__content{
+      :host .l-header-layout__content {
         position: relative;
         @apply(--px-header-layout-content);
       }
@@ -72,9 +72,7 @@ Custom property | Description | Default
   <script>
     Polymer({
       is: 'px-header-layout',
-      behaviors: [
-        Polymer.IronResizableBehavior
-      ],
+      behaviors: [Polymer.IronResizableBehavior],
       properties: {
         /**
        * If true, ignore `responsiveWidth` setting and force the narrow layout.
@@ -131,10 +129,16 @@ Custom property | Description | Default
         }
       },
       listeners: {
-      //  'tap': '_tapHandler'
+        //  'tap': '_tapHandler'
       },
       observers: ['resetLayout(narrow, isAttached)'],
       attached: function () {
+        this.async(function () {
+          if (this.navbar) {
+            this.$$('.l-header-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
+            this.toggleClass('has-navbar', true, this.$$('.l-header-layout__content'));
+          }
+        });
       },
       /**
        * Handle resetting the layout and either hiding or revealing the drawer.

@@ -7,65 +7,55 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../px-responsive-layouts.html">
-       <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-card/px-card.html">
+    <style media="screen">
+    .brand-spacer {
+      min-height: 52px;
+      border-bottom: 1px solid #3b3b3f;
+    }
+    </style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <px-drawer-layout id="layout">
-        <px-drawer>
-          <ul class="nav-menu list-ui list-ui--tiny">
-        <li>
-          <a href="#page1">
-            <i class="fa fa-home fa-lg"></i>
-            <span class="hidden-mini-closed u-ml">Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="#page2">
-            <i class="fa fa-edit fa-lg"></i>
-            <span class="hidden-mini-closed u-ml">Pages</span>
-          </a>
-        </li>
-        <li>
-          <a href="#page3">
-            <i class="fa fa-gear fa-lg"></i>
-            <span class="hidden-mini-closed u-ml">Settings</span>
-          </a>
-        </li>
-      </ul>
+        <px-drawer overlay fixed>
+          <div class="brand-spacer">
+
+          </div>
+           <p>
+             Drawer Content
+           </p>
         </px-drawer>
         <px-header-layout>
-          <px-header>
-            <px-navbar shadow >
-              <div left>
-                <button class="navbar__button"  drawer-toggle>
-                  <i class="fa fa-lg fa-bars"></i>
-                </button>
-              </div>
-              <div title>
-                px-drawer-header-layout
-              </div>
-            </px-navbar>
-          </px-header>
-          <div class="u-m" content>
-
+          <px-header class="u-p"></px-header>
+          <px-navbar shadow auto-hide title="px-drawer-header-layout">
+            <div left>
+              <button class="navbar__button" drawer-toggle>
+                <px-icon icon="fa:fa-bars"></px-icon>
+              </button>
+            </div>
+          </px-navbar>
+          <div content>
             <template is="dom-repeat" items="{{cards}}">
-              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb+">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-m-">
                 <p>{{item.body}}</p>
               </px-card>
             </template>
           </div>
+          <px-footer></px-footer>
         </px-header-layout>
       </px-drawer-layout>
     </template>
+
     <script type="text/javascript">
       var app;
-
       function createDemoCards(count) {
         var i = 0,
-          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
         _out = [];
         for (; i < count; i++) {
           _out.push({
@@ -77,10 +67,7 @@
       }
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
-        app.toggleDrawer = function(){
-          document.getElementById('layout').drawer.toggle()
-        };
-        app.cards = createDemoCards(100);
+        app.cards = createDemoCards(25);
       });
     </script>
   </body>

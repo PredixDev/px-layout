@@ -7,21 +7,34 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../px-responsive-layouts.html">
   </head>
-  <body unresolved class="responsive-demo">
+  <body unresolved class="responsive-demo viewport">
     <template id="app" is="dom-bind">
-        <px-layout id="layoutx">
-          <px-header title="My App"></px-header>
-          <px-layout-item role="primary-content" class="l-bg-white">
-            <px-navbar  title="Primary Content">
-              <div left>
-                <button class="navbar__button" onclick="document.getElementById('layoutx').toggle('primarySidebar');">
-                  <i class="fa fa-lg fa-navicon"></i>
-                </button>
-              </div>
-            </px-navbar>
-            <section class="has-navbar l-full-height">
+      <style media="screen">
+        .l-bg-white{
+          background-color: #fff;
+        }
+      </style>
+        <px-header-layout id="layoutx">
+          <px-header subtitle="Basic Layout"></px-header>
+          <px-navbar  title="View Title">
+            <div left>
+              <button class="navbar__button" onclick="document.getElementById('drawer').toggle();">
+                <i class="fa fa-bars fa-lg"></i>
+              </button>
+            </div>
+          </px-navbar>
+          <div role="primary-content" class="l-bg-white">
+            <px-drawer id="drawer" type="persistent">
+              <p class="u-m">
+                Drawer content
+              </p>
+            </px-drawer>
+            <section class="l-full-height">
               <div class="u-m">
                 <px-title-bar title="Section"></px-title-bar>
                 <p>
@@ -54,9 +67,9 @@
                 </p>
               </div>
             </section>
-          </px-layout-item>
+          </div>
           <px-footer></px-footer>
-        </px-layout>
+        </px-header-layout>
     </template>
   </body>
 </html>

@@ -2,7 +2,6 @@
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
 <link rel="import" href="../../px-drawer/px-drawer.html">
-
 <!--
 ## Overview
 The `px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
@@ -78,26 +77,35 @@ Custom property | Description | Default
       }
 
       :host .l-drawer-layout {
+        position: relative;
+        transition: all 0.3s;
         @apply(--px-drawer-layout);
       }
 
       :host .l-drawer-layout__container {
         position: relative;
-        transition: all 0.3s;
+      }
+
+      :host .l-drawer-layout__content{
+        position: relative;
         @apply(--px-drawer-layout-content);
       }
-      .l-drawer-layout__container:not(.is-narrow) > ::content [drawer-toggle] {
+
+      /* Hide the drawer-toggle button on large screens*/
+      :host .l-drawer-layout__container:not(.is-narrow) ::content [drawer-toggle] {
         display: none;
-      }
-      .l-drawer-layout__container:not(.is-narrow) > ::content .navbar--fixed {
-        left: 256px;
       }
 
     </style>
     <div id="container" class="l-drawer-layout">
-      <content id="drawerContainer" select="px-drawer"></content>
+      <content id="drawerContent" select="px-drawer"></content>
       <div id="contentContainer" class="l-drawer-layout__container">
-        <content id="content" select=":not(px-drawer)"></content>
+        <div class="l-drawer-layout__navbar">
+          <content id="navbarContent" select="px-navbar"></content>
+        </div>
+        <div class="l-drawer-layout__content">
+          <content id="content" select=":not(px-drawer):not(px-navbar)"></content>
+        </div>
       </div>
     </div>
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
@@ -139,7 +147,7 @@ Custom property | Description | Default
       * return Element
       */
       get drawer() {
-        return Polymer.dom(this.$.drawerContainer).getDistributedNodes()[0];
+        return Polymer.dom(this.$.drawerContent).getDistributedNodes()[0];
       },
       /**
       * A reference to the px-navbar element. (if it exists)
@@ -148,18 +156,27 @@ Custom property | Description | Default
       */
       get navbar() {
         if (this.$.content) {
-          var n = Polymer.dom(this.$.content).getDistributedNodes()[0];
+          var n = Polymer.dom(this.$.navbarContent).getDistributedNodes()[0];
           if (n && n.$.navbar) {
             return n;
           }
         }
       },
-
       listeners: {
         'tap': '_tapHandler',
         'px-drawer-layout-reset': 'resetLayout'
       },
       observers: ['resetLayout(narrow, isAttached)'],
+
+      attached: function(){
+        this.async(function(){
+          if(this.navbar){
+            this.$$('.l-drawer-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
+            this.toggleClass('has-navbar', true, this.$$('.l-drawer-layout__content'));
+          }
+        });
+      },
+
       /**
        * Handle when a tap event occurs, when if the element as a `drawer-toggle` attribute
        ( toggle the drawer.
@@ -180,24 +197,23 @@ Custom property | Description | Default
             console.warn('notAttached');
             return;
           }
-
           var drawer = this.drawer;
           var drawerWidth = this.drawer.getWidth();
           var contentContainer = this.$.contentContainer;
-
-          this.toggleClass('is-narrow', this.narrow);
-
           if (this.narrow) {
-
             drawer.opened = drawer.persistent = false;
             contentContainer.classList.add('is-narrow');
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = '';
+            if (this.navbar && this.navbar.fixed) {
+              this.navbar.$$('.navbar').style.left = '';
+            }
           } else {
-
             drawer.opened = drawer.persistent = true;
             contentContainer.classList.remove('is-narrow');
-
+            if (this.navbar && this.navbar.fixed) {
+              this.navbar.$$('.navbar').style.left = drawerWidth + 'px';
+            }
             if (drawer.align == 'right') {
               contentContainer.style.marginLeft = '';
               contentContainer.style.marginRight = drawerWidth + 'px';
@@ -206,6 +222,7 @@ Custom property | Description | Default
               contentContainer.style.marginRight = '';
             }
           }
+          this.toggleClass('is-narrow', this.narrow);
           this.notifyResize();
         });
       },
@@ -226,7 +243,6 @@ Custom property | Description | Default
         this.debounce('_resetLayout', function () {
           this.resetLayout();
         }, 1);
-
       }
     });
   </script>

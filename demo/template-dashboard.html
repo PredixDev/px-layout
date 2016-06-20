@@ -8,6 +8,9 @@
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <script src="demo.js"></script>
     <link rel="import" href="../px-responsive-layouts.html">
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-sample-cards/widgets-card.html">
@@ -21,70 +24,55 @@
           flex: 1 0 275px;
           min-width: 275px;
         }
-        :root {
-          }
-
+        :root {}
         .sidebar {
           --px-table-row: {
             border-bottom: none;
           }
         }
-
+        .color-white {
+          color: #fff;
+        }
       </style>
       <px-header-layout id="layout0">
-
-
-
-
+        <px-header subtitle="Dashboard Template"></px-header>
         <!-- TODO: Primary Sidebar -->
-        <px-drawer  swipe-open swipe-close>
+        <px-drawer id="drawer" swipe-open swipe-close>
           <px-table-view modifier="small" class="sidebar">
             <template is="dom-repeat" items="{{navItems}}">
               <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
             </template>
           </px-table-view>
         </px-drawer>
-
-        <!-- TODO: Primary Content -->
-        <div class="primary-content">
+        <px-navbar title="Dashboard" shadow>
           <!-- TODO: Header -->
-          <px-header subtitle="Dashboard Template">
-            <px-navbar title="Dashboard" shadow >
-              <div left>
-                <button class="navbar__button" drawer-toggle>
-                  <i class="fa fa-lg fa-navicon"></i>
-                </button>
-              </div>
-              <div right>
-                <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle('secondarySidebar')">
-                  <i class="fa fa-lg fa-ellipsis-v"></i>
-                </button>
-              </div>
-            </px-navbar>
-          </px-header>
-
-
-          <section class="has-navbar l-full-height scrollable">
-
+          <div left>
+            <button class="navbar__button" onclick="document.getElementById('drawer').toggle()">
+              <i class="fa fa-lg fa-navicon"></i>
+            </button>
+          </div>
+          <div right>
+            <button class="navbar__button" onclick="document.getElementById('actionsheet1').toggle()">
+              <i class="fa fa-lg fa-ellipsis-v"></i>
+            </button>
+          </div>
+        </px-navbar>
+        <!-- TODO: Primary Content -->
+        <div class="primary-content has-navbar">
+          <section class="l-full-height scrollable">
             <!-- TODO: Spine -->
-            <div class="spine u-m">
-              <px-table-view modifier="small responsive row">
-                <template is="dom-repeat" items="{{spine}}">
-                  <px-table-row modifier="tappable" class="flex">
-                    <div class="table-row__content table-row__content--row" content>
-                      <span class="table-row__title epsilon">{{item.title}}</span>
-                      <div class="table-row__body">
-                        <span class="beta">{{item.body}}</span>
-                        <span class="delta muted">{{item.label1}}</span>
-                      </div>
-                    </div>
-                  </px-table-row>
-                </template>
-              </px-table-view>
+            <div class="spine flex flex--wrap flex--spaced u-mb u-mt u-mr-- u-ml--">
+              <template is="dom-repeat" items="{{spine}}">
+                <div class="flex color-white">
+                  <span class="beta">{{item.body}}</span>
+                  <div class="flex flex--col u-ml">
+                    <span class="zeta caps">{{item.title}}</span>
+                    <span class="zeta caps muted">{{item.label1}}</span>
+                  </div>
+                </div>
+              </template>
             </div>
-
             <!-- TODO: Cards -->
-
             <div class="flex flex--wrap">
               <px-card header-text="Visitors" class="u-m">
                 <px-simple-line-chart
@@ -115,11 +103,9 @@
                         ]"
                   threshold="1.234567"></px-simple-line-chart>
               </px-card>
-
               <px-card header-text="Browsers" class="u-m">
                 <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[250,100,76,25]" legend-labels='["Chrome", "Safari", "Firefox", "IE 9+" ]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
               </px-card>
-
             </div>
             <div class="cards flex flex--wrap">
               <template is="dom-repeat" items="{{cards}}">
@@ -130,26 +116,17 @@
             </div>
           </section>
 
-          <px-action-sheet grid>
-            <p>
-              This is actions
-            </p>
-          </px-action-sheet>
-          <px-drawer id="actionsheet1" align="bottom" theme="dark">
+          <px-drawer id="actionsheet1" align="bottom" fixed>
             <p>
               This is actions
             </p>
           </px-drawer>
-
         </div>
-
         <!-- TODO: Footer -->
         <px-footer copywrite="&copy;2016 General Electric"></px-footer>
       </px-header-layout>
     </template>
-
     <script type="text/javascript">
-
       var app;
       function createDemoCards(count) {
         var i = 0,
@@ -168,7 +145,7 @@
           _out = [];
         for (; i < count; i++) {
           _out.push({
-            title: 'Lorem Ipsum',
+            title: 'Lorem',
             body: '123.' + i,
             label1: 'AB'
           });
@@ -178,8 +155,8 @@
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
         app.navItems = navItems;
-        app.cards = createDemoCards(100);
-        app.spine = createDemoSpine(4);
+        app.cards = createDemoCards(25);
+        app.spine = createDemoSpine(6);
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>

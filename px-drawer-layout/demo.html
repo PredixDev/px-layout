@@ -8,33 +8,64 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../demo/demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+
+    <!-- TODO: Theme -->
+<link rel="import" href="../../px-theme/px-app.html">
+<link rel="import" href="../../px-theme/px-theme.html">
+
+    <!-- TODO: Elements -->
     <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../px-responsive-layouts.html">
+
+    <link rel="import" href="../../px-sample-cards/gist-card.html">
+    <link rel="import" href="../../px-sample-cards/widgets-card.html">
+    <link rel="import" href="../../px-sample-cards/description-card.html">
+
+
     <style media="screen">
 
     </style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
+      <style is="custom-style">
+        .brand-spacer {
+          height: 56px;
+          border-bottom: 1px solid #3b3b3f;
+        }
+        px-card{
+          flex: 1 0 300px;
+        }
+      </style>
       <px-drawer-layout id="layout">
         <px-drawer fixed overlay>
+          <div class="brand-spacer flex flex--center flex--middle">
+            <px-brand wordmark size="135"></px-brand>
+          </div>
           <div style="height: 100%; overflow: auto;">
-            <p>
-              You can close me with the <code>ESC</code> key.
+            <p class="u-m">
+              You can close me with swipe.
             </p>
           </div>
         </px-drawer>
-        <px-navbar shadow auto-hide fixed>
+        <px-navbar auto-hide fixed title="px-drawer-layout">
           <div left>
-            <button class="navbar__button"  drawer-toggle>
-              <i class="fa fa-lg fa-bars"></i>
+            <button class="navbar__button" drawer-toggle>
+              <px-icon icon="fa:fa-bars"></px-icon>
             </button>
           </div>
-          <div title>
-            px-drawer-layout
-          </div>
         </px-navbar>
-        <div class="u-m">
+        <div class="">
+          <px-card header-text="px-drawer-layout">
+            <p>
+              The drawer layout component is responsive and can layout your content.
+            </p>
+            <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-responsive-layouts">
+              <px-icon icon="fa:fa-github"></px-icon>
+              Github Repo
+            </a>
+          </px-card>
 
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}">
@@ -49,9 +80,9 @@
 
       function createDemoCards(count) {
         var i = 0,
-          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-              'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        _out = [];
+          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          _out = [];
+
         for (; i < count; i++) {
           _out.push({
             title: 'Card ' + i,

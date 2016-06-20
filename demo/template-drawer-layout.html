@@ -8,6 +8,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+
+    <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-responsive-layouts.html">
     <style media="screen">
@@ -15,13 +19,19 @@
       flex: 1 0 200px;
       margin: .5rem;
     }
-
+    .brand-spacer {
+      height: 56px;
+      border-bottom: 1px solid #3b3b3f;
+    }
     </style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <px-drawer-layout id="layout">
         <px-drawer fixed>
+          <div class="brand-spacer">
+
+          </div>
           <div style="height: 100%; overflow: auto;">
             <p>
               You can close me with the <code>ESC</code> key.

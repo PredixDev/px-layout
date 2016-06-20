@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>demo breakpoints</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="demo.css">
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../px-demo-helpers/px-demo-helpers.html"/>
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html"/>
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
+    <link rel="import" href="../px-responsive-layouts.html">
+    <script src="./demo.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('WebComponentsReady', function (e) {
+        createToc('toc');
+      });
+    </script>
+    <style media="screen">
+      body,
+      html {
+        background-color: #ccc !important;
+      }
+      section{
+        padding: 1rem;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body class="viewport">
+    <template id="pxBreakpoints" is="dom-bind">
+      <style is="custom-style">
+      .row th, .row code{
+        white-space: nowrap;
+      }
+      </style>
+
+      <section class="u-mb">
+        <h1 class="beta">Breakpoints</h1>
+        <ol id="toc">
+
+        </ol>
+        <p>Breakpoints are the point a which your content will respond to provide the best possible layout to consume the information.</p>
+        <p>For RWD (Responsive Web Design) the best practice is to:</p>
+        <ol>
+          <li>Design for your smallest viewport first.
+            <strong>(Mobile First)</strong>
+          </li>
+          <li>Expand the viewport until it looks like crap.</li>
+          <li>Insert a breakpoint.</li>
+          <li>Rinse and repeat.</li>
+        </ol>
+        <blockquote>
+          <p>This will force you to really identify what is the most important information on your web app.</p>
+        </blockquote>
+      </section>
+      <!-- TODO: New Breakpoints -->
+
+       <section class="u-mb">
+         <h2>New Breakpoints</h2>
+        <p>
+          The following new breakpoints enable you to use t-shirt sizing to target specific sizes, not devices.
+        </p>
+        <div class="u-m">
+          <ul class="list-bare flex flex--spaced text--center debug-colors">
+            <template is="dom-repeat" items="{{newBreakpoints}}">
+              <li class="flex flex--center">
+                <span>
+                  <code>{{item.name}}</code>
+                </span>
+                <i class$="{{item.icon}}"></i>
+                <code>{{item.value}}</code>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </section>
+      <!-- TODO: Old Breakpoints    -->
+
+      <section class="u-mb">
+        <h2>Deprecated Breakpoints</h2>
+        <p>
+          The following are the depricated breakpoints that use device names for the targets.
+        </p>
+        <div class="u-m">
+          <ul class="list-bare flex flex--spaced text--center debug-colors">
+            <template is="dom-repeat" items="{{oldBreakpoints}}">
+            <li class="flex flex--center">
+                <span>
+                  <code>{{item.name}}</code>
+                </span>
+                <i class$="{{item.icon}}"></i>
+                <code>{{item.value}}</code>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </section>
+    </template>
+
+    <!-- TODO: Helpers -->
+
+    <section class="u-mb">
+      <h2>Helper Classes</h2>
+      <table class=" table table--small table-bordered table-striped responsive-utilities">
+        <thead>
+          <tr>
+            <th></th>
+            <th>
+              Extra small
+              <small>Portrait phones (&lt;34em)</small>
+            </th>
+            <th>
+              Small
+              <small>Landscape phones (≥34em)</small>
+            </th>
+            <th>
+              Medium
+              <small>Tablets (≥48em)</small>
+            </th>
+            <th>
+              Large
+              <small>Desktops (≥62em)</small>
+            </th>
+            <th>
+              Extra large
+              <small>Desktops (≥75em)</small>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@xs-</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@sm-</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@md-</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@lg-</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-visible">Visible</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@xl-</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@xs+</code>
+            </th>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@sm+</code>
+            </th>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@md+</code>
+            </th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@lg+</code>
+            </th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <code>.is-hidden@xl+</code>
+            </th>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-visible">Visible</td>
+            <td class="is-hidden">Hidden</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!-- TODO: Visibility -->
+
+    <section class="u-mb">
+      <h2>Visibility</h2>
+      <ul class="list-ui responsive-utilities-test visible-on">
+        <li class="is-hidden@sm+ visible">✔ Visible on extra small</li>
+        <li class="is-hidden@xs- not-visible">Extra small</li>
+        <li class="is-hidden@md+ visible">✔ Visible on small or narrower</li>
+        <li class="is-hidden@sm- not-visible">Small or narrower</li>
+        <li class="is-hidden@lg+ visible">✔ Visible on medium or narrower</li>
+        <li class="is-hidden@md- not-visible">Medium or narrower</li>
+        <li class="is-hidden@xl+ visible">✔ Visible on large or narrower</li>
+        <li class="is-hidden@lg- not-visible">Large or narrower</li>
+        <li class="is-hidden@xs- visible">✔ Visible on small or wider</li>
+        <li class="is-hidden@sm+ not-visible">Small or wider</li>
+        <li class="is-hidden@sm- visible">✔ Visible on medium or wider</li>
+        <li class="is-hidden@md+ not-visible">Medium or wider</li>
+        <li class="is-hidden@md- visible">✔ Visible on large or wider</li>
+        <li class="is-hidden@lg+ not-visible">Large or wider</li>
+        <li class="is-hidden@lg- visible">✔ Visible on extra large</li>
+        <li class="is-hidden@xl+ not-visible">Extra large</li>
+      </ul>
+    </section>
+    <!-- TODO: Viewport -->
+
+    <section class="u-mb">
+      <h2>Viewport Test</h2>
+      <ul class="list-ui responsive-utilities-test visible-on">
+        <li class="is-hidden@sm+ visible">✔ Your viewport is exactly extra small</li>
+        <li class="is-hidden@xs- not-visible">Your viewport is NOT exactly extra small</li>
+        <li class="is-hidden@xs- is-hidden@md+ visible">✔ Your viewport is exactly small</li>
+        <li class="hidden-sm-only not-visible">Your viewport is NOT exactly small</li>
+        <li class="is-hidden@sm- is-hidden@lg+ visible">✔ Your viewport is exactly medium</li>
+        <li class="hidden-md-only not-visible">Your viewport is NOT exactly medium</li>
+        <li class="is-hidden@md- is-hidden@xl+ visible">✔ Your viewport is exactly large</li>
+        <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
+        <li class="is-hidden@lg- visible">✔ Your viewport is exactly extra large</li>
+        <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
+      </ul>
+    </section>
+    <!-- TODO: media-query -->
+
+    <section class="u-mb">
+      <h2>px-media-query</h2>
+      <demo-snippet>
+        <template id="">
+          <template id="queryExample" is="dom-bind">
+            <px-media-query id="xs" query="xs" query-matches="{{isXs}}" full>This is content</px-media-query>
+            <px-media-query id="sm" query="sm" query-matches="{{isSm}}" full></px-media-query>
+            <px-media-query id="md" query="md" query-matches="{{isMd}}"></px-media-query>
+            <px-media-query id="lg" query="lg" query-matches="{{isLg}}"></px-media-query>
+            <px-media-query id="xl" query="xl" query-matches="{{isXl}}"></px-media-query>
+
+            <ul>
+              <li>Query Matches xs - <code>{{isXs}}</code></li>
+              <li>Query Matches sm - <code>{{isSm}}</code></li>
+              <li>Query Matches md - <code>{{isMd}}</code></li>
+              <li>Query Matches lg - <code>{{isLg}}</code></li>
+              <li>Query Matches xl -<code>{{isXl}}</code></li>
+            </ul>
+          </template>
+        </template>
+      </demo-snippet>
+    </section>
+
+    <script type="text/javascript">
+      var newBreakpoints = [
+        {
+          name: 'xs',
+          value: '320px',
+          icon: 'fa fa-mobile fa-4x color-xs'
+        }, {
+          name: 'sm',
+          value: '480px',
+          icon: 'fa fa-mobile fa-4x fa-rotate-90 color-sm'
+        }, {
+          name: 'md',
+          value: '768px',
+          icon: 'fa fa-tablet fa-4x color-md'
+        }, {
+          name: 'lg',
+          value: '1024px',
+          icon: 'fa fa-tablet fa-rotate-90 fa-4x color-lg'
+        }, {
+          name: 'xl',
+          value: '1280px',
+          icon: 'fa fa-desktop fa-4x color-xl'
+        }
+      ];
+      var oldBreakpoints = [
+        {
+          name: 'palm',
+          value: '719px',
+          icon: 'fa fa-mobile fa-4x color-palm'
+        }, {
+          name: 'portable',
+          value: '1022px',
+          icon: 'fa fa-tablet fa-4x fa-rotate-90 color-portable'
+        }, {
+          name: 'lap',
+          value: '(720px >= 1022px)',
+          icon: 'fa fa-desktop fa-4x color-lap'
+        }, {
+          name: 'lap-and-up',
+          value: '720px',
+          icon: 'fa fa-desktop fa-4x color-lap-and-up'
+        }, {
+          name: 'desk',
+          value: '1024px',
+          icon: 'fa fa-desktop fa-4x color-desk'
+        }
+      ];
+      document.addEventListener('WebComponentsReady', function () {
+        document.getElementById('pxBreakpoints').oldBreakpoints = oldBreakpoints;
+        document.getElementById('pxBreakpoints').newBreakpoints = newBreakpoints;
+      });
+    </script>
+  </body>
+</html>

@@ -1,15 +1,12 @@
-
-
 .app {
   position: relative;
   overflow: hidden;
   min-height: 480px;
 }
-
-.demo.demo-snippet{
- background: #eee;
+.demo.demo-snippet {
+  background: #eee;
 }
-.debug-colors li{
+.debug-colors li {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,9 +16,6 @@
   position: relative;
   overflow: hidden;
 }
-
 code {
   color: crimson;
 }
-
- 

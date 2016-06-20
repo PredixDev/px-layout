@@ -19,26 +19,28 @@
       }
     </style>
   </head>
-  <body unresolved class="responsive-demo viewport">
+  <body unresolved class="responsive-demo ">
     <template id="app" is="dom-bind">
-      <px-header-layout id="layout">
-        <px-header class="u-m"></px-header>
-        <px-navbar auto-hide shadow>
-          <div title>
-            px-header-layout
+      <div class="viewport">
+        <px-header-layout id="layout">
+          <px-header class="u-m"></px-header>
+          <px-navbar auto-hide shadow>
+            <div title>
+              px-header-layout
+            </div>
+          </px-navbar>
+          <div class="has-navbar">
+            <div class="flex flex--wrap flex--spaced">
+              <template is="dom-repeat" items="{{cards}}">
+                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
+                  <p>{{item.body}}</p>
+                </px-card>
+              </template>
+            </div>
           </div>
-        </px-navbar>
-        <div class="has-navbar">
-          <div class="flex flex--wrap flex--spaced">
-            <template is="dom-repeat" items="{{cards}}">
-              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
-                <p>{{item.body}}</p>
-              </px-card>
-            </template>
-          </div>
-        </div>
-        <px-footer></px-footer>
-      </px-header-layout>
+          <px-footer></px-footer>
+        </px-header-layout>
+      </div>
     </template>
     <script type="text/javascript">
       var app;

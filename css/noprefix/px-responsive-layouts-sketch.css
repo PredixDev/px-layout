@@ -5518,41 +5518,37 @@ a {
     .l-container__primary-content.is-active {
       display: block !important; } }
 
-html, html:not([style-scope]):not(.style-scope) {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; }
-
-body,
 body:not([style-scope]):not(.style-scope) {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; }
   @media (max-width: 66.0666666666rem) {
-    body,
     body:not([style-scope]):not(.style-scope) {
       height: 100%;
       min-height: 100vh;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-bottom: 0;
-      padding: 0; } }
+      -webkit-overflow-scrolling: touch; } }
 
 .viewport,
 .viewport:not([style-scope]):not(.style-scope) {
-  transition: all .5s ease; }
-  @media (max-width: 66.0666666666rem) {
+  transition: all .3s ease;
+  width: auto;
+  padding: 0;
+  margin: 0; }
+  .viewport, .viewport:not([style-scope]):not(.style-scope)--flush {
+    margin: 0 !important;
+    padding: 0 !important; }
+  @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
     .viewport,
     .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: 0;
-      margin-right: 0;
-      padding-left: 0;
-      padding-right: 0; } }
-  @media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+      padding-left: var(--px-viewport-padding-md, 0.5rem);
+      padding-right: var(--px-viewport-padding-md, 0.5rem); } }
+  @media (min-width: 66.1333333333rem) {
     .viewport,
     .viewport:not([style-scope]):not(.style-scope) {
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: auto;
-      padding-right: auto; } }
+      margin: 0 auto;
+      max-width: var(--px-viewport-max-width-lg, 80rem);
+      padding-left: var(--px-viewport-padding-lg, 1rem);
+      padding-right: var(--px-viewport-padding-lg, 1rem); } }
 
 .has-navbar {
   position: relative;

@@ -14,8 +14,8 @@
     <link rel="import" href="../px-responsive-layouts.html">
     <script src="demo.js"></script>
     <style media="screen">
-      px-card{
-        flex: 1 0 200px;
+      px-card {
+        flex: 1 0 300px;
       }
     </style>
   </head>
@@ -23,33 +23,26 @@
     <template id="app" is="dom-bind">
       <px-header-layout id="layout">
         <px-header>
-          <px-navbar>
-            <div title>
-              px-header-layout
-            </div>
-          </px-navbar>
         </px-header>
-        <div class="has-navbar u-mt" content>
-        <div class="flex flex--wrap">
+        <px-navbar>
+          <div title>
+            px-header-layout
+          </div>
+        </px-navbar>
+        <div class="flex flex--wrap" content>
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
               <p>{{item.body}}</p>
             </px-card>
           </template>
         </div>
-        </div>
         <px-footer></px-footer>
       </px-header-layout>
     </template>
     <script type="text/javascript">
       var app;
-
-
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
-        app.toggleDrawer = function(){
-          document.getElementById('layout').drawer.toggle()
-        };
         app.cards = createDemoCards(10);
       });
     </script>
