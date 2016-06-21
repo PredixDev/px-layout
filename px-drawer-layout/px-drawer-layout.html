@@ -1,8 +1,6 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../px-media-query.html">
-<link rel="import" href="../../px-navbar/px-navbar.html">
-<link rel="import" href="../../px-drawer/px-drawer.html">
+<link rel="import" href="../px-layout-partials.html">
 <!--
 ## Overview
 The `px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
@@ -70,7 +68,8 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-drawer-layout">
-  <template>
+  <link rel="import" type="css" href="../css/px-layout.css"/>
+  <template strip-whitespace>
     <style>
       :host {
         display: block;

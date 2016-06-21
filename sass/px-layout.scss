@@ -13,39 +13,31 @@
 
 $l-container-transition: all .5s ease;
 $l-container-transition-wrapper: all .5s cubic-bezier(0.1, 0.7, 0.1, 1);
-
 @debug "Breakpoints - #{$breakpoints}";
-
 @include responsive-utils();
-
-@import 'l-tabs-to-columns';
-@import 'l-offcanvas';
-@import 'l-splitview';
-
-
 
 //Remove all margins/paddings on lower
 body:not([style-scope]):not(.style-scope) {
   @include scrollable();
+
   @include media-breakpoint-down ('md') {
     @include full-height();
     @include scrollable();
-  //  margin-bottom: 0;
-//    padding: 0;
+    //  margin-bottom: 0;
+    //    padding: 0;
   }
 }
 
-.viewport,
-.viewport:not([style-scope]):not(.style-scope) {
+.viewport {
   transition: all .3s ease;
   //background-color: blue;
   //Mobile first
-  width: auto;
-  padding: 0;
-  margin: 0;
+  width     : auto;
+  padding   : 0;
+  margin    : 0;
 
-  @include m('flush'){
-    margin: 0 !important;
+  @include m ('flush') {
+    margin : 0 !important;
     padding: 0 !important;
   }
 
@@ -53,30 +45,26 @@ body:not([style-scope]):not(.style-scope) {
   @include media-breakpoint(md) {
     //width        : 100%;
     //background-color: green;
-    padding-left: var(--px-viewport-padding-md, .5rem);
+    padding-left : var(--px-viewport-padding-md, .5rem);
     padding-right: var(--px-viewport-padding-md, .5rem);
   }
-
   @include media-breakpoint-up(lg) {
-  //  background-color: crimson;
-    margin: 0 auto;
-    max-width: var(--px-viewport-max-width-lg, 80rem);
-    padding-left: var(--px-viewport-padding-lg, 1rem);
+    //  background-color: crimson;
+    margin       : 0 auto;
+    max-width    : var(--px-viewport-max-width-lg, 80rem);
+    padding-left : var(--px-viewport-padding-lg, 1rem);
     padding-right: var(--px-viewport-padding-lg, 1rem);
   }
-
-
 }
 
 .has-navbar {
-  position: relative;
+  position   : relative;
   padding-top: 56px;
 }
 
-
 @include b ('l-container') {
-  position: relative;
-  overflow: hidden;
+  position  : relative;
+  overflow  : hidden;
   transition: $l-container-transition;
 
   .l-bg-white {
@@ -85,7 +73,7 @@ body:not([style-scope]):not(.style-scope) {
 
   .l-full-height {
     transition: $l-container-transition;
-    height: 100%;
+    height    : 100%;
 
     @include media-breakpoint-down ('md') {
       @include full-height();

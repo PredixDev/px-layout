@@ -8,21 +8,37 @@
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../web-component-tester/browser.js"></script>
     <link rel="import" href="px-layout.html">
+    <link rel="import" href="px-layout-partials.html">
     <style media="screen">
-    html, body{
-      background: #fff !important
-    }
-      .demo{
+      body,
+      html {
+        background: #eee !important;
+      }
+      .demo {
         position: relative;
         height: 400px;
         overflow: hidden;
+        background-color: #fff;
+        margin: 1rem;
+      }
+      .bg-dark{
+        background-color: #333;
       }
     </style>
   </head>
   <body>
+    <h1>Web Component Test : Fixtures for px-button, px-icon, px-brand, px-header, px-footer</h1>
+    <div class="demo bg-dark">
+      <px-header id="fixture1"></px-header>
+      <px-footer id="fixture2"></px-footer>
+      <px-title-bar id="fixture3"></px-title-bar>
+      <px-icon id="fixture4" icon="fa:fa-home"></px-icon>
+      <px-button id="fixture5" label="Button" theme="primary large"></px-button>
+      <px-brand id="fixture6" size="128" monogram></px-brand>
+    </div>
 
-    <h3>Web Component Test : Fixture for px-layout</h3>
 
+    <h1>Web Component Test : Fixture for px-layout, px-drawer-layout, px-header-layout</h1>
     <div class="demo">
       <h2>px-layout specs</h2>
       <px-layout id="fixture" type="splitview">
@@ -46,7 +62,7 @@
             </div>
           </px-navbar>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </px-layout-item>
         <px-layout-item secondary-content>
@@ -59,18 +75,15 @@
             </div>
           </px-navbar>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
         </px-layout-item>
       </px-layout>
     </div>
-
-
     <div class="demo">
       <h2>px-drawer-layout specs</h2>
       <px-drawer-layout id="px_layout_1">
-        <px-drawer  overlay></px-drawer>
-
+        <px-drawer overlay></px-drawer>
         <section content>
           <px-navbar title="px-drawer-layout fixture">
             <div left>
@@ -81,8 +94,6 @@
         <px-footer></px-footer>
       </px-drawer-layout>
     </div>
-
-
     <div class="demo">
       <h2>px-header-layout specs</h2>
       <px-header-layout id="px_layout_2">
@@ -97,22 +108,12 @@
         <px-footer></px-footer>
       </px-header-layout>
     </div>
-
-
     <script>
-
-
       suite('<px-layout>', function () {
         var element = document.getElementById('fixture');
         test('renders', function () {
           assert.ok(element);
         });
-
-
-
-
-
-
         suite('<px-drawer-layout>', function () {
           var element = document.getElementById('px_layout_1');
           test('renders', function () {
@@ -121,30 +122,22 @@
           test('has reference to px-drawer', function () {
             assert.ok(element.drawer);
           });
-
           test('element is [drawer-toggle] when tapped toggles px-drawer', function () {
             assert.ok(element.drawer);
           });
         });
-
-
         suite('<px-header-layout>', function () {
           var element = document.getElementById('px_layout_2');
-
           test('renders', function () {
             assert.ok(element);
           });
-
           test('has reference to px-header', function () {
             assert.ok(element.header);
           });
-
           test('has reference to px-footer', function () {
             assert.ok(element.footer);
           });
         });
-
-
       });
     </script>
   </body>

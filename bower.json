@@ -3,32 +3,32 @@
   "description": "A set responsive layout elements.",
   "main": "px-layout.html",
   "authors": [
-    "Jonnie Spratley"
-  ],
+		"Jonnie Spratley"
+	],
   "license": "GE",
   "keywords": [
-    "px",
-    "px-mobile"
-  ],
+		"px",
+		"px-mobile"
+	],
   "moduleType": [],
   "homepage": "",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
   "dependencies": {
     "polymer": "~1.5.0",
-    "px-partials": "master",
-    "px-navbar": "master",
-    "px-drawer": "master",
-    "px-library-design": "^0.2.0",
+    "px-partials": "latest",
+    "px-navbar": "latest",
+    "px-drawer": "latest",
     "hammerjs": "^2.0.8",
     "fastclick": "^1.0.6"
   },
   "devDependencies": {
+    "px-library-design": "^0.2.0",
     "px-sample-cards": "latest",
     "px-card": "latest",
     "iron-component-page": "PolymerElements/iron-component-page#~v1.1.0",

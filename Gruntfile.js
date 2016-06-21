@@ -1,7 +1,7 @@
 'use strict';
 
 var pkg = require('./package.json');
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   var importOnce = require('node-sass-import-once');
   // Project configuration.
@@ -23,8 +23,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'css/noprefix/px-responsive-layouts-sketch.css': 'sass/px-responsive-layouts-sketch.scss',
-          'css/noprefix/px-responsive-layouts.css': 'sass/px-responsive-layouts-predix.scss'
+          'css/noprefix/px-layout-sketch.css': 'sass/px-layout-sketch.scss',
+          'css/noprefix/px-layout.css': 'sass/px-layout-predix.scss'
         }
       }
     },
@@ -130,7 +130,7 @@ module.exports = function(grunt) {
   ]);
 
   // First run task.
-  grunt.registerTask('firstrun', 'Basic first run', function() {
+  grunt.registerTask('firstrun', 'Basic first run', function () {
     grunt.config.set('depserveOpenUrl', '/index.html');
     grunt.task.run('default');
     grunt.task.run('depserve');
@@ -138,8 +138,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('test', 'Test', [
-    'jshint',
-    'webdriver'
+    'jshint'
   ]);
 
   grunt.registerTask('release', 'Release', [

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Component Test : Fixture for px-layout</title>
+    <!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <!-- web-component-tester automatically provides local copy of brower.js below
+         for any URL ending with "/web-component-tester/browser.js"
+         when wct is run from the command line -->
+    <script src="../web-component-tester/browser.js"></script>
+    <link rel="import" href="../px-layout/px-layout.html"/>
+    <link rel="import" href="../px-header-layout/px-header-layout.html"/>
+    <link rel="import" href="../px-drawer-layout/px-drawer-layout.html"/>
+    <link rel="import" href="../px-layout.html"/>
+    <!-- Retain this link for px-theme.html -->
+    <!-- px-theme is needed for WCT to run without errors -->
+    <link rel="import" href="../../px-theme/px-theme.html"/>
+    <!-- This script link will contain the generated script for basic wct test cases -->
+    <script src="px-layout-base-tests.js"></script>
+    <!-- This script link will contain the generated script stub for custom, developer-added test cases -->
+    <script src="px-layout-custom-tests.js"></script>
+  </head>
+  <body>
+    <h3>Web Component Test : Fixture for px-layout</h3>
+
+    <div class="demo">
+      <h2>px-layout specs</h2>
+      <px-layout id="fixture" type="splitview">
+        <px-layout-item primary-sidebar>
+          <p>
+            Primary Sidebar
+          </p>
+        </px-layout-item>
+        <px-layout-item secondary-sidebar>
+          <p>
+            Secondary Sidebar
+          </p>
+        </px-layout-item>
+        <px-layout-item primary-content>
+          <px-navbar title="Primary Content">
+            <div left>
+              <button class="navbar__button" id="btn1" type="button" primary-sidebar-toggle>T</button>
+            </div>
+            <div right>
+              <button class="navbar__button" id="btn2" type="button" secondary-sidebar-toggle>T</button>
+            </div>
+          </px-navbar>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </px-layout-item>
+        <px-layout-item secondary-content>
+          <px-navbar title="Secondary Content">
+            <div left>
+              <button class="navbar__button" id="btn3" type="button" primary-content-toggle>Toggle</button>
+            </div>
+            <div right>
+              <button class="navbar__button" id="btn4" type="button" secondary-sidebar-toggle>Toggle</button>
+            </div>
+          </px-navbar>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </px-layout-item>
+      </px-layout>
+    </div>
+
+
+    <div class="demo">
+      <h2>px-drawer-layout specs</h2>
+      <px-drawer-layout id="px_layout_1">
+        <px-drawer  overlay></px-drawer>
+
+        <section content>
+          <px-navbar title="px-drawer-layout fixture">
+            <div left>
+              <button id="toggleButton1" type="button" drawer-toggle>Toggle Drawer</button>
+            </div>
+          </px-navbar>
+        </section>
+        <px-footer></px-footer>
+      </px-drawer-layout>
+    </div>
+
+
+    <div class="demo">
+      <h2>px-header-layout specs</h2>
+      <px-header-layout id="px_layout_2">
+        <px-header></px-header>
+        <section content>
+          <px-navbar title="px-header-layout fixture">
+            <div left>
+              <button id="toggleButton2" type="button" drawer-toggle>Toggle Drawer</button>
+            </div>
+          </px-navbar>
+        </section>
+        <px-footer></px-footer>
+      </px-header-layout>
+    </div>
+
+  </body>
+</html>
