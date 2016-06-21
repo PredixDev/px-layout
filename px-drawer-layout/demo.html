@@ -8,24 +8,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="../demo/demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
-
     <!-- TODO: Theme -->
-<link rel="import" href="../../px-theme/px-app.html">
-<link rel="import" href="../../px-theme/px-theme.html">
-
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
     <!-- TODO: Elements -->
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../px-layout.html">
-
     <link rel="import" href="../../px-sample-cards/gist-card.html">
     <link rel="import" href="../../px-sample-cards/widgets-card.html">
     <link rel="import" href="../../px-sample-cards/description-card.html">
-
-
-    <style media="screen">
-
-    </style>
+    <style media="screen"></style>
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
@@ -34,7 +27,7 @@
           height: 56px;
           border-bottom: 1px solid #3b3b3f;
         }
-        px-card{
+        px-card {
           flex: 1 0 300px;
         }
       </style>
@@ -74,8 +67,6 @@
               <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
             </px-card>
           </div>
-
-
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}">
               <p>{{item.body}}</p>
@@ -86,12 +77,10 @@
     </template>
     <script type="text/javascript">
       var app;
-
       function createDemoCards(count) {
         var i = 0,
           lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           _out = [];
-
         for (; i < count; i++) {
           _out.push({
             title: 'Card ' + i,
@@ -102,12 +91,12 @@
       }
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
-        app.toggleDrawer = function(){
+        app.toggleDrawer = function () {
           document.getElementById('layout').drawer.toggle()
         };
         app.cards = createDemoCards(50);
       });
     </script>
-      <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
   </body>
 </html>
