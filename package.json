@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "A px mobile web component.",
   "keywords": [
-    "px",
-    "px-mobile"
-  ],
+		"px",
+		"px-mobile"
+	],
   "license": "ISC",
   "author": "Jonnie Spratley",
   "scripts": {
@@ -43,6 +43,7 @@
     "node-sass-import-once": "^1.2.0",
     "sassdoc": "^2.1.20",
     "web-component-tester": "^4.2.2",
+    "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1",
     "webdriver-support": "^2.2.2"
   }
 }

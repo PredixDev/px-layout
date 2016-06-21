@@ -20,6 +20,6 @@ module.exports = {
 		}
 	},
 	suites: [
-    'test/px-responsive-layouts-test-fixture.html'
+    'test/px-layout-test-fixture.html'
   ]
 };
