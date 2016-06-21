@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
+<link rel="import" href="../../px-navbar/px-navbar.html">
 <link rel="import" href="../../px-drawer/px-drawer.html">
 <!--
 ## Overview
@@ -155,12 +156,7 @@ Custom property | Description | Default
       * return Element
       */
       get navbar() {
-        if (this.$.content) {
-          var n = Polymer.dom(this.$.navbarContent).getDistributedNodes()[0];
-          if (n && n.$.navbar) {
-            return n;
-          }
-        }
+        return Polymer.dom(this.$.navbarContent).getDistributedNodes()[0];
       },
       listeners: {
         'tap': '_tapHandler',

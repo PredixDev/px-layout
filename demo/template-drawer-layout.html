@@ -10,6 +10,7 @@
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html">
 
     <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-card/px-card.html">
@@ -28,13 +29,13 @@
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
       <px-drawer-layout id="layout">
-        <px-drawer fixed>
-          <div class="brand-spacer">
-
+        <px-drawer fixed overlay>
+          <div class="brand-spacer flex flex--center flex--middle">
+            <px-brand wordmark size="135"></px-brand>
           </div>
-          <div style="height: 100%; overflow: auto;">
-            <p>
-              You can close me with the <code>ESC</code> key.
+          <div >
+            <p class="u-m">
+              Place your navigation here.
             </p>
           </div>
         </px-drawer>
@@ -49,7 +50,23 @@
           </div>
         </px-navbar>
         <div class="u-m" content>
-
+          <px-card header-text="px-drawer-layout">
+            <p>
+              The drawer layout component is responsive and can layout your content.
+            </p>
+            <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-responsive-layouts">
+              <px-icon icon="fa:fa-github"></px-icon>
+              Github Repo
+            </a>
+          </px-card>
+          <div class="flex flex--wrap u-mb">
+            <px-card header-text="Browser Statistics" class="">
+              <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
+            </px-card>
+            <px-card header-text="Mobile Device Statistics" class="">
+              <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
+            </px-card>
+          </div>
           <div class="flex flex--wrap">
             <template is="dom-repeat" items="{{cards}}">
               <px-card icon="{{item.icon}}" header-text="{{item.title}}">

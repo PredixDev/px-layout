@@ -1,6 +1,7 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
+<link rel="import" href="../../px-navbar/px-navbar.html">
 <!--
 The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
 When the viewport is less than the `responsiveWidth` the brand header will be hidden.
@@ -61,7 +62,8 @@ Custom property | Description | Default
         <content id="headerContent" select="px-header"></content>
       </div>
       <div id="contentContainer" class="l-header-layout__content">
-        <content id="content" select=":not(px-header):not(px-footer)"></content>
+        <content id="navbarContent" select="px-navbar"></content>
+        <content id="content" select=":not(px-header):not(px-footer):not(px-navbar)"></content>
       </div>
       <div class="l-header-layout__footer" hidden$="{{narrow}}">
         <content id="footerContent" select="px-footer"></content>
@@ -121,12 +123,7 @@ Custom property | Description | Default
       * return Element
       */
       get navbar() {
-        if (this.$.content) {
-          var n = Polymer.dom(this.$.content).getDistributedNodes()[0];
-          if (n && n.$.navbar) {
-            return n;
-          }
-        }
+        return Polymer.dom(this.$.navbarContent).getDistributedNodes()[0];
       },
       listeners: {
         //  'tap': '_tapHandler'
