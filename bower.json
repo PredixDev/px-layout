@@ -1,7 +1,7 @@
 {
-  "name": "px-responsive-layouts",
+  "name": "px-layout",
   "description": "A set responsive layout elements.",
-  "main": "px-responsive-layouts.html",
+  "main": "px-layout.html",
   "authors": [
     "Jonnie Spratley"
   ],
