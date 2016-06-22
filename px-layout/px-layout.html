@@ -47,20 +47,20 @@ Code Here
         -webkit-overflow-scrolling: touch;
         padding-bottom: 10%;
       }
-      :host .is-active {
+      .is-active {
         display: block;
       }
-      :host .is-passive {
+      .is-passive {
         display: none;
       }
-      :host .l-primary-content,
-      :host .l-secondary-content {
+      .l-primary-content,
+      .l-secondary-content {
         position: relative;
       }
     </style>
     <div id="_layoutMain" class="flex flex--col">
       <!-- header -->
-      <div id="_layoutHeader" class=" l-header is-hidden@md-">
+      <div id="_layoutHeader" class="l-header">
         <content id="headerContent" select="px-header"></content>
       </div>
       <div id="_layoutViewport" class="">
@@ -68,7 +68,7 @@ Code Here
           <!-- primary-sidebar -->
           <div class="l-primary-sidebar">
             <px-drawer id="primarySidebar" type$="{{options.primarySidebar.type}}" align$="{{options.primarySidebar.align}}">
-              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar'], [primary-sidebar]"></content>
+              <content id="primarySidebarContent" select=".primary-sidebar, [role='primary-sidebar'], [primary-sidebar], sidenav"></content>
             </px-drawer>
           </div>
           <div class="l-container__wrapper">
@@ -86,14 +86,14 @@ Code Here
             </div>
             <!-- secondary-sidebar -->
             <div class="l-container__secondary-sidebar">
-              <px-drawer id="secondarySidebar" align$="{{options.primarySidebar.align}}">
-                <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar'], [secondary-sidebar]"></content>
+              <px-drawer id="secondarySidebar" align$="{{options.secondarySidebar.align}}">
+                <content id="secondarySidebarContent" select=".secondary-sidebar, [role='secondary-sidebar'], [secondary-sidebar], [sidebar]"></content>
               </px-drawer>
             </div>
           </div>
         </div>
       </div>
-      <div id="_layoutFooter" class=" l-footer is-hidden@md-">
+      <div id="_layoutFooter" class="l-footer">
         <content id="footerContent" select="px-footer"></content>
       </div>
     </div>
