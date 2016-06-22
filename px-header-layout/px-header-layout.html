@@ -1,6 +1,8 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
+<link rel="import" href="../px-layout-partials.html">
+<link rel="import" href="../px-layout-styles.html">
 <!--
 The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
 When the viewport is less than the `responsiveWidth` the brand header will be hidden.
@@ -42,7 +44,8 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-header-layout">
-  <link rel="import" type="css" href="../css/px-layout.css"/>
+  <!-- <link rel="import" type="css" href="../css/px-layout.css"/> -->
+  <style include="px-layout-css"></style>
   <template strip-whitespace>
     <style>
       :host {

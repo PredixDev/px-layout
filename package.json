@@ -1,5 +1,5 @@
 {
-  "name": "px-responsive-layouts",
+  "name": "px-layout",
   "version": "0.0.1",
   "description": "A px mobile web component.",
   "keywords": [
@@ -10,6 +10,7 @@
   "author": "Jonnie Spratley",
   "scripts": {
     "build": "grunt dist",
+    "dist": "gulp",
     "postinstall": "bower install",
     "serve": "grunt depserve",
     "start": "grunt",

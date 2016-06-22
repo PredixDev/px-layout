@@ -45,7 +45,6 @@
     </style>
   </head>
   <body class="debug-new-breakpoints scrollable " unresolved>
-
     <!-- TODO: Laytout -->
     <article class="viewport">
       <div class="u-mb">
@@ -55,20 +54,20 @@
         </p>
         <device-layout-viewer device="all" src="./demo/template-vanilla-seed-layout.html"></device-layout-viewer>
       </div>
-
-
       <!-- TODO: Usage -->
       <px-box-section id="usage" title="Usage">
         <p>
-          The markup structure of an application can become very messy and deeply nested.
-          So we have identified the essential elements that are needed to create a basic responsive Industrial Internet application.
+          The markup structure of an application can become very messy and deeply nested. So we have identified the essential elements that are needed to create a basic responsive Industrial Internet application.
         </p>
         <h3>Bundled layouts</h3>
         <ol>
-          <li><a href="./px-drawer-layout/demo.html" target="_blank">px-drawer-layout</a></li>
-          <li><a href="./px-header-layout/demo.html" target="_blank">px-header-layout</a></li>
+          <li>
+            <a href="./px-drawer-layout/demo.html" target="_blank">px-drawer-layout</a>
+          </li>
+          <li>
+            <a href="./px-header-layout/demo.html" target="_blank">px-header-layout</a>
+          </li>
         </ol>
-
         <h3>Bundled Elements</h3>
         <ol class="">
           <li>
@@ -96,7 +95,6 @@
             <a href="../px-drawer" target="_blank">px-drawer</a>
           </li>
         </ol>
-
         <!--
         <p>
           The following markup is a basic example of usage. Open in
@@ -165,7 +163,6 @@
         </demo-snippet>
         -->
       </px-box-section>
-
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Templates">
           <p>
@@ -184,7 +181,7 @@
             <template is="dom-repeat" items="{{examples}}">
               <li>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
-                <p></p>
+              
               </li>
             </template>
           </ol>
@@ -196,20 +193,16 @@
             {
               href: 'template-drawer-layout.html',
               title: 'Drawer Layout'
-            },
-            {
+            }, {
               href: 'template-drawer-header-layout.html',
               title: 'Drawer Header Layout'
-            },
-            {
+            }, {
               href: 'template-header-layout.html',
               title: 'Header Layout'
-            },
-            {
+            }, {
               href: 'template-basic.html',
               title: 'Basic Layout'
-            },
-            {
+            }, {
               href: 'template-vanilla-seed-layout.html',
               title: 'Vanilla Seed Layout'
             }, {
@@ -252,22 +245,23 @@
           ];
         });
       </script>
-
-
       <px-box-section id="docs" title="Documentation">
         <p>
           More documentation can be found below:
         </p>
         <ul>
-          <li><a href="./demo/demo-breakpoints.html" target="_blank">Breakpoints</a></li>
-          <li><a href="./demo/demo-flexbox.html" target="_blank">Flexbox</a></li>
-          <li><a href="./demo/demo-layout.html" target="_blank">Layout</a></li>
+          <li>
+            <a href="./demo/demo-breakpoints.html" target="_blank">Breakpoints</a>
+          </li>
+          <li>
+            <a href="./demo/demo-flexbox.html" target="_blank">Flexbox</a>
+          </li>
+          <li>
+            <a href="./demo/demo-layout.html" target="_blank">Layout</a>
+          </li>
         </ul>
       </px-box-section>
-
-
-
-</article>
-<script src="http://localhost:35724/livereload.js?snipver=1"></script>
-</body>
+    </article>
+    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+  </body>
 </html>
