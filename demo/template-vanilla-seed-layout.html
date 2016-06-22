@@ -8,11 +8,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
+
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-theme/px-theme.html">
-    <link rel="import" href="../../px-partials/px-partials.html">
-    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html">
+    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html" />
     <link rel="import" href="../px-layout.html">
   </head>
   <body unresolved class="responsive-demo">
@@ -26,36 +26,43 @@
         html {
           background: #efeff4;
         }
-        :root {
+
+        .vanilla-seed{
+          --px-navbar{
+
+          }
+          --px-navbar-button:{
+            color: #fff;
+          }
           --px-navbar-color: #fff;
           --px-navbar-background-color: #0d5eb6;
         }
-        .navbar__button {
-          color: #fff;
-        }
+
         .brand-spacer {
           height: 56px;
           border-bottom: 1px solid #3b3b3f;
         }
       </style>
       <px-drawer-layout id="layout">
+
         <px-drawer fixed overlay>
           <div class="brand-spacer flex flex--center flex--middle">
             <px-brand wordmark size="135"></px-brand>
           </div>
           <div >
-            <p class="u-m">
+            <p class="u-p">
               Place your navigation here.
             </p>
           </div>
         </px-drawer>
-        <px-navbar id="navbar" fixed auto-hide shadow>
+
+        <px-navbar id="navbar" fixed auto-hide shadow class="vanilla-seed">
           <div left>
             <div class="flex flex--center">
               <button class="navbar__button" drawer-toggle>
                 <i class="fa fa-lg fa-bars"></i>
               </button>
-              <span class="epsilon u-m">Vanilla Seed</span>
+              <span class="epsilon u-m flex--middle flex">Vanilla Seed</span>
             </div>
           </div>
           <div right>
@@ -64,16 +71,18 @@
             </button>
           </div>
         </px-navbar>
+
         <div class="u-ml u-mr flex flex--col flex--wrap" content>
           <px-card header-text="px-drawer-layout">
             <p>
               The drawer layout component is responsive and can layout your content.
             </p>
-            <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-responsive-layouts">
+            <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-layout">
               <px-icon icon="fa:fa-github"></px-icon>
               Github Repo
             </a>
           </px-card>
+
           <div class="flex flex--wrap u-mb">
             <px-card header-text="Browser Statistics" class="">
               <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
@@ -82,6 +91,7 @@
               <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
             </px-card>
           </div>
+
           <div class="flex flex--wrap">
             <template is="dom-repeat" items="{{cards}}">
               <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="flex__item">

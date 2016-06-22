@@ -9,7 +9,7 @@
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-theme/px-theme.html">
-    <link rel="import" href="../../px-partials/px-partials.html">
+
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <style media="screen">
@@ -21,17 +21,17 @@
   </head>
   <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
-      <px-drawer-layout id="layout">
+      <px-drawer-layout id="layout" force-narrow>
         <px-drawer overlay fixed>
-          <div class="brand-spacer">
-
+          <div class="brand-spacer flex flex--center flex--middle">
+            <px-brand wordmark size="135"></px-brand>
           </div>
-           <p>
+           <p class="u-p">
              Drawer Content
            </p>
         </px-drawer>
         <px-header-layout>
-          <px-header class="u-p"></px-header>
+          <px-header username="Tom Edison"></px-header>
           <px-navbar shadow auto-hide title="px-drawer-header-layout">
             <div left>
               <button class="navbar__button" drawer-toggle>
@@ -39,13 +39,13 @@
               </button>
             </div>
           </px-navbar>
-          <div content>
+          <section content>
             <template is="dom-repeat" items="{{cards}}">
-              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-m-">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mt-">
                 <p>{{item.body}}</p>
               </px-card>
             </template>
-          </div>
+          </section>
           <px-footer></px-footer>
         </px-header-layout>
       </px-drawer-layout>
