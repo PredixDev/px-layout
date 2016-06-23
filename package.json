@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "A px mobile web component.",
   "keywords": [
-		"px",
-		"px-mobile"
-	],
+    "px",
+    "px-mobile"
+  ],
   "license": "ISC",
   "author": "Jonnie Spratley",
   "scripts": {
@@ -23,6 +23,7 @@
     "grunt-autoprefixer": "^3.0.3",
     "grunt-concurrent": "^2.0.1",
     "grunt-contrib-clean": "~v0.6.0",
+    "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-jshint": "~v0.10.0",
     "grunt-contrib-watch": "~v0.6.1",
     "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
@@ -42,6 +43,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-style-modules": "^0.1.0",
     "node-sass-import-once": "^1.2.0",
+    "polymer-css-compiler": "git+https://github.com/jonniespratley/polymer-css-compiler.git",
     "sassdoc": "^2.1.20",
     "web-component-tester": "^4.2.2",
     "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1",
