@@ -96,24 +96,31 @@ Custom property | Description | Default
       }
       :host .l-drawer-layout__content{
         position: relative;
+        width: 100%;
+        height: 100%;
         @apply(--px-drawer-layout-content);
       }
-      :host .l-drawer-layout__container:not(.is-narrow) ::content [drawer-toggle] {
+
+      :host .l-drawer-layout__content:not(.is-narrow) ::content [drawer-toggle] {
         display: none;
       }
     </style>
-    <div id="container" class="l-drawer-layout">
+    <div id="container" class="l-drawer-layout flex flex--stretch">
       <div id="drawerContainer" class="l-drawer-layout__drawer">
         <content id="drawerContent" select="px-drawer"></content>
       </div>
+      <content id="navbarContent" select="px-navbar"></content>
+      <div id="contentContainer" class="l-drawer-layout__content">
+        <content id="content" select=":not(px-drawer):not(px-navbar)"></content>
+      </div>
+      <!--
       <div id="contentContainer" class="l-drawer-layout__container">
         <div class="l-drawer-layout__navbar">
-          <content id="navbarContent" select="px-navbar"></content>
+
         </div>
-        <div id="layoutContent" class="l-drawer-layout__content">
-          <content id="content" select=":not(px-drawer):not(px-navbar)"></content>
-        </div>
+
       </div>
+    -->
     </div>
     <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
@@ -186,7 +193,9 @@ Custom property | Description | Default
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
-          this.drawer.toggle();
+          if(!this.drawer.persistent){
+            this.drawer.toggle();
+          }
         }
       },
       /**
