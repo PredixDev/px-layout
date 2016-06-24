@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <title>template-content-mini-sidebar</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel='stylesheet' href='//predixdev.github.io/px-library-design/css/style.css'>
-    <script src="../../webcomponentsjs/webcomponents.js"></script>
+     <script src="../../webcomponentsjs/webcomponents.js"></script>
+
     <link rel="import" href="../px-layout.html">
+    <link rel="import" href="../../px-theme/px-app.html">
+    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-partials/px-partials.html">
+    <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
+    <link rel="import" href="../../px-sample-cards/widgets-card.html">
+    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html"/>
     <link rel="import" href="../../px-table-view/px-table-view.html">
   </head>
   <body unresolved class="responsive-demo">
@@ -17,13 +23,7 @@
         <px-header subtitle="Content Sidebar Mini"></px-header>
 
         <!-- TODO: Primary Sidebar -->
-        <div class="primary-sidebar has-navbar">
-          <px-table-view>
-            <template is="dom-repeat" items="{{navItems}}">
-              <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
-            </template>
-          </px-table-view>
-        </div>
+
 
         <!-- TODO: Secondary Sidebar -->
         <div class="secondary-sidebar">
@@ -31,6 +31,14 @@
             This is content inside the secondary sidebar.
           </p>
         </div>
+        <px-layout-item role="primary-sidebar">
+          <px-table-view>
+            <template is="dom-repeat" items="{{navItems}}">
+              <px-table-row type="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+            </template>
+          </px-table-view>
+        </px-layout-item>
+
 
         <div class="primary-content">
           <px-navbar title="Content">
