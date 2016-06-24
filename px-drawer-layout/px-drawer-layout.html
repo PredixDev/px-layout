@@ -1,7 +1,7 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../px-media-query.html">
-<link rel="import" href="../px-layout-partials.html">
+
 <link rel="import" href="../px-layout-styles.html">
 
 <!--
@@ -110,7 +110,7 @@ Custom property | Description | Default
         <div class="l-drawer-layout__navbar">
           <content id="navbarContent" select="px-navbar"></content>
         </div>
-        <div class="l-drawer-layout__content">
+        <div id="layoutContent" class="l-drawer-layout__content">
           <content id="content" select=":not(px-drawer):not(px-navbar)"></content>
         </div>
       </div>
@@ -166,19 +166,15 @@ Custom property | Description | Default
       },
       listeners: {
         'tap': '_tapHandler',
-
         'px-drawer-layout-reset': 'resetLayout'
       },
       observers: ['resetLayout(narrow, isAttached)'],
 
       attached: function(){
-        if(this.drawer){
-          this.drawer.fitInto = this.$.drawerContainer;
-        }
         this.async(function(){
-          if(this.navbar){
-            this.$$('.l-drawer-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
-            this.toggleClass('has-navbar', true, this.$$('.l-drawer-layout__content'));
+          this.toggleClass('has-navbar', (this.navbar ? true : false), this.$.layoutContent);
+          if(this.drawer){
+            this.drawer.fitInto = this.$.drawerContainer;
           }
         });
       },
@@ -254,8 +250,6 @@ Custom property | Description | Default
           }
         }
       },
-
-
       /**
        * Handle when the media query changes.
        * @event px-media-query
