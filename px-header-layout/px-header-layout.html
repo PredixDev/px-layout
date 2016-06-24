@@ -44,7 +44,6 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-header-layout">
-  <!-- <link rel="import" type="css" href="../css/px-layout.css"/> -->
   <style include="px-layout-css"></style>
   <template strip-whitespace>
     <style>
@@ -53,6 +52,8 @@ Custom property | Description | Default
         position: relative;
       }
       :host .l-header-layout {
+        position: relative;
+        transition: all 0.3s;
         @apply(--px-header-layout);
       }
       :host .l-header-layout__content {
@@ -60,19 +61,23 @@ Custom property | Description | Default
         @apply(--px-header-layout-content);
       }
     </style>
-    <div id="container" class="l-header-layout flex flex--col flex--stretch viewport">
+    <div id="container" class="l-header-layout">
       <div class="l-header-layout__header" hidden$="{{narrow}}">
         <content id="headerContent" select="px-header"></content>
       </div>
-      <div id="contentContainer" class="l-header-layout__content">
-        <content id="navbarContent" select="px-navbar"></content>
-        <content id="content" select=":not(px-header):not(px-footer):not(px-navbar)"></content>
+      <div id="contentContainer" class="l-header-layout__container">
+        <div class="l-header-layout__navbar">
+          <content id="navbarContent" select="px-navbar"></content>
+        </div>
+        <div class="l-header-layout__content full-height">
+          <content id="content" select=":not(px-header):not(px-footer):not(px-navbar)"></content>
+        </div>
       </div>
       <div class="l-header-layout__footer" hidden$="{{narrow}}">
         <content id="footerContent" select="px-footer"></content>
       </div>
-      <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
     </div>
+    <px-media-query query="[[_computeMediaQuery(forceNarrow, responsiveWidth)]]" on-query-matches-changed="_onQueryMatchesChanged"></px-media-query>
   </template>
   <script>
     Polymer({
@@ -135,8 +140,8 @@ Custom property | Description | Default
       attached: function () {
         this.async(function () {
           if (this.navbar) {
-            this.$$('.l-header-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
-            this.toggleClass('has-navbar', true, this.$$('.l-header-layout__content'));
+            //this.$$('.l-header-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
+            this.toggleClass('has-navbar', true, this.$$('.l-header-layout__container'));
           }
         });
       },

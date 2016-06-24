@@ -3,6 +3,7 @@
 <link rel="import" href="../px-media-query.html">
 <link rel="import" href="../px-layout-partials.html">
 <link rel="import" href="../px-layout-styles.html">
+
 <!--
 ## Overview
 The `px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
@@ -70,7 +71,6 @@ Custom property | Description | Default
 @homepage index.html
 -->
 <dom-module id="px-drawer-layout">
-  <!-- <link rel="import" type="css" href="../css/px-layout.css"/> -->
   <style include="px-layout-css"></style>
   <template strip-whitespace>
     <style>
@@ -78,30 +78,34 @@ Custom property | Description | Default
         display: block;
         position: relative;
       }
-
       :host .l-drawer-layout {
         position: relative;
         transition: all 0.3s;
+        display: flex;
         @apply(--px-drawer-layout);
       }
-
+      :host .l-drawer-layout__drawer {
+        position: relative;
+        z-index: 500;
+        height:100%;
+        @apply(--px-drawer-layout-drawer);
+      }
       :host .l-drawer-layout__container {
         position: relative;
+        @apply(--px-drawer-layout-container);
       }
-
       :host .l-drawer-layout__content{
         position: relative;
         @apply(--px-drawer-layout-content);
       }
-
-      /* Hide the drawer-toggle button on large screens*/
       :host .l-drawer-layout__container:not(.is-narrow) ::content [drawer-toggle] {
         display: none;
       }
-
     </style>
     <div id="container" class="l-drawer-layout">
-      <content id="drawerContent" select="px-drawer"></content>
+      <div id="drawerContainer" class="l-drawer-layout__drawer">
+        <content id="drawerContent" select="px-drawer"></content>
+      </div>
       <div id="contentContainer" class="l-drawer-layout__container">
         <div class="l-drawer-layout__navbar">
           <content id="navbarContent" select="px-navbar"></content>
@@ -162,11 +166,15 @@ Custom property | Description | Default
       },
       listeners: {
         'tap': '_tapHandler',
+
         'px-drawer-layout-reset': 'resetLayout'
       },
       observers: ['resetLayout(narrow, isAttached)'],
 
       attached: function(){
+        if(this.drawer){
+          this.drawer.fitInto = this.$.drawerContainer;
+        }
         this.async(function(){
           if(this.navbar){
             this.$$('.l-drawer-layout__content').style.paddingTop = this.navbar.getHeight() + 'px';
@@ -182,7 +190,7 @@ Custom property | Description | Default
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
-          this.drawer.open();
+          this.drawer.toggle();
         }
       },
       /**
@@ -198,20 +206,27 @@ Custom property | Description | Default
           var drawer = this.drawer;
           var drawerWidth = this.drawer.getWidth();
           var contentContainer = this.$.contentContainer;
+
+
           if (this.narrow) {
             drawer.opened = drawer.persistent = false;
+            drawer.type = 'temporary';
             contentContainer.classList.add('is-narrow');
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = '';
             if (this.navbar && this.navbar.fixed) {
               this.navbar.$$('.navbar').style.left = '';
             }
+
           } else {
             drawer.opened = drawer.persistent = true;
+            drawer.type = 'persistent';
             contentContainer.classList.remove('is-narrow');
+
             if (this.navbar && this.navbar.fixed) {
               this.navbar.$$('.navbar').style.left = drawerWidth + 'px';
             }
+
             if (drawer.align == 'right') {
               contentContainer.style.marginLeft = '';
               contentContainer.style.marginRight = drawerWidth + 'px';
@@ -224,6 +239,23 @@ Custom property | Description | Default
           this.notifyResize();
         });
       },
+
+      _handleDrawerToggle: function(){
+        var drawer = this.drawer;
+        var drawerWidth = this.drawer.getWidth();
+        var contentContainer = this.$.contentContainer;
+        if(drawer){
+          if (drawer.align == 'right') {
+            contentContainer.style.marginLeft = '';
+            contentContainer.style.marginRight = drawerWidth + 'px';
+          } else {
+            contentContainer.style.marginLeft = drawerWidth + 'px';
+            contentContainer.style.marginRight = '';
+          }
+        }
+      },
+
+
       /**
        * Handle when the media query changes.
        * @event px-media-query

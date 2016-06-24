@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>template-detail-asset</title>
+
+    <!-- TODO: Meta Tags -->
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <!-- TODO: Dependencies -->
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
 
-    <!-- TODO: Layout -->
-    <link rel="import" href="../px-layout.html">
-
-    <link rel="import" href="../../px-alert-label/px-alert-label.html">
-
+    <!-- TODO: Theme -->
     <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-theme/px-theme.html">
+
+    <!-- TODO: Layout + Partials -->
     <link rel="import" href="../../px-partials/px-partials.html">
+    <link rel="import" href="../../px-drawer/px-drawer.html">
+    <link rel="import" href="../../px-navbar/px-navbar.html">
+    <link rel="import" href="../px-layout.html">
+
+    <!-- TODO: Other Components -->
+    <link rel="import" href="../../px-alert-label/px-alert-label.html">
     <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../../px-sample-cards/widgets-card.html">
     <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html"/>
     <link rel="import" href="../../px-table-view/px-table-view.html">
-    <link rel="import" href="../px-layout.html">  <style media="screen">
+    <style media="screen">
       body,
       html {}
-
       .has-navbar {
         padding-top: 56px;
         position: relative;
       }
-
       #sidenav {
         background: #fff;
       }
@@ -39,32 +43,24 @@
         margin: 0 !important;
         padding: 0 !important;
       }
-
       .box {
         background: #fff;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
         border-radius: 0;
       }
-
       .app {
         height: 100%;
         overflow: auto;
       }
-
       .u-color--white {
         color: #fff;
       }
-
     </style>
-
   </head>
-
   <body unresolved class="">
-
     <template id="app" is="dom-bind">
-
       <px-layout class="app">
-        <px-header  subtitle="Asset Details Template"></px-header>
+        <px-header subtitle="Asset Details Template"></px-header>
         <px-drawer id="sidenav" side="left"></px-drawer>
         <div class="primary-content has-navbar  u-bg--gray8">
           <px-navbar title="{{asset.title}}" shadow back="true" back-label="GT123456">
@@ -81,12 +77,12 @@
                 <h3>Asset Details</h3>
                 <px-table-row modifier="bare row responsive">
                   <template is="dom-repeat" items="{{asset.details}}" content>
-                      <px-table-row type="">
-                        <div class="table-row__content" content>
-                          <span class="table-row__title muted zeta">{{item.name}}</span>
-                          <span class="table-row__body ">{{item.value}}</span>
-                        </div>
-                      </px-table-row>
+                    <px-table-row type="">
+                      <div class="table-row__content" content>
+                        <span class="table-row__title muted zeta">{{item.name}}</span>
+                        <span class="table-row__body ">{{item.value}}</span>
+                      </div>
+                    </px-table-row>
                   </template>
                 </px-table-row>
               </div>
@@ -106,10 +102,8 @@
                 </ul>
               </div>
             </header>
-
             <!-- TODO: Cards -->
             <div class="scrollable u-m--">
-
               <px-card id="card2" class="box box--small" header-text="Card">
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
@@ -134,7 +128,6 @@
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
               </px-card>
-
             </div>
           </section>
         </div>
@@ -172,7 +165,6 @@
           name: 'Status',
           value: 'Pending'
         }
-
       ];
       app.asset = {
         title: 'GT123456',
@@ -225,7 +217,6 @@
           }
         ]
       };
-
       function toggleSidebar(el) {
         var sidebar = document.getElementById(el);
         var type = sidebar.type;
@@ -237,7 +228,5 @@
         sidebar.toggle();
       }
     </script>
-
   </body>
-
 </html>
