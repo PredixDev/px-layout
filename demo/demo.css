@@ -19,3 +19,49 @@
 code {
   color: crimson;
 }
+
+
+
+@media screen and (max-width: 21.3333333333rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #fa62af !important; } }
+
+@media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #4abde6 !important; } }
+
+@media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #a3e572 !important; } }
+
+@media screen and (min-width: 68.2666666667rem) and (max-width: 80rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #ffab40 !important; } }
+
+@media screen and (min-width: 85.3333333333rem) {
+  .debug-new-breakpoints .responsive-demo {
+    background-color: #eddd46 !important; } }
+
+@media screen and (min-width: 45em) and (max-width: 63.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: lightblue !important; } }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: blue !important; } }
+
+@media screen and (min-width: 45em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: green !important; } }
+
+@media screen and (max-width: 63.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: crimson !important; } }
+
+@media screen and (min-width: 64em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: purple !important; } }
+
+@media screen and (max-width: 44.9375em) {
+  .debug-old-breakpoints .responsive-demo {
+    background-color: gold !important; } }

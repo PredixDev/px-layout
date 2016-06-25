@@ -20,7 +20,6 @@
     <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-drawer/px-drawer.html">
     <link rel="import" href="../../px-navbar/px-navbar.html">
-    <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
     <link rel="import" href="../px-layout.html">
     <script src="demo.js"></script>
@@ -30,26 +29,35 @@
       }
     </style>
   </head>
-  <body unresolved class="responsive-demo viewport">
-    <template id="app" is="dom-bind">
-      <px-header-layout id="layout">
-        <px-header>
-        </px-header>
-        <px-navbar>
-          <div title>
-            px-header-layout
+  <body unresolved class="">
+
+
+        <template id="app" is="dom-bind">
+          <style is="customs-style">
+
+          </style>
+            <div class="responsive-demo viewport">
+          <px-header-layout id="layout">
+            <px-header>
+            </px-header>
+            <px-navbar>
+              <div title>
+                px-header-layout
+              </div>
+            </px-navbar>
+            <div class="flex flex--wrap" content>
+              <template is="dom-repeat" items="{{cards}}">
+                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
+                  <p>{{item.body}}</p>
+                </px-card>
+              </template>
+            </div>
+            <px-footer></px-footer>
+          </px-header-layout>
           </div>
-        </px-navbar>
-        <div class="flex flex--wrap" content>
-          <template is="dom-repeat" items="{{cards}}">
-            <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
-              <p>{{item.body}}</p>
-            </px-card>
-          </template>
-        </div>
-        <px-footer></px-footer>
-      </px-header-layout>
-    </template>
+        </template>
+
+
     <script type="text/javascript">
       var app;
       document.addEventListener('WebComponentsReady', function () {

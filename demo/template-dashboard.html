@@ -38,7 +38,30 @@
           flex: 1 0 275px;
           min-width: 275px;
         }
-        :root {}
+        .drawer-alt-1 {
+       --px-drawer: {
+         background: #242326;
+         color: #fff;
+       }
+     }
+     .drawer-alt-1__user {
+       --px-table-row-media-img: {
+         width: 24px;
+       }
+     }
+     .drawer-alt-1__user-table {
+       position: absolute;
+       bottom: 0;
+       width: 100%;
+       --px-table-view: {
+         background-color: #323232;
+         color: #fff;
+       }
+     }
+     .drawer-alt-1 .selected {
+       background-color: #0a9ec1;
+       color: #fff;
+     }
         .sidebar {
           --px-table-row: {
             border-bottom: none;
@@ -51,11 +74,14 @@
       <px-header-layout id="layout0">
         <px-header subtitle="Dashboard Template"></px-header>
         <!-- TODO: Primary Sidebar -->
-        <px-drawer id="drawer" swipe-open swipe-close overlay fixed>
-          <px-table-view modifier="tiny" class="sidebar">
-            <template is="dom-repeat" items="{{navItems}}">
-              <px-table-row modifier="tappable" icon="{{item.icon}}" title="{{item.label}}"></px-table-row>
+        <px-drawer id="drawer" class="drawer-alt-1" fixed overlay>
+          <px-table-view class="drawer-alt-1__table" selected-class="selected" selected="0">
+            <template is="dom-repeat" items="[[navItems]]">
+              <px-table-row title="{{item.label}}" icon="{{item.icon}}" icon-size="24" modifier="tappable"></px-table-row>
             </template>
+          </px-table-view>
+          <px-table-view class="drawer-alt-1__user-table">
+            <px-table-row class="drawer-alt-1__user" title="{{user.name}}" image="{{user.image}}" modifier="tappable" icon-right="fa:fa-cog"></px-table-row>
           </px-table-view>
         </px-drawer>
         <px-navbar title="Dashboard" shadow>
@@ -220,6 +246,7 @@
       }
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
+        app.user = user;
         app.navItems = navItems;
         app.cards = createDemoCards(25);
         app.spine = createDemoSpine(4);

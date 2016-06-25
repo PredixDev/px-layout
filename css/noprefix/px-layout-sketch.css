@@ -5028,24 +5028,48 @@ body:not([style-scope]):not(.style-scope) {
       overflow-y: auto;
       -webkit-overflow-scrolling: touch; } }
 
-.viewport {
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
   transition: all .3s ease;
-  width: auto;
+  height: 100%;
+  width: 100%;
   padding: 0;
-  margin: 0; }
-  .viewport--flush {
+  margin: 0 auto !important; }
+  .viewport.debug,
+  .viewport:not([style-scope]):not(.style-scope).debug {
+    background-color: #fa62af; }
+  .viewport, .viewport:not([style-scope]):not(.style-scope)--flush {
     margin: 0 !important;
     padding: 0 !important; }
+  @media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
+    .viewport.debug,
+    .viewport:not([style-scope]):not(.style-scope).debug {
+      background-color: #4abde6; } }
   @media screen and (min-width: 51.2rem) and (max-width: 68.2rem) {
-    .viewport {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
       padding-left: var(--px-viewport-padding-md, 0.5rem);
-      padding-right: var(--px-viewport-padding-md, 0.5rem); } }
+      padding-right: var(--px-viewport-padding-md, 0.5rem); }
+      .viewport.debug,
+      .viewport:not([style-scope]):not(.style-scope).debug {
+        background-color: #a3e572; } }
+  @media screen and (min-width: 85.3333333333rem) {
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      max-width: 80rem; }
+      .viewport.debug,
+      .viewport:not([style-scope]):not(.style-scope).debug {
+        background-color: #eddd46; } }
   @media (min-width: 66.1333333333rem) {
-    .viewport {
-      margin: 0 auto;
+    .viewport,
+    .viewport:not([style-scope]):not(.style-scope) {
+      max-width: 80rem;
       max-width: var(--px-viewport-max-width-lg, 80rem);
       padding-left: var(--px-viewport-padding-lg, 1rem);
-      padding-right: var(--px-viewport-padding-lg, 1rem); } }
+      padding-right: var(--px-viewport-padding-lg, 1rem); }
+      .viewport.debug,
+      .viewport:not([style-scope]):not(.style-scope).debug {
+        background-color: #ffab40; } }
 
 .has-navbar {
   position: relative;

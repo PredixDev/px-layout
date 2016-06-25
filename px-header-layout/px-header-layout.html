@@ -7,6 +7,8 @@
 The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
 When the viewport is less than the `responsiveWidth` the brand header will be hidden.
 
+[![Build Status](https://travis-ci.org/PredixDev/px-layout.svg?branch=master)](https://travis-ci.org/PredixDev/px-layout)
+
 ### Usage:
 
 ```
@@ -61,7 +63,7 @@ Custom property | Description | Default
         @apply(--px-header-layout-content);
       }
     </style>
-    <div id="container" class="l-header-layout">
+    <div id="container" class="l-header-layout viewport">
       <div class="l-header-layout__header" hidden$="{{narrow}}">
         <content id="headerContent" select="px-header"></content>
       </div>

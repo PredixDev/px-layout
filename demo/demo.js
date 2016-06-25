@@ -1,12 +1,75 @@
+window.EXAMPLES = [{
+  icon: 'fa:fa-check',
+  color: 'green',
+  href: 'template-drawer-layout.html',
+  title: 'Drawer Layout'
+}, {
+  icon: 'fa:fa-check',
+  color: 'green',
+  href: 'template-drawer-header-layout.html',
+  title: 'Drawer Header Layout'
+}, {
+  icon: 'fa:fa-check',
+  color: 'green',
+  href: 'template-header-layout.html',
+  title: 'Header Layout'
+}, {
+  href: 'template-basic.html',
+  title: 'Basic Layout'
+}, {
+  icon: 'fa:fa-check',
+  color: 'green',
+  href: 'template-vanilla-seed-layout.html',
+  title: 'Vanilla Seed Layout'
+}, {
+  href: 'template-dashboard.html',
+  title: 'Dashboard Seed Layout'
+}, {
+  href: 'template-splitview.html',
+  title: 'Splitview Layout'
+}, {
+  href: 'template-login.html',
+  title: 'Login'
+}, {
+  href: 'template-cards.html',
+  title: 'Grid to List'
+}, {
+  href: 'template-tabs-to-columns.html',
+  title: 'Tabs to Columns'
+}, {
+  href: 'template-tabs-to-sidebar.html',
+  title: 'Tabs to Sidebar'
+}, {
+  href: 'template-content-mini-sidebar.html',
+  title: 'Context Mini Sidebar'
+}, {
+  href: 'template-content-sidebar.html',
+  title: 'Context Static Sidebar'
+}, {
+  href: 'template-google-example.html',
+  title: 'Google Example'
+}, {
+  href: 'template-detail.html',
+  title: 'Full Detail'
+}, {
+  href: 'template-detail-asset.html',
+  title: 'Asset Detail'
+}, {
+  href: 'template-detail-turbine.html',
+  title: 'Turbine Detail'
+}];
+var user = {
+  username: 'jonnie.spratley',
+  name: 'Jonnie Spratley',
+  email: 'jonnie.spratley@ge.com',
+  image: 'https://goo.gl/WKu72K'
+};
 var navItems = [{
-  label: 'Dashboard',
-  icon: 'fa:fa-home'
+  label: 'Dashboards',
+  icon: 'fa:fa-tachometer'
 }, {
   label: 'Alerts',
   icon: 'fa:fa-exclamation-triangle'
-}, {
-  label: 'Profile',
-  icon: 'fa:fa-pencil'
 }, {
   label: 'Cases',
   icon: 'fa:fa-briefcase'

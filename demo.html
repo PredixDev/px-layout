@@ -7,13 +7,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="demo/demo.css">
+    <script src="demo/demo.js"></script>
     <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
     <link rel="import" href="../px-theme/px-app.html">
-    <link rel="import" href="../px-partials/px-partials.html">
     <link rel="import" href="../px-theme/px-theme.html">
     <link rel="import" href="../px-card/px-card.html">
+    <link rel="import" href="../px-partials/px-partials.html">
     <link rel="import" href="px-layout.html">
     <script type="text/javascript">
       function toggleDebug(name) {
@@ -180,8 +181,11 @@
           <ol class="">
             <template is="dom-repeat" items="{{examples}}">
               <li>
+                <px-icon
+                  color$="{{item.color}}"
+                  icon$="{{item.icon}}"
+                  icon-size="16"></px-icon>
                 <a href$="demo/{{item.href}}" target="_blank">{{item.title}}</a>
-
               </li>
             </template>
           </ol>
@@ -189,60 +193,7 @@
       </template>
       <script type="text/javascript">
         document.addEventListener('WebComponentsReady', function () {
-          document.getElementById('pxExamples').examples = [
-            {
-              href: 'template-drawer-layout.html',
-              title: 'Drawer Layout'
-            }, {
-              href: 'template-drawer-header-layout.html',
-              title: 'Drawer Header Layout'
-            }, {
-              href: 'template-header-layout.html',
-              title: 'Header Layout'
-            }, {
-              href: 'template-basic.html',
-              title: 'Basic Layout'
-            }, {
-              href: 'template-vanilla-seed-layout.html',
-              title: 'Vanilla Seed Layout'
-            }, {
-              href: 'template-dashboard.html',
-              title: 'Dashboard Seed Layout'
-            }, {
-              href: 'template-splitview.html',
-              title: 'Splitview Layout'
-            }, {
-              href: 'template-login.html',
-              title: 'Login'
-            }, {
-              href: 'template-cards.html',
-              title: 'Grid to List'
-            }, {
-              href: 'template-tabs-to-columns.html',
-              title: 'Tabs to Columns'
-            }, {
-              href: 'template-tabs-to-sidebar.html',
-              title: 'Tabs to Sidebar'
-            }, {
-              href: 'template-content-mini-sidebar.html',
-              title: 'Context Mini Sidebar'
-            }, {
-              href: 'template-content-sidebar.html',
-              title: 'Context Static Sidebar'
-            }, {
-              href: 'template-google-example.html',
-              title: 'Google Example'
-            }, {
-              href: 'template-detail.html',
-              title: 'Full Detail'
-            }, {
-              href: 'template-detail-asset.html',
-              title: 'Asset Detail'
-            }, {
-              href: 'template-detail-turbine.html',
-              title: 'Turbine Detail'
-            }
-          ];
+          document.getElementById('pxExamples').examples = window.EXAMPLES;
         });
       </script>
       <px-box-section id="docs" title="Documentation">
