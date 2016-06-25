@@ -19,6 +19,11 @@
 code {
   color: crimson;
 }
+.content{
+  background-color: white;
+  min-height: 75vh;
+  height: 100%;
+}
 
 
 

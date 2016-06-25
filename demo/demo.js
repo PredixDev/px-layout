@@ -58,15 +58,24 @@ window.EXAMPLES = [{
   href: 'template-detail-turbine.html',
   title: 'Turbine Detail'
 }];
+
+var demo = window.demo = {};
 var user = {
   username: 'jonnie.spratley',
   name: 'Jonnie Spratley',
   email: 'jonnie.spratley@ge.com',
   image: 'https://goo.gl/WKu72K'
 };
+demo.user = user;
 var navItems = [{
-  label: 'Dashboards',
+  label: 'Dashboard',
   icon: 'fa:fa-tachometer'
+}, {
+  label: 'Blank View',
+  icon: 'fa:fa-square'
+}, {
+  label: 'Details',
+  icon: 'fa:fa-square'
 }, {
   label: 'Alerts',
   icon: 'fa:fa-exclamation-triangle'
@@ -77,13 +86,39 @@ var navItems = [{
   label: 'Analysis',
   icon: 'fa:fa-bar-chart'
 }];
+demo.navItems = navItems;
+demo.reports = [{
+  title: 'Symptoms',
+  body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
+}, {
+  title: 'Symptoms',
+  body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
+}, {
+  title: 'Symptoms',
+  body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
+}];
+demo.documents = [{
+  name: 'Time Series Inlet Flow',
+  type: 'pdf',
+  size: '714 KB',
+  created: '10/01/15 1:32 PM'
+}, {
+  name: 'Time Series Flow',
+  type: 'pdf',
+  size: '2 MB',
+  created: '10/06/15 6:16 PM'
+}, {
+  name: 'Gas Turbine Map',
+  type: 'pdf',
+  size: '1.4 MB',
+  created: '03/19/16 2:16 PM'
+}];
 
 function createDemoCards(count) {
   var i = 0,
     lorem =
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-    'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  _out = [];
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliq',
+    _out = [];
   for (; i < count; i++) {
     _out.push({
       title: 'Card ' + i,
@@ -93,12 +128,14 @@ function createDemoCards(count) {
   return _out;
 }
 
+demo.createDemoCards = createDemoCards;
+
+
 function createDemoItems(count) {
   var i = 0,
     lorem =
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d' +
-    'olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  _out = [];
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    _out = [];
   for (; i < count; i++) {
     _out.push({
       id: 'item-' + i,
@@ -108,6 +145,7 @@ function createDemoItems(count) {
   }
   return _out;
 }
+demo.createDemoItems = createDemoItems;
 
 
 function createToc(id) {

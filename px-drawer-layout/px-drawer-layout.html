@@ -80,6 +80,12 @@ Custom property | Description | Default
         display: block;
         position: relative;
       }
+      :host.has-navbar ::content .drawer-spacer{
+        min-height: 57px;
+      }
+      :host.has-navbar .l-drawer-layout__container{
+        padding-top: 57px;
+      }
       :host .l-drawer-layout {
         position: relative;
         transition: all 0.3s;
@@ -196,8 +202,9 @@ Custom property | Description | Default
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
           if(!this.drawer.persistent){
-            this.drawer.toggle();
+
           }
+          this.drawer.toggle();
         }
       },
       /**
@@ -251,7 +258,7 @@ Custom property | Description | Default
         var drawer = this.drawer;
         var drawerWidth = this.drawer.getWidth();
         var contentContainer = this.$.contentContainer;
-        if(drawer){
+        if(drawer && drawer.opened){
           if (drawer.align == 'right') {
             contentContainer.style.marginLeft = '';
             contentContainer.style.marginRight = drawerWidth + 'px';
@@ -259,6 +266,9 @@ Custom property | Description | Default
             contentContainer.style.marginLeft = drawerWidth + 'px';
             contentContainer.style.marginRight = '';
           }
+        } else {
+          contentContainer.style.marginLeft = '';
+          contentContainer.style.marginRight = '';
         }
       },
       /**
