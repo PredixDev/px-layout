@@ -27,18 +27,18 @@ const sassOptions = {
   }
 };
 
-gulp.task('sassdoc', function () {
+gulp.task('sassdoc', function() {
   return gulp.src('./sass/px-layout-sketch.scss')
     .pipe(sassdoc(sassdocOptions));
 });
 
-gulp.task('clean', function () {
+gulp.task('clean', function() {
   return gulp.src(['.tmp', 'css'], {
     read: false
   }).pipe($.clean());
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
   return gulp.src('./sass/px-layout-sketch.scss')
     .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.size())
@@ -46,7 +46,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./css'));
 });
 
-gulp.task('autoprefixer', function () {
+gulp.task('autoprefixer', function() {
   return gulp.src('css/**/*.css')
     .pipe($.autoprefixer({
       browsers: ['last 2 versions'],
@@ -56,7 +56,7 @@ gulp.task('autoprefixer', function () {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('css', function () {
+gulp.task('css', function() {
   return gulp.src('css/**/*.css')
     .pipe($.sourcemaps.init())
     .pipe($.cssmin())
@@ -69,11 +69,11 @@ gulp.task('css', function () {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('sass:watch', function () {
+gulp.task('sass:watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
-gulp.task('autoprefixer:watch', function () {
+gulp.task('autoprefixer:watch', function() {
   gulp.watch('./css/**/*.css', ['autoprefixer']);
 });
 const path = require('path');
@@ -86,13 +86,13 @@ Usage
 
 <style include="shared-styles"></style>
 */
-gulp.task('poly-styles', function () {
+gulp.task('poly-styles', function() {
   gulp.src(`./css/${pkg.name}.min.css`)
     .pipe(stylemod({
       // All files will be named 'styles.html'
       filename: 'styles',
       // Use '-css' suffix instead of '-styles' for module ids
-      moduleId: function (file) {
+      moduleId: function(file) {
         return pkg.name + '-css';
       }
     }))
@@ -100,5 +100,23 @@ gulp.task('poly-styles', function () {
     .pipe($.size())
     .pipe(gulp.dest('.'));
 });
+
+
+
+var vulcanize = require('gulp-vulcanize');
+
+gulp.task('vulcanize', function() {
+  return gulp.src('src/index.html')
+    .pipe(vulcanize({
+      abspath: '',
+      excludes: [],
+      stripExcludes: false
+    }))
+    .pipe($.rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('watch', ['sass:watch', 'autoprefixer:watch']);
 gulp.task('default', gulpSequence('clean', 'sass', 'autoprefixer', 'css', 'sassdoc', 'poly-styles'));

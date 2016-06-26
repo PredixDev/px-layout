@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>template-header-layout</title>
 
-    <link rel="stylesheet" href="../demo/demo.css">
     <!-- TODO: Meta Tags -->
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,54 +12,44 @@
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
 
     <!-- TODO: Theme -->
-    <link rel="import" href="../../px-theme/px-app.html">
-    <link rel="import" href="../../px-theme/px-theme.html">
+    <link rel="import" href="../../px-theme/px-app.html" >
+    <link rel="import" href="../../px-theme/px-theme.html" >
 
     <!-- TODO: Layout + Partials -->
-    <link rel="import" href="../../px-partials/px-partials.html">
-    <link rel="import" href="../../px-drawer/px-drawer.html">
-    <link rel="import" href="../../px-navbar/px-navbar.html">
+    <link rel="import" href="../../px-partials/px-partials.html" >
+    <link rel="import" href="../../px-drawer/px-drawer.html" >
+    <link rel="import" href="../../px-navbar/px-navbar.html" >
+    <link rel="import" href="../../px-card/px-card.html" >
     <link rel="import" href="../px-layout.html">
-    <link rel="import" href="../../px-card/px-card.html">
-
+    <link rel="stylesheet" href="../demo/demo.css">
     <script src="../demo/demo.js"></script>
-    <style media="screen">
-      px-card {
-        flex: 1 0 250px;
-      }
-    </style>
   </head>
   <body unresolved class="responsive-demo ">
     <template id="app" is="dom-bind">
-        <px-header-layout id="layout">
-          <px-header>
-
-          </px-header>
-          <px-navbar auto-hide shadow>
-            <div title>
-              px-header-layout
-            </div>
-          </px-navbar>
-          <div class="has-navbar">
-            <div class="flex flex--wrap flex--spaced">
-              <template is="dom-repeat" items="{{cards}}">
-                <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
-                  <p>{{item.body}}</p>
-                </px-card>
-              </template>
-            </div>
+      <px-header-layout id="layout">
+        <px-header></px-header>
+        <px-navbar auto-hide shadow>
+          <div title>
+            px-header-layout
           </div>
-          <px-footer></px-footer>
-        </px-header-layout>
+        </px-navbar>
+        <div class="has-navbar">
+          <div class="flex flex--wrap flex--spaced">
+            <template is="dom-repeat" items="{{cards}}">
+              <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-mb">
+                <p>{{item.body}}</p>
+              </px-card>
+            </template>
+          </div>
+        </div>
+        <px-footer></px-footer>
+      </px-header-layout>
     </template>
     <script type="text/javascript">
       var app;
       document.addEventListener('WebComponentsReady', function () {
         app = document.getElementById('app');
-        app.toggleDrawer = function () {
-          document.getElementById('layout').drawer.toggle()
-        };
-        app.cards = createDemoCards(30);
+        app.cards = createDemoCards(5);
       });
     </script>
   </body>

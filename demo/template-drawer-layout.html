@@ -74,6 +74,16 @@ body
 
       </style>
 
+      <!-- TODO: all actions at highest z-index -->
+      <px-action-sheet id="actionsheet1">
+        <px-table-view>
+          <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+          <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+          <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+          <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
+        </px-table-view>
+      </px-action-sheet>
+
       <px-drawer-layout id="layout">
 
         <!-- TODO: Drawer -->
@@ -248,16 +258,12 @@ body
 
 
           </iron-pages>
-          <px-action-sheet id="actionsheet1">
-            <px-table-view>
-              <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
-              <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
-              <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
-              <px-table-row icon="fa:fa-square" modifier="tappable" title="Single-line item"></px-table-row>
-            </px-table-view>
-          </px-action-sheet>
+
         </div>
       </px-drawer-layout>
+
+
+
     </template>
     <script type="text/javascript">
       var app;
