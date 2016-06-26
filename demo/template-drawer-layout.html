@@ -153,13 +153,7 @@ body
                   <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
                 </px-card>
               </div>
-              <div class="flex flex--wrap">
-                <template is="dom-repeat" items="{{cards}}">
-                  <px-card icon="{{item.icon}}" header-text="{{item.title}}">
-                    <p>{{item.body}}</p>
-                  </px-card>
-                </template>
-              </div>
+
             </section>
 
             <!-- TODO: Page 2 -->
@@ -179,7 +173,7 @@ body
             <section title="Details">
               <px-alert-message action="dismiss" type="important" message-title="Heads up!" message="This definitely needs your attention."></px-alert-message>
 
-              <div class="content">
+              <div class="content u-m">
 
                 <px-title-bar title="Case Information"></px-title-bar>
                 <px-card title="Widget">
@@ -188,39 +182,42 @@ body
                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                   </p>
                 </px-card>
-                <px-title-bar title="Widget Title">
-                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
-                </px-title-bar>
-                <px-card title="Widget">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </px-card>
-                <px-title-bar title="Documets">
-                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
-                </px-title-bar>
-                <px-table-view modifier="small">
-                  <template is="dom-repeat" items="[[documents]]">
-                    <px-table-row title="{{item.name}}" label1="{{item.size}}" icon="fa:fa-file" modifier="tappable"></px-table-row>
-                  </template>
-                </px-table-view>
-                <px-title-bar title="Notes"></px-title-bar>
-                <px-table-view modifier="small" row-modifier="col tappable">
-                  <px-table-row
-                    title="John Doe"
-                    label1="11/02/12 1:32 PM"
-                    body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
-                  <px-table-row
-                    title="John Doe"
-                    modifier="tappable"
-                    label1="11/02/12 1:32 PM"
-                    body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
-                </px-table-view>
+
+
+
+                <div class="box-section">
+                  <px-title-bar title="Documets">
+                    <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                  </px-title-bar>
+                  <px-table-view modifier="small">
+                    <template is="dom-repeat" items="[[documents]]">
+                      <px-table-row title="{{item.name}}" label1="{{item.size}}" icon="fa:fa-file" modifier="tappable"></px-table-row>
+                    </template>
+                  </px-table-view>
+                </div>
+
+
+                <!-- TODO: nodes -->
+                <div class="box-section">
+                  <px-title-bar title="Notes"></px-title-bar>
+                  <px-table-view modifier="small" row-modifier="col tappable">
+                    <px-table-row
+                      title="John Doe"
+                      label1="11/02/12 1:32 PM"
+                      body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
+                    <px-table-row
+                      title="John Doe"
+                      modifier="tappable"
+                      label1="11/02/12 1:32 PM"
+                      body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
+                  </px-table-view>
+                </div>
+
+                <!-- TODO: reports -->
                 <px-title-bar title="Reports">
                   <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
                 </px-title-bar>
-                <px-table-view >
+                <px-table-view>
                   <template is="dom-repeat" items="[[reports]]">
                     <px-table-row title="{{item.title}}" modifier="tappable" body="{{item.body}}"></px-table-row>
                   </template>
@@ -232,14 +229,31 @@ body
 
             <!-- TODO: page 4 -->
             <section title="Alerts">
-              <px-title-bar title="Recent Alerts"></px-title-bar>
+              <div class="content u-p0">
+                <px-title-bar title="Recent Alerts"></px-title-bar>
+                <px-table-view modifier="small">
+                 <template is="dom-repeat" items="[[alerts]]">
+                   <px-table-row
+                   title="{{item.title}}"
+                   title="{{item.body}}"
+                   icon="{{item.icon}}"
+                   modifier="tappable nav-right" swipeable swipe-right fit-underlay>
+                     <div underlay class="full-height flex flex--stretch flex--left">
+                       <px-table-row-action-button label="More" type="more"></px-table-row-action-button>
+                       <px-table-row-action-button label="Flag" type="flag"></px-table-row-action-button>
+                       <px-table-row-action-button label="Delete" type="delete"></px-table-row-action-button>
+                     </div>
+                   </px-table-row>
+                 </template>
+               </px-table-view>
+              </div>
             </section>
             <section title="Cases">
-              <div class="content">
+              <div class="content u-p">
                 <px-title-bar title="Recent Cases"></px-title-bar>
 
 
-    <px-data-table id="myDataTable" table-data="[[documents]]"></px-data-table>
+                <px-data-table id="myDataTable" table-data="[[documents]]"></px-data-table>
 
 
               </div>
@@ -274,6 +288,9 @@ body
         app.selected = 'Dashboard';
 
         app.navItems = demo.navItems;
+        app.cases = demo.cases;
+        app.analytics = demo.analytics;
+        app.alerts = demo.alerts;
         app.user = demo.user;
         app.reports = demo.reports;
         app.documents = demo.documents;

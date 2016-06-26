@@ -87,6 +87,44 @@ var navItems = [{
   icon: 'fa:fa-bar-chart'
 }];
 demo.navItems = navItems;
+demo.alerts = [{
+    title: 'Normal Issue',
+    body: 'Text body value',
+    type: 'normal',
+    icon: 'fa:fa-exclamation-triangle'
+  }, {
+    title: 'Fixed Issue',
+    body: 'Text body value',
+    icon: 'fa:fa-exclamation-triangle'
+  }, {
+    title: 'Fixed Issue',
+    body: 'Text body value',
+    icon: 'fa:fa-exclamation-triangle'
+  }, {
+    title: 'Fixed Issue',
+    body: 'Text body value',
+    icon: 'fa:fa-exclamation-triangle'
+  }, {
+    title: 'Fixed Issue',
+    body: 'Text body value',
+    icon: 'fa:fa-exclamation-triangle'
+  }, {
+    title: 'Fixed Issue',
+    body: 'Text body value',
+    icon: 'fa:fa-exclamation-triangle'
+  }
+
+];
+demo.cases = [{
+  title: 'Case 1',
+  icon: 'fa:fa-exclamation-triangle',
+  body: 'A new case'
+}, {
+  title: 'Case 1',
+  icon: 'fa:fa-exclamation-triangle',
+  body: 'A new case'
+}];
+
 demo.reports = [{
   title: 'Symptoms',
   body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
@@ -97,6 +135,7 @@ demo.reports = [{
   title: 'Symptoms',
   body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
 }];
+
 demo.documents = [{
   name: 'Time Series Inlet Flow',
   type: 'pdf',
@@ -164,3 +203,13 @@ function createToc(id) {
     console.log('Adding id to heading', headings[i]);
   }
 }
+
+
+// TODO: Lets wait for components to be ready
+document.addEventListener('WebComponentsReady', function() {
+
+
+
+  console.warn('WebComponentsReady ready');
+});
+console.warn('main.js loaded'); ==
