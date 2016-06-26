@@ -174,14 +174,20 @@ body
               <px-alert-message action="dismiss" type="important" message-title="Heads up!" message="This definitely needs your attention."></px-alert-message>
 
               <div class="content u-m">
+                <px-title-bar title="Case Information">
+                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                </px-title-bar>
+                <px-table-view modifier="row responsive center">
+                	<px-table-row label2="CaseID" title="12553">
+                	</px-table-row>
+                	<px-table-row label2="External ID" title="56849">
+                	</px-table-row>
+                	<px-table-row label2="Owner" title="Tom Edison">
+                	</px-table-row>
+                	<px-table-row label2="Creator" title="John Doe">
+                	</px-table-row>
+                </px-table-view>
 
-                <px-title-bar title="Case Information"></px-title-bar>
-                <px-card title="Widget">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </p>
-                </px-card>
 
 
 
@@ -217,9 +223,12 @@ body
                 <px-title-bar title="Reports">
                   <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
                 </px-title-bar>
-                <px-table-view>
+                <px-table-view modifier="col">
                   <template is="dom-repeat" items="[[reports]]">
-                    <px-table-row title="{{item.title}}" modifier="tappable" body="{{item.body}}"></px-table-row>
+                    <px-table-row
+                      label1="{{item.label1}}"
+                      title="{{item.title}}"
+                      modifier="tappable" body="{{item.body}}"></px-table-row>
                   </template>
                 </px-table-view>
               </div>
@@ -230,7 +239,9 @@ body
             <!-- TODO: page 4 -->
             <section title="Alerts">
               <div class="content u-p0">
-                <px-title-bar title="Recent Alerts"></px-title-bar>
+                <px-title-bar title="Recent Alerts">
+                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                </px-title-bar>
                 <px-table-view modifier="small">
                  <template is="dom-repeat" items="[[alerts]]">
                    <px-table-row

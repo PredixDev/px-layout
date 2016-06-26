@@ -127,12 +127,15 @@ demo.cases = [{
 
 demo.reports = [{
   title: 'Symptoms',
+  label1: '10/01/15 1:32 PM',
   body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
 }, {
   title: 'Symptoms',
+  label1: '10/01/15 1:32 PM',
   body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
 }, {
   title: 'Symptoms',
+  label1: '10/01/15 1:32 PM',
   body: 'There was a sustained (non-correcting) step change, Lorem ipsum dolor sit amet, consectetur adipisicing eli.'
 }];
 
@@ -212,4 +215,4 @@ document.addEventListener('WebComponentsReady', function() {
 
   console.warn('WebComponentsReady ready');
 });
-console.warn('main.js loaded'); ==
+console.warn('main.js loaded');

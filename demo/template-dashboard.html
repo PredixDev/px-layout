@@ -36,7 +36,6 @@
       <style is="custom-styles">
         px-card {
           flex: 1 0 300px;
-          min-width: 275px;
         }
         .drawer-alt-1 {
        --px-drawer: {
@@ -114,7 +113,7 @@
             </div>
             <!-- TODO: Cards -->
 
-            <div class="layout layout--small">
+            <div class="flex flex__col">
               <div class="layout__item">
                 <px-card header-text="px-drawer-layout">
                   <p>
@@ -163,12 +162,10 @@
 
 
             <div class="flex flex--wrap u-mb">
-
-
-              <px-card header-text="Browser Statistics" class="">
+              <px-card header-text="Browser Statistics" class="flex__item">
                 <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
               </px-card>
-              <px-card header-text="Mobile Device Statistics" class="">
+              <px-card header-text="Mobile Device Statistics" class="flex__item">
                 <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
               </px-card>
             </div>
