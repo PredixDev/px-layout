@@ -1,63 +1,73 @@
 window.EXAMPLES = [{
-  icon: 'fa:fa-check',
-  color: 'green',
-  href: 'template-drawer-layout.html',
-  title: 'Drawer Layout'
-}, {
-  icon: 'fa:fa-check',
-  color: 'green',
-  href: 'template-drawer-header-layout.html',
-  title: 'Drawer Header Layout'
-}, {
-  icon: 'fa:fa-check',
-  color: 'green',
-  href: 'template-header-layout.html',
-  title: 'Header Layout'
-}, {
-  href: 'template-basic.html',
-  title: 'Basic Layout'
-}, {
-  icon: 'fa:fa-check',
-  color: 'green',
-  href: 'template-vanilla-seed-layout.html',
-  title: 'Vanilla Seed Layout'
-}, {
-  href: 'template-dashboard.html',
-  title: 'Dashboard Seed Layout'
-}, {
-  href: 'template-splitview.html',
-  title: 'Splitview Layout'
-}, {
-  href: 'template-login.html',
-  title: 'Login'
-}, {
-  href: 'template-cards.html',
-  title: 'Grid to List'
-}, {
-  href: 'template-tabs-to-columns.html',
-  title: 'Tabs to Columns'
-}, {
-  href: 'template-tabs-to-sidebar.html',
-  title: 'Tabs to Sidebar'
-}, {
-  href: 'template-content-mini-sidebar.html',
-  title: 'Context Mini Sidebar'
-}, {
-  href: 'template-content-sidebar.html',
-  title: 'Context Static Sidebar'
-}, {
-  href: 'template-google-example.html',
-  title: 'Google Example'
-}, {
-  href: 'template-detail.html',
-  title: 'Full Detail'
-}, {
-  href: 'template-detail-asset.html',
-  title: 'Asset Detail'
-}, {
-  href: 'template-detail-turbine.html',
-  title: 'Turbine Detail'
-}];
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-drawer-layout.html',
+    title: 'Drawer Layout'
+  }, {
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-drawer-header-layout.html',
+    title: 'Drawer Header Layout'
+  }, {
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-header-layout.html',
+    title: 'Header Layout'
+  }, {
+    href: 'template-basic.html',
+    title: 'Basic Layout'
+  }, {
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-vanilla-seed-layout.html',
+    title: 'Vanilla Seed Layout'
+  }, {
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-dashboard.html',
+    title: 'Dashboard Seed Layout'
+  }, {
+    href: 'template-splitview.html',
+    title: 'Splitview Layout'
+  },
+
+  /*
+  {
+    href: 'template-login.html',
+    title: 'Login'
+  },
+
+  {
+    href: 'template-cards.html',
+    title: 'Grid to List'
+  },
+
+
+  {
+
+    href: 'template-tabs-to-columns.html',
+    title: 'Tabs to Columns'
+  }, {
+    href: 'template-tabs-to-sidebar.html',
+    title: 'Tabs to Sidebar'
+  }, */
+  {
+    href: 'template-content-mini-sidebar.html',
+    title: 'Context Mini Sidebar'
+  }, {
+    href: 'template-content-sidebar.html',
+    title: 'Context Static Sidebar'
+  }, {
+    href: 'template-detail.html',
+    title: 'Full Detail'
+  }, {
+    href: 'template-detail-asset.html',
+    title: 'Asset Detail'
+  }, {
+    href: 'template-detail-turbine.html',
+    title: 'Turbine Detail'
+  }
+];
 
 var demo = window.demo = {};
 var user = {
@@ -160,6 +170,29 @@ demo.documents = [{
 
 demo.chartData = {};
 
+demo.chartData.line = {
+  lineData: [
+    [1397102460000, 1.99],
+    [1397139660000, 1.92],
+    [1397177400000, 1.97],
+    [1397228040000, 1.12],
+    [1397248260000, 1.09],
+    [1397291280000, 1],
+    [1397318100000, 1.99],
+    [1397342100000, 1.75],
+    [1397390820000, 1.11],
+    [1397408100000, 1.93],
+    [1397458800000, 1.84],
+    [1397522940000, 1.99],
+    [1397542800000, 1.96],
+    [1397640960000, 1.88],
+    [1397663100000, 1.79],
+    [1397700000000, 1.85],
+    [1397753040000, 1.83],
+    [1397772540000, 1.93]
+  ]
+};
+
 //Browser stats
 demo.chartData.browsers = {
   chartData: [70.4, 3.7, 17.5, 5.8, 1.5],
@@ -227,6 +260,18 @@ function createDemoItems(count) {
 }
 demo.createDemoItems = createDemoItems;
 
+function createDemoSpine(count) {
+  var i = 0,
+    _out = [];
+  for (; i < count; i++) {
+    _out.push({
+      title: 'Lorem',
+      body: '123.' + i,
+      label1: 'AB'
+    });
+  }
+  return _out;
+}
 
 function createToc(id) {
   var toc = document.getElementById(id);
@@ -249,7 +294,30 @@ function createToc(id) {
 // TODO: Lets wait for components to be ready
 document.addEventListener('WebComponentsReady', function() {
 
+  app = document.getElementById('app');
+  //app.layout = document.querySelector('px-drawer-layout');
+  app.selected = 'Dashboard';
 
+  app.navItems = demo.navItems;
+  app.cases = demo.cases;
+  app.analytics = demo.analytics;
+  app.alerts = demo.alerts;
+  app.user = demo.user;
+  app.reports = demo.reports;
+  app.documents = demo.documents;
+  app.chartData = demo.chartData;
+  app.spine = createDemoSpine(4);
+
+  app.toggleDrawer = function() {
+    document.getElementById('layout').drawer.toggle();
+  };
+
+  app.openActions = function(e) {
+    console.log('openActions', e);
+    document.getElementById('actionsheet1').toggle();
+  };
+
+  app.cards = demo.createDemoCards(25);
 
   console.warn('WebComponentsReady ready');
 });

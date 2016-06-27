@@ -7,8 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="demo.css">
     <script src="../../webcomponentsjs/webcomponents.js"></script>
-    <link rel="import" href="../px-layout.html">
-    <link rel="stylesheet" href="//predixdev.github.io/px-library-design/css/style.css">
+    <link rel="import" href="elements.html">
   </head>
   <body unresolved class=" responsive-demo">
     <template id="app" is="dom-bind">
@@ -35,26 +34,16 @@
       </style>
       <px-layout id="layout0">
         <px-layout-item role="primary-content">
-          <article class="viewport login">
-            <div class="flex flex--center">
-              <div class="u-m">
-                <div class="box">
-                  <h1 class="alpha">Predix</h1>
-                  <form action="">
-                    <ul class="list-bare">
-                      <li class="form-field">
-                        <input type="email" class="text-input" placeholder="E-mail" required/>
-                      </li>
-                      <li class="form-field">
-                        <input type="password" class="text-input" placeholder="Password" required/>
-                      </li>
-                      <li class="form-field">
-                        <button class="btn btn--primary btn--full btn--large">Sign-in</button>
-                      </li>
-                    </ul>
-                  </form>
-                </div>
+          <article class="viewport--full-height flex flex--middle flex--center login">
+            <div class="login__wrap">
+              <div class="flex flex--middle flex--center">
+                <px-brand halo-wordmark size="250"></px-brand>
               </div>
+              <form class="flex flex--col">
+                <input type="email" class="text-input" placeholder="E-mail" required/>
+                <input type="password" class="text-input" placeholder="Password" required/>
+                <button class="btn btn--primary btn--full btn--large">Sign-in</button>
+              </form>
             </div>
           </article>
         </px-layout-item>

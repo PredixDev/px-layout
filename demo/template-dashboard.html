@@ -12,24 +12,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <!-- TODO: Dependencies -->
-    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
 
-    <!-- TODO: Theme -->
-    <link rel="import" href="../../px-theme/px-app.html">
-    <link rel="import" href="../../px-theme/px-theme.html">
-
-    <!-- TODO: Layout + Partials -->
-    <link rel="import" href="../../px-partials/px-partials.html">
-    <link rel="import" href="../../px-drawer/px-drawer.html">
-    <link rel="import" href="../../px-navbar/px-navbar.html">
-    <link rel="import" href="../px-layout.html">
-
-    <!-- TODO: Other Components -->
-    <link rel="import" href="../../px-action-sheet/px-action-sheet.html">
-    <link rel="import" href="../../px-card/px-card.html">
-    <link rel="import" href="../../px-sample-cards/widgets-card.html">
-    <link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html"/>
-    <link rel="import" href="../../px-table-view/px-table-view.html">
+    <link rel="import" href="elements.html">
   </head>
   <body unresolved>
     <template id="app" is="dom-bind">
@@ -71,10 +56,12 @@
         }
       </style>
       <px-header-layout id="layout0">
-        <px-header subtitle="Dashboard Template"></px-header>
+
+        <px-header title="Dashboard Template" class="u-b"></px-header>
+
         <!-- TODO: Primary Sidebar -->
         <px-drawer id="drawer" class="drawer-alt-1" fixed overlay>
-          <px-table-view class="drawer-alt-1__table" selected-class="selected" selected="0">
+          <px-table-view class="drawer-alt-1__table" selected-class="selected" selected="0" modifier="flush">
             <template is="dom-repeat" items="[[navItems]]">
               <px-table-row title="{{item.label}}" icon="{{item.icon}}" icon-size="24" modifier="tappable"></px-table-row>
             </template>
@@ -99,6 +86,7 @@
         <!-- TODO: Primary Content -->
         <div class="primary-content has-navbar">
           <section class="l-full-height scrollable">
+
             <!-- TODO: Spine -->
             <div class="spine flex flex--wrap flex--spaced u-p">
               <template is="dom-repeat" items="{{spine}}">
@@ -111,94 +99,46 @@
                 </div>
               </template>
             </div>
+
             <!-- TODO: Cards -->
-
-            <div class="flex flex__col">
-              <div class="layout__item">
-                <px-card header-text="px-drawer-layout">
-                  <p>
-                    The drawer layout component is responsive and can layout your content.
-                  </p>
-                  <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-layout">
-                    <px-icon icon="fa:fa-github"></px-icon>
-                    Github Repo
-                  </a>
-                </px-card>
-              </div>
-              <div class="layout__item">
-                <px-card header-text="Visitors" class="u-m">
-                  <px-simple-line-chart
-                    id="myLineChart"
-                    width="auto"
-                    height="250"
-                    min="0"
-                    max="4"
-                    line-data="[
-                          [1397102460000,1.99],
-                          [1397139660000,1.92],
-                          [1397177400000,1.97],
-                          [1397228040000,1.12],
-                          [1397248260000,1.09],
-                          [1397291280000,1],
-                          [1397318100000,1.99],
-                          [1397342100000,1.75],
-                          [1397390820000,1.11],
-                          [1397408100000,1.93],
-                          [1397458800000,1.84],
-                          [1397522940000,1.99],
-                          [1397542800000,1.96],
-                          [1397640960000,1.88],
-                          [1397663100000,1.79],
-                          [1397700000000,1.85],
-                          [1397753040000,1.83],
-                          [1397772540000,1.93]
-                          ]"
-                    threshold="1.234567"></px-simple-line-chart>
-                </px-card>
-              </div>
-
+          <div class="flex flex--wrap">
+              <px-card header-text="Getting Started" class="u-m">
+                <p>
+                  The drawer layout component is responsive and can layout your content.
+                </p>
+                <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-layout">
+                  <px-icon icon="fa:fa-github"></px-icon>
+                  Github Repo
+                </a>
+              </px-card>
+              <px-card header-text="Visitors" class="u-m">
+                <px-simple-line-chart
+                  id="myLineChart"
+                  width="auto"
+                  height="250"
+                  min="0"
+                  max="4"
+                  line-data="[[chartData.line.lineData]]"
+                  threshold="1.234567"></px-simple-line-chart>
+              </px-card>
             </div>
 
-
-
             <div class="flex flex--wrap u-mb">
-              <px-card header-text="Browser Statistics" class="flex__item">
+              <px-card header-text="Browser Statistics" class="">
                 <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
               </px-card>
-              <px-card header-text="Mobile Device Statistics" class="flex__item">
+              <px-card header-text="Mobile Device Statistics" class="">
                 <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
               </px-card>
             </div>
 
-            <div class="flex flex--wrap">
 
+            <div class="cards flex flex--wrap">
               <px-card header-text="Browsers" class="u-m">
                 <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[250,100,76,25]" legend-labels='["Chrome", "Safari", "Firefox", "IE 9+" ]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
               </px-card>
-            </div>
-            <div class="cards flex flex--wrap">
               <template is="dom-repeat" items="{{cards}}">
                 <px-card icon="{{item.icon}}" header-text="{{item.title}}" class="u-m">
-                  <h1>Hello World</h1>
-                  <p>Lorem ipsum dolor sit amet,
-                    <a href="#">consectetur</a>
-                    adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
-                  <hr>
-                  <h2>Title</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  <ul>
-                    <li>In voluptate velit esse cillum</li>
-                    <li>In voluptate velit esse cillum</li>
-                    <li>In voluptate velit esse cillum</li>
-                  </ul>
-                  <blockquote>
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  </blockquote>
-                  <pre>sunt in culpa qui officia deserunt mollit anim id est laborum.</pre>
-
                   <p>{{item.body}}</p>
                 </px-card>
               </template>
@@ -212,43 +152,9 @@
           </px-drawer>
         </div>
         <!-- TODO: Footer -->
-        <px-footer copywrite="&copy;2016 General Electric"></px-footer>
+        <px-footer></px-footer>
       </px-header-layout>
     </template>
-    <script type="text/javascript">
-      var app;
-      function createDemoCards(count) {
-        var i = 0,
-          lorem = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        _out = [];
-        for (; i < count; i++) {
-          _out.push({
-            title: 'Card ' + i,
-            body: lorem
-          });
-        }
-        return _out;
-      }
-      function createDemoSpine(count) {
-        var i = 0,
-          _out = [];
-        for (; i < count; i++) {
-          _out.push({
-            title: 'Lorem',
-            body: '123.' + i,
-            label1: 'AB'
-          });
-        }
-        return _out;
-      }
-      document.addEventListener('WebComponentsReady', function () {
-        app = document.getElementById('app');
-        app.user = user;
-        app.navItems = navItems;
-        app.cards = createDemoCards(25);
-        app.spine = createDemoSpine(4);
-      });
-    </script>
-    <script src="http://localhost:35724/livereload.js?snipver=1"></script>
+
   </body>
 </html>

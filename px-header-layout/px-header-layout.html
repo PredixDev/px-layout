@@ -157,6 +157,7 @@ Custom property | Description | Default
             console.warn('notAttached');
             return;
           }
+          this.toggleClass('is-narrow', this.narrow);
           this.notifyResize();
         });
       },

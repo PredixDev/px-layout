@@ -12,24 +12,11 @@
     <!-- TODO: Dependencies -->
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
 
-    <!-- TODO: Theme -->
-    <link rel="import" href="../../px-theme/px-app.html">
-    <link rel="import" href="../../px-theme/px-theme.html">
-
-    <!-- TODO: Layout + Partials -->
-    <link rel="import" href="../../px-partials/px-partials.html">
-    <link rel="import" href="../../px-drawer/px-drawer.html">
-    <link rel="import" href="../../px-navbar/px-navbar.html">
-    <link rel="import" href="../px-layout.html">
+    <link rel="import" href="elements.html">
   </head>
-  <body unresolved class="responsive-demo viewport">
+  <body unresolved class="responsive-demo">
     <template id="app" is="dom-bind">
-      <style media="screen">
-        .l-bg-white{
-          background-color: #fff;
-        }
-      </style>
-        <px-header-layout id="layoutx">
+        <px-header-layout id="layout">
           <px-header subtitle="Basic Layout"></px-header>
           <px-navbar  title="View Title">
             <div left>
@@ -38,13 +25,14 @@
               </button>
             </div>
           </px-navbar>
+
           <div role="primary-content" class="l-bg-white">
-            <px-drawer id="drawer" type="persistent">
+            <px-drawer id="drawer" type="persistent" persistent mini>
               <p class="u-m">
                 Drawer content
               </p>
             </px-drawer>
-            <section class="l-full-height">
+            <section class="content l-full-height">
               <div class="u-p">
                 <px-title-bar title="Section"></px-title-bar>
                 <p>
