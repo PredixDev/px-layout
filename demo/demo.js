@@ -156,6 +156,44 @@ demo.documents = [{
   created: '03/19/16 2:16 PM'
 }];
 
+
+
+demo.chartData = {};
+
+//Browser stats
+demo.chartData.browsers = {
+  chartData: [70.4, 3.7, 17.5, 5.8, 1.5],
+  chartLabels: ['Chrome', 'Safari', 'Firefox', 'IE', 'Opera'],
+  chartColors: ['#029bde', '#99399b', '#e23838', '#f88303']
+};
+
+
+//Mobile device stats
+demo.chartData.devices = {
+  chartData: [1.22, 3.36, 0.40, 0.14],
+  chartLabels: ['iOS', 'Android', 'Windows', 'Others'],
+  chartColors: []
+};
+
+
+//Screen stats
+demo.chartData.screens = {
+  chartData: [30.7, 18, 35, 6, 4, 3, 1, 3],
+  chartLabels: [
+    'Other higher',
+    '1920x1080',
+    '1366x768',
+    '1280x1024',
+    '1280x800',
+    '1024x768',
+    '800x600',
+    'Lower'
+  ],
+  chartColors: []
+};
+
+
+
 function createDemoCards(count) {
   var i = 0,
     lorem =

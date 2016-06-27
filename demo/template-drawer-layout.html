@@ -10,7 +10,8 @@
 
     <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
     <script src="demo.js"></script>
-    <link rel="import" href="elements.html">
+
+    <link rel="import" href="../dist/elements.build.html">
 
     <style media="screen">
       px-card {
@@ -132,10 +133,13 @@ body
         <div class="u-m" content>
 
           <iron-pages selected="{{selected}}" selected-item="[[selectedItem]]" attr-for-selected="title">
+
+
             <!-- TODO: Page 1 -->
             <section title="Dashboard">
-              <px-alert-message action="dismiss" type="information" message-title="Hello!" message="This definitely needs your attention."></px-alert-message>
-
+              <px-alert-message action="dismiss" type="information"
+              message-title="Welcome!"
+              message="This layout works great on mobile"></px-alert-message>
               <px-card header-text="px-drawer-layout">
                 <p>
                   The drawer layout component is responsive and can layout your content.
@@ -147,13 +151,25 @@ body
               </px-card>
               <div class="flex flex--wrap u-mb">
                 <px-card header-text="Browser Statistics" class="">
-                  <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250" chart-data="[70.4,3.7,17.5,5.8, 1.3]" legend-labels='["Chrome","Safari","Firefox","IE", "Opera"]' colors='["#029bde","#99399b","#e23838", "#f88303"]'></px-simple-horizontal-bar-chart>
+                  <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250"
+                  chart-data="[[chartData.browsers.chartData]]"
+                  legend-labels="[[chartData.browsers.chartLabels]]"
+                  colors="[[chartData.browsers.chartColors]]"></px-simple-horizontal-bar-chart>
                 </px-card>
                 <px-card header-text="Mobile Device Statistics" class="">
-                  <px-simple-horizontal-bar-chart width="auto" height="250" chart-data="[1.22, 3.36, 0.40, 0.14]" legend-labels='["iOS", "Android", "Windows", "Others"]'></px-simple-horizontal-bar-chart>
+                  <px-simple-horizontal-bar-chart width="auto" height="250"
+                  chart-data="[[chartData.devices.chartData]]"
+                  legend-labels="[[chartData.devices.chartLabels]]"></px-simple-horizontal-bar-chart>
                 </px-card>
               </div>
-
+              <px-card header-text="Screen Resolutions">
+                  <px-simple-horizontal-bar-chart
+                  width="auto"
+                  height="250"
+                  chart-data="[[chartData.screens.chartData]]"
+                  legend-labels="[[chartData.screens.chartLabels]]">
+                </px-simple-horizontal-bar-chart>
+                </px-card>
             </section>
 
             <!-- TODO: Page 2 -->
@@ -305,6 +321,7 @@ body
         app.user = demo.user;
         app.reports = demo.reports;
         app.documents = demo.documents;
+        app.chartData = demo.chartData;
 
         app.toggleDrawer = function () {
           document.getElementById('layout').drawer.toggle();
