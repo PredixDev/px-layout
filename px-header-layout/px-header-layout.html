@@ -1,37 +1,41 @@
+<!--
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+ -->
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../px-media-query.html">
-<link rel="import" href="../px-layout-partials.html">
+<link rel="import" href="../px-media-query/px-media-query.html">
 <link rel="import" href="../px-layout-styles.html">
 <!--
-The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a brand header and/or navbar.
-When the viewport is less than the `responsiveWidth` the brand header will be hidden.
+The `px-header-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout `px-header` and `px-footer` with other content.
+When the viewport is less than the `responsiveWidth` the header will be hidden.
 
 [![Build Status](https://travis-ci.org/PredixDev/px-layout.svg?branch=master)](https://travis-ci.org/PredixDev/px-layout)
 
-### Usage:
+### Usage
 
 ```
 <px-header-layout>
   <px-header></px-header>
   <section content>
-    Content
-  </section>
-</px-header-layout>
-```
-
-### Usage with `px-navbar`:
-
-```
-<px-header-layout>
-  <px-header>
-    <px-navbar>
-      <div title>App name</div>
-    </px-navbar>
-  </px-header>
     main content
+  </section>
+  <px-footer></px-footer>
 </px-header-layout>
 ```
+
+### Content attributes
+
+Attribute | Description
+----------------|-------------
+`content` | The layouts content.
 
 ### Styling
 The following custom properties are available for styling:

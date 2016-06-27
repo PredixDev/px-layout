@@ -34,7 +34,7 @@
       }
     </style>
   </head>
-  <body class="viewport">
+  <body class="viewport" unresolved>
     <template id="pxBreakpoints" is="dom-bind">
       <style is="custom-style">
       .row th, .row code{
@@ -243,48 +243,56 @@
 
     <section class="u-mb">
       <h2>Visibility</h2>
-      <ul class="list-ui responsive-utilities-test visible-on">
-        <li class="is-hidden@sm+ visible">✔ Visible on extra small</li>
-        <li class="is-hidden@xs- not-visible">Extra small</li>
-        <li class="is-hidden@md+ visible">✔ Visible on small or narrower</li>
-        <li class="is-hidden@sm- not-visible">Small or narrower</li>
-        <li class="is-hidden@lg+ visible">✔ Visible on medium or narrower</li>
-        <li class="is-hidden@md- not-visible">Medium or narrower</li>
-        <li class="is-hidden@xl+ visible">✔ Visible on large or narrower</li>
-        <li class="is-hidden@lg- not-visible">Large or narrower</li>
-        <li class="is-hidden@xs- visible">✔ Visible on small or wider</li>
-        <li class="is-hidden@sm+ not-visible">Small or wider</li>
-        <li class="is-hidden@sm- visible">✔ Visible on medium or wider</li>
-        <li class="is-hidden@md+ not-visible">Medium or wider</li>
-        <li class="is-hidden@md- visible">✔ Visible on large or wider</li>
-        <li class="is-hidden@lg+ not-visible">Large or wider</li>
-        <li class="is-hidden@lg- visible">✔ Visible on extra large</li>
-        <li class="is-hidden@xl+ not-visible">Extra large</li>
-      </ul>
+      <demo-snippet>
+        <template>
+          <ul class="list-ui responsive-utilities-test visible-on">
+            <li class="is-hidden@sm+ visible">✔ Visible on extra small</li>
+            <li class="is-hidden@xs- not-visible">Extra small</li>
+            <li class="is-hidden@md+ visible">✔ Visible on small or narrower</li>
+            <li class="is-hidden@sm- not-visible">Small or narrower</li>
+            <li class="is-hidden@lg+ visible">✔ Visible on medium or narrower</li>
+            <li class="is-hidden@md- not-visible">Medium or narrower</li>
+            <li class="is-hidden@xl+ visible">✔ Visible on large or narrower</li>
+            <li class="is-hidden@lg- not-visible">Large or narrower</li>
+            <li class="is-hidden@xs- visible">✔ Visible on small or wider</li>
+            <li class="is-hidden@sm+ not-visible">Small or wider</li>
+            <li class="is-hidden@sm- visible">✔ Visible on medium or wider</li>
+            <li class="is-hidden@md+ not-visible">Medium or wider</li>
+            <li class="is-hidden@md- visible">✔ Visible on large or wider</li>
+            <li class="is-hidden@lg+ not-visible">Large or wider</li>
+            <li class="is-hidden@lg- visible">✔ Visible on extra large</li>
+            <li class="is-hidden@xl+ not-visible">Extra large</li>
+          </ul>
+        </template>
+      </demo-snippet>
     </section>
     <!-- TODO: Viewport -->
 
     <section class="u-mb">
       <h2>Viewport Test</h2>
-      <ul class="list-ui responsive-utilities-test visible-on">
-        <li class="is-hidden@sm+ visible">✔ Your viewport is exactly extra small</li>
-        <li class="is-hidden@xs- not-visible">Your viewport is NOT exactly extra small</li>
-        <li class="is-hidden@xs- is-hidden@md+ visible">✔ Your viewport is exactly small</li>
-        <li class="hidden-sm-only not-visible">Your viewport is NOT exactly small</li>
-        <li class="is-hidden@sm- is-hidden@lg+ visible">✔ Your viewport is exactly medium</li>
-        <li class="hidden-md-only not-visible">Your viewport is NOT exactly medium</li>
-        <li class="is-hidden@md- is-hidden@xl+ visible">✔ Your viewport is exactly large</li>
-        <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
-        <li class="is-hidden@lg- visible">✔ Your viewport is exactly extra large</li>
-        <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
-      </ul>
+      <demo-snippet>
+        <template>
+          <ul class="list-ui responsive-utilities-test visible-on">
+            <li class="is-hidden@sm+ visible">✔ Your viewport is exactly extra small</li>
+            <li class="is-hidden@xs- not-visible">Your viewport is NOT exactly extra small</li>
+            <li class="is-hidden@xs- is-hidden@md+ visible">✔ Your viewport is exactly small</li>
+            <li class="hidden-sm-only not-visible">Your viewport is NOT exactly small</li>
+            <li class="is-hidden@sm- is-hidden@lg+ visible">✔ Your viewport is exactly medium</li>
+            <li class="hidden-md-only not-visible">Your viewport is NOT exactly medium</li>
+            <li class="is-hidden@md- is-hidden@xl+ visible">✔ Your viewport is exactly large</li>
+            <li class="hidden-lg-only not-visible">Your viewport is NOT exactly large</li>
+            <li class="is-hidden@lg- visible">✔ Your viewport is exactly extra large</li>
+            <li class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</li>
+          </ul>
+        </template>
+      </demo-snippet>
     </section>
     <!-- TODO: media-query -->
 
     <section class="u-mb">
       <h2>px-media-query</h2>
       <demo-snippet>
-        <template id="">
+        <template>
           <template id="queryExample" is="dom-bind">
             <px-media-query id="xs" query="xs" query-matches="{{isXs}}" full>This is content</px-media-query>
             <px-media-query id="sm" query="sm" query-matches="{{isSm}}" full></px-media-query>

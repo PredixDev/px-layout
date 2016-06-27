@@ -3,35 +3,43 @@ window.EXAMPLES = [{
     color: 'green',
     href: 'template-drawer-layout.html',
     title: 'Drawer Layout'
-  }, {
-    icon: 'fa:fa-check',
-    color: 'green',
-    href: 'template-drawer-header-layout.html',
-    title: 'Drawer Header Layout'
-  }, {
+  },
+  {
     icon: 'fa:fa-check',
     color: 'green',
     href: 'template-header-layout.html',
     title: 'Header Layout'
-  }, {
+  },
+
+  {
+    icon: 'fa:fa-check',
+    color: 'green',
+    href: 'template-drawer-header-layout.html',
+    title: 'Drawer Header Layout'
+  },
+  {
+    icon: 'fa:fa-check',
+    color: 'green',
     href: 'template-basic.html',
-    title: 'Basic Layout'
+    title: 'Header Layout - Blank basic'
   }, {
     icon: 'fa:fa-check',
     color: 'green',
     href: 'template-vanilla-seed-layout.html',
-    title: 'Vanilla Seed Layout'
+    title: 'Drawer Layout - Vanilla seed'
   }, {
     icon: 'fa:fa-check',
     color: 'green',
     href: 'template-dashboard.html',
-    title: 'Dashboard Seed Layout'
-  }, {
+    title: 'Header Layout - Dashboard seed'
+  },
+  /*
+  {
     href: 'template-splitview.html',
     title: 'Splitview Layout'
   },
 
-  /*
+
   {
     href: 'template-login.html',
     title: 'Login'
@@ -53,17 +61,22 @@ window.EXAMPLES = [{
   }, */
   {
     href: 'template-content-mini-sidebar.html',
-    title: 'Context Mini Sidebar'
+    title: 'Header Layout - Mini sidebar'
   }, {
     href: 'template-content-sidebar.html',
-    title: 'Context Static Sidebar'
-  }, {
+    title: 'Header Layout - Static sidebar'
+  },
+
+  {
     href: 'template-detail.html',
     title: 'Full Detail'
-  }, {
+  },
+
+  {
     href: 'template-detail-asset.html',
     title: 'Asset Detail'
-  }, {
+  },
+  {
     href: 'template-detail-turbine.html',
     title: 'Turbine Detail'
   }
@@ -292,7 +305,7 @@ function createToc(id) {
 
 
 // TODO: Lets wait for components to be ready
-document.addEventListener('WebComponentsReady', function() {
+document.addEventListener('WebComponentsReady', function () {
 
   app = document.getElementById('app');
   //app.layout = document.querySelector('px-drawer-layout');
@@ -308,11 +321,11 @@ document.addEventListener('WebComponentsReady', function() {
   app.chartData = demo.chartData;
   app.spine = createDemoSpine(4);
 
-  app.toggleDrawer = function() {
+  app.toggleDrawer = function () {
     document.getElementById('layout').drawer.toggle();
   };
 
-  app.openActions = function(e) {
+  app.openActions = function (e) {
     console.log('openActions', e);
     document.getElementById('actionsheet1').toggle();
   };

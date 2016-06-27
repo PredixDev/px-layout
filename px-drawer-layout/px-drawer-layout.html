@@ -1,65 +1,47 @@
+<!--
+/*
+ * Copyright (c) 2016 GE Global Research. All rights reserved.
+ *
+ * The copyright to the computer software herein is the property of
+ * GE Global Research. The software may be used and/or copied only
+ * with the written permission of GE Global Research or in accordance
+ * with the terms and conditions stipulated in the agreement/contract
+ * under which the software has been supplied.
+ */
+ -->
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../px-media-query.html">
-
+<link rel="import" href="../px-media-query/px-media-query.html">
 <link rel="import" href="../px-layout-styles.html">
 
 <!--
-The `px-drawer-layout` is a wrapper element that positions a `px-drawer` element and other content.
+The `px-drawer-layout` aims to help Industrial Internet developers create responsive layouts. This element is used to layout a side drawer and other content.
+When the viewport is less than the `responsiveWidth` the drawer will be hidden.
 
 [![Build Status](https://travis-ci.org/PredixDev/px-layout.svg?branch=master)](https://travis-ci.org/PredixDev/px-layout)
 
-When the viewport width is smaller than `responsiveWidth`, this element changes to mobile layout where the drawer will be stacked on top of the main content.
-
-Any element with the `drawer-toggle` attribute will make the drawer will slide in/out to hide/reveal the main content when tapped.
-
-
 
 ### Usage
-Import the element.
 
 ```
-
-<link rel="import" href="../px-layout/px-layout.html"/>
-```
-
-By default the `px-drawer` is aligned to the left.
-
-```
-
+<link rel="import" href="../px-layout/px-drawer-layout/px-drawer-layout.html"/>
 <px-drawer-layout>
   <px-drawer>
     drawer content
   </px-drawer>
-  <div content>
+  <section content>
     main content
-  </div>
+  </section>
 </px-drawer-layout>
 ```
 
-If an element inside the `content` attribute with the `drawer-toggle` attribute will trigger the `toggle` method on the `px-drawer` element, when a touch happens.
+### Content attributes
 
+Attribute | Description
+----------------|-------------
+`drawer-toggle` | The drawer toggle element.
+`content` | The layouts content.
 
-
-### Usage with `px-header-layout`:
-
-```
-<px-drawer-layout>
-	<px-drawer>
-		drawer-content
-	</px-drawer>
-	<px-header-layout>
-		<px-header>
-			<px-navbar>
-				<div title>App name</div>
-			</px-navbar>
-		</px-header>
-    <div content>
-      main content
-    </div>
-	</px-header-layout>
-</px-drawer-layout>
-```
 ### Styling
 The following custom properties are available for styling:
 
@@ -153,8 +135,7 @@ Custom property | Description | Default
           value: '768px'
         },
         /**
-        * Returns true if it is in narrow layout. This is useful if you need to show/hide
-        * elements based on the layout.
+        * Returns true if it is in narrow layout.
         */
         narrow: {
           type: Boolean,
@@ -200,9 +181,6 @@ Custom property | Description | Default
       _tapHandler: function (e) {
         var target = Polymer.dom(e).localTarget;
         if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
-          if(!this.drawer.persistent){
-
-          }
           this.drawer.toggle();
         }
       },
