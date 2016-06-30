@@ -34,16 +34,6 @@ window.EXAMPLES = [{
     title: 'Header Layout - Dashboard seed'
   },
   /*
-  {
-    href: 'template-splitview.html',
-    title: 'Splitview Layout'
-  },
-
-
-  {
-    href: 'template-login.html',
-    title: 'Login'
-  },
 
   {
     href: 'template-cards.html',
@@ -65,6 +55,16 @@ window.EXAMPLES = [{
   }, {
     href: 'template-content-sidebar.html',
     title: 'Header Layout - Static sidebar'
+  },
+  {
+    href: 'template-splitview.html',
+    title: 'Splitview Layout'
+  },
+
+
+  {
+    href: 'template-login.html',
+    title: 'Login'
   },
 
   {
