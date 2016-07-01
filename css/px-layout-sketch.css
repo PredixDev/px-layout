@@ -5500,7 +5500,7 @@ body:not([style-scope]):not(.style-scope) {
 .is-hidden\@xl- {
   display: none !important; }
 
-.layout {
+.row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5512,7 +5512,7 @@ body:not([style-scope]):not(.style-scope) {
           flex-direction: row;
   margin-left: -1rem;
   margin-top: -1rem; }
-  .layout > * {
+  .row > * {
     -webkit-flex: 1 0 13.3333333333rem;
         -ms-flex: 1 0 13.3333333333rem;
             flex: 1 0 13.3333333333rem;

@@ -5137,13 +5137,13 @@ body:not([style-scope]):not(.style-scope) {
 .is-hidden\@xl- {
   display: none !important; }
 
-.layout {
+.row {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin-left: -1rem;
   margin-top: -1rem; }
-  .layout > * {
+  .row > * {
     flex: 1 0 13.3333333333rem;
     margin-left: 1rem;
     margin-top: 1rem; }
