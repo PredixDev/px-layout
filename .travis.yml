@@ -7,14 +7,19 @@ branches:
   except:
   - gh-pages
 addons:
-  #firefox: latest
+  sauce_connect:
+    username: 'jonniespratleyge'
+    access_key:
+      secure: "thmC4BeUfW06jiIltOMIWID4Co7NjowH0KiNJFQjuWAfanwO57H3n7OPFgjae5unz0Qq4h5OmeOK9vIPUABu3/ikNS7p5+2yoGv4WdJRFsudR9keHV+4wFbUkEejMmlGH/Rp7i5me7zeuFqq53wTJVzZmdZdUm5cAKbfH3a5MpR+LW0yJVpEtziXUFGd28jGojgaBdyEkEbubd3dHWyfVrzMWnPsdKwTDR1YpKeu0stqzThKXNitFce6aDIZjuVezr74iQMgiFUXOgKmVNqtncjbJqiIkzgc81GqDm/Rh2Eym2HFh60TyqbYpc9i9tGxDwNgOMBsg+mOGd6cfT9ukgJ99W5umZ5kD/nQvb3GhWdF2fpkwcJnYG8T+CqwaQy03+3KGFoDjcdQFMpZ3WBDMrQvvSeTiSoacLGdupW7kPpdLa2ouq2z8s65q/w+PCdPoj/FLgjGAzHPLpiW5wLScd+u/KUPGOlmy1qXfcfInwLzP63I5aZRRHVXb3O+ir/d7zKCvOaewV1NZBZ67hJFzTUELqhymFBHH4Upj/DVjZv7FswqqRm4RO2jx/tBKoJ6euEcN77VjNrh3xZvIRg11Ad7yWKgu3NNNXz1Mwg9/MJciHguVbxAqQrZoOmYvFrudXaAjfThlOU/36ktE0rCXtLmSgs7HS8lD4kEPxO3Wk4="
+  firefox: latest
   apt:
     sources:
     - google-chrome
     packages:
     - google-chrome-stable
+
 before_script:
 - npm install web-component-tester
 - export PATH=$PWD/node_modules/.bin:$PATH
 script:
-- xvfb-run wct --skip-plugin sauce
+- xvfb-run wct
