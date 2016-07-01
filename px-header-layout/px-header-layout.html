@@ -143,7 +143,7 @@ Custom property | Description | Default
         return Polymer.dom(this.$.navbarContent).getDistributedNodes()[0];
       },
       listeners: {
-        //  'tap': '_tapHandler'
+          'tap': '_tapHandler'
       },
       observers: ['resetLayout(narrow, isAttached)'],
       attached: function () {
@@ -180,6 +180,16 @@ Custom property | Description | Default
         return forceNarrow
           ? '(min-width: 0px)'
           : '(max-width: ' + responsiveWidth + ')';
+      },
+      /**
+       * Handle when a tap event occurs, when if the element as a `drawer-toggle` attribute
+       ( toggle the drawer.
+       */
+      _tapHandler: function (e) {
+        var target = Polymer.dom(e).localTarget;
+        if (target && target.hasAttribute('drawer-toggle') || target && target.parentElement.hasAttribute('drawer-toggle')) {
+          this.drawer.toggle();
+        }
       }
     });
   </script>
