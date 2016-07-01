@@ -126,3 +126,11 @@ $l-container-transition-wrapper: all .3s cubic-bezier(0.1, 0.7, 0.1, 1);
   }
 
   @include responsive-utils();
+
+  @import "mixins";
+
+  // TODO: Overriding default .layout base
+  .layout{
+    @include n-columns(calculateRem($inuit-layout-min-width), $inuit-base-spacing-unit, false, 6);
+  //  margin-left: 0 !important;
+  }

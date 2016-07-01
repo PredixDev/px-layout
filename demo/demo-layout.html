@@ -11,9 +11,29 @@
     <script src="../../webcomponentsjs/webcomponents.min.js"></script>
     <link rel="import" href="../../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html"/>
+    <link rel="import" href="../px-layout-partials.html">
     <link rel="import" href="../px-layout.html">
 
+    <style media="screen">
 
+    .demo .flex > *,
+    .demo  .layout > * {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+
+    .demo .layout > .layout__item{
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .demo .layout__item p {
+
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    </style>
 
     <script src="./demo.js"></script>
     <script type="text/javascript">
@@ -21,7 +41,7 @@
         createToc('toc');
       });
     </script>
-    
+
   </head>
   <body unresolved>
     <div class="u-p">

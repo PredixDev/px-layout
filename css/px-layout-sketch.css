@@ -847,14 +847,14 @@ a {
           -ms-flex: 1;
               flex: 1;
       /* [2] */
-      -webkit-flex-basis: 20rem;
-          -ms-flex-preferred-size: 20rem;
-              flex-basis: 20rem; }
+      -webkit-flex-basis: 13.3333333333rem;
+          -ms-flex-preferred-size: 13.3333333333rem;
+              flex-basis: 13.3333333333rem; }
       .layout > .layout__item:nth-last-child(-n+4):first-child,
       .layout > .layout__item:nth-last-child(-n+4):first-child ~ .layout__item {
-        -webkit-flex-basis: 30rem;
-            -ms-flex-preferred-size: 30rem;
-                flex-basis: 30rem; }
+        -webkit-flex-basis: 20rem;
+            -ms-flex-preferred-size: 20rem;
+                flex-basis: 20rem; }
         @media screen and (min-width: 100%) {
           .layout > .layout__item:nth-last-child(-n+4):first-child,
           .layout > .layout__item:nth-last-child(-n+4):first-child ~ .layout__item {
@@ -863,9 +863,9 @@ a {
                     flex-basis: 0; } }
       .layout > .layout__item:nth-last-child(-n+3):first-child,
       .layout > .layout__item:nth-last-child(-n+3):first-child ~ .layout__item {
-        -webkit-flex-basis: 40rem;
-            -ms-flex-preferred-size: 40rem;
-                flex-basis: 40rem; }
+        -webkit-flex-basis: 26.6666666667rem;
+            -ms-flex-preferred-size: 26.6666666667rem;
+                flex-basis: 26.6666666667rem; }
         @media screen and (min-width: 100%) {
           .layout > .layout__item:nth-last-child(-n+3):first-child,
           .layout > .layout__item:nth-last-child(-n+3):first-child ~ .layout__item {
@@ -5499,6 +5499,25 @@ body:not([style-scope]):not(.style-scope) {
 
 .is-hidden\@xl- {
   display: none !important; }
+
+.layout {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: -1rem;
+  margin-top: -1rem; }
+  .layout > * {
+    -webkit-flex: 1 0 13.3333333333rem;
+        -ms-flex: 1 0 13.3333333333rem;
+            flex: 1 0 13.3333333333rem;
+    margin-left: 1rem;
+    margin-top: 1rem; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**

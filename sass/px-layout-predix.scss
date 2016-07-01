@@ -10,9 +10,11 @@
 @charset "utf-8";
 
 $inuit-widths-columns-responsive                : ( 1, 2, 3, 4, 6 );
+$inuit-base-spacing-unit: 1rem;
 
 /// Settings
 ///--------------------------------------------------------
+
 @import "variables";
 @import "px-defaults-design/_settings.defaults.scss";
 @import "px-colors-design/_settings.colors.scss";
@@ -58,6 +60,7 @@ $inuit-enable-btn--disabled                     : true;
 @import "px-toggle-design/_objects.toggle.scss";
 
 ///.layout
+$inuit-layout-min-width: 200px;
 $inuit-enable-layout--tiny                      : true;
 $inuit-enable-layout--small                     : true;
 $inuit-enable-layout--large                     : true;
@@ -74,6 +77,8 @@ $inuit-enable-layout__item--center              : true;
 $inuit-enable-layout__item--bottom              : true;
 $inuit-global-border-box                        : true;
 @import "px-layout-design/_objects.layout.scss";
+
+
 
 /// Trumps
 ///--------------------------------------------------------
@@ -144,6 +149,7 @@ $inuit-enable-responsive-margins--negative-huge : true;
 @import 'l-splitview.scss';
 @import 'l-tabs-to-columns.scss';
 @import 'px-layout.scss';
+
 
 ///Demo
 ///--------------------------------------------------------
