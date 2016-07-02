@@ -1,5 +1,5 @@
-#sudo: required
-#dist: trusty
+sudo: required
+dist: trusty
 language: node_js
 node_js:
 - stable
@@ -8,16 +8,16 @@ branches:
   - gh-pages
 addons:
   sauce_connect: true
-  #firefox: latest
-  #apt:
-  #  sources:
-  #  - google-chrome
-  #  packages:
-  #  - google-chrome-stable
-#before_script:
-#- export PATH=$PWD/node_modules/.bin:$PATH
+  firefox: latest
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+before_script:
+- export PATH=$PWD/node_modules/.bin:$PATH
 script:
-#- xvfb-run wct
+- xvfb-run wct
 env:
   global:
   - secure: VRXhNOY+u/emeiYza/tBJlSBykGpxae6SxWxKXZzQCTtYxIBLOkJiThQm7nwEIwKhF0meMDDtntbo11WGL8UxA1szyiFCcP1O4AglHSP6ASBWFlPnJGZZekyAFOHwvdXdNHaavHOwsVvLz7u6K1l5RcyYyqFkCmZTyqjBZowYTPeYYMMhAvyYJI7UqY7gbKir2uzWlX0XOoqNkCFc4ZX6tVhVEjvwuD9R/G4dSx+DDrY8AHh8BvRBg6yKIm2obCYOr6DRslX5QXxEQiKSrvyqRzC3BzSk8TDHjIcppkBIDk+CixZO26MjtwrVtENhuOguOJkWUzKDFhoR4vYKTdJ6OOSF/hj2P34ocsH4lnb7mjKVXWOQpbBtUh1oAKHvkzx+QM8N+yGiJ8ltV1UHIhRzERw9iDdJXtC0mrLR07xFArHqG0+xmq6ZCEVMwPGPctPWJ8GFMC/cCliEGaKlSZx8a8BahyXAvFS2hqLV/rr7VHHzk9IvzvEddo8Q8893y2tPFWqtavRbnAGIGR95p/jZmda3XUVlQldp3eYRIIlH7wlsM59Hds7qSRijGeCm0x701IjHSkbIzfdL2niZOkvB53Sxu0mWDmRh7ber9j+XnE38fvYuKEu4HxLJlI/S5z3y3p9tIQmAk178XYWJ6tMLpEtIhUxxmdfvjQJ80o1CIs=
