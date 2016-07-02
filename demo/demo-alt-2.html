@@ -1,0 +1,288 @@
+<html>
+  <head>
+    <title>uaa-dashboard - demo 1</title>
+    <!-- TODO: Meta Tags -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- TODO: Dependencies -->
+    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+<link rel="import" href="elements.html">
+<!--
+  <link rel="stylesheet" href="https://www.predix.io/assets/css/predixio.css" >
+-->
+    <style media="screen">
+      body,
+      html {
+        background-color: #fff !important;
+      }
+      body:not([style-scope]):not(.style-scope) {
+        margin-bottom: 0 !important;
+      }
+    </style>
+    <script type="text/javascript">
+      var user = {
+        username: 'jonnie.spratley',
+        name: 'Jonnie Spratley',
+        email: 'jonnie.spratley@ge.com',
+        image: 'https://goo.gl/WKu72K'
+      };
+      var navItems = [
+        {
+          label: 'Dashboard',
+          icon: 'fa:fa-tachometer'
+        }, {
+          label: 'Clients',
+          icon: 'fa:fa-browser'
+        }, {
+          label: 'Users',
+          icon: 'fa:fa-users'
+        }, {
+          label: 'Password Policy',
+          icon: 'fa:fa-key'
+        }
+      ];
+    </script>
+  </head>
+  <body>
+    <template id="demo-2" is="dom-bind">
+      <style is="custom-style">
+        .uaa-navbar{
+          --px-navbar: {
+            background: #e6e6e6;
+            color: #111;
+          }
+        }
+        .uaa-drawer {
+          --px-drawer: {
+            background: #111;
+            color: #fff;
+          }
+        }
+        .drawer-alt-2__user {
+          --px-table-row-media-img: {
+            width: 24px;
+          }
+        }
+        .drawer-alt-2__user-table {
+          --px-table-view: {
+            background-color: #323232;
+            color: #fff;
+          }
+        }
+        .uaa-drawer__table .selected {
+          background-color: #2886af;
+          color: #fff;
+        }
+      </style>
+      <px-drawer-layout id="layout2" class="uaa">
+
+        <!-- TODO: Drawer -->
+        <px-drawer id="drawer-2" class="uaa-drawer drawer-alt-2" fixed overlay>
+          <div class="flex flex--center flex--middle u-p-">
+            <px-brand width="100" height="32" predix></px-brand>
+            <small class="muted u-pl--">UAA Manager</small>
+          </div>
+          <px-table-view class="drawer-alt-2__user-table">
+            <px-table-row title="{{user.name}}" image="{{user.image}}" modifier="tappable nav-right" class="drawer-alt-2__user"></px-table-row>
+          </px-table-view>
+          <px-table-view class="uaa-drawer__table" selected-class="selected"
+            selected="{{selected}}"
+            attr-for-selected="title"
+            selected-item="{{selectedPage}}">
+            <template is="dom-repeat" items="[[navItems]]">
+              <px-table-row
+                title="{{item.label}}" icon="{{item.icon}}" icon-size="24" modifier="tappable"></px-table-row>
+            </template>
+          </px-table-view>
+        </px-drawer>
+
+        <!-- TODO: navbar -->
+
+        <px-navbar title="{{selectedPage.title}}" class="uaa-navbar">
+          <button class="navbar__button" drawer-toggle left>
+            <i class="fa fa-lg fa-navicon"></i>
+          </button>
+        </px-navbar>
+      <div class="content">
+        <!-- TODO: Content -->
+        <div class="u-m" content>
+
+          <iron-pages selected="{{selected}}" selected-item="[[selectedItem]]" attr-for-selected="title">
+
+
+            <!-- TODO: Page 1 -->
+            <section title="Dashboard">
+              <px-alert-message action="dismiss" type="information"
+              message-title="Welcome!"
+              message="This layout works great on mobile"></px-alert-message>
+              <px-card header-text="px-drawer-layout">
+                <p>
+                  The drawer layout component is responsive and can layout your content.
+                </p>
+                <a target="_blank" class="btn btn--large" href="http://github.com/PredixDev/px-responsive-layouts">
+                  <px-icon icon="fa:fa-github"></px-icon>
+                  <span>Github Repo</span>
+                </a>
+              </px-card>
+              <div class="flex flex--wrap u-mb">
+                <px-card header-text="Browser Statistics" class="">
+                  <px-simple-horizontal-bar-chart id="mySimpleBarHorizontalBarChart" width="auto" height="250"
+                  chart-data="[[chartData.browsers.chartData]]"
+                  legend-labels="[[chartData.browsers.chartLabels]]"
+                  colors="[[chartData.browsers.chartColors]]"></px-simple-horizontal-bar-chart>
+                </px-card>
+                <px-card header-text="Mobile Device Statistics" class="">
+                  <px-simple-horizontal-bar-chart width="auto" height="250"
+                  chart-data="[[chartData.devices.chartData]]"
+                  legend-labels="[[chartData.devices.chartLabels]]"></px-simple-horizontal-bar-chart>
+                </px-card>
+              </div>
+              <px-card header-text="Screen Resolutions">
+                  <px-simple-horizontal-bar-chart
+                  width="auto"
+                  height="250"
+                  chart-data="[[chartData.screens.chartData]]"
+                  legend-labels="[[chartData.screens.chartLabels]]">
+                </px-simple-horizontal-bar-chart>
+                </px-card>
+            </section>
+
+            <!-- TODO: Page 2 -->
+            <section title="Blank View">
+              <div class="flex flex--wrap">
+                <template is="dom-repeat" items="{{cards}}">
+                  <px-card icon="{{item.icon}}" header-text="{{item.title}}">
+                    <p>{{item.body}}</p>
+                  </px-card>
+                </template>
+              </div>
+            </section>
+
+
+
+            <!-- TODO: Page 3 -->
+            <section title="Details">
+              <px-alert-message action="dismiss" type="important" message-title="Heads up!" message="This definitely needs your attention."></px-alert-message>
+
+              <div class="content u-m">
+                <px-title-bar title="Case Information">
+                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                </px-title-bar>
+                <px-table-view modifier="row responsive center">
+                  <px-table-row label2="CaseID" title="12553">
+                  </px-table-row>
+                  <px-table-row label2="External ID" title="56849">
+                  </px-table-row>
+                  <px-table-row label2="Owner" title="Tom Edison">
+                  </px-table-row>
+                  <px-table-row label2="Creator" title="John Doe">
+                  </px-table-row>
+                </px-table-view>
+
+
+
+
+                <div class="box-section">
+                  <px-title-bar title="Documets">
+                    <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                  </px-title-bar>
+                  <px-table-view modifier="small">
+                    <template is="dom-repeat" items="[[documents]]">
+                      <px-table-row title="{{item.name}}" label1="{{item.size}}" icon="fa:fa-file" modifier="tappable"></px-table-row>
+                    </template>
+                  </px-table-view>
+                </div>
+
+
+                <!-- TODO: nodes -->
+                <div class="box-section">
+                  <px-title-bar title="Notes"></px-title-bar>
+                  <px-table-view modifier="small" row-modifier="col tappable">
+                    <px-table-row
+                      title="John Doe"
+                      label1="11/02/12 1:32 PM"
+                      body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
+                    <px-table-row
+                      title="John Doe"
+                      modifier="tappable"
+                      label1="11/02/12 1:32 PM"
+                      body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, ab ducimus sit tempore qui aut, dolorem repellat suscipit molestias dignissimos expedita nisi iure veniam voluptatibus fugiat."></px-table-row>
+                  </px-table-view>
+                </div>
+
+                <!-- TODO: reports -->
+                <px-title-bar title="Reports">
+                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                </px-title-bar>
+                <px-table-view modifier="col">
+                  <template is="dom-repeat" items="[[reports]]">
+                    <px-table-row
+                      label1="{{item.label1}}"
+                      title="{{item.title}}"
+                      modifier="tappable" body="{{item.body}}"></px-table-row>
+                  </template>
+                </px-table-view>
+              </div>
+
+            </section>
+
+
+            <!-- TODO: page 4 -->
+            <section title="Alerts">
+              <div class="content u-p0">
+                <px-title-bar title="Recent Alerts">
+                  <px-button icon="fa:fa-pencil" modifier="large icon tertiary" on-tap="openActions"></px-button>
+                </px-title-bar>
+                <px-table-view modifier="small">
+                 <template is="dom-repeat" items="[[alerts]]">
+                   <px-table-row
+                   title="{{item.title}}"
+                   title="{{item.body}}"
+                   icon="{{item.icon}}"
+                   modifier="tappable nav-right" swipeable swipe-right fit-underlay>
+                     <div underlay class="full-height flex flex--stretch flex--left">
+                       <px-table-row-action-button label="More" type="more"></px-table-row-action-button>
+                       <px-table-row-action-button label="Flag" type="flag"></px-table-row-action-button>
+                       <px-table-row-action-button label="Delete" type="delete"></px-table-row-action-button>
+                     </div>
+                   </px-table-row>
+                 </template>
+               </px-table-view>
+              </div>
+            </section>
+            <section title="Cases">
+              <div class="content u-p">
+                <px-title-bar title="Recent Cases"></px-title-bar>
+
+
+                <px-data-table id="myDataTable" table-data="[[documents]]"></px-data-table>
+
+
+              </div>
+            </section>
+            <section title="Analysis">
+              <!-- TODO: Charts -->
+            </section>
+            <!-- TODO: page 5 -->
+            <!-- TODO: page 6 -->
+
+
+
+
+
+
+
+
+          </iron-pages>
+      </div>
+      </px-drawer-layout>
+    </template>
+    <script type="text/javascript">
+      var scope = document.getElementById('demo-2');
+      scope.navItems = navItems;
+      scope.user = user;
+      scope.selected = 0;
+      scope.selectedPage = null;
+    </script>
+  </body>
+</html>
