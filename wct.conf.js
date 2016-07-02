@@ -1,18 +1,19 @@
 module.exports = {
 	verbose: true,
+	testTimeout: 5 * 60 * 1000,
 	plugins: {
 		local: {
 			browsers: ['chrome', 'firefox']
 		},
 		sauce: {
 			name: 'px-layout',
-			disabled: false,
+			disabled: true,
 			browsers: [
-        {
-          'browserName': 'safari',
-          'version': '9'
-        }
-      ]
+                "Windows 8.1/internet explorer",
+                "OS X 10.10/chrome",
+                "OS X 10.10/firefox",
+                "OS X 10.10/safari"
+            ]
 		},
 		istanbul: {
 			'dir': './coverage',
