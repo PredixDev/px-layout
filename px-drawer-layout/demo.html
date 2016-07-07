@@ -16,14 +16,15 @@
     <link rel="import" href="../../px-theme/px-app.html">
     <link rel="import" href="../../px-theme/px-theme.html">
 
-    <!-- TODO: Layout + Partials -->
+    <!-- TODO: Layout + Partials
     <link rel="import" href="../../px-partials/px-partials.html">
     <link rel="import" href="../../px-drawer/px-drawer.html">
     <link rel="import" href="../../px-navbar/px-navbar.html">
+    -->
     <link rel="import" href="../px-layout.html">
     <link rel="import" href="../../px-card/px-card.html">
 
- 
+
     <style media="screen"></style>
   </head>
   <body unresolved class="responsive-demo">
@@ -65,11 +66,13 @@
               Github Repo
             </a>
           </px-card>
+        <div class="flex flex--wrap">
           <template is="dom-repeat" items="{{cards}}">
             <px-card icon="{{item.icon}}" header-text="{{item.title}}">
               <p>{{item.body}}</p>
             </px-card>
           </template>
+        </div>
         </div>
 
       </px-drawer-layout>
@@ -93,7 +96,7 @@
         app.toggleDrawer = function () {
           document.getElementById('layout').drawer.toggle()
         };
-        app.cards = createDemoCards(50);
+        app.cards = createDemoCards(5);
       });
     </script>
     <script src="http://localhost:35724/livereload.js?snipver=1"></script>
