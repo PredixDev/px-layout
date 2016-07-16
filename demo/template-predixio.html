@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>template-predixio</title>
+  
+    <!-- TODO: Meta Tags -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- TODO: Dependencies -->
+    <script src="../../webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="elements.html">
+  </head>
+  <body unresolved>
+    <template id="app" is="dom-bind">
+      <style>
+        .predixio {
+          background: #eaeaea;
+          margin: 0;
+        }
+        px-header px-brand:first-child {
+
+        }
+        px-header .c-header__title {
+          color: #333 !important;
+        }
+        px-card {
+          flex: 1 0 300px;
+        }
+        .tiles px-card {
+          border: 1px solid #2886af;
+          margin-top: 1rem;
+          position: relative;
+          margin-right: 0.5rem;
+        }
+        .tiles px-card:last-of-type {
+          margin-right: 0;
+        }
+        .tiles px-card .px-card-header {
+          height: 3rem;
+          border: none;
+          overflow: hidden;
+          padding: 0;
+          margin: 0 !important;
+          display: flex;
+          align-items: center;
+        }
+        .tiles px-card:after {
+          overflow: hidden;
+          position: absolute;
+          top: -6px;
+          right: -14px;
+          width: 38px;
+          height: 23px;
+          transform: rotate(45deg);
+          border-bottom: 1px solid #2886af;
+          background-color: #eaeaea;
+          content: '';
+        }
+        px-header {
+          background: #eaeaea;
+          border-bottom: 1px solid #d8d8d8;
+          box-shadow: 0 1px 0 0 #fff;
+          color: #000;
+          margin-bottom: 5px;
+        }
+        px-header nav a {
+          color: #333 !important;
+          padding: 0 1rem;
+          font-size: 1rem;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+        nav .active {
+          color: #2886af !important;
+        }
+        px-header .spacer {
+          width: 25%;
+          text-align: center;
+        }
+        .theta {
+          font-size: 1rem;
+          line-height: 1.25;
+          font-weight: 700;
+          text-transform: uppercase;
+      }
+      </style>
+      <px-header-layout class="predixio">
+        <px-header class="u-p" title="Developer Network" bare>
+          <div brand>
+            <px-brand predix-wordmark height="20" width="100"></px-brand>
+          </div>
+          <div right>
+
+            <div class="flex flex--middle flex--right">
+              <nav class="flex">
+                <a href="#Catalog" class="active">Catalog</a>
+                <a href="#Resources">Resources</a>
+                <a href="#Community">Community</a>
+                <a href="#Support">Support</a>
+                <span class="spacer flex flex--center flex--middle">|</span>
+                <a href="#Sign in">Sign in</a>
+              </nav>
+              <button class="btn btn--bare navbar__button" drawer-toggle>
+                <px-icon icon="fa:fa-bars"></px-icon>
+              </button>
+            </div>
+          </div>
+        </px-header>
+        <px-drawer fixed overlay>
+          <div class="flex flex--center flex--middle u-p-">
+            <px-brand width="125" height="48" predix-wordmark></px-brand>
+            <span class="muted u-pl--">product</span>
+          </div>
+          <aside class="u-p">
+            Side navigation
+          </aside>
+        </px-drawer>
+
+        <section class="tiles flex flex--wrap">
+          <px-card header-text="Blobstore" class="tile">
+            <p class="u-m0 u-p0">Use this binary large object storage (BLOB) to save data.</p>
+          </px-card>
+          <px-card header-text="Time Series" class="tile">
+            <p class="u-m0 u-p0">Quickly and efficiently manage, ingest, store, and analyze data.</p>
+          </px-card>
+          <px-card header-text="Service Name">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </px-card>
+        </section>
+      </px-header-layout>
+    </template>
+  </body>
+</html>

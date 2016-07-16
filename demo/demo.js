@@ -33,12 +33,13 @@ window.EXAMPLES = [{
     href: 'template-dashboard.html',
     title: 'Header Layout - Dashboard seed'
   },
+  {
+    href: 'template-predixio.html',
+    title: 'PredixIO'
+  },
   /*
 
-  {
-    href: 'template-cards.html',
-    title: 'Grid to List'
-  },
+
 
 
   {
