@@ -7,15 +7,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="demo/demo.css">
+
+
+    <script src="../webcomponentsjs/webcomponents.min.js"></script>
+
     <script src="demo/demo.js"></script>
-    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+
     <link rel="import" href="../px-demo-helpers/px-demo-helpers.html"/>
     <link rel="import" href="../iron-demo-helpers/demo-snippet.html"/>
+
     <link rel="import" href="../px-theme/px-app.html">
     <link rel="import" href="../px-theme/px-theme.html">
-    <link rel="import" href="../px-card/px-card.html">
-    <link rel="import" href="../px-partials/px-partials.html">
+
     <link rel="import" href="px-layout.html">
+
     <script type="text/javascript">
       function toggleDebug(name) {
         document.body.className = name;
@@ -27,6 +32,10 @@
       html {
         overflow: auto !important;
         background-color: #eee !important;
+      }
+      .responsive-demo{
+        overflow: hidden;
+        position: relative;
       }
       #flexbox .flex * {
         text-align: center;
@@ -68,9 +77,8 @@
 
       <px-box-section title="Installation">
           <pre><code>$ bower install px-layout --save</code></pre>
-        <img src="https://img.shields.io/travis/PredixDev/px-layout.svg" alt="Travis CI" />
-        <img src="https://img.shields.io/github/tag/PredixDev/px-layout.svg" alt="Github Tag" />
-        <img src="https://img.shields.io/david/dev/PredixDev/px-layout.svg" alt="Packages" />
+
+          <helper-badge repo="px-layout" org="PredixDev"></helper-badge>
       </px-box-section>
 
       <px-box-section id="usage" title="Usage" header-class="beta">
@@ -88,7 +96,7 @@
           </li>
         </ul>
 
-        <h3>Bundled Elements</h3>
+        <h3>Bundled elements</h3>
         <ul class="">
           <li>
             <a href="../px-partials/index.html#px-button" target="_blank">px-button</a>
@@ -108,10 +116,6 @@
           <li>
             <a href="../px-partials/index.html#px-title-bar" target="_blank">px-title-bar</a>
           </li>
-        </ul>
-
-        <h3>Bundled Components</h3>
-        <ul>
           <li>
             <a href="../px-navbar" target="_blank">px-navbar</a>
           </li>
@@ -122,9 +126,6 @@
 
 
         <h2>Quick Start</h2>
-
-
-
 
 
         <!--
@@ -147,44 +148,34 @@
           <a href="demo/template-basic.html" target="_blank">new window</a>
         </p>
 
+        <h2>px-drawer-layout</h2>
         <demo-snippet>
           <template>
-            <px-drawer-layout id="layout" class="u-bg-gray9" style="height: 400px;">
-              <px-drawer>
-                drawer-content
-              </px-drawer>
-              <px-header-layout>
-                <px-header>
-                  <px-navbar shadow>
-                    <div left>
-                      <button type="button" class="btn" drawer-toggle>Open Drawer</button>
-                    </div>
-                    <div title>
-                      px-drawer-layout
-                    </div>
-                  </px-navbar>
-                </px-header>
-                <div class="">
-                  <p>
-                    main content
-                  </p>
-
-                </div>
-              </px-header-layout>
-            </px-drawer-layout>
+            <div class="responsive-demo"  style="height: 400px;">
+              <px-drawer-layout id="layout" class="u-bg-gray9">
+                <px-drawer>
+                  <div>
+                    This is the drawer
+                  </div>
+                </px-drawer>
+                <section>
+                  <px-button icon="fa:fa-bars" drawer-toggle></px-button>
+                  This is the content
+                </section>
+              </px-drawer-layout>
+            </div>
           </template>
         </demo-snippet>
 
+<!--
+        <h2>px-header-layout</h2>
         <demo-snippet>
           <template>
             <article class="u-bg-gray9" style="height: 600px;">
 
               <px-layout id="layoutx" type="full">
-
                 <px-header title="My App"></px-header>
-
                 <px-layout-item role="primary-content" class="l-bg-white">
-
                   <px-navbar>
                     <button class="navbar__left navbar__button" onclick="document.getElementById('layoutx').toggle('primarySidebar');">
                       <i class="fa fa-lg fa-navicon"></i>
@@ -207,7 +198,7 @@
             </article>
           </template>
         </demo-snippet>
-
+-->
       </px-box-section>
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Templates">
