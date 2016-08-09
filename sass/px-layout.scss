@@ -14,123 +14,128 @@
 $xs: #fa62af;
 $sm: #4abde6;
 $md: #a3e572;
-$lg:#ffab40;
+$lg: #ffab40;
 $xl: #eddd46;
 
-$l-container-transition: all .3s ease;
-$l-container-transition-wrapper: all .3s cubic-bezier(0.1, 0.7, 0.1, 1);
+$l-container-transition: all 0.3s ease;
+$l-container-transition-wrapper: all 0.3s cubic-bezier(0.1, 0.7, 0.1, 1);
 
+//Remove all margins/paddings on lower
+body:not([style-scope]):not(.style-scope) {
+  @include scrollable();
 
+  @include media-breakpoint-down ('md') {
+    @include full-height();
+    @include scrollable();
+    //  margin-bottom: 0;
+    //    padding: 0;
+  }
+}
+
+.viewport,
+.viewport:not([style-scope]):not(.style-scope) {
+  transition: all 0.3s ease;
+  //Mobile first
+
+  height    : 100%;
+  width     : 100%;
+  padding   : 0;
+  margin    : 0 auto !important;
+
+  &.debug {
+    background-color: $xs;
+  }
+
+  @include m ('flush') {
+    margin : 0 !important;
+    padding: 0 !important;
+  }
 
   //Remove all margins/paddings on lower
-  body:not([style-scope]):not(.style-scope) {
-    @include scrollable();
+  @include media-breakpoint(sm) {
+    &.debug {
+      background-color: $sm;
+    }
+  }
+  @include media-breakpoint(md) {
+    //width        : 100%;
+    //
+    &.debug {
+      background-color: $md;
+    }
+    padding-left : var(--px-viewport-padding-md, .5rem);
+    padding-right: var(--px-viewport-padding-md, .5rem);
+  }
+  @include media-breakpoint(xl) {
+    max-width: 80rem;
+
+    &.debug {
+      background-color: $xl;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    max-width    : 80rem;
+    max-width    : var(--px-viewport-max-width-lg, 80rem);
+    padding-left : var(--px-viewport-padding-lg, 1rem);
+    padding-right: var(--px-viewport-padding-lg, 1rem);
+
+    &.debug {
+      background-color: $lg;
+    }
+  }
+}
+
+.has-navbar {
+  position   : relative;
+  padding-top: 56px;
+}
+
+@include b ('l-container') {
+  position  : relative;
+  overflow  : hidden;
+  transition: $l-container-transition;
+
+
+
+  *:not([style-scope]):not(.style-scope),
+  *:not([style-scope]):not(.style-scope):after,
+  *:not([style-scope]):not(.style-scope):before {
+    box-sizing: border-box;
+  }
+
+  .l-bg-white {
+    background: #fff;
+  }
+
+  .l-full-height {
+    transition: $l-container-transition;
+    height    : 100%;
 
     @include media-breakpoint-down ('md') {
       @include full-height();
-      @include scrollable();
-      //  margin-bottom: 0;
-      //    padding: 0;
     }
   }
 
-
-
-  .viewport,
-  .viewport:not([style-scope]):not(.style-scope) {
-    transition: all .3s ease;
-    //Mobile first
-
-    height     : 100%;
-    width     : 100%;
-    padding   : 0;
-    margin    : 0 auto !important;
-
-    &.debug{
-      background-color: $xs;
-    }
-
-    @include m ('flush') {
-      margin : 0 !important;
-      padding: 0 !important;
-    }
-
-    //Remove all margins/paddings on lower
-    @include media-breakpoint(sm) {
-      &.debug{
-        background-color: $sm;
-      }
-    }
-    @include media-breakpoint(md) {
-      //width        : 100%;
-      //
-      &.debug{
-        background-color: $md;
-      }
-      padding-left : var(--px-viewport-padding-md, .5rem);
-      padding-right: var(--px-viewport-padding-md, .5rem);
-    }
-
-    @include media-breakpoint(xl) {
-      max-width: 80rem;
-      &.debug{
-        background-color: $xl;
-      }
-    }
-    @include media-breakpoint-up(lg) {
-      max-width: 80rem;
-      max-width    : var(--px-viewport-max-width-lg, 80rem);
-      padding-left : var(--px-viewport-padding-lg, 1rem);
-      padding-right: var(--px-viewport-padding-lg, 1rem);
-      &.debug{
-        background-color: $lg;
-      }
-    }
+  @include e ('wrapper') {
+    transition: $l-container-transition-wrapper;
   }
+}
+@import "mixins";
 
-  .has-navbar {
-    position   : relative;
-    padding-top: 56px;
-  }
 
-  @include b ('l-container') {
-    position  : relative;
-    overflow  : hidden;
-    transition: $l-container-transition;
-
-    @include c(''){
-      @include responsive-utils();
-    }
-    *:not([style-scope]):not(.style-scope),
-    *:not([style-scope]):not(.style-scope):before,
-    *:not([style-scope]):not(.style-scope):after{
-      box-sizing: border-box;
-    }
-
-    .l-bg-white {
-      background: #fff;
-    }
-
-    .l-full-height {
-      transition: $l-container-transition;
-      height    : 100%;
-
-      @include media-breakpoint-down ('md') {
-        @include full-height();
-      }
-    }
-
-    @include e ('wrapper') {
-      transition: $l-container-transition-wrapper;
-    }
-  }
-
+@include c ('') {
+  @include responsiveUtils();
   @include responsive-utils();
 
-  @import "mixins";
-
-  // TODO: Overriding default .layout base
-  .row{
-    @include n-columns(calculateRem($inuit-layout-min-width), $inuit-base-spacing-unit, false, 6);
-  //  margin-left: 0 !important;
+  .btn--transparent{
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 2px;
   }
+}
+
+// TODO: Overriding default .layout base
+.row {
+  @include n-columns(calculateRem($inuit-layout-min-width), $inuit-base-spacing-unit, false, 6);
+  //  margin-left: 0 !important;
+}

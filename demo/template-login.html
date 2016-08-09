@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="u-bg--gray9">
+
   <head>
     <meta charset="utf-8">
     <title>template-login</title>
@@ -9,6 +10,7 @@
     <script src="../../webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="elements.html">
   </head>
+
   <body unresolved class=" responsive-demo">
     <template id="app" is="dom-bind">
       <style is="custom-style">
@@ -16,11 +18,13 @@
         html {
           background: #3b3b3f;
         }
+
         .login {
           -webkit-align-self: center;
           -ms-flex-item-align: center;
           align-self: center;
         }
+
         .login .box {
           margin: 15% auto;
           background: #fff;
@@ -28,27 +32,34 @@
           min-width: 320px;
           max-width: 500px;
         }
+
         .login .box h1 {
           color: #000;
           font-weight: normal;
         }
       </style>
-      <px-layout id="layout0">
-        <px-layout-item role="primary-content">
-          <article class="viewport--full-height flex flex--middle flex--center login">
-            <div class="login__wrap">
-              <div class="flex flex--middle flex--center">
-                <px-brand predix-wordmark height="30" width="186"></px-brand>
-              </div>
-              <form class="flex flex--col">
+      <px-layout-item class="viewport--full-height flex flex--middle flex--center login">
+        <div class="login__wrap">
+          <div class="flex flex--middle flex--center u-pb">
+            <px-brand predix-wordmark height="50" width="225"></px-brand>
+          </div>
+          <form class="flex flex--col">
+            <px-table-view modifier="tiny">
+              <px-table-row>
                 <input type="email" class="text-input" placeholder="E-mail" required/>
+              </px-table-row>
+              <px-table-row>
                 <input type="password" class="text-input" placeholder="Password" required/>
-                <button class="btn btn--primary btn--full btn--large">Sign-in</button>
-              </form>
-            </div>
-          </article>
-        </px-layout-item>
-      </px-layout>
+              </px-table-row>
+              <px-table-row>
+                <button class="btn btn--primary btn--full btn--large" row-content>Sign-in</button>
+              </px-table-row>
+            </px-table-view>
+
+          </form>
+        </div>
+      </px-layout-item>
     </template>
   </body>
+
 </html>

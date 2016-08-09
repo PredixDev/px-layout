@@ -10,7 +10,6 @@ window.EXAMPLES = [{
     href: 'template-header-layout.html',
     title: 'Header Layout'
   },
-
   {
     icon: 'fa:fa-check',
     color: 'green',
@@ -34,8 +33,10 @@ window.EXAMPLES = [{
     title: 'Header Layout - Dashboard seed'
   },
   {
+    icon: 'fa:fa-check',
+    color: 'green',
     href: 'template-predixio.html',
-    title: 'PredixIO'
+    title: 'Header Layout - Predix.io'
   },
   /*
 
@@ -62,12 +63,10 @@ window.EXAMPLES = [{
     title: 'Splitview Layout'
   },
 
-
   {
     href: 'template-login.html',
     title: 'Login'
   },
-
   {
     href: 'template-detail.html',
     title: 'Full Detail'
