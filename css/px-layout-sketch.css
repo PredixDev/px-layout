@@ -5701,7 +5701,7 @@ html {
 /*================================= Split View ================================*/
 .l-container--splitview {
   background: white;
-  min-height: 50vh;
+  min-height: 99vh;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -5738,7 +5738,9 @@ html {
   transition: all 0.4s ease;
   -webkit-transform: translateX(0);
           transform: translateX(0);
-  border-right: 1px solid #b1b1bc; }
+  border-right: 1px solid #b1b1bc;
+  min-height: 99vh;
+  overflow: hidden; }
   @media screen and (min-width: 22rem) and (max-width: 49.0666666667rem) {
     .l-container__secondary-content.is-active {
       display: block; } }
@@ -5765,7 +5767,9 @@ html {
           align-self: auto;
   -webkit-flex-grow: 2;
       -ms-flex-positive: 2;
-          flex-grow: 2; }
+          flex-grow: 2;
+  min-height: 99vh;
+  overflow: hidden; }
   @media screen and (max-width: 21.3333333333rem) {
     .l-container__primary-content.is-active {
       display: block !important; } }

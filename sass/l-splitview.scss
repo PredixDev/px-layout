@@ -6,14 +6,14 @@ $splitview-sidebar-width: 25%;
 $splitview-right-width: 25%;
 $splitview-secondary-border-color: $gray5;
 $splitview-background-color: $white;
-$splitview-min-height: 50vh;
+
 $l-splitview-secondary-content-width: 200px;
 
 /*================================= Split View ================================*/
 @include b ('l-container') {
   @include m ('splitview') {
     background     : $splitview-background-color;
-    min-height     : $splitview-min-height;
+    min-height     : $layout-min-height;
     display        : flex;
     flex-direction : row;
     flex-wrap      : nowrap;
@@ -34,6 +34,9 @@ $l-splitview-secondary-content-width: 200px;
     transition  : $splitview-transition;
     transform   : translateX(0);
     border-right: 1px solid $splitview-secondary-border-color;
+    min-height: $layout-min-height;
+    overflow: hidden;
+  //  overflow-y: auto;
 
     @include media-breakpoint ('xs') {
       //display: none;
@@ -70,6 +73,9 @@ $l-splitview-secondary-content-width: 200px;
     flex      : 1 0 300px;
     align-self: auto;
     flex-grow : 2;
+    min-height: $layout-min-height;
+    overflow: hidden;
+    //overflow-y: auto;
 
     @include media-breakpoint ('xs') {
       //display: none;

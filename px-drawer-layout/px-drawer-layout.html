@@ -68,7 +68,7 @@ Custom property | Description | Default
         min-height: 57px;
       }
       :host.has-navbar .l-drawer-layout__container{
-        padding-top: 57px;
+
       }
       :host .l-drawer-layout {
         position: relative;
@@ -98,9 +98,9 @@ Custom property | Description | Default
         display: none;
       }
         /* Hide the drawer-toggle button on large screens*/
-  :host .l-drawer-layout__container:not(.is-narrow) ::content [drawer-toggle] {
-    display: none;
-  }
+        :host .l-drawer-layout__container:not(.is-narrow) ::content [drawer-toggle] {
+          display: none;
+        }
     </style>
     <div id="container" class="l-drawer-layout flex flex--stretch">
       <div id="drawerContainer" class="l-drawer-layout__drawer">

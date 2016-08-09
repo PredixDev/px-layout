@@ -45,7 +45,7 @@
       }
     </style>
   </head>
-  <body class="debug-new-breakpoints scrollable " unresolved>
+  <body class="debug-new-breakpoints scrollable u-p-" unresolved>
 
 
     <div class="hero">
@@ -67,12 +67,12 @@
       <!-- TODO: Usage -->
 
       <px-box-section title="Installation">
+          <pre><code>$ bower install px-layout --save</code></pre>
         <img src="https://img.shields.io/travis/PredixDev/px-layout.svg" alt="Travis CI" />
         <img src="https://img.shields.io/github/tag/PredixDev/px-layout.svg" alt="Github Tag" />
         <img src="https://img.shields.io/david/dev/PredixDev/px-layout.svg" alt="Packages" />
       </px-box-section>
 
-      <h2>Overview</h2>
       <px-box-section id="usage" title="Usage" header-class="beta">
         <p>
           The markup structure of an application can become very messy and deeply nested.
@@ -122,10 +122,12 @@
 
 
         <h2>Quick Start</h2>
-        <p>
-          The following is the layout structure that your page should follow.
-        </p>
 
+
+
+
+
+        <!--
         <demo-snippet>
           <template>
           <pre>
@@ -134,13 +136,12 @@
           </template>
         </demo-snippet>
 
-
         <p data-height="450" data-theme-id="24073" data-slug-hash="XKgdOV" data-default-tab="html,result" data-user="jonniespratley" data-embed-version="2" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/jonniespratley/pen/XKgdOV/">demo - template-catalog</a> by Jonnie Spratley (<a href="http://codepen.io/jonniespratley">@jonniespratley</a>) on <a href="http://codepen.io">CodePen</a>.</p>
         <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
+-->
 
 
-        <!--
         <p>
           The following markup is a basic example of usage. Open in
           <a href="demo/template-basic.html" target="_blank">new window</a>
@@ -148,7 +149,7 @@
 
         <demo-snippet>
           <template>
-            <px-drawer-layout id="layout" class="u-bg-gray9" style="height: 600px;">
+            <px-drawer-layout id="layout" class="u-bg-gray9" style="height: 400px;">
               <px-drawer>
                 drawer-content
               </px-drawer>
@@ -206,7 +207,7 @@
             </article>
           </template>
         </demo-snippet>
-        -->
+
       </px-box-section>
       <template id="pxExamples" is="dom-bind">
         <px-box-section id="examples" title="Templates">
@@ -214,7 +215,7 @@
           <p>
             The templates are a means to define, illustrate and share best practices in <code>px-layout</code>. Select a template and customize to suit your needs.
           </p>
-          <!--
+
           <ol class="">
             <li>Identify the layout pattern for your app</li>
             <li>Use the px-layout component</li>
@@ -222,7 +223,7 @@
             <li>Replace old markup with new markup</li>
           </ol>
           <h3>Examples</h3>
-        -->
+
           <ol class="">
             <template is="dom-repeat" items="{{examples}}">
               <li>
