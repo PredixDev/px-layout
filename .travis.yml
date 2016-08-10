@@ -8,7 +8,6 @@ branches:
     - gh-pages
 addons:
   sauce_connect: true
-  firefox: '46.0'
   apt:
     sources:
       - google-chrome
