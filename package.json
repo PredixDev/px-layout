@@ -8,14 +8,6 @@
     ],
     "license": "ISC",
     "author": "Jonnie Spratley",
-    "scripts": {
-        "build": "grunt dist",
-        "dist": "gulp",
-        "postinstall": "bower install",
-        "serve": "grunt depserve",
-        "start": "grunt",
-        "test": "wct --plugin sauce"
-    },
     "devDependencies": {
         "bower": "*",
         "coveralls": "^2.11.9",
