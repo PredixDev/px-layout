@@ -39,7 +39,7 @@
         "polybuild": "^1.1.0",
         "polymer-css-compiler": "git+https://github.com/jonniespratley/polymer-css-compiler.git",
         "sassdoc": "^2.1.20",
-        "web-component-tester": "*",
+        "web-component-tester": "4.2.2",
         "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1"
     }
 }
