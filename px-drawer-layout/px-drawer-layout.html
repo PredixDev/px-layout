@@ -193,7 +193,6 @@ Custom property | Description | Default
       resetLayout: function () {
         this.debounce('_resetLayout', function () {
           if (!this.isAttached) {
-            console.warn('notAttached');
             return;
           }
           var drawer = this.drawer;
