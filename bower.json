@@ -29,7 +29,6 @@
     "fastclick": "^1.0.6"
   },
   "devDependencies": {
-    "px-library-design": "^0.2.0",
     "px-sample-cards": "^0.7.0",
     "px-card": "^0.6.0",
     "iron-component-page": "PolymerElements/iron-component-page#~v1.1.0",
@@ -45,13 +44,16 @@
     "px-simple-bar-chart": "^1.7.0",
     "px-table-view": "^1.1.0",
     "px-simple-horizontal-bar-chart": "^0.7.0",
-    "iron-pages": "^1.0.7"
+    "iron-pages": "^1.0.7",
+    "px-theme": "^2.0.4",
+    "px-box-design": "^0.4.4",
+    "px-layout-design": "^0.4.5"
   },
   "resolutions": {
     "px-library-design": "master",
     "px": "~v1.4.2",
     "px-theme": "0.8.0",
-    "polymer": "~v1.5.0",
+    "polymer": "^v1.6.1",
     "px-dropdown": "~0.9.2",
     "px-tooltip": "~0.6.0",
     "fetch": "~0.11.0",
